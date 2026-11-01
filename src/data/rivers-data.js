@@ -1,5 +1,5 @@
 // Chile Whitewater Kayaking Guide - Core River Database
-// Field guide data for Chile's whitewater runs. Pucón Kayak Retreat (PKR) is a credited partner.
+// Comprehensive field guide data for Chile's whitewater runs.
 // Live river gauge integrations with ChileWaterLevels.com
 
 export const REGIONS = [

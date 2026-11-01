@@ -676,7 +676,6 @@ class ChileKayakApp {
               <div><dt>${esc(this.t('season'))}</dt><dd>${esc(this.copy('regions', region.id, 'season'))}</dd></div>
             </dl>
             <p class="field-note"><span>${esc(this.t('fieldNote'))}</span> ${esc(this.copy('regions', region.id, 'tagline'))}</p>
-            ${region.id === 'araucania' ? `<p class="partner-chip">${esc(this.t('partnerWaters'))}</p>` : ''}
             ${this.regionOperators(region.id)}
           </header>
           <div class="toolbar">
