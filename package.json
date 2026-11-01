@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node tests/data-integrity.test.js && node tests/map-geometry.test.js",
+    "test": "node tests/data-integrity.test.js && node tests/map-geometry.test.js && node tests/prerender.test.js",
     "deploy": "npm run build && wrangler pages deploy dist --project-name chile-kayak-guide --branch main --commit-dirty=true"
   },
   "repository": {

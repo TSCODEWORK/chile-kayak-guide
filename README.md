@@ -17,7 +17,7 @@ The codebase is built on an extensible, modular architecture designed for instan
 
 - **Build Engine**: [Vite](https://vitejs.dev/) with tree-shaking, automated CSS bundling, and sub-50ms incremental builds.
 - **Cloudflare Edge Headers (`public/_headers`)**: Pre-configured with HSTS, CSP, X-Frame-Options, immutable static asset caching (1 year), and `stale-while-revalidate` for lightning-fast edge delivery (matching ChileWaterLevels).
-- **SPA Deep Linking (`public/_redirects`)**: Edge redirects ensuring direct URLs (e.g. `/#/river/trancura-upper`) resolve instantly.
+- **Pre-rendered routes**: The build writes a real HTML file for every region and river (`region/<id>.html` and `region/<id>/index.html`, same for rivers). Cloudflare Pages serves those paths with HTTP 200. A root `404.html` is a real not-found page, which also turns off Pages' SPA fallback on purpose. Do not add `/* /index.html 200` to `_redirects`; Pages rejects that rule as a loop.
 - **Serverless Edge Functions (`functions/api/`)**:
   - `GET /api/rivers`: Serverless edge endpoint supporting filtering by `?region=`, `?class=`, and `?search=`.
   - `GET /api/health`: Uptime monitoring endpoint.
@@ -130,7 +130,7 @@ chile-kayak-guide/
 │       └── rivers.js           # GET /api/rivers edge API endpoint
 ├── public/                     # Static files copied to build output
 │   ├── _headers                # Cloudflare caching & security headers
-│   ├── _redirects              # Cloudflare SPA fallback redirects
+│   ├── _redirects              # No splat rewrite (Pages treats it as a loop)
 │   ├── favicon.svg             # Vector brand icon
 │   ├── manifest.webmanifest    # PWA configuration
 │   └── rivers.json             # Portable JSON database

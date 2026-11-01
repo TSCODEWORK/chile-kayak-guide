@@ -1,21 +1,28 @@
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
-import { copyFileSync } from 'node:fs';
+import { writePrerenderedPages } from './src/prerender.js';
+
+const root = dirname(fileURLToPath(import.meta.url));
 
 // Relative asset URLs keep one build working in two places. An inline script
 // sets <base> to the deploy prefix (site root on Cloudflare Pages, the
 // project path on GitHub Pages) so deep links still load /assets.
-function spaFallback() {
+function prerenderRoutes() {
   return {
-    name: 'spa-404-fallback',
+    name: 'prerender-routes',
     closeBundle() {
-      copyFileSync('dist/index.html', 'dist/404.html');
+      const distDir = resolve(root, 'dist');
+      const template = readFileSync(resolve(distDir, 'index.html'), 'utf8');
+      writePrerenderedPages(distDir, template);
     }
   };
 }
 
 export default defineConfig({
   base: './',
-  plugins: [spaFallback()],
+  plugins: [prerenderRoutes()],
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
