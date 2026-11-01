@@ -608,7 +608,6 @@ class ChileKayakApp {
           <h2>${esc(this.t('homeTitleBefore'))}<em>${esc(this.t('homeTitleEm'))}</em>${esc(this.t('homeTitleAfter'))}</h2>
           <p class="lede">${esc(this.t('homeLede', { n: RIVERS.length }))}</p>
         </header>
-        <section id="focus-card" class="focus-card"></section>
         <section class="region-index" aria-label="${esc(this.t('regions'))}">
           <div class="section-row">
             <h3>${esc(this.t('regions'))}</h3>
