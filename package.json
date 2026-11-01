@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node tests/data-integrity.test.js"
+    "test": "node tests/data-integrity.test.js",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name chile-kayak-guide --branch main --commit-dirty=true"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "author": "David Hughes & Chile Whitewater Team",
   "license": "ISC",
   "devDependencies": {
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "wrangler": "^4.156.0"
   }
 }
