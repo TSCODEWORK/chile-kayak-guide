@@ -1,7 +1,7 @@
 {
   "name": "Chile Kayak Guide",
   "short_name": "Chile Kayak",
-  "description": "Whitewater kayaking guide to the rivers of Chile with David Hughes & PKR",
+  "description": "Whitewater kayaking atlas of the rivers of Chile",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#06141f",

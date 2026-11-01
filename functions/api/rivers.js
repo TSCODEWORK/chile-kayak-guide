@@ -44,7 +44,7 @@ export async function onRequest(context) {
     total: (data.rivers || []).length,
     regions: data.regions,
     rivers: rivers,
-    source: 'Chile Kayak Guide in collaboration with David Hughes (PKR)',
+    source: 'Chile Kayak Guide · partner Pucón Kayak Retreat (PKR)',
     telemetry: 'ChileWaterLevels.com'
   };
 

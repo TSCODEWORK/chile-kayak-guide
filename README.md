@@ -5,9 +5,9 @@
 [![Telemetry](https://img.shields.io/badge/Telemetry-ChileWaterLevels.com-10b981.svg)](https://chilewaterlevels.com)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-Ready-f38020.svg?logo=cloudflare)](https://pages.cloudflare.com)
 
-A high-performance, minimalist whitewater kayaking guide to the rivers of Chile, modeled after the look, speed, and simplicity of **Chilewaterlevels.com**.
+A field atlas of whitewater kayaking in Chile: 44 runs across 7 regions, drawn on real administrative boundaries of the country.
 
-Curated in collaboration with **David Hughes** (founder of **Pucón Kayak Retreat**), this guide provides authentic, no-nonsense expedition beta, optimal flow ranges, rapid breakdowns, hazards, and GPS access coordinates for 44 whitewater runs across Chile's premier paddling regions.
+Pucón Kayak Retreat (PKR) is a credited partner. The notes in this guide are neutral field beta for trip planning. They are not quotations.
 
 ---
 
@@ -29,17 +29,16 @@ The codebase is built on an extensible, modular architecture designed for instan
 
 ## 🌊 Key Features
 
-- **Interactive Map of Chile**:
-  - Responsive SVG vector map of Chile divided into 7 distinct whitewater kayaking regions.
-  - Hover over any region to illuminate it with glowing neon strokes and view real-time metrics (river counts, class breakdown, top classics, season).
-  - Click any region or hotspot pin to dive directly into regional rivers and detailed guides.
-  - Two-way synchronized hover between the map and regional summary cards.
+- **Map of Chile**:
+  - The homepage is a geographically accurate map built from Natural Earth admin-1 boundaries (mainland Chile; Rapa Nui and Juan Fernández are left off the frame so the country can be tall).
+  - Hover, focus, or scroll a kayaking region to see its name, run count, grade mix, and season.
+  - Choosing a region flies the map in and draws that region's runs as lines and pins. Runs and regions have shareable URLs (`/region/…`, `/river/…`) that survive refresh on Cloudflare Pages.
+  - Keyboard: tab to a region, then arrow up or down the country.
 
-- **David Hughes & PKR Tone of Voice**:
-  - Authoritative, safety-first paddling beta written from decades of coaching and leading expeditions in Chile.
-  - Tactical advice on volcanic basalt ledges, steep drop-pools, boof angles, and eddy discipline.
-  - "David's Golden Rule" pro-tips for every section.
-  - Deep respect for ancestral Mapuche & Pehuenche lands and river conservation.
+- **Guide beta**:
+  - Each run keeps its existing flow range, grade, rapids, hazards, and access notes.
+  - Tips are labeled **Guide beta** and **Pro tip**.
+  - Pucón Kayak Retreat remains a credited partner, with live gauges linked from ChileWaterLevels.
 
 - **Live Flow Telemetry & Unit Switcher**:
   - Full support for both Metric (`m³/s`) and Imperial (`cfs`) flow units with instantaneous global toggle.
@@ -151,6 +150,7 @@ chile-kayak-guide/
 
 ## 🤝 Credits & Partners
 
-- **David Hughes & Team Buena Onda**: [Pucón Kayak Retreat (PKR)](https://puconkayakretreat.com)
+- **Partner**: [Pucón Kayak Retreat (PKR)](https://puconkayakretreat.com)
+- **Coastline**: Natural Earth 1:10m cultural vectors (public domain)
 - **Live Streamflow Data**: [ChileWaterLevels.com](https://chilewaterlevels.com) & Dirección General de Aguas (DGA Chile)
 - **River History & Exploration**: Dedicated to the pioneers of Chilean whitewater and indigenous river guardians.
