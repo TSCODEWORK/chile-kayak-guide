@@ -1,8 +1,8 @@
 // Chilean Spanish. River names, place names, and rapid names stay as published.
 export const ui = {
   "skip": "Saltar a la guía",
-  "brand1": "Chile Aguas Blancas",
-  "brand2": "Guía de kayak",
+  "brand1": "CHILE AGUAS BLANCAS",
+  "brand2": "GUÍA DE KAYAK",
   "docTitle": "Guía de kayak de aguas blancas de Chile",
   "unitAria": "Unidad de caudal",
   "search": "Buscar",

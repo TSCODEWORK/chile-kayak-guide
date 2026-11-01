@@ -2,8 +2,8 @@ import { REGIONS, RIVERS } from '../data/rivers-data.js';
 
 export const ui = {
   skip: 'Skip to the guide',
-  brand1: 'Chile Whitewater',
-  brand2: 'Kayak Guide',
+  brand1: 'CHILE WHITEWATER',
+  brand2: 'KAYAK GUIDE',
   docTitle: 'Chile Whitewater Kayak Guide',
   unitAria: 'Flow unit',
   search: 'Search',
