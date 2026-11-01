@@ -64,6 +64,14 @@ const fromPath = parseLocation({ pathname: '/region/los-rios/', hash: '', base: 
 assert(fromPath.name === 'region' && fromPath.id === 'los-rios', 'trailing slash region');
 assert(toPath({ name: 'home' }) === '/', 'home path');
 assert(toPath({ name: 'region', id: 'biobio' }) === '/region/biobio', 'region path');
+assert(toPath({ name: 'home', lang: 'es' }) === '/es', 'spanish home');
+assert(toPath({ name: 'with', lang: 'es' }) === '/es/with', 'spanish who page');
+assert(toPath({ name: 'river', id: 'trancura-upper', lang: 'es' }) === '/es/river/trancura-upper', 'spanish river');
+const spanish = parseLocation({ pathname: '/es/region/araucania', hash: '', base: '/' });
+assert(spanish.name === 'region' && spanish.id === 'araucania' && spanish.lang === 'es', 'spanish region path');
+const who = parseLocation({ pathname: '/with/', hash: '', base: '/' });
+assert(who.name === 'with' && who.lang === 'en', 'who page path');
+assert(stripBase('/chile-kayak-guide/es/with', '/chile-kayak-guide/') === '/es/with', 'project-page spanish path');
 
 console.log(`Map & route checks passed: ${passed}`);
 if (failed) {

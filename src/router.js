@@ -13,12 +13,19 @@ export function stripBase(pathname, base = '/') {
 }
 
 export function parseRoutePath(path) {
-  const normalized = !path || path === '/' ? '/' : path.replace(/\/$/, '');
+  let normalized = !path || path === '/' ? '/' : path.replace(/\/$/, '') || '/';
+  let lang = 'en';
+  if (normalized === '/es' || normalized.startsWith('/es/')) {
+    lang = 'es';
+    normalized = normalized === '/es' ? '/' : (normalized.slice(3) || '/');
+    if (normalized.length > 1 && normalized.endsWith('/')) normalized = normalized.slice(0, -1);
+  }
+  if (normalized === '/with') return { name: 'with', lang };
   const region = normalized.match(/^\/region\/([^/]+)$/);
-  if (region) return { name: 'region', id: safeDecode(region[1]) };
+  if (region) return { name: 'region', id: safeDecode(region[1]), lang };
   const river = normalized.match(/^\/river\/([^/]+)$/);
-  if (river) return { name: 'river', id: safeDecode(river[1]) };
-  return { name: 'home' };
+  if (river) return { name: 'river', id: safeDecode(river[1]), lang };
+  return { name: 'home', lang };
 }
 
 export function parseLocation({ pathname = '/', hash = '', base = '/' } = {}) {
@@ -29,9 +36,12 @@ export function parseLocation({ pathname = '/', hash = '', base = '/' } = {}) {
 }
 
 export function toPath(route) {
-  if (route?.name === 'region' && route.id) return `/region/${encodeURIComponent(route.id)}`;
-  if (route?.name === 'river' && route.id) return `/river/${encodeURIComponent(route.id)}`;
-  return '/';
+  let path = '/';
+  if (route?.name === 'region' && route.id) path = `/region/${encodeURIComponent(route.id)}`;
+  else if (route?.name === 'river' && route.id) path = `/river/${encodeURIComponent(route.id)}`;
+  else if (route?.name === 'with') path = '/with';
+  if (route?.lang === 'es') return path === '/' ? '/es' : `/es${path}`;
+  return path;
 }
 
 export function joinBase(base = '/', routePath = '/') {

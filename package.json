@@ -1,13 +1,13 @@
 {
-  "name": "chile-kayak-guide",
+  "name": "chile-whitewater-kayak-guide",
   "version": "1.0.0",
   "type": "module",
-  "description": "Whitewater kayaking guide to the rivers of Chile",
+  "description": "Chile Whitewater Kayak Guide",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node tests/data-integrity.test.js && node tests/map-geometry.test.js",
+    "test": "node tests/data-integrity.test.js && node tests/map-geometry.test.js && node tests/levels.test.js && node tests/i18n.test.js",
     "deploy": "npm run build && wrangler pages deploy dist --project-name chile-kayak-guide --branch main --commit-dirty=true"
   },
   "repository": {

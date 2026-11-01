@@ -4,9 +4,9 @@
 export async function onRequest() {
   return new Response(JSON.stringify({
     status: 'ok',
-    app: 'Chile Whitewater Kayaking Guide',
+    app: 'Chile Whitewater Kayak Guide',
     partner: 'Pucón Kayak Retreat (PKR)',
-    telemetry: 'ChileWaterLevels.com',
+    telemetry: 'Chile Water Levels',
     timestamp: new Date().toISOString()
   }), {
     status: 200,
