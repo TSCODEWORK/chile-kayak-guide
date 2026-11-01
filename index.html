@@ -3,138 +3,116 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Chile Whitewater Kayaking Guide · Rivers of Chile &amp; Regional Beta</title>
-  <meta name="description" content="The definitive whitewater kayaking guide to Chile's rivers: Pucón, Futaleufú, Fuy, Baker, Maipo, Claro 22 Teacups. Written with David Hughes from Pucón Kayak Retreat.">
+  <script>
+    (function () {
+      var parts = location.pathname.split('/').filter(Boolean);
+      if (parts.length && parts[parts.length - 1].indexOf('.') !== -1) parts.pop();
+      var routes = { region: 1, river: 1 };
+      var baseParts = [];
+      for (var i = 0; i < parts.length; i++) {
+        if (routes[parts[i]]) break;
+        baseParts.push(parts[i]);
+      }
+      var base = baseParts.length ? '/' + baseParts.join('/') + '/' : '/';
+      window.__APP_BASE__ = base;
+      var el = document.createElement('base');
+      el.setAttribute('href', base);
+      document.head.appendChild(el);
+    })();
+  </script>
+  <title>Chile Kayak Guide · Whitewater atlas</title>
+  <meta name="description" content="A whitewater kayaking atlas of Chile: 44 runs across 7 regions, from the Maipo to the Baker. Flow ranges, grades, rapids, access, and live gauges.">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#06141f">
-  
-  <!-- Open Graph -->
+  <meta name="theme-color" content="#07141c">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Chile Whitewater Kayaking Guide">
-  <meta property="og:description" content="Curated river guide to Chile's greatest whitewater runs, rapids, hazards, and logistics in partnership with David Hughes & Pucón Kayak Retreat.">
-  <meta property="og:image" content="https://chilewaterlevels.com/og-image.jpg">
-  
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Chile Kayak Guide">
+  <meta property="og:description" content="A field atlas of Chile's whitewater. Pick a region on the map and drop into the runs.">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
 </head>
 <body>
+  <a class="skip" href="#panel">Skip to the guide</a>
+  <div class="bg-wash" aria-hidden="true"></div>
 
-  <!-- Ambient Animated Background (ChileWaterLevels aesthetic) -->
-  <div class="bg-ambient" aria-hidden="true">
-    <div class="orb o1"></div>
-    <div class="orb o2"></div>
-    <div class="orb o3"></div>
-    <svg class="waves" viewBox="0 0 2880 150" preserveAspectRatio="none">
-      <path d="M0,80 C240,30 480,120 720,70 C960,30 1200,110 1440,70 C1680,30 1920,120 2160,70 C2400,30 2640,110 2880,70 L2880,150 L0,150 Z"/>
-    </svg>
-    <svg class="waves b" viewBox="0 0 2880 120" preserveAspectRatio="none">
-      <path d="M0,60 C260,20 520,100 780,60 C1040,20 1300,90 1560,60 C1820,20 2080,90 2340,60 C2600,20 2860,80 2880,60 L2880,120 L0,120 Z"/>
-    </svg>
-  </div>
-
-  <div class="wrap">
-    <!-- Sticky Top Navigation -->
-    <header class="top-nav">
-      <a class="brand" href="#/">
-        <div class="brand-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 17l6-6 4 4 8-8"/>
-            <path d="M14 7h7v7"/>
-            <path d="M2 21h20"/>
-          </svg>
-        </div>
-        <div class="brand-title">
-          <h1>CHILE KAYAK GUIDE</h1>
-          <span class="tag">
-            <span>Whitewater Guide</span>
-            <span class="tag-pkr">Pucón Kayak Retreat</span>
-          </span>
-        </div>
-      </a>
-
-      <div class="nav-actions">
-        <!-- Flow Unit Toggle (m³/s vs cfs) -->
-        <div class="unit-toggle" role="group" aria-label="Flow Volume Unit">
-          <button type="button" class="unit-btn active" id="unit-cms" title="Cubic meters per second">m³/s</button>
-          <button type="button" class="unit-btn" id="unit-cfs" title="Cubic feet per second">cfs</button>
-        </div>
-
-        <!-- Quick Search Button -->
-        <button type="button" class="search-btn" id="search-trigger" aria-label="Search rivers">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <span>Search</span>
-          <span class="kbd">⌘K</span>
-        </button>
-
-        <!-- About Modal Trigger -->
-        <button type="button" class="nav-pill" id="about-trigger">
-          <span>About PKR</span>
-        </button>
+  <header class="top-nav">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+          <path d="M4 22c4-6 7-6 10-2s6 4 10 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M8 14l6-8 4 5 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-name">Chile</span>
+        <span class="brand-kicker">Kayak Guide</span>
+      </span>
+    </a>
+    <div class="nav-actions">
+      <div class="unit-toggle" role="group" aria-label="Flow unit">
+        <button type="button" class="unit-btn is-on" id="unit-cms" aria-pressed="true">m³/s</button>
+        <button type="button" class="unit-btn" id="unit-cfs" aria-pressed="false">cfs</button>
       </div>
-    </header>
+      <button type="button" class="search-btn" id="search-trigger" aria-haspopup="dialog" aria-controls="search-dialog">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
+        <span class="search-label">Search</span>
+        <span class="kbd">⌘K</span>
+      </button>
+      <button type="button" class="about-btn" id="about-trigger" aria-haspopup="dialog" aria-controls="about-dialog">
+        <span class="about-label">About</span>
+      </button>
+    </div>
+  </header>
 
-    <!-- Dynamic Router View Container -->
-    <main id="app-view">
-      <!-- Injected by js/app.js -->
-    </main>
-
-    <!-- Footer -->
-    <footer class="foot">
-      <div class="foot-partners">
-        <span class="foot-partner-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-          <span>David Hughes · Pucón Kayak Retreat</span>
-        </span>
-        <span class="foot-partner-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span>ChileWaterLevels.com Gauge Network</span>
-        </span>
-        <span class="foot-partner-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <span>Ríos Libres · Keep Chilean Rivers Wild &amp; Free</span>
-        </span>
-      </div>
-      <p>Independent whitewater guidebook curated for paddlers worldwide. Always scout unknown drops, inspect wood hazards, and check real-time water levels.</p>
-      <p class="foot-copy">&copy; 2026 Chile Kayak Guide. All rights reserved.</p>
-    </footer>
-  </div>
-
-  <!-- Search Modal Overlay (Cmd+K) -->
-  <div class="modal-overlay" id="search-modal-overlay" role="dialog" aria-modal="true" aria-label="Search Rivers">
-    <div class="search-modal">
-      <div class="search-modal-header">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--dim)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="search-modal-input" id="search-modal-input" placeholder="Search rivers, regions, rapids, towns…" autocomplete="off">
-        <button type="button" class="close-btn" id="search-modal-close" aria-label="Close search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="search-modal-results" id="search-modal-results">
-        <!-- Results injected here -->
-      </div>
+  <div class="atlas" id="atlas">
+    <section class="map-stage" id="map-stage" aria-label="Map of Chile">
+      <a class="map-back" id="map-back" href="./" hidden>All of Chile</a>
+      <p class="north-arrow" aria-hidden="true"><span>N</span><i></i></p>
+      <div class="map-canvas" id="chile-map"></div>
+      <div class="map-hud" id="map-hud"></div>
+      <p class="map-caption">Mainland boundaries · Natural Earth</p>
+    </section>
+    <div class="panel" id="panel">
+      <main id="app-view"></main>
+      <footer class="foot">
+        <p class="foot-partners">
+          <a href="https://puconkayakretreat.com" target="_blank" rel="noopener noreferrer">Partner · Pucón Kayak Retreat</a>
+          <a href="https://chilewaterlevels.com" target="_blank" rel="noopener noreferrer">Gauges · ChileWaterLevels</a>
+        </p>
+        <p>An independent field guide. Scout every rapid, read the water, and check the gauge before you put on.</p>
+      </footer>
     </div>
   </div>
 
-  <!-- About PKR Modal Overlay -->
-  <div class="modal-overlay" id="about-modal-overlay" role="dialog" aria-modal="true" aria-label="About David Hughes &amp; Pucón Kayak Retreat">
-    <div class="search-modal about-card">
-      <div class="search-modal-header">
-        <b style="font-size:16px;color:#fff;">About David Hughes &amp; Pucón Kayak Retreat</b>
-        <button type="button" class="close-btn" id="about-modal-close" aria-label="Close modal">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  <div class="modal-overlay" id="search-modal-overlay" aria-hidden="true">
+    <div class="modal" id="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title">
+      <div class="modal-head">
+        <h2 id="search-title" class="visually-hidden">Search runs</h2>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
+        <input id="search-modal-input" type="search" placeholder="Rivers, towns, regions" autocomplete="off" aria-label="Search rivers">
+        <button type="button" class="icon-btn" id="search-modal-close" aria-label="Close search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="search-modal-results"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="about-modal-overlay" aria-hidden="true">
+    <div class="modal about-modal" id="about-dialog" role="dialog" aria-modal="true" aria-labelledby="about-title">
+      <div class="modal-head">
+        <h2 id="about-title">About this guide</h2>
+        <button type="button" class="icon-btn" id="about-modal-close" aria-label="Close about">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
       <div class="about-body">
-        <h4>The Vision Behind This Guide</h4>
-        <p>This guide is a joint collaboration modeled after the minimalist clarity of <b>Chilewaterlevels.com</b>. We set out to give whitewater kayakers an honest, unvarnished, professional guide to paddling Chile's world-class rivers.</p>
-
-        <h4>About David Hughes</h4>
-        <p>David Hughes is the founder and director of the <b>Pucón Kayak Retreat (PKR)</b>, nestled directly on the banks of the Río Trancura in Pucón, Chile. A former NCAA Division I wrestler and founder of the legendary New River Academy (which mentored multiple world freestyle champions and Olympic paddlers), David has dedicated his life to whitewater coaching, expedition leadership, and river preservation.</p>
-
-        <h4>River Ethics &amp; Indigenous Land Respect</h4>
-        <p>Many of Chile's premier rivers flow through ancestral Mapuche and Pehuenche territories. Always ask permission before crossing private gates, pay customary access fees to local landowners with a smile, and leave zero trace.</p>
-
-        <h4>Real-Time Gauge Telemetry</h4>
-        <p>For live streamflow data, this guide links directly to <b>ChileWaterLevels.com</b>, which ingests continuous 15-minute telemetry from Dirección General de Aguas (DGA) stations across Chile.</p>
+        <p>This is an independent whitewater atlas of Chile: flow ranges, grades, rapids, hazards, and access for 44 runs. The notes are guide beta for trip planning. They are not a substitute for scouting, and they are not a quote from any one paddler.</p>
+        <h3>Pucón Kayak Retreat</h3>
+        <p><a href="https://puconkayakretreat.com" target="_blank" rel="noopener noreferrer">Pucón Kayak Retreat (PKR)</a> is a credited partner, based on the Río Trancura in Pucón. Araucanía is their home water, and a natural base for the runs around Villarrica.</p>
+        <h3>Live water</h3>
+        <p>Where a run has a public station, the page links to <a href="https://chilewaterlevels.com" target="_blank" rel="noopener noreferrer">ChileWaterLevels</a>, which reads Dirección General de Aguas telemetry.</p>
+        <h3>On the river</h3>
+        <p>Many of these valleys are Mapuche and Pehuenche territory. Ask before you cross a gate, pay local access where it’s customary, and leave nothing behind.</p>
       </div>
     </div>
   </div>

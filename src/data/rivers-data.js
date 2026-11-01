@@ -1,5 +1,5 @@
 // Chile Whitewater Kayaking Guide - Core River Database
-// Curated & written in the tone of David Hughes (Pucon Kayak Retreat / PKR)
+// Field guide data for Chile's whitewater runs. Pucón Kayak Retreat (PKR) is a credited partner.
 // Live river gauge integrations with ChileWaterLevels.com
 
 export const REGIONS = [
@@ -57,7 +57,7 @@ export const REGIONS = [
     "lat": -39.3,
     "lon": -71.7,
     "mapPath": "araucania",
-    "overview": "David Hughes and Puc\u00f3n Kayak Retreat's backyard. With Volc\u00e1n Villarrica looming above, the Araucan\u00eda features the highest concentration of world-class drops, basalt chutes, and clean waterfalls on earth. From the Trancura wave trains to the Palgu\u00edn drops and Puesco boulder gardens, Puc\u00f3n is the ultimate kayaker's playground."
+    "overview": "Home waters of Puc\u00f3n Kayak Retreat. With Volc\u00e1n Villarrica looming above, the Araucan\u00eda features the highest concentration of world-class drops, basalt chutes, and clean waterfalls on earth. From the Trancura wave trains to the Palgu\u00edn drops and Puesco boulder gardens, Puc\u00f3n is the ultimate kayaker's playground."
   },
   {
     "id": "los-rios",
@@ -594,7 +594,7 @@ export const RIVERS = [
       "lng": -71.95,
       "accessBeta": "Take out at the main highway bridge between Villarrica and Puc\u00f3n."
     },
-    "davidBeta": "Nowhere else in the world will you paddle a river quite like the Turbio. The river cuts directly through fresh black volcanic basalt laid down by historical eruptions of Volc\u00e1n Villarrica. The rock is sharp, dark, and sculptural. Glacial flour tints the water opaque grey. Rapids are fast flumes and punchy drops between black walls. A surreal paddling experience right at our doorstep.",
+    "davidBeta": "Nowhere else in the world will you paddle a river quite like the Turbio. The river cuts directly through fresh black volcanic basalt laid down by historical eruptions of Volc\u00e1n Villarrica. The rock is sharp, dark, and sculptural. Glacial flour tints the water opaque grey. Rapids are fast flumes and punchy drops between black walls. A surreal paddling experience right in the valley.",
     "keyRapids": [
       {
         "name": "Lava Tube Chute",

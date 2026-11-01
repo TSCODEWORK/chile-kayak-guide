@@ -58,9 +58,9 @@ RIVERS.forEach(r => {
   assert(r.putIn && typeof r.putIn.lat === 'number' && typeof r.putIn.lng === 'number', `River ${r.id} invalid put-in coords`);
   assert(r.takeOut && typeof r.takeOut.lat === 'number' && typeof r.takeOut.lng === 'number', `River ${r.id} invalid take-out coords`);
 
-  // David Hughes PKR Content
-  assert(r.davidBeta && r.davidBeta.length > 100, `River ${r.id} missing or short David Hughes beta`);
-  assert(r.pkrProTip && r.pkrProTip.length > 15, `River ${r.id} missing PKR Pro Tip`);
+  // Guide beta and pro tip (stored under the existing field names)
+  assert(r.davidBeta && r.davidBeta.length > 100, `River ${r.id} missing or short guide beta`);
+  assert(r.pkrProTip && r.pkrProTip.length > 15, `River ${r.id} missing pro tip`);
 
   // Rapids & Hazards
   assert(Array.isArray(r.keyRapids) && r.keyRapids.length > 0, `River ${r.id} has no key rapids`);

@@ -1,663 +1,784 @@
-// Chile Kayak Guide - Core Application Entry Point
-// Built for fast edge deployment to Cloudflare Pages
-// Modeled in look and simplicity after Chilewaterlevels.com
-// Curated with David Hughes (Pucon Kayak Retreat / PKR)
-
 import './styles/style.css';
 import { REGIONS, RIVERS, getRegionById, getRiverById, getRiversByRegion } from './data/rivers-data.js';
-import { initChileMap } from './components/Map.js';
+import { createChileMap } from './components/Map.js';
+import { joinBase, parseLocation, toPath } from './router.js';
 
-export class ChileKayakApp {
+const base = () => window.__APP_BASE__ || '/';
+
+function esc(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function reduceMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function storageGet(key) {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+
+function storageSet(key, value) {
+  try { localStorage.setItem(key, value); } catch { /* private mode */ }
+}
+
+function gradeCounts(rivers) {
+  const counts = { 3: 0, 4: 0, 5: 0 };
+  for (const river of rivers) counts[river.classNumber] += 1;
+  return counts;
+}
+
+function mixText(rivers) {
+  const counts = gradeCounts(rivers);
+  return `III ${counts[3]} · IV ${counts[4]} · V ${counts[5]}`;
+}
+
+function gradeChip(classNumber, label) {
+  const tone = classNumber === 3 ? 'grade-3' : classNumber === 4 ? 'grade-4' : 'grade-5';
+  return `<span class="grade-chip ${tone}">${esc(label)}</span>`;
+}
+
+function rapidTone(grade) {
+  if (String(grade).includes('V')) return 'grade-5';
+  if (String(grade).includes('IV')) return 'grade-4';
+  return 'grade-3';
+}
+
+function excerpt(text, limit = 168) {
+  const clean = String(text).replace(/\s+/g, ' ').trim();
+  if (clean.length <= limit) return clean;
+  return `${clean.slice(0, limit).replace(/\s+\S*$/, '')}…`;
+}
+
+function shortGradient(value) {
+  return String(value).split('(')[0].trim();
+}
+
+class ChileKayakApp {
   constructor() {
-    this.unit = localStorage.getItem('ckg.unit') || 'cms'; // 'cms' (m³/s) or 'cfs'
-    this.currentView = null;
+    this.unit = storageGet('ckg.unit') === 'cfs' ? 'cfs' : 'cms';
     this.activeFilter = 'all';
     this.searchQuery = '';
-    this.mapInstance = null;
+    this.view = 'home';
+    this.currentId = null;
+    this.hotRegion = undefined;
+    this.lastPointer = 'mouse';
+    this.regionForFilter = null;
+    this.routeKey = '';
+    this.map = null;
+    this.locator = null;
+    this.searchActive = -1;
 
     this.mainEl = document.getElementById('app-view');
+    this.panelEl = document.getElementById('panel');
     this.unitCmsBtn = document.getElementById('unit-cms');
     this.unitCfsBtn = document.getElementById('unit-cfs');
     this.searchTriggerBtn = document.getElementById('search-trigger');
     this.searchModal = document.getElementById('search-modal-overlay');
+    this.searchDialog = document.getElementById('search-dialog');
     this.searchInput = document.getElementById('search-modal-input');
     this.searchResults = document.getElementById('search-modal-results');
     this.searchCloseBtn = document.getElementById('search-modal-close');
     this.aboutModal = document.getElementById('about-modal-overlay');
+    this.aboutDialog = document.getElementById('about-dialog');
     this.aboutTriggerBtn = document.getElementById('about-trigger');
     this.aboutCloseBtn = document.getElementById('about-modal-close');
+    this.mapBack = document.getElementById('map-back');
+    this.hud = document.getElementById('map-hud');
+    this.kbd = document.querySelector('.kbd');
 
     this.init();
   }
 
   init() {
+    const home = joinBase(base(), '/');
+    document.querySelector('.brand')?.setAttribute('href', home);
+    this.mapBack?.setAttribute('href', home);
+    if (this.kbd) this.kbd.textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
     this.updateUnitUI();
     this.bindEvents();
-    window.addEventListener('hashchange', () => this.handleRoute());
-    this.handleRoute();
+    const mapRoot = document.getElementById('chile-map');
+    this.map = createChileMap(mapRoot, { interactive: true });
+    this.map.onHot((id) => {
+      if (this.view === 'home') this.setHotRegion(id);
+    });
+
+    const initial = this.readRoute();
+    if (location.hash.startsWith('#/')) {
+      history.replaceState({}, '', joinBase(base(), toPath(initial)));
+    }
+    window.addEventListener('popstate', () => this.handleRoute(true));
+    this.handleRoute(true);
   }
 
   bindEvents() {
-    // Unit Toggles (CMS vs CFS)
     this.unitCmsBtn?.addEventListener('click', () => this.setUnit('cms'));
     this.unitCfsBtn?.addEventListener('click', () => this.setUnit('cfs'));
-
-    // Search Modal
     this.searchTriggerBtn?.addEventListener('click', () => this.openSearchModal());
     this.searchCloseBtn?.addEventListener('click', () => this.closeSearchModal());
-    this.searchModal?.addEventListener('click', (e) => {
-      if (e.target === this.searchModal) this.closeSearchModal();
+    this.searchModal?.addEventListener('click', (event) => {
+      if (event.target === this.searchModal) this.closeSearchModal();
     });
-
-    // Keyboard shortcut Cmd+K / Ctrl+K
-    window.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        this.openSearchModal();
-      }
-      if (e.key === 'Escape') {
-        this.closeSearchModal();
-        this.closeAboutModal();
-      }
-    });
-
-    this.searchInput?.addEventListener('input', (e) => this.handleSearchInput(e.target.value));
-
-    // About PKR Modal
     this.aboutTriggerBtn?.addEventListener('click', () => this.openAboutModal());
     this.aboutCloseBtn?.addEventListener('click', () => this.closeAboutModal());
-    this.aboutModal?.addEventListener('click', (e) => {
-      if (e.target === this.aboutModal) this.closeAboutModal();
+    this.aboutModal?.addEventListener('click', (event) => {
+      if (event.target === this.aboutModal) this.closeAboutModal();
     });
+
+    document.addEventListener('pointerdown', (event) => {
+      this.lastPointer = event.pointerType || 'mouse';
+    }, true);
+
+    document.addEventListener('click', (event) => this.onDocumentClick(event));
+
+    window.addEventListener('keydown', (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        if (this.searchModal?.classList.contains('open')) this.closeSearchModal();
+        else this.openSearchModal();
+      }
+      if (event.key === 'Escape') {
+        if (this.searchModal?.classList.contains('open')) this.closeSearchModal();
+        else if (this.aboutModal?.classList.contains('open')) this.closeAboutModal();
+      }
+    });
+
+    this.searchInput?.addEventListener('input', () => {
+      this.searchActive = -1;
+      this.renderSearchResults(this.searchInput.value);
+    });
+    this.searchInput?.addEventListener('keydown', (event) => this.onSearchKeydown(event));
+
+    window.addEventListener('scroll', () => {
+      if (this.scrollFrame) return;
+      this.scrollFrame = requestAnimationFrame(() => {
+        this.scrollFrame = 0;
+        this.onScrollSpy();
+      });
+    }, { passive: true });
   }
 
-  setUnit(newUnit) {
-    if (this.unit === newUnit) return;
-    this.unit = newUnit;
-    localStorage.setItem('ckg.unit', newUnit);
+  onDocumentClick(event) {
+    const link = event.target.closest?.('a[href]');
+    if (!link) return;
+    if (link.target === '_blank' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    let url;
+    try { url = new URL(link.href, location.origin); } catch { return; }
+    if (url.origin !== location.origin) return;
+    const route = parseLocation({ pathname: url.pathname, hash: url.hash, base: base() });
+    const internal = route.name !== 'home' || this.isHomePath(url.pathname);
+    if (!internal) return;
+    const inMap = link.closest('#chile-map');
+    if (this.lastPointer === 'touch' && inMap && this.view === 'home' && route.name === 'region' && this.hotRegion !== route.id) {
+      event.preventDefault();
+      this.setHotRegion(route.id);
+      return;
+    }
+    event.preventDefault();
+    this.closeSearchModal();
+    this.closeAboutModal();
+    this.go(route);
+  }
+
+  isHomePath(pathname) {
+    const root = joinBase(base(), '/');
+    const trim = root.endsWith('/') && root !== '/' ? root.slice(0, -1) : root;
+    return pathname === root || pathname === trim || pathname === `${trim}/`;
+  }
+
+  readRoute() {
+    return parseLocation({ pathname: location.pathname, hash: location.hash, base: base() });
+  }
+
+  go(route) {
+    const url = joinBase(base(), toPath(route));
+    if (url !== location.pathname || location.hash) history.pushState({}, '', url);
+    this.handleRoute(true);
+  }
+
+  handleRoute(animateMap) {
+    const route = this.readRoute();
+    const key = `${route.name}:${route.id || ''}`;
+    const changed = key !== this.routeKey;
+    this.routeKey = key;
+    if (route.name === 'region') {
+      if (this.regionForFilter !== route.id) {
+        this.activeFilter = 'all';
+        this.searchQuery = '';
+        this.regionForFilter = route.id;
+      }
+    } else {
+      this.regionForFilter = null;
+    }
+
+    document.body.classList.remove('view-home', 'view-region', 'view-river');
+    document.body.classList.add(`view-${route.name}`);
+    this.locator?.destroy();
+    this.locator = null;
+
+    if (route.name === 'region') this.renderRegion(route.id, changed);
+    else if (route.name === 'river') this.renderRiver(route.id);
+    else this.renderHome();
+
+    this.syncMap(route, animateMap && changed);
+    if (route.name === 'region') this.map?.setRiverFilter((river) => this.riverMatches(river));
+    this.updateTitle(route);
+    if (changed) {
+      const behavior = reduceMotion() ? 'auto' : 'instant';
+      this.panelEl?.scrollTo({ top: 0, behavior });
+      window.scrollTo({ top: 0, behavior });
+    }
+    this.onScrollSpy();
+  }
+
+  syncMap(route, animate) {
+    if (!this.map) return;
+    if (route.name === 'home') {
+      this.map.showCountry({ animate });
+      if (this.mapBack) this.mapBack.hidden = true;
+      return;
+    }
+    if (route.name === 'region') {
+      const rivers = getRiversByRegion(route.id);
+      this.map.showRegion(route.id, rivers, { animate });
+      this.map.setRiverFilter((river) => this.riverMatches(river));
+      if (this.mapBack) this.mapBack.hidden = false;
+      return;
+    }
+    if (this.mapBack) this.mapBack.hidden = true;
+  }
+
+  updateTitle(route) {
+    if (route.name === 'region') {
+      const region = getRegionById(route.id);
+      document.title = region ? `${region.name} · Chile Kayak Guide` : 'Chile Kayak Guide';
+    } else if (route.name === 'river') {
+      const river = getRiverById(route.id);
+      document.title = river ? `${river.name} · Chile Kayak Guide` : 'Chile Kayak Guide';
+    } else {
+      document.title = 'Chile Kayak Guide · Whitewater atlas';
+    }
+  }
+
+  setUnit(unit) {
+    if (this.unit === unit) return;
+    this.unit = unit;
+    storageSet('ckg.unit', unit);
     this.updateUnitUI();
-    this.refreshCurrentView();
+    if (this.view === 'region' && this.currentId) this.paintRegionResults(getRegionById(this.currentId));
+    else if (this.view === 'river' && this.currentId) {
+      const scroll = this.panelEl?.scrollTop || 0;
+      this.renderRiver(this.currentId);
+      if (this.panelEl) this.panelEl.scrollTop = scroll;
+    }
   }
 
   updateUnitUI() {
-    if (this.unitCmsBtn && this.unitCfsBtn) {
-      if (this.unit === 'cms') {
-        this.unitCmsBtn.classList.add('active');
-        this.unitCfsBtn.classList.remove('active');
-      } else {
-        this.unitCfsBtn.classList.add('active');
-        this.unitCmsBtn.classList.remove('active');
-      }
-    }
+    const cms = this.unit === 'cms';
+    this.unitCmsBtn?.classList.toggle('is-on', cms);
+    this.unitCfsBtn?.classList.toggle('is-on', !cms);
+    this.unitCmsBtn?.setAttribute('aria-pressed', cms ? 'true' : 'false');
+    this.unitCfsBtn?.setAttribute('aria-pressed', cms ? 'false' : 'true');
   }
 
-  formatFlow(flowObj) {
-    if (!flowObj) return 'Visual Gauge';
-    if (this.unit === 'cms') {
-      return `${flowObj.minCms} – ${flowObj.maxCms} m³/s`;
-    } else {
-      return `${flowObj.minCfs.toLocaleString()} – ${flowObj.maxCfs.toLocaleString()} cfs`;
-    }
+  formatFlow(flow) {
+    if (!flow) return 'Visual gauge';
+    if (this.unit === 'cms') return `${flow.minCms}–${flow.maxCms} m³/s`;
+    return `${Number(flow.minCfs).toLocaleString()}–${Number(flow.maxCfs).toLocaleString()} cfs`;
   }
 
-  handleRoute() {
-    const hash = window.location.hash || '#/';
-    window.scrollTo({ top: 0, behavior: 'instant' });
-
-    if (hash === '#/' || hash === '') {
-      this.renderHome();
-    } else if (hash.startsWith('#/region/')) {
-      const regionId = hash.replace('#/region/', '').trim();
-      this.renderRegion(regionId);
-    } else if (hash.startsWith('#/river/')) {
-      const riverId = hash.replace('#/river/', '').trim();
-      this.renderRiver(riverId);
-    } else if (hash === '#/about') {
-      this.openAboutModal();
-    } else {
-      this.renderHome();
-    }
+  riverMatches(river) {
+    if (this.activeFilter === 'class3' && river.classNumber !== 3) return false;
+    if (this.activeFilter === 'class4' && river.classNumber !== 4) return false;
+    if (this.activeFilter === 'class5' && river.classNumber !== 5) return false;
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) return true;
+    return river.name.toLowerCase().includes(query)
+      || river.section.toLowerCase().includes(query)
+      || river.character.toLowerCase().includes(query);
   }
 
-  refreshCurrentView() {
-    const hash = window.location.hash || '#/';
-    if (hash.startsWith('#/region/')) {
-      const regionId = hash.replace('#/region/', '').trim();
-      this.renderRegion(regionId, false);
-    } else if (hash.startsWith('#/river/')) {
-      const riverId = hash.replace('#/river/', '').trim();
-      this.renderRiver(riverId, false);
+  setHotRegion(id) {
+    if (id === this.hotRegion) return;
+    this.hotRegion = id;
+    this.map?.setHot(id);
+    const card = document.getElementById('focus-card');
+    if (card) card.innerHTML = this.focusCardHTML(id);
+    if (this.hud && document.body.classList.contains('view-home')) {
+      this.hud.innerHTML = this.hudHTML(id);
     }
-  }
-
-  // -------------------------------------------------------------
-  // HOME VIEW: Interactive Chile Map + Region Cards
-  // -------------------------------------------------------------
-  renderHome() {
-    this.currentView = 'home';
-    const totalRivers = RIVERS.length;
-    const totalRegions = REGIONS.length;
-
-    this.mainEl.innerHTML = `
-      <section class="hero">
-        <div class="hero-pill">
-          <span class="dot"></span>
-          <span>Curated with David Hughes · Pucón Kayak Retreat (PKR)</span>
-        </div>
-        <h2>Whitewater Kayaking <span>Chile</span></h2>
-        <p>A definitive guide to Chile's greatest rivers, steep volcanic drop-pools, and monumental Patagonian volume. Explore by region below.</p>
-      </section>
-
-      <div class="home-layout">
-        <!-- Interactive Map of Chile (ChileWaterLevels style) -->
-        <aside class="map-panel">
-          <div class="panel-header">
-            <h3>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-              <span>Chile Whitewater Map</span>
-            </h3>
-            <span class="badge-count">${totalRegions} Regions</span>
-          </div>
-
-          <div class="map-wrapper" id="chile-map-container">
-            <!-- SVG Map dynamically rendered here -->
-          </div>
-
-          <!-- Dynamic Hover HUD / Region Summary -->
-          <div class="map-hud" id="map-hud-box">
-            <!-- Updated on mouseover -->
-          </div>
-          <div class="map-hint">Hover or tap any region above to view metrics &amp; rivers</div>
-        </aside>
-
-        <!-- Region Tiles Grid -->
-        <main class="region-tiles-wrapper">
-          <div class="section-title-row">
-            <h3>Explore by Region</h3>
-            <span class="sub-hint">${totalRivers} Total Curated Runs</span>
-          </div>
-
-          <div class="region-grid">
-            ${REGIONS.map(reg => this.renderRegionTile(reg)).join('')}
-          </div>
-        </main>
-      </div>
-
-      <!-- Live Flow Partner Section -->
-      <section style="margin-top:40px;padding:24px;background:rgba(10,28,44,0.6);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
-        <div style="display:flex;align-items:center;gap:14px;">
-          <div style="width:42px;height:42px;border-radius:50%;background:rgba(79,209,232,0.15);border:1px solid var(--aqua);display:flex;align-items:center;justify-content:center;color:var(--aqua);">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-          </div>
-          <div>
-            <b style="font-size:15px;color:#fff;">Live Gauge Integration with ChileWaterLevels.com</b>
-            <p style="font-size:12.5px;color:var(--muted);margin-top:2px;">Real-time DGA telemetry for the Futaleufú, Trancura, Fuy, Maipo, Puelo, and Baker.</p>
-          </div>
-        </div>
-        <a href="https://chilewaterlevels.com" target="_blank" rel="noopener" class="unit-btn active" style="padding:8px 18px;display:inline-flex;align-items:center;gap:6px;font-size:13px;">
-          <span>Visit ChileWaterLevels.com</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </section>
-    `;
-
-    // Initialize Interactive SVG Map
-    const mapContainer = document.getElementById('chile-map-container');
-    const hudBox = document.getElementById('map-hud-box');
-    this.mapInstance = initChileMap({
-      containerEl: mapContainer,
-      hudEl: hudBox,
-      onRegionSelect: (regId) => {
-        window.location.hash = `#/region/${regId}`;
-      },
-      onRiverSelect: (riverId) => {
-        window.location.hash = `#/river/${riverId}`;
-      }
-    });
-
-    // Region tile hover effects linked to map
-    document.querySelectorAll('.region-tile').forEach(tile => {
-      const regId = tile.getAttribute('data-region');
-      tile.addEventListener('mouseenter', () => {
-        if (this.mapInstance) this.mapInstance.highlightRegion(regId);
-      });
-      tile.addEventListener('mouseleave', () => {
-        if (this.mapInstance) this.mapInstance.clearHighlight();
-      });
+    document.querySelectorAll('[data-region-row]').forEach((row) => {
+      row.classList.toggle('is-hot', !!id && row.dataset.regionRow === id);
     });
   }
 
-  renderRegionTile(reg) {
-    const isPkr = reg.id === 'araucania';
+  focusCardHTML(id) {
+    if (!id) {
+      return `
+        <p class="eyebrow">On the map</p>
+        <h3>Trace the cordillera.</h3>
+        <p>Hover a region, or scroll the country. The run count, grade mix, and season show up before you drop in.</p>
+      `;
+    }
+    const region = getRegionById(id);
+    if (!region) return '';
+    const rivers = getRiversByRegion(id);
+    const counts = gradeCounts(rivers);
     return `
-      <a class="region-tile" href="#/region/${reg.id}" data-region="${reg.id}" style="--c1:${reg.color};--glow:${reg.glow};">
-        <div class="tile-head">
-          <div class="tile-icon-box">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 18h20M2 14c4-4 8 2 12-2s8 2 8 2M2 10c4-4 8 2 12-2s8 2 8 2"/></svg>
-          </div>
-          <div class="tile-badge-group">
-            <span class="tile-river-count">${reg.riversCount} Rivers</span>
-            ${isPkr ? `<span class="tile-pkr-tag">PKR Home Base</span>` : ''}
-          </div>
-        </div>
+      <p class="eyebrow">${esc(region.sub)}</p>
+      <h3>${esc(region.name)}</h3>
+      <p class="focus-tagline">${esc(region.tagline)}</p>
+      <dl class="focus-stats">
+        <div><dt>Runs</dt><dd>${rivers.length}</dd></div>
+        <div><dt>III</dt><dd>${counts[3]}</dd></div>
+        <div><dt>IV</dt><dd>${counts[4]}</dd></div>
+        <div><dt>V</dt><dd>${counts[5]}</dd></div>
+        <div><dt>Season</dt><dd>${esc(region.season)}</dd></div>
+      </dl>
+      <a class="btn btn-primary" href="${esc(joinBase(base(), `/region/${encodeURIComponent(region.id)}`))}">Drop into ${esc(region.name)}</a>
+    `;
+  }
 
-        <div class="tile-body">
-          <h4>${reg.name}</h4>
-          <div class="tile-sub">${reg.sub}</div>
-          <p class="tile-tagline">${reg.tagline}</p>
-        </div>
+  hudHTML(id) {
+    if (!id) {
+      return `
+        <p class="hud-kicker">Chile</p>
+        <p class="hud-title">${RIVERS.length} runs · ${REGIONS.length} regions</p>
+        <p class="hud-meta">North is the desert. South is the ice.</p>
+      `;
+    }
+    const region = getRegionById(id);
+    if (!region) return '';
+    const rivers = getRiversByRegion(id);
+    return `
+      <p class="hud-kicker">${esc(region.name)}</p>
+      <p class="hud-title">${rivers.length} runs · ${esc(mixText(rivers))}</p>
+      <p class="hud-meta">${esc(region.season)}</p>
+    `;
+  }
 
-        <div class="tile-footer">
-          <span class="tile-season">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>${reg.season}</span>
-          </span>
-          <span class="tile-arrow">View Rivers &rarr;</span>
-        </div>
+  renderHome() {
+    this.view = 'home';
+    this.currentId = null;
+    this.mainEl.innerHTML = `
+      <div class="view-enter">
+        <header class="home-lead">
+          <p class="eyebrow">Whitewater atlas</p>
+          <h2>The <em>long</em> country.</h2>
+          <p class="lede">Forty-four runs from the Maipo to the Baker, drawn on a real map of Chile. Choose a region and drop in.</p>
+        </header>
+        <section id="focus-card" class="focus-card"></section>
+        <section class="region-index" aria-label="Kayaking regions">
+          <div class="section-row">
+            <h3>Regions</h3>
+            <span>${RIVERS.length} runs</span>
+          </div>
+          ${REGIONS.map((region) => this.regionRow(region)).join('')}
+        </section>
+      </div>
+    `;
+    this.hotRegion = undefined;
+    this.setHotRegion(null);
+    this.mainEl.querySelectorAll('[data-region-row]').forEach((row) => {
+      row.addEventListener('pointerover', (event) => {
+        if (event.pointerType === 'touch') return;
+        this.setHotRegion(row.dataset.regionRow);
+      });
+      row.addEventListener('focus', () => this.setHotRegion(row.dataset.regionRow));
+    });
+  }
+
+  regionRow(region) {
+    const rivers = getRiversByRegion(region.id);
+    return `
+      <a class="region-row" data-region-row="${esc(region.id)}" href="${esc(joinBase(base(), `/region/${encodeURIComponent(region.id)}`))}" style="--reg:${esc(region.color)}">
+        <span class="swatch" aria-hidden="true"></span>
+        <span class="region-copy">
+          <strong>${esc(region.name)}</strong>
+          <em>${esc(region.sub)}</em>
+        </span>
+        <span class="region-meta">
+          <b>${rivers.length}</b>
+          <span>${esc(region.season)}</span>
+        </span>
       </a>
     `;
   }
 
-  // -------------------------------------------------------------
-  // REGION RIVERS VIEW (#/region/:id)
-  // -------------------------------------------------------------
-  renderRegion(regionId, scrollToTop = true) {
-    this.currentView = 'region';
-    const reg = getRegionById(regionId);
-    if (!reg) {
-      this.renderHome();
+  renderRegion(regionId, full) {
+    const region = getRegionById(regionId);
+    if (!region) {
+      this.renderMissing();
       return;
     }
-
-    const allRivers = getRiversByRegion(regionId);
-    let filteredRivers = allRivers;
-
-    // Apply active class filter
-    if (this.activeFilter === 'class3') {
-      filteredRivers = filteredRivers.filter(r => r.classNumber === 3);
-    } else if (this.activeFilter === 'class4') {
-      filteredRivers = filteredRivers.filter(r => r.classNumber === 4);
-    } else if (this.activeFilter === 'class5') {
-      filteredRivers = filteredRivers.filter(r => r.classNumber === 5);
-    }
-
-    // Apply inline search query if any
-    if (this.searchQuery.trim()) {
-      const q = this.searchQuery.toLowerCase().trim();
-      filteredRivers = filteredRivers.filter(r => 
-        r.name.toLowerCase().includes(q) ||
-        r.section.toLowerCase().includes(q) ||
-        r.character.toLowerCase().includes(q)
-      );
-    }
-
-    this.mainEl.innerHTML = `
-      <div class="region-view">
-        <nav class="breadcrumbs">
-          <a href="#/">Chile Whitewater</a>
-          <span class="sep">/</span>
-          <span class="current">${reg.name}</span>
-        </nav>
-
-        <div class="region-hero-card" style="--reg-color:${reg.color};">
-          <div class="reg-hero-top">
-            <div class="reg-hero-titles">
-              <h2>${reg.name}</h2>
-              <div class="reg-sub">${reg.sub}</div>
+    this.view = 'region';
+    this.currentId = regionId;
+    const needsShell = full || !this.mainEl.querySelector('#river-grid');
+    if (needsShell) {
+      const rivers = getRiversByRegion(regionId);
+      const counts = gradeCounts(rivers);
+      this.mainEl.innerHTML = `
+        <div class="view-enter">
+          <p class="crumbs">
+            <a href="${esc(joinBase(base(), '/'))}">All of Chile</a>
+            <span aria-hidden="true">/</span>
+            <span>${esc(region.name)}</span>
+          </p>
+          <header class="region-head">
+            <p class="eyebrow">${esc(region.sub)}</p>
+            <h2>${esc(region.name)}</h2>
+            <p class="lede">${esc(region.overview)}</p>
+            <dl class="stat-band">
+              <div><dt>Runs</dt><dd>${rivers.length}</dd></div>
+              <div><dt>Class III</dt><dd>${counts[3]}</dd></div>
+              <div><dt>Class IV</dt><dd>${counts[4]}</dd></div>
+              <div><dt>Class V</dt><dd>${counts[5]}</dd></div>
+              <div><dt>Season</dt><dd>${esc(region.season)}</dd></div>
+            </dl>
+            <p class="field-note"><span>Field note</span> ${esc(region.tagline)}</p>
+            ${region.id === 'araucania' ? '<p class="partner-chip">Partner waters · Pucón Kayak Retreat</p>' : ''}
+          </header>
+          <div class="toolbar">
+            <div class="filters" role="group" aria-label="Filter by difficulty">
+              <button type="button" class="filter-btn" data-filter="all">All <span data-count="all"></span></button>
+              <button type="button" class="filter-btn" data-filter="class3">III <span data-count="class3"></span></button>
+              <button type="button" class="filter-btn" data-filter="class4">IV <span data-count="class4"></span></button>
+              <button type="button" class="filter-btn" data-filter="class5">V <span data-count="class5"></span></button>
             </div>
-            <div class="reg-stats-pills">
-              <span class="stat-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                <span>${allRivers.length} Guided Runs</span>
-              </span>
-              <span class="stat-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <span>${reg.season}</span>
-              </span>
-            </div>
+            <label class="filter-search">
+              <span class="visually-hidden">Filter rivers in ${esc(region.name)}</span>
+              <input id="region-filter-input" type="search" placeholder="Filter this region" value="${esc(this.searchQuery)}" autocomplete="off">
+            </label>
           </div>
-
-          <p class="reg-overview-text">${reg.overview}</p>
-
-          <div class="david-voice-box">
-            <div class="david-avatar">DH</div>
-            <div>
-              <b>David Hughes · PKR Field Beta:</b>
-              <p style="margin-top:2px;">"${reg.tagline}. Take time to understand the local river geology and seasonal runoff cycles before charging hard."</p>
-            </div>
-          </div>
+          <div id="river-grid" class="river-grid"></div>
         </div>
-
-        <!-- Filter Toolbar -->
-        <div class="filter-toolbar">
-          <div class="filter-pills">
-            <button class="filter-btn ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">All Difficulties (${allRivers.length})</button>
-            <button class="filter-btn ${this.activeFilter === 'class3' ? 'active' : ''}" data-filter="class3">Class III (${allRivers.filter(r=>r.classNumber===3).length})</button>
-            <button class="filter-btn ${this.activeFilter === 'class4' ? 'active' : ''}" data-filter="class4">Class IV (${allRivers.filter(r=>r.classNumber===4).length})</button>
-            <button class="filter-btn ${this.activeFilter === 'class5' ? 'active' : ''}" data-filter="class5">Class V (${allRivers.filter(r=>r.classNumber===5).length})</button>
-          </div>
-
-          <div class="search-input-box">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" class="search-field" id="region-filter-input" placeholder="Filter rivers in ${reg.name}…" value="${this.searchQuery}">
-          </div>
-        </div>
-
-        <!-- Rivers Grid -->
-        <div class="rivers-grid">
-          ${filteredRivers.length ? filteredRivers.map(r => this.renderRiverCard(r)).join('') : `
-            <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);background:var(--surface);border-radius:var(--radius-md);border:1px solid var(--border);">
-              No rivers found matching your filter criteria. Try clearing the search or filter.
-            </div>
-          `}
-        </div>
-      </div>
-    `;
-
-    // Bind Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        this.activeFilter = e.currentTarget.getAttribute('data-filter');
-        this.renderRegion(regionId, false);
+      `;
+      this.mainEl.querySelectorAll('.filter-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          this.activeFilter = button.dataset.filter;
+          this.paintRegionResults(region);
+        });
       });
-    });
-
-    const filterInput = document.getElementById('region-filter-input');
-    filterInput?.addEventListener('input', (e) => {
-      this.searchQuery = e.target.value;
-      this.renderRegion(regionId, false);
-    });
+      this.mainEl.querySelector('#region-filter-input')?.addEventListener('input', (event) => {
+        this.searchQuery = event.target.value;
+        this.paintRegionResults(region);
+      });
+    }
+    this.paintRegionResults(region);
   }
 
-  renderRiverCard(river) {
-    const classBadgeCls = river.classNumber === 3 ? 'c3' : river.classNumber === 4 ? 'c4' : 'c5';
-    const flowFormatted = this.formatFlow(river.optimalFlow);
+  paintRegionResults(region) {
+    if (!region) return;
+    const all = getRiversByRegion(region.id);
+    const counts = gradeCounts(all);
+    const shown = all.filter((river) => this.riverMatches(river));
+    const grid = document.getElementById('river-grid');
+    if (!grid) return;
+    const countFor = {
+      all: all.length,
+      class3: counts[3],
+      class4: counts[4],
+      class5: counts[5]
+    };
+    this.mainEl.querySelectorAll('.filter-btn').forEach((button) => {
+      const on = button.dataset.filter === this.activeFilter;
+      button.classList.toggle('is-on', on);
+      button.setAttribute('aria-pressed', on ? 'true' : 'false');
+      const slot = button.querySelector('[data-count]');
+      if (slot) slot.textContent = String(countFor[button.dataset.filter] ?? '');
+    });
+    grid.innerHTML = shown.length
+      ? shown.map((river, index) => this.riverCard(river, index)).join('')
+      : `<p class="empty-state">No runs match that filter. Clear it to see the whole region.</p>`;
+    grid.querySelectorAll('[data-river-card]').forEach((card) => {
+      const id = card.dataset.riverCard;
+      card.addEventListener('pointerover', (event) => {
+        if (event.pointerType === 'touch') return;
+        this.map?.emphasizeRiver(id);
+      });
+      card.addEventListener('pointerleave', () => this.map?.emphasizeRiver(null));
+      card.addEventListener('focus', () => this.map?.emphasizeRiver(id));
+      card.addEventListener('blur', () => this.map?.emphasizeRiver(null));
+    });
+    this.map?.setRiverFilter((river) => this.riverMatches(river));
+  }
 
+  riverCard(river, index) {
+    const live = river.gaugeInfo?.hasLiveChileWaterLevelsLink;
     return `
-      <a class="river-card" href="#/river/${river.id}">
-        <div class="river-card-header">
-          <div class="river-card-titles">
-            <h4>${river.name}</h4>
-            <div class="section-label">${river.section}</div>
+      <a class="river-card" data-river-card="${esc(river.id)}" href="${esc(joinBase(base(), `/river/${encodeURIComponent(river.id)}`))}" style="--i:${Math.min(index, 8)}">
+        <div class="card-top">
+          <div>
+            <h3>${esc(river.name)}</h3>
+            <p>${esc(river.section)}</p>
           </div>
-          <span class="class-badge ${classBadgeCls}">Class ${river.grade}</span>
+          ${gradeChip(river.classNumber, river.grade)}
         </div>
-
-        <span class="river-char-tag">${river.character}</span>
-
-        <div class="river-metrics-row">
-          <div class="metric-cell">
-            <span class="metric-label">Optimal Flow</span>
-            <span class="metric-value">${flowFormatted}</span>
-          </div>
-          <div class="metric-cell">
-            <span class="metric-label">Length</span>
-            <span class="metric-value">${river.lengthKm} km</span>
-          </div>
-          <div class="metric-cell">
-            <span class="metric-label">Gradient</span>
-            <span class="metric-value">${river.gradient.split('(')[0]}</span>
-          </div>
-        </div>
-
-        <p class="river-card-snippet">${river.davidBeta}</p>
-
-        <div class="river-card-foot">
-          ${river.gaugeInfo?.hasLiveChileWaterLevelsLink ? `
-            <span class="live-cwl-pill">
-              <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--emerald);display:inline-block;"></span>
-              <span>Live on ChileWaterLevels</span>
-            </span>
-          ` : `
-            <span style="font-size:11.5px;color:var(--dim);">Season: ${river.season.split('(')[0]}</span>
-          `}
-          <span class="card-view-btn">Detailed Beta &rarr;</span>
-        </div>
+        <p class="character">${esc(river.character)}</p>
+        <dl class="card-metrics">
+          <div><dt>Flow</dt><dd>${esc(this.formatFlow(river.optimalFlow))}</dd></div>
+          <div><dt>Length</dt><dd>${esc(river.lengthKm)} km</dd></div>
+          <div><dt>Gradient</dt><dd>${esc(shortGradient(river.gradient))}</dd></div>
+        </dl>
+        <p class="guide-kicker">Guide beta</p>
+        <p class="excerpt">${esc(excerpt(river.davidBeta))}</p>
+        <p class="card-foot">${live ? '<span class="live-dot">Live gauge</span>' : `<span>${esc(river.season)}</span>`}<span>Open run</span></p>
       </a>
     `;
   }
 
-  // -------------------------------------------------------------
-  // RIVER BETA VIEW (#/river/:id)
-  // -------------------------------------------------------------
-  renderRiver(riverId, scrollToTop = true) {
-    this.currentView = 'river';
+  renderRiver(riverId) {
     const river = getRiverById(riverId);
     if (!river) {
-      this.renderHome();
+      this.renderMissing();
       return;
     }
-
-    const reg = getRegionById(river.regionId);
-    const classBadgeCls = river.classNumber === 3 ? 'c3' : river.classNumber === 4 ? 'c4' : 'c5';
-    const flowFormatted = this.formatFlow(river.optimalFlow);
-
+    this.view = 'river';
+    this.currentId = riverId;
+    const region = getRegionById(river.regionId);
+    const live = river.gaugeInfo?.hasLiveChileWaterLevelsLink;
+    const home = esc(joinBase(base(), '/'));
+    const regionHref = esc(joinBase(base(), `/region/${encodeURIComponent(river.regionId)}`));
     this.mainEl.innerHTML = `
-      <div class="river-detail-view">
-        <a class="back-btn" href="#/region/${river.regionId}">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-          <span>Back to ${reg.name} Rivers</span>
-        </a>
-
-        <!-- Hero Card -->
-        <div class="detail-hero">
-          <div class="detail-hero-header">
-            <div class="detail-titles">
-              <h2>${river.name}</h2>
-              <div class="detail-section">${river.section}</div>
-            </div>
-            <span class="class-badge ${classBadgeCls}" style="font-size:14px;padding:6px 14px;">Class ${river.grade}</span>
+      <article class="river-page view-enter">
+        <p class="crumbs">
+          <a href="${home}">All of Chile</a>
+          <span aria-hidden="true">/</span>
+          <a href="${regionHref}">${esc(region?.name || river.regionName)}</a>
+        </p>
+        <div id="run-map" class="run-map" role="img" aria-label="Map showing the put-in and take-out of ${esc(river.name)}"></div>
+        <p class="map-legend"><span><i class="legend-put"></i> Put-in</span><span><i class="legend-take"></i> Take-out</span></p>
+        <header class="river-hero">
+          <p class="eyebrow">${esc(river.regionName)}</p>
+          <div class="hero-line">
+            <h2>${esc(river.name)}</h2>
+            ${gradeChip(river.classNumber, river.grade)}
           </div>
-
-          <div class="detail-badges-row">
-            <span class="stat-pill" style="color:var(--aqua);background:rgba(79,209,232,0.1);border-color:rgba(79,209,232,0.3);">
-              ${river.character}
-            </span>
-            <span class="stat-pill">
-              📍 ${river.regionName}
-            </span>
-            <span class="stat-pill">
-              📅 ${river.season}
-            </span>
+          <p class="section-name">${esc(river.section)}</p>
+          <p class="character">${esc(river.character)}</p>
+        </header>
+        <dl class="metric-grid">
+          <div>
+            <dt>Optimal flow</dt>
+            <dd>${esc(this.formatFlow(river.optimalFlow))}</dd>
+            <p>${esc(river.optimalFlow?.notes || '')}</p>
           </div>
-
-          <div class="detail-metrics-grid">
-            <div class="detail-metric-box">
-              <span class="label">Optimal Flow (${this.unit.toUpperCase()})</span>
-              <span class="val">${flowFormatted}</span>
-              <span class="note">${river.optimalFlow.notes}</span>
-            </div>
-            <div class="detail-metric-box">
-              <span class="label">Distance &amp; Time</span>
-              <span class="val">${river.lengthKm} km · ${river.durationHours}</span>
-              <span class="note">Paddling pace</span>
-            </div>
-            <div class="detail-metric-box">
-              <span class="label">Average Gradient</span>
-              <span class="val">${river.gradient}</span>
-              <span class="note">Elevation loss</span>
-            </div>
+          <div>
+            <dt>Distance and time</dt>
+            <dd>${esc(river.lengthKm)} km</dd>
+            <p>${esc(river.durationHours)}</p>
           </div>
-
-          <!-- Live ChileWaterLevels Integration Box -->
-          ${river.gaugeInfo?.hasLiveChileWaterLevelsLink ? `
-            <div class="live-cwl-box">
-              <div class="cwl-left">
-                <div class="cwl-pulse-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                </div>
-                <div class="cwl-text">
-                  <b>Live DGA Telemetry Available</b>
-                  <span>Tracked live on ChileWaterLevels.com · ${river.gaugeInfo.name}</span>
-                </div>
-              </div>
-              <a href="${river.gaugeInfo.chileWaterLevelsUrl}" target="_blank" rel="noopener" class="cwl-action-btn">
-                <span>View Live Gauge</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          ` : ''}
-        </div>
-
-        <!-- The David Hughes / PKR Field Beta -->
-        <section class="detail-block">
-          <div class="detail-block-header">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            <h3>David Hughes Beta &amp; River Psychology</h3>
+          <div>
+            <dt>Gradient</dt>
+            <dd>${esc(shortGradient(river.gradient))}</dd>
+            <p>${esc(river.gradient)}</p>
           </div>
-          <p class="beta-prose">${river.davidBeta}</p>
-
-          <div class="pkr-coach-callout">
-            <div class="coach-icon">DH</div>
-            <div class="coach-content">
-              <b>David's Golden Rule for this Run:</b>
-              <p>"${river.pkrProTip}"</p>
-            </div>
+          <div>
+            <dt>Season</dt>
+            <dd>${esc(String(river.season).split('(')[0].trim())}</dd>
+            <p>${esc(river.season)}</p>
           </div>
+        </dl>
+        ${live ? `
+          <aside class="gauge-band">
+            <div>
+              <p class="eyebrow">Live gauge</p>
+              <h3>${esc(river.gaugeInfo.name)}</h3>
+              <p>Dirección General de Aguas station ${esc(river.gaugeInfo.code)}, read on ChileWaterLevels.</p>
+            </div>
+            <a class="btn btn-primary" href="${esc(river.gaugeInfo.chileWaterLevelsUrl)}" target="_blank" rel="noopener noreferrer">Open live gauge</a>
+          </aside>
+        ` : ''}
+        <section class="prose-block">
+          <h3>Guide beta</h3>
+          <p>${esc(river.davidBeta)}</p>
         </section>
-
-        <!-- Key Rapids & Lines -->
-        <section class="detail-block">
-          <div class="detail-block-header">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            <h3>Key Rapids &amp; Scouting Lines</h3>
-          </div>
-          <div class="rapids-list">
-            ${river.keyRapids.map(rap => `
-              <div class="rapid-item">
-                <div class="rapid-item-header">
-                  <h4>${rap.name}</h4>
-                  <span class="class-badge ${rap.grade.includes('V') ? 'c5' : rap.grade.includes('IV') ? 'c4' : 'c3'}">${rap.grade}</span>
+        <aside class="pro-tip">
+          <p class="eyebrow">Pro tip</p>
+          <p>${esc(river.pkrProTip)}</p>
+        </aside>
+        <section class="prose-block">
+          <h3>Rapids</h3>
+          <ol class="rapid-list">
+            ${river.keyRapids.map((rapid) => `
+              <li>
+                <div class="rapid-top">
+                  <h4>${esc(rapid.name)}</h4>
+                  <span class="grade-chip ${rapidTone(rapid.grade)}">${esc(rapid.grade)}</span>
                 </div>
-                <p class="rapid-line-beta">${rap.description}</p>
-              </div>
+                <p>${esc(rapid.description)}</p>
+              </li>
             `).join('')}
+          </ol>
+        </section>
+        <section class="prose-block">
+          <h3>Hazards</h3>
+          <ul class="hazard-list">
+            ${river.hazards.map((hazard) => `<li>${esc(hazard)}</li>`).join('')}
+          </ul>
+        </section>
+        <section class="prose-block">
+          <h3>Access</h3>
+          <p>${esc(river.logistics)}</p>
+          <div class="access-grid">
+            ${this.accessCard('Put-in', river.putIn)}
+            ${this.accessCard('Take-out', river.takeOut)}
           </div>
         </section>
+      </article>
+    `;
+    const slot = document.getElementById('run-map');
+    if (slot) {
+      this.locator = createChileMap(slot, { interactive: false });
+      this.locator.showRun(river, { animate: !reduceMotion() });
+    }
+  }
 
-        <!-- Hazards & Safety Protocol -->
-        <section class="detail-block">
-          <div class="detail-block-header">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            <h3 style="color:#fda4af;">Hazards &amp; Safety Protocol</h3>
-          </div>
-          <div class="hazards-list">
-            ${river.hazards.map(haz => `
-              <div class="hazard-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                <span>${haz}</span>
-              </div>
-            `).join('')}
-          </div>
-        </section>
-
-        <!-- Put-In & Take-Out Logistics -->
-        <section class="detail-block">
-          <div class="detail-block-header">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-            <h3>Access &amp; Driving Logistics</h3>
-          </div>
-          <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:14px;">${river.logistics}</p>
-
-          <div class="logistics-grid">
-            <div class="access-box">
-              <div class="access-box-title">
-                <span class="access-tag">Put-In Point</span>
-                <span style="font-size:11px;color:var(--dim);font-family:var(--font-mono);">${river.putIn.lat.toFixed(4)}, ${river.putIn.lng.toFixed(4)}</span>
-              </div>
-              <h4>${river.putIn.name}</h4>
-              <p class="access-beta-text">${river.putIn.accessBeta}</p>
-              <a href="https://www.google.com/maps/search/?api=1&query=${river.putIn.lat},${river.putIn.lng}" target="_blank" rel="noopener" class="coords-link">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Open in Google Maps &rarr;</span>
-              </a>
-            </div>
-
-            <div class="access-box">
-              <div class="access-box-title">
-                <span class="access-tag">Take-Out Point</span>
-                <span style="font-size:11px;color:var(--dim);font-family:var(--font-mono);">${river.takeOut.lat.toFixed(4)}, ${river.takeOut.lng.toFixed(4)}</span>
-              </div>
-              <h4>${river.takeOut.name}</h4>
-              <p class="access-beta-text">${river.takeOut.accessBeta}</p>
-              <a href="https://www.google.com/maps/search/?api=1&query=${river.takeOut.lat},${river.takeOut.lng}" target="_blank" rel="noopener" class="coords-link">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Open in Google Maps &rarr;</span>
-              </a>
-            </div>
-          </div>
-        </section>
-      </div>
+  accessCard(label, point) {
+    const maps = `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
+    return `
+      <article class="access-card">
+        <p class="eyebrow">${esc(label)}</p>
+        <h4>${esc(point.name)}</h4>
+        <p class="coords">${point.lat.toFixed(4)}, ${point.lng.toFixed(4)}</p>
+        <p>${esc(point.accessBeta)}</p>
+        <a href="${esc(maps)}" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+      </article>
     `;
   }
 
-  // -------------------------------------------------------------
-  // QUICK SEARCH MODAL (Cmd+K)
-  // -------------------------------------------------------------
+  renderMissing() {
+    this.view = 'missing';
+    this.currentId = null;
+    this.mainEl.innerHTML = `
+      <div class="missing view-enter">
+        <p class="eyebrow">Off the map</p>
+        <h2>That page isn’t in the guide.</h2>
+        <p>The link doesn’t match a region or a run.</p>
+        <a class="btn btn-primary" href="${esc(joinBase(base(), '/'))}">Back to all of Chile</a>
+      </div>
+    `;
+    document.body.classList.remove('view-home', 'view-region', 'view-river');
+    document.body.classList.add('view-river');
+  }
+
+  onScrollSpy() {
+    const stage = document.getElementById('map-stage');
+    if (stage) {
+      document.body.classList.toggle('hud-docked', stage.getBoundingClientRect().bottom < 110);
+    }
+    if (this.view !== 'home' || window.innerWidth >= 900) return;
+    const hit = this.map?.regionAtScreenY(window.innerHeight * 0.42);
+    if (hit) this.setHotRegion(hit);
+  }
+
   openSearchModal() {
     if (!this.searchModal) return;
     this.searchModal.classList.add('open');
+    this.searchModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    this.setInert(true);
+    this.searchActive = -1;
     if (this.searchInput) {
       this.searchInput.value = '';
+      this.renderSearchResults('');
       this.searchInput.focus();
     }
-    this.renderSearchResults('');
   }
 
   closeSearchModal() {
-    this.searchModal?.classList.remove('open');
-  }
-
-  handleSearchInput(query) {
-    this.renderSearchResults(query.trim().toLowerCase());
-  }
-
-  renderSearchResults(q) {
-    if (!this.searchResults) return;
-
-    let matches = RIVERS;
-    if (q) {
-      matches = RIVERS.filter(r => 
-        r.name.toLowerCase().includes(q) ||
-        r.section.toLowerCase().includes(q) ||
-        r.regionName.toLowerCase().includes(q) ||
-        r.character.toLowerCase().includes(q)
-      );
+    if (!this.searchModal?.classList.contains('open')) return;
+    this.searchModal.classList.remove('open');
+    this.searchModal.setAttribute('aria-hidden', 'true');
+    if (!this.aboutModal?.classList.contains('open')) {
+      document.body.classList.remove('modal-open');
+      this.setInert(false);
     }
-
-    if (!matches.length) {
-      this.searchResults.innerHTML = `
-        <div style="padding:24px;text-align:center;color:var(--muted);font-size:13px;">
-          No rivers found matching "${q}".
-        </div>
-      `;
-      return;
-    }
-
-    this.searchResults.innerHTML = matches.slice(0, 10).map(r => `
-      <a class="search-result-item" href="#/river/${r.id}" onclick="document.getElementById('search-modal-overlay').classList.remove('open')">
-        <div class="s-item-main">
-          <b>${r.name}</b>
-          <span>${r.section} · ${r.regionName}</span>
-        </div>
-        <span class="class-badge ${r.classNumber === 3 ? 'c3' : r.classNumber === 4 ? 'c4' : 'c5'}">Class ${r.grade}</span>
-      </a>
-    `).join('');
+    this.searchTriggerBtn?.focus();
   }
 
-  // -------------------------------------------------------------
-  // ABOUT PKR MODAL
-  // -------------------------------------------------------------
   openAboutModal() {
-    this.aboutModal?.classList.add('open');
+    if (!this.aboutModal) return;
+    this.aboutModal.classList.add('open');
+    this.aboutModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    this.setInert(true);
+    this.aboutCloseBtn?.focus();
   }
 
   closeAboutModal() {
-    this.aboutModal?.classList.remove('open');
+    if (!this.aboutModal?.classList.contains('open')) return;
+    this.aboutModal.classList.remove('open');
+    this.aboutModal.setAttribute('aria-hidden', 'true');
+    if (!this.searchModal?.classList.contains('open')) {
+      document.body.classList.remove('modal-open');
+      this.setInert(false);
+    }
+    this.aboutTriggerBtn?.focus();
+  }
+
+  setInert(on) {
+    document.querySelector('.top-nav')?.toggleAttribute('inert', on);
+    document.getElementById('atlas')?.toggleAttribute('inert', on);
+  }
+
+  onSearchKeydown(event) {
+    const items = [...(this.searchResults?.querySelectorAll('a') || [])];
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.searchActive = Math.min(items.length - 1, this.searchActive + 1);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.searchActive = Math.max(0, this.searchActive - 1);
+    } else if (event.key === 'Enter' && this.searchActive >= 0 && items[this.searchActive]) {
+      event.preventDefault();
+      items[this.searchActive].click();
+      return;
+    } else {
+      return;
+    }
+    items.forEach((item, index) => item.classList.toggle('is-active', index === this.searchActive));
+    items[this.searchActive]?.scrollIntoView({ block: 'nearest' });
+  }
+
+  renderSearchResults(raw) {
+    if (!this.searchResults) return;
+    const query = raw.trim().toLowerCase();
+    const regions = query
+      ? REGIONS.filter((region) => region.name.toLowerCase().includes(query) || region.sub.toLowerCase().includes(query))
+      : [];
+    let rivers = RIVERS;
+    if (query) {
+      rivers = RIVERS.filter((river) =>
+        river.name.toLowerCase().includes(query)
+        || river.section.toLowerCase().includes(query)
+        || river.regionName.toLowerCase().includes(query)
+        || river.character.toLowerCase().includes(query)
+      );
+    }
+    if (!regions.length && !rivers.length) {
+      this.searchResults.innerHTML = `<p class="search-empty">No runs match “${esc(query)}”.</p>`;
+      return;
+    }
+    const regionHtml = regions.map((region) => `
+      <a class="search-hit" href="${esc(joinBase(base(), `/region/${encodeURIComponent(region.id)}`))}">
+        <span><strong>${esc(region.name)}</strong><em>${esc(region.sub)}</em></span>
+        <span class="search-kind">Region</span>
+      </a>
+    `).join('');
+    const riverHtml = rivers.slice(0, 12).map((river) => `
+      <a class="search-hit" href="${esc(joinBase(base(), `/river/${encodeURIComponent(river.id)}`))}">
+        <span><strong>${esc(river.name)}</strong><em>${esc(river.section)} · ${esc(river.regionName)}</em></span>
+        ${gradeChip(river.classNumber, river.grade.split('(')[0].trim())}
+      </a>
+    `).join('');
+    const hint = query ? '' : `<p class="search-hint">${RIVERS.length} runs. Try a river, a town, or a region.</p>`;
+    this.searchResults.innerHTML = `${hint}${regionHtml}${riverHtml}`;
   }
 }
 
-// Bootstrap on DOM Ready
-document.addEventListener('DOMContentLoaded', () => {
-  window.app = new ChileKayakApp();
-});
+const app = new ChileKayakApp();
+window.app = app;
