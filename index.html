@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chile Whitewater Kayaking Guide · Rivers of Chile &amp; Regional Beta</title>
+  <meta name="description" content="The definitive whitewater kayaking guide to Chile's rivers: Pucón, Futaleufú, Fuy, Baker, Maipo, Claro 22 Teacups. Written with David Hughes from Pucón Kayak Retreat.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#06141f">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chile Whitewater Kayaking Guide">
+  <meta property="og:description" content="Curated river guide to Chile's greatest whitewater runs, rapids, hazards, and logistics in partnership with David Hughes & Pucón Kayak Retreat.">
+  <meta property="og:image" content="https://chilewaterlevels.com/og-image.jpg">
+  
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Background (ChileWaterLevels aesthetic) -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <svg class="waves" viewBox="0 0 2880 150" preserveAspectRatio="none">
+      <path d="M0,80 C240,30 480,120 720,70 C960,30 1200,110 1440,70 C1680,30 1920,120 2160,70 C2400,30 2640,110 2880,70 L2880,150 L0,150 Z"/>
+    </svg>
+    <svg class="waves b" viewBox="0 0 2880 120" preserveAspectRatio="none">
+      <path d="M0,60 C260,20 520,100 780,60 C1040,20 1300,90 1560,60 C1820,20 2080,90 2340,60 C2600,20 2860,80 2880,60 L2880,120 L0,120 Z"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <!-- Sticky Top Navigation -->
+    <header class="top-nav">
+      <a class="brand" href="#/">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17l6-6 4 4 8-8"/>
+            <path d="M14 7h7v7"/>
+            <path d="M2 21h20"/>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <h1>CHILE KAYAK GUIDE</h1>
+          <span class="tag">
+            <span>Whitewater Guide</span>
+            <span class="tag-pkr">Pucón Kayak Retreat</span>
+          </span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Flow Unit Toggle (m³/s vs cfs) -->
+        <div class="unit-toggle" role="group" aria-label="Flow Volume Unit">
+          <button type="button" class="unit-btn active" id="unit-cms" title="Cubic meters per second">m³/s</button>
+          <button type="button" class="unit-btn" id="unit-cfs" title="Cubic feet per second">cfs</button>
+        </div>
+
+        <!-- Quick Search Button -->
+        <button type="button" class="search-btn" id="search-trigger" aria-label="Search rivers">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Search</span>
+          <span class="kbd">⌘K</span>
+        </button>
+
+        <!-- About Modal Trigger -->
+        <button type="button" class="nav-pill" id="about-trigger">
+          <span>About PKR</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dynamic Router View Container -->
+    <main id="app-view">
+      <!-- Injected by js/app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="foot">
+      <div class="foot-partners">
+        <span class="foot-partner-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <span>David Hughes · Pucón Kayak Retreat</span>
+        </span>
+        <span class="foot-partner-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>ChileWaterLevels.com Gauge Network</span>
+        </span>
+        <span class="foot-partner-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span>Ríos Libres · Keep Chilean Rivers Wild &amp; Free</span>
+        </span>
+      </div>
+      <p>Independent whitewater guidebook curated for paddlers worldwide. Always scout unknown drops, inspect wood hazards, and check real-time water levels.</p>
+      <p class="foot-copy">&copy; 2026 Chile Kayak Guide. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Search Modal Overlay (Cmd+K) -->
+  <div class="modal-overlay" id="search-modal-overlay" role="dialog" aria-modal="true" aria-label="Search Rivers">
+    <div class="search-modal">
+      <div class="search-modal-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--dim)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-modal-input" id="search-modal-input" placeholder="Search rivers, regions, rapids, towns…" autocomplete="off">
+        <button type="button" class="close-btn" id="search-modal-close" aria-label="Close search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="search-modal-results" id="search-modal-results">
+        <!-- Results injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- About PKR Modal Overlay -->
+  <div class="modal-overlay" id="about-modal-overlay" role="dialog" aria-modal="true" aria-label="About David Hughes &amp; Pucón Kayak Retreat">
+    <div class="search-modal about-card">
+      <div class="search-modal-header">
+        <b style="font-size:16px;color:#fff;">About David Hughes &amp; Pucón Kayak Retreat</b>
+        <button type="button" class="close-btn" id="about-modal-close" aria-label="Close modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="about-body">
+        <h4>The Vision Behind This Guide</h4>
+        <p>This guide is a joint collaboration modeled after the minimalist clarity of <b>Chilewaterlevels.com</b>. We set out to give whitewater kayakers an honest, unvarnished, professional guide to paddling Chile's world-class rivers.</p>
+
+        <h4>About David Hughes</h4>
+        <p>David Hughes is the founder and director of the <b>Pucón Kayak Retreat (PKR)</b>, nestled directly on the banks of the Río Trancura in Pucón, Chile. A former NCAA Division I wrestler and founder of the legendary New River Academy (which mentored multiple world freestyle champions and Olympic paddlers), David has dedicated his life to whitewater coaching, expedition leadership, and river preservation.</p>
+
+        <h4>River Ethics &amp; Indigenous Land Respect</h4>
+        <p>Many of Chile's premier rivers flow through ancestral Mapuche and Pehuenche territories. Always ask permission before crossing private gates, pay customary access fees to local landowners with a smile, and leave zero trace.</p>
+
+        <h4>Real-Time Gauge Telemetry</h4>
+        <p>For live streamflow data, this guide links directly to <b>ChileWaterLevels.com</b>, which ingests continuous 15-minute telemetry from Dirección General de Aguas (DGA) stations across Chile.</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2672 @@
+{
+  "regions": [
+    {
+      "id": "central",
+      "name": "Central Chile",
+      "sub": "Santiago & Valpara\u00edso \u00b7 Regi\u00f3n V & Metropolitana",
+      "tagline": "Steep High-Andean silt torrents & glacial drainages near the capital",
+      "season": "October \u2013 January",
+      "riversCount": 4,
+      "color": "#e0773c",
+      "glow": "rgba(224, 119, 60, 0.4)",
+      "lat": -33.6,
+      "lon": -70.3,
+      "mapPath": "central",
+      "overview": "Towering 5,000m Andean peaks frame Santiago's whitewater corridor. Caj\u00f3n del Maipo and the Aconcagua valley offer powerful, silt-laden glacial volume and steep technical boulder creeks. These are steep, cold, pushy rivers that drop furiously out of the high Cordillera."
+    },
+    {
+      "id": "maule",
+      "name": "O'Higgins & Maule",
+      "sub": "Regi\u00f3n VI & VII \u00b7 Cachapoal, Teno & Radal Siete Tazas",
+      "tagline": "Basalt volcanic gorges, pristine teacups and deep multi-day wilderness canyons",
+      "season": "November \u2013 January",
+      "riversCount": 6,
+      "color": "#fb923c",
+      "glow": "rgba(251, 146, 60, 0.35)",
+      "lat": -35.2,
+      "lon": -71.1,
+      "mapPath": "maule",
+      "overview": "The transition zone between central arid Chile and lush southern rainforest. The R\u00edo Claro de Talca features the legendary '22 Teacups' basalt pool drops, while the Cachapoal, Tinguiririca, and Melado offer roaring canyon runs through rugged wilderness."
+    },
+    {
+      "id": "biobio",
+      "name": "Biob\u00edo & \u00d1uble",
+      "sub": "Regi\u00f3n VIII & XVI \u00b7 Alto B\u00edo B\u00edo & San Fabi\u00e1n",
+      "tagline": "Historical heartland of Chilean big water and granite creeking paradise",
+      "season": "October \u2013 February",
+      "riversCount": 5,
+      "color": "#facc15",
+      "glow": "rgba(250, 204, 21, 0.35)",
+      "lat": -37.2,
+      "lon": -71.4,
+      "mapPath": "biobio",
+      "overview": "The legendary B\u00edo B\u00edo was once revered as the Colorado of South America. While dammed downstream, the Upper B\u00edo B\u00edo (El Nacimiento) remains sacred and magnificent, while the free-flowing R\u00edo \u00d1uble and Queuco provide world-class granite river culture."
+    },
+    {
+      "id": "araucania",
+      "name": "Araucan\u00eda (Puc\u00f3n)",
+      "sub": "Regi\u00f3n IX \u00b7 Puc\u00f3n, Curarrehue & Villarrica",
+      "tagline": "The undisputed whitewater capital of South America & PKR home base",
+      "season": "October \u2013 March (Year-Round)",
+      "riversCount": 11,
+      "color": "#5ad6ef",
+      "glow": "rgba(90, 214, 239, 0.4)",
+      "lat": -39.3,
+      "lon": -71.7,
+      "mapPath": "araucania",
+      "overview": "David Hughes and Puc\u00f3n Kayak Retreat's backyard. With Volc\u00e1n Villarrica looming above, the Araucan\u00eda features the highest concentration of world-class drops, basalt chutes, and clean waterfalls on earth. From the Trancura wave trains to the Palgu\u00edn drops and Puesco boulder gardens, Puc\u00f3n is the ultimate kayaker's playground."
+    },
+    {
+      "id": "los-rios",
+      "name": "Los R\u00edos (Panguipulli)",
+      "sub": "Regi\u00f3n XIV \u00b7 Fuy, San Pedro, Enco & Seven Lakes",
+      "tagline": "Crystal turquoise lake outflows, lush rainforest waterfalls and emerald canyons",
+      "season": "November \u2013 February",
+      "riversCount": 6,
+      "color": "#34d399",
+      "glow": "rgba(52, 211, 153, 0.35)",
+      "lat": -39.9,
+      "lon": -72.0,
+      "mapPath": "los-rios",
+      "overview": "Directly south of Puc\u00f3n lies the Seven Lakes district. The Rio Fuy is a global icon: turquoise glacial water pouring over clean volcanic falls and plunging through narrow canyons. Combined with the giant volume of the San Pedro and Enco, this region is pure paddling bliss."
+    },
+    {
+      "id": "los-lagos",
+      "name": "Los Lagos & Northern Patagonia",
+      "sub": "Regi\u00f3n X \u00b7 Petrohu\u00e9, Cocham\u00f3 & Futaleuf\u00fa",
+      "tagline": "Grand mountain rivers, granite cathedrals, and the king of big water: the Futaleuf\u00fa",
+      "season": "December \u2013 March",
+      "riversCount": 7,
+      "color": "#2dd4bf",
+      "glow": "rgba(45, 212, 191, 0.4)",
+      "lat": -42.5,
+      "lon": -72.2,
+      "mapPath": "los-lagos",
+      "overview": "Stretching from Puerto Varas south down the Carretera Austral into Palena. Here sits the mighty Rio Futaleuf\u00fa\u2014the greatest continuous Class IV\u2013V big water river on planet earth. Add Cocham\u00f3's granite walls, Petrohu\u00e9's cobalt waves, and the massive wilderness of Puelo and Palena for unmatched expedition whitewater."
+    },
+    {
+      "id": "aysen",
+      "name": "Ays\u00e9n & Southern Patagonia",
+      "sub": "Regi\u00f3n XI \u00b7 Baker, Simpson & Deep Patagonia",
+      "tagline": "Colossal glacial power, roaring turquoise gorges and raw Patagonian frontier",
+      "season": "December \u2013 March",
+      "riversCount": 5,
+      "color": "#38bdf8",
+      "glow": "rgba(56, 189, 248, 0.4)",
+      "lat": -46.5,
+      "lon": -73.0,
+      "mapPath": "aysen",
+      "overview": "The deep southern wilderness. The Rio Baker is Chile's largest river by volume: an awe-inspiring torrent of luminous glacial blue water boiling through monster canyons and exploding over El Salt\u00f3n. Vast, wind-swept, and immensely powerful."
+    }
+  ],
+  "rivers": [
+    {
+      "id": "trancura-upper",
+      "name": "R\u00edo Trancura",
+      "section": "Upper Trancura (Puente Gary to Curarrehue / Marim\u00e1n)",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV+ (V at high water)",
+      "classNumber": 4,
+      "character": "High-Volume Boulder Slalom & Volcanic Canyons",
+      "lengthKm": 14,
+      "durationHours": "2.5 \u2013 3.5 hrs",
+      "gradient": "12 m/km (65 ft/mi)",
+      "optimalFlow": {
+        "minCms": 30,
+        "maxCms": 85,
+        "minCfs": 1050,
+        "maxCfs": 3000,
+        "notes": "Optimal late spring / early summer flow is 40\u201360 m\u00b3/s. Above 80 m\u00b3/s, rapid Marim\u00e1n becomes a monstrous Class V hole-fest with severe violent eddy lines."
+      },
+      "gaugeInfo": {
+        "code": "09412001-2",
+        "name": "Trancura en Curarrehue (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09412001-2"
+      },
+      "season": "October \u2013 February (Prime: Nov\u2013Dec)",
+      "putIn": {
+        "name": "Puente Gary / Curarrehue Access",
+        "lat": -39.3642,
+        "lng": -71.5833,
+        "accessBeta": "Take the International Road east from Puc\u00f3n past Curarrehue toward Argentina. Turn off at Puente Gary; river access is river-left above the bridge. Respect local Mapuche properties and do not block agricultural gates."
+      },
+      "takeOut": {
+        "name": "Puente Marim\u00e1n or Confluence",
+        "lat": -39.3411,
+        "lng": -71.745,
+        "accessBeta": "Take out river-right immediately downstream of Marim\u00e1n rapid at the raft takeout trail, or continue 3 km to the lower footbridge."
+      },
+      "davidBeta": "The Upper Trancura is the proving ground of Puc\u00f3n whitewater. If you can style the Upper Trancura with composure, you're ready to explore anywhere in Chile. The run starts with pushy Class III-IV read-and-run boulder slaloms through lush Araucan\u00eda countryside before locking into deep volcanic basalt canyon walls. The signature drop is Salto Marim\u00e1n\u2014a thundering Class IV+ to V staircase where water compresses between basalt shelves into a surging diagonal kicker wave and violent hole. Keep your boat speed, charge with aggressive forward momentum, and trust your brace.",
+      "keyRapids": [
+        {
+          "name": "The Warmup Ledges",
+          "grade": "Class IV",
+          "description": "A series of stair-stepped boulder rapids with broad catching eddies. Great for dialing in edge control and river communication."
+        },
+        {
+          "name": "Canyon Wall Rapid",
+          "grade": "Class IV",
+          "description": "The river constricts against sheer dark volcanic walls. Big compression waves and swirling boils require decisive cross-current ferries."
+        },
+        {
+          "name": "Salto Marim\u00e1n",
+          "grade": "Class IV+/V",
+          "description": "The crux. Scout river-right. Enter center-right through the tongue, punch the crashing diagonal lateral, and keep hard left boat angle to avoid getting stuffed into the violent boil-hole on the right wall."
+        }
+      ],
+      "hazards": [
+        "Undercut volcanic shelves on canyon bends",
+        "High water creates terminal hydraulic back-washes at Marim\u00e1n",
+        "Occasional strainer trees lodged on gravel bar braids after spring floods"
+      ],
+      "logistics": "Paved international highway CH-199 all the way. 30-minute drive from Puc\u00f3n town center or PKR. Reliable cellphone coverage at both put-in and take-out.",
+      "pkrProTip": "Don't get complacent after Marim\u00e1n. The boiling eddy lines below the drop have flipped more veteran paddlers than the rapid itself. Maintain active blade pressure until you're completely clear in the slack pool."
+    },
+    {
+      "id": "trancura-lower",
+      "name": "R\u00edo Trancura",
+      "section": "Lower Trancura (Marim\u00e1n Takeout to Puente Quelhue)",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "III+ (IV at high spring flows)",
+      "classNumber": 3,
+      "character": "Continuous Wave Trains & Playboating Haven",
+      "lengthKm": 16,
+      "durationHours": "2 \u2013 3 hrs",
+      "gradient": "7 m/km (37 ft/mi)",
+      "optimalFlow": {
+        "minCms": 40,
+        "maxCms": 130,
+        "minCfs": 1400,
+        "maxCfs": 4600,
+        "notes": "Always runnable year-round. At 90+ m\u00b3/s, the waves turn into giant green surf rollers and fluffy explosive wave trains."
+      },
+      "gaugeInfo": {
+        "code": "09414001-3",
+        "name": "Trancura antes R\u00edo Llafenco (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09414001-3"
+      },
+      "season": "Year-Round (Best surfing Oct\u2013Jan)",
+      "putIn": {
+        "name": "Puente Marim\u00e1n Lower Access",
+        "lat": -39.34,
+        "lng": -71.74,
+        "accessBeta": "Put in below Salto Marim\u00e1n on river-right where local commercial rafting companies stage."
+      },
+      "takeOut": {
+        "name": "Balseadero Quelhue / Puente Quelhue",
+        "lat": -39.2539,
+        "lng": -71.9525,
+        "accessBeta": "Take out river-left at Puente Quelhue, just 4 km north of downtown Puc\u00f3n."
+      },
+      "davidBeta": "The Lower Trancura is Puc\u00f3n's community living room. Every kayaker visiting Chile spends afternoons here honing freestyle moves, surfing glassy wave faces, and running guide clinics. It is playful, high-energy, deep-water whitewater with forgiving recovery pools after every rapid. The rapids bear classic names like 'The Junction', 'The Washing Machine', and 'Puente Roto'. Keep your head up for postcard views of snow-capped Volc\u00e1n Villarrica puffing steam on the horizon as you carve turns downriver.",
+      "keyRapids": [
+        {
+          "name": "The Junction (Confluencia Liucura)",
+          "grade": "Class III",
+          "description": "Where the crystal-clear Liucura merges into the Trancura. Big bubbly foam lines, friendly stern squirt seams, and high-energy eddy turns."
+        },
+        {
+          "name": "The Washing Machine (La Lavadora)",
+          "grade": "Class III+",
+          "description": "A ramp of crashing green waves with a powerful surf wave at the top and playful side surfs throughout."
+        },
+        {
+          "name": "Puente Roto",
+          "grade": "Class III",
+          "description": "Wave train sweeping past old bridge pillars. Clean lines center-left with smooth surf opportunities."
+        }
+      ],
+      "hazards": [
+        "Commercial raft traffic during summer peak hours (December through February)",
+        "Shifting gravel bars and shallow rocks at very low autumn water"
+      ],
+      "logistics": "Super easy logistics. 10 minutes from Puc\u00f3n town center. Paved road to both put-in and take-out.",
+      "pkrProTip": "Bring a half-slice or playboat. The wave on rapid La Lavadora is one of the smoothest front-surf and spin spots in South America when the gauge reads 55 to 70 m\u00b3/s."
+    },
+    {
+      "id": "palguin-upper",
+      "name": "R\u00edo Palgu\u00edn",
+      "section": "Upper Palgu\u00edn (The Waterfall Run)",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV+ / V",
+      "classNumber": 5,
+      "character": "Steep Volcanic Bedrock Drops & Iconic Waterfalls",
+      "lengthKm": 6,
+      "durationHours": "2 \u2013 3 hrs",
+      "gradient": "38 m/km (200 ft/mi)",
+      "optimalFlow": {
+        "minCms": 7,
+        "maxCms": 20,
+        "minCfs": 250,
+        "maxCfs": 700,
+        "notes": "Small drainage that rises and drops fast after rain. Optimal visual flow is when the rocks at the put-in bridge are submerged but water remains clear."
+      },
+      "gaugeInfo": {
+        "code": "PALGUIN-EST",
+        "name": "Palgu\u00edn Basin Estimate (DGA Model)",
+        "source": "ChileWaterLevels Palgu\u00edn Model",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09414001-3"
+      },
+      "season": "October \u2013 January (Spring runoff is prime)",
+      "putIn": {
+        "name": "Termas Palgu\u00edn Road Bridge",
+        "lat": -39.42,
+        "lng": -71.81,
+        "accessBeta": "Drive 7 km east from Puc\u00f3n, turn onto the road toward Termas Palgu\u00edn. Follow gravel road 12 km up the canyon to the put-in bridge."
+      },
+      "takeOut": {
+        "name": "Lower Palgu\u00edn Fish Hatchery or Confluence",
+        "lat": -39.38,
+        "lng": -71.77,
+        "accessBeta": "Take out at the road bridge above the confluence with R\u00edo Trancura, or at the commercial trout farm bridge."
+      },
+      "davidBeta": "If Chile is the Mecca of steep creeking, Upper Palgu\u00edn is its temple. First descended in the early 90s, this run became world-famous through whitewater films for clean vertical drops set in lush temperate rainforest. It's steep, technical, and requires precise boat placement. You're boofing over basalt shelves, auto-boofing 15-footers, and negotiating tight slots. You cannot afford sloppy lines here: basalt rock doesn't give, and vertical landings demand disciplined tucks and flat landing technique.",
+      "keyRapids": [
+        {
+          "name": "Salto de la China (Lookout Only)",
+          "grade": "Class VI / Unrunnable",
+          "description": "Massive sheer drop above the standard put-in. Strictly a photo stop; put in below."
+        },
+        {
+          "name": "The Double Drop",
+          "grade": "Class IV+",
+          "description": "A 10-foot launch into a turbulent catch basin followed immediately by an 8-foot shelf boof. Timing your second stroke is essential."
+        },
+        {
+          "name": "Tres Huevones",
+          "grade": "Class V",
+          "description": "Three sequential technical volcanic drops. Must-make boof right on drop two to avoid a pinned pothole."
+        },
+        {
+          "name": "Salto Silenciosa",
+          "grade": "Class V",
+          "description": "A stunning 22-foot waterfall dropping into a deep, frothing plunge pool. Clean vertical line down the center tongue. Tuck on impact."
+        }
+      ],
+      "hazards": [
+        "Severe volcanic potholes and siphons along bedrock walls",
+        "Wood hazards from fallen Coig\u00fce trees across blind drop entries",
+        "High water makes drops violently turbulent with dangerous aerated boil-outs"
+      ],
+      "logistics": "Gravel road, 4x4 recommended after heavy rains. Pay nominal parking fee if parking near private farm cabins.",
+      "pkrProTip": "Lock your core and land with a 45-degree angle on Silenciosa. If you land flat from 20+ feet you will compress your lower spine. If you go dead vertical you risk a deep sub-surface hit. Practice your 45-degree landing posture at PKR before dropping Palgu\u00edn."
+    },
+    {
+      "id": "rio-puesco",
+      "name": "R\u00edo Puesco",
+      "section": "Campamento to Curarrehue Gorge",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV \u2013 V (V+ at high water)",
+      "classNumber": 5,
+      "character": "High-Alpine Boulder Sieve & Continuous Steep Creek",
+      "lengthKm": 9,
+      "durationHours": "3 \u2013 4 hrs",
+      "gradient": "32 m/km (170 ft/mi)",
+      "optimalFlow": {
+        "minCms": 12,
+        "maxCms": 32,
+        "minCfs": 420,
+        "maxCfs": 1130,
+        "notes": "Snowmelt-fed from the Andean crest near Mamuil Malal pass. Usually peaks November\u2013December."
+      },
+      "gaugeInfo": {
+        "code": "09412007-1",
+        "name": "R\u00edo Puesco en Campamento (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09412007-1"
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Puesco Campamento / National Park Guard Station",
+        "lat": -39.533,
+        "lng": -71.5565,
+        "accessBeta": "Take International Highway CH-199 up toward the Argentine border. Put in near the Conaf / Villarrica National Park entrance station."
+      },
+      "takeOut": {
+        "name": "Puente Puesco Lower or Confluence Trancura",
+        "lat": -39.46,
+        "lng": -71.61,
+        "accessBeta": "Take out at the highway bridge or continue down to the Trancura confluence."
+      },
+      "davidBeta": "Puesco is the soul of southern Chilean steep creeking, immortalized by the annual PuescoFest. It flows through ancient Araucaria (monkey puzzle tree) forests under the jagged crests of the Andes. The whitewater is unrelenting: house-sized granite boulders, complex sieves, mandatory boofs, and fast technical micro-eddies. You need an airtight roll, razor-sharp scouting discipline, and an honest crew with solid safety protocols. Every rapid demands respect.",
+      "keyRapids": [
+        {
+          "name": "The Upper Boulders",
+          "grade": "Class IV+",
+          "description": "Warm-up section of steep gradient drops weaving between granite boulders."
+        },
+        {
+          "name": "The Sieve Rapid",
+          "grade": "Class V",
+          "description": "Scout left. Tight entrance over a bedrock notch into a boiling cauldron. Miss the line and you risk feeding into a sieve pile."
+        },
+        {
+          "name": "Puesco Fest Race Course",
+          "grade": "Class IV-V",
+          "description": "Continuous, athletic, pulse-pounding whitewater featuring three consecutive boofs with surging compression waves."
+        }
+      ],
+      "hazards": [
+        "Under-boulder sieves and entrapment pockets",
+        "Fast cold water straight from mountain snowpack",
+        "Blind drops with minimal bank walking room in the canyon section"
+      ],
+      "logistics": "Paved road follows the river along the valley. Easy visual inspection from the road before putting in.",
+      "pkrProTip": "Never paddle Puesco in a group larger than 4-5 boats. Micro-eddies can only hold one or two kayaks at a time. Run leapfrog safety and set throwbags on the crux sieves."
+    },
+    {
+      "id": "rio-liucura",
+      "name": "R\u00edo Liucura",
+      "section": "Magic Canyon (Upper Liucura to San Pedro)",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "III \u2013 IV",
+      "classNumber": 3,
+      "character": "Crystal Clear Springwater & Volcanic Chutes",
+      "lengthKm": 11,
+      "durationHours": "2 \u2013 2.5 hrs",
+      "gradient": "9 m/km (48 ft/mi)",
+      "optimalFlow": {
+        "minCms": 20,
+        "maxCms": 60,
+        "minCfs": 700,
+        "maxCfs": 2100,
+        "notes": "Fed by pristine spring water and Lago Caburgua seepage. Always emerald clear even when neighboring rivers are blown out from rain."
+      },
+      "gaugeInfo": {
+        "code": "09416001-4",
+        "name": "Liucura en Puente San Pedro (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09416001-4"
+      },
+      "season": "October \u2013 April",
+      "putIn": {
+        "name": "Puente Liucura / Caburgua Highway",
+        "lat": -39.23,
+        "lng": -71.78,
+        "accessBeta": "Take the road north toward Caburgua and turn east onto the gravel road leading to the upper Liucura bridge."
+      },
+      "takeOut": {
+        "name": "Puente San Pedro or Confluence Trancura",
+        "lat": -39.26,
+        "lng": -71.86,
+        "accessBeta": "Take out river-right at Puente San Pedro or paddle through to the Trancura confluence."
+      },
+      "davidBeta": "The Liucura is pure paddling therapy. You are floating over drinking-water clarity, looking down through 15 feet of sapphire-tinted water at volcanic gravel beds and wild trout. It enters 'Magic Canyon'\u2014a narrow volcanic defile with steep mossy walls where wave trains bounce playfully off bedrock. It's the ultimate intermediate river trip, guide clinic run, and warm-up lap for any paddler adjusting to Chilean currents.",
+      "keyRapids": [
+        {
+          "name": "Entrance Wave",
+          "grade": "Class III",
+          "description": "Friendly rolling wave train with easy recovery pool below."
+        },
+        {
+          "name": "Magic Canyon Chute",
+          "grade": "Class III+",
+          "description": "The river constricts into a 15-foot wide basalt slot. Keep straight boat angle through the boil pulses."
+        },
+        {
+          "name": "The S-Turn",
+          "grade": "Class III",
+          "description": "Fun rapid with swirling pillow waves off the left basalt bluff."
+        }
+      ],
+      "hazards": [
+        "Overhanging branches and willows in the flatwater braids",
+        "Submerged logs after winter storm windfalls"
+      ],
+      "logistics": "Only 15 minutes from downtown Puc\u00f3n. Excellent takeout parking at Puente San Pedro.",
+      "pkrProTip": "Great run for dialed roll practice and bow-stall drills. In high water, the wave in Magic Canyon develops a super glassy dynamic shoulder that surfers love."
+    },
+    {
+      "id": "rio-maichin",
+      "name": "R\u00edo Maich\u00edn",
+      "section": "Upper & Lower Canyon",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV \u2013 IV+ (V at high flows)",
+      "classNumber": 4,
+      "character": "Continuous Basalt Gorge & Technical Pool-Drop",
+      "lengthKm": 12,
+      "durationHours": "2.5 \u2013 3 hrs",
+      "gradient": "16 m/km (85 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 45,
+        "minCfs": 530,
+        "maxCfs": 1600,
+        "notes": "Tributary to the Trancura near Curarrehue. Runs best in late spring and early summer."
+      },
+      "gaugeInfo": {
+        "code": "09411001-7",
+        "name": "Maich\u00edn en Puente Qui\u00f1enahuin (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09411001-7"
+      },
+      "season": "October \u2013 January",
+      "putIn": {
+        "name": "Puente Qui\u00f1enahuin",
+        "lat": -39.36,
+        "lng": -71.52,
+        "accessBeta": "Take the Curarrehue road and head north along the gravel valley road toward Reigolil. Put in at Puente Qui\u00f1enahuin."
+      },
+      "takeOut": {
+        "name": "Puente Maich\u00edn Confluence",
+        "lat": -39.364,
+        "lng": -71.583,
+        "accessBeta": "Take out at the confluence bridge near Curarrehue before it empties into the Trancura."
+      },
+      "davidBeta": "The Maich\u00edn doesn't get the international press of the Palgu\u00edn or Trancura, but local Puc\u00f3n kayakers know it as one of the finest Class IV runs in the valley. The canyon is secluded and wild. You drop into continuous boulder gardens, punch through ledge holes, and thread through tight basalt gates. It demands high boat agility and instant reading of downstream horizon lines.",
+      "keyRapids": [
+        {
+          "name": "Qui\u00f1enahuin Drop",
+          "grade": "Class IV",
+          "description": "Right below the put-in bridge. A ramp of turbulent water over slick bedrock shelves."
+        },
+        {
+          "name": "The Gorge S-Bend",
+          "grade": "Class IV+",
+          "description": "Steep drop into a compressed canyon corner. Stay off the undercut right wall."
+        },
+        {
+          "name": "The Final Staircase",
+          "grade": "Class IV",
+          "description": "A long, continuous rapid with multiple boof ledges and clean catch-eddies."
+        }
+      ],
+      "hazards": [
+        "Undercut canyon walls",
+        "Steep basalt cliffs make walking out difficult inside the central canyon"
+      ],
+      "logistics": "Gravel road, easily accessible by 2WD in summer. About 45 minutes east of Puc\u00f3n.",
+      "pkrProTip": "Always scout the canyon entrance from the bridge before dropping in to confirm water levels and ensure no fallen trees block the basalt narrows."
+    },
+    {
+      "id": "rio-nevados",
+      "name": "R\u00edo Nevados",
+      "section": "Caburgua Alpine Creek",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV+ / V",
+      "classNumber": 5,
+      "character": "Steep Mountain Creeking & Bedrock Ledges",
+      "lengthKm": 7,
+      "durationHours": "2.5 \u2013 3 hrs",
+      "gradient": "35 m/km (185 ft/mi)",
+      "optimalFlow": {
+        "minCms": 8,
+        "maxCms": 22,
+        "minCfs": 280,
+        "maxCfs": 780,
+        "notes": "Rain and snowmelt reliant. Often runs during spring rain cycles or early snowmelt."
+      },
+      "gaugeInfo": {
+        "code": "NEVADOS-EST",
+        "name": "Nevados Creek Estimate",
+        "source": "ChileWaterLevels Model",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09416001-4"
+      },
+      "season": "October \u2013 December",
+      "putIn": {
+        "name": "Upper Nevados Bridge",
+        "lat": -39.1897,
+        "lng": -71.6988,
+        "accessBeta": "Head past Lago Caburgua toward Paillaco and up the dirt mountain track."
+      },
+      "takeOut": {
+        "name": "Confluence with R\u00edo Liucura",
+        "lat": -39.22,
+        "lng": -71.74,
+        "accessBeta": "Take out at the lower road bridge before the Liucura confluence."
+      },
+      "davidBeta": "Nevados is pure high-tempo steep creeking. It drains the high volcanic ridges behind Caburgua into the Liucura. Fast, steep, and cold, it feels like an obstacle course through primeval native forest. You need rapid stroke cadence and quick eyes. If you love classic mountain creeking with clean boofs and zero crowds, Nevados is a hidden gem.",
+      "keyRapids": [
+        {
+          "name": "First Flight",
+          "grade": "Class IV+",
+          "description": "An 8-foot boof launch off a curved rock tongue into a deep green pool."
+        },
+        {
+          "name": "The Slot",
+          "grade": "Class V",
+          "description": "Narrow volcanic slot with a tricky lead-in eddy. Precise angle required to keep off the rock tooth."
+        }
+      ],
+      "hazards": [
+        "Wood hazards after spring wind storms",
+        "Steep grade means eddies disappear rapidly at higher flows"
+      ],
+      "logistics": "Rough dirt road requires high-clearance vehicle or 4WD.",
+      "pkrProTip": "Check with the PKR team before heading up; this drainage flashes quickly after Andean downpours."
+    },
+    {
+      "id": "rio-turbio",
+      "name": "R\u00edo Turbio",
+      "section": "Volc\u00e1n Villarrica Lava Canyon",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Volcanic Basalt Flume & Black Ash Canyon",
+      "lengthKm": 8,
+      "durationHours": "2 hrs",
+      "gradient": "28 m/km (148 ft/mi)",
+      "optimalFlow": {
+        "minCms": 10,
+        "maxCms": 28,
+        "minCfs": 350,
+        "maxCfs": 1000,
+        "notes": "Flows directly off the glacier of Volc\u00e1n Villarrica. Water is silty grey from volcanic ash and glacial pulverization."
+      },
+      "gaugeInfo": {
+        "code": "TURBIO-VISUAL",
+        "name": "Turbio Highway Bridge Visual",
+        "source": "Visual Gauge at Highway Bridge",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January (Sunny warm afternoons increase glacial melt)",
+      "putIn": {
+        "name": "Volcano Access Road Upper Crossing",
+        "lat": -39.32,
+        "lng": -71.91,
+        "accessBeta": "Take the Villarrica Volcano ski access road south from Puc\u00f3n. Turn off onto the gravel track crossing the Turbio wash."
+      },
+      "takeOut": {
+        "name": "Highway CH-199 Bridge",
+        "lat": -39.28,
+        "lng": -71.95,
+        "accessBeta": "Take out at the main highway bridge between Villarrica and Puc\u00f3n."
+      },
+      "davidBeta": "Nowhere else in the world will you paddle a river quite like the Turbio. The river cuts directly through fresh black volcanic basalt laid down by historical eruptions of Volc\u00e1n Villarrica. The rock is sharp, dark, and sculptural. Glacial flour tints the water opaque grey. Rapids are fast flumes and punchy drops between black walls. A surreal paddling experience right at our doorstep.",
+      "keyRapids": [
+        {
+          "name": "Lava Tube Chute",
+          "grade": "Class IV+",
+          "description": "Fast sluice between basalt volcanic walls with vertical compression waves."
+        },
+        {
+          "name": "The Cauldron",
+          "grade": "Class V",
+          "description": "Steep drop over a volcanic ledge with boiling turbulent water. Scout carefully."
+        }
+      ],
+      "hazards": [
+        "Extremely abrasive volcanic rock (wear good elbow pads and protect your paddle blades)",
+        "Glacial melt causes flow to spike noticeably in mid-afternoon on warm sunny days"
+      ],
+      "logistics": "10 minutes from Puc\u00f3n. Fast shuttle turnaround.",
+      "pkrProTip": "Start early before afternoon glacier melt elevates turbidity and increases volume beyond comfort levels."
+    },
+    {
+      "id": "rio-cautin",
+      "name": "R\u00edo Caut\u00edn",
+      "section": "Malalcahuello to Curacaut\u00edn",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV (IV+)",
+      "classNumber": 4,
+      "character": "High-Andean Araucaria Forest Creeking",
+      "lengthKm": 18,
+      "durationHours": "3 hrs",
+      "gradient": "14 m/km (74 ft/mi)",
+      "optimalFlow": {
+        "minCms": 20,
+        "maxCms": 55,
+        "minCfs": 700,
+        "maxCfs": 1950,
+        "notes": "Optimal in spring and early summer as snow melts from Lonquimay and Tolhuaca volcanoes."
+      },
+      "gaugeInfo": {
+        "code": "09110001-4",
+        "name": "Caut\u00edn en Curacaut\u00edn (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 December",
+      "putIn": {
+        "name": "Puente Malalcahuello",
+        "lat": -38.45,
+        "lng": -71.58,
+        "accessBeta": "Take Route 181 toward the Lonquimay tunnel. Put in at the bridge near the village of Malalcahuello."
+      },
+      "takeOut": {
+        "name": "Puente Curacaut\u00edn",
+        "lat": -38.44,
+        "lng": -71.86,
+        "accessBeta": "Take out at the highway bridge entering the town of Curacaut\u00edn."
+      },
+      "davidBeta": "Located north of Puc\u00f3n in the shadow of Lonquimay volcano, the Caut\u00edn is one of the most scenic alpine rivers in Chile. Snow-capped peaks and ancient Araucaria trees line the valley. The whitewater is crisp Class IV boulder slaloms, ledge drops, and fast continuous current. A premier road trip destination when exploring northern Araucan\u00eda.",
+      "keyRapids": [
+        {
+          "name": "The Araucaria Ledges",
+          "grade": "Class IV",
+          "description": "Continuous staircase of boulder drops through stunning monkey puzzle pine forests."
+        },
+        {
+          "name": "Curacaut\u00edn Canyon",
+          "grade": "Class IV+",
+          "description": "Narrow gorge section with big waves and strong eddy fences."
+        }
+      ],
+      "hazards": [
+        "Cold mountain water; drysuit recommended in October/November",
+        "Occasional agricultural fence wires across lower braided reaches"
+      ],
+      "logistics": "Paved highway parallel to the river provides simple shuttle logistics.",
+      "pkrProTip": "Combine with a soak at Termas de Malalcahuello or Manzanar after your run for the classic Chilean thermal soak."
+    },
+    {
+      "id": "rio-malleco",
+      "name": "R\u00edo Malleco",
+      "section": "Tolhuaca Foothills to Collipulli",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Steep Basalt Drops & Wilderness Canyon",
+      "lengthKm": 14,
+      "durationHours": "3 hrs",
+      "gradient": "18 m/km (95 ft/mi)",
+      "optimalFlow": {
+        "minCms": 18,
+        "maxCms": 50,
+        "minCfs": 630,
+        "maxCfs": 1750,
+        "notes": "Best in spring runoff."
+      },
+      "gaugeInfo": {
+        "code": "09123001-5",
+        "name": "Malleco en Collipulli (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 December",
+      "putIn": {
+        "name": "Puente Tolhuaca Road",
+        "lat": -38.18,
+        "lng": -71.82,
+        "accessBeta": "Access via dirt road from Curacaut\u00edn heading toward Tolhuaca National Park."
+      },
+      "takeOut": {
+        "name": "Puente Malleco Lower",
+        "lat": -38.05,
+        "lng": -72.05,
+        "accessBeta": "Take out at the road bridge downstream."
+      },
+      "davidBeta": "The Malleco cuts through spectacular columnar basalt formations. It features big, dramatic boofs over volcanic ledges and powerful hydraulics. It's a high-commitment run with steep canyon walls where scouting from boat or scrambling over slippery basalt blocks is part of the game.",
+      "keyRapids": [
+        {
+          "name": "The Amphitheatre",
+          "grade": "Class IV+",
+          "description": "Dramatic drop over basalt columns into an enclosed amphitheater pool."
+        },
+        {
+          "name": "The Horseshoe Boof",
+          "grade": "Class V",
+          "description": "U-shaped ledge drop with a narrow launch tongue on river-left."
+        }
+      ],
+      "hazards": [
+        "Severe basalt undercuts",
+        "Limited canyon egress once committed"
+      ],
+      "logistics": "Remote dirt roads; 4WD vehicle recommended.",
+      "pkrProTip": "Bring a breakdown paddle and pin kit; cell service is non-existent inside the canyon."
+    },
+    {
+      "id": "rio-truful-truful",
+      "name": "R\u00edo Truful-Truful",
+      "section": "Conguill\u00edo National Park to Melipeuco",
+      "regionId": "araucania",
+      "regionName": "Araucan\u00eda (Puc\u00f3n)",
+      "grade": "IV+ / V",
+      "classNumber": 5,
+      "character": "Volcanic Slopes & Bedrock Waterfalls",
+      "lengthKm": 10,
+      "durationHours": "2.5 hrs",
+      "gradient": "26 m/km (137 ft/mi)",
+      "optimalFlow": {
+        "minCms": 12,
+        "maxCms": 30,
+        "minCfs": 420,
+        "maxCfs": 1050,
+        "notes": "Spring runoff. Often runs clear out of mountain lakes."
+      },
+      "gaugeInfo": {
+        "code": "TRUFUL-CONG",
+        "name": "Truful-Truful Bridge",
+        "source": "Visual Gauge",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Conguill\u00edo Park Road Bridge",
+        "lat": -38.75,
+        "lng": -71.69,
+        "accessBeta": "Drive north from Melipeuco toward Parque Nacional Conguill\u00edo. Put in below Salto Truful-Truful."
+      },
+      "takeOut": {
+        "name": "Puente Melipeuco",
+        "lat": -38.83,
+        "lng": -71.7,
+        "accessBeta": "Take out at the bridge near the town of Melipeuco."
+      },
+      "davidBeta": "Paddling the Truful-Truful is like exploring a prehistoric landscape. Draining the lava dams of Conguill\u00edo under Volc\u00e1n Llaima, this run features brilliant crystalline water crashing through black volcanic stone. Clean, steep boofs, punchy holes, and unmatched natural scenery.",
+      "keyRapids": [
+        {
+          "name": "Llaima Ledge",
+          "grade": "Class IV+",
+          "description": "Steep launch into a boiling aerated basin."
+        },
+        {
+          "name": "The Basalt Maze",
+          "grade": "Class V",
+          "description": "Technical slalom through maze-like volcanic shelves."
+        }
+      ],
+      "hazards": [
+        "Sharp volcanic lava rocks",
+        "Cold mountain water"
+      ],
+      "logistics": "About 1.5 hours north of Puc\u00f3n via Cunco and Melipeuco.",
+      "pkrProTip": "Take time to hike up and view the main Salto Truful-Truful waterfall in the park before launching."
+    },
+    {
+      "id": "river-fuy-upper",
+      "name": "R\u00edo Fuy",
+      "section": "Upper Fuy (Lago Pirihueico to Neltume / The Waterfall Section)",
+      "regionId": "los-rios",
+      "regionName": "Los R\u00edos (Panguipulli)",
+      "grade": "IV+ / V",
+      "classNumber": 5,
+      "character": "Luminous Teal Waterfalls & Tight Volcanic Canyons",
+      "lengthKm": 8,
+      "durationHours": "2.5 \u2013 3.5 hrs",
+      "gradient": "24 m/km (125 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 42,
+        "minCfs": 530,
+        "maxCfs": 1500,
+        "notes": "Optimum flows are 20\u201332 m\u00b3/s. At higher flows, the drops become intensely pushy with heavy boiling back-washes."
+      },
+      "gaugeInfo": {
+        "code": "10110002-3",
+        "name": "R\u00edo Fuy en Neltume (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/panguipulli"
+      },
+      "season": "December \u2013 March (Peak: Dec\u2013Jan)",
+      "putIn": {
+        "name": "Lago Pirihueico Outflow / Puerto Fuy",
+        "lat": -39.866,
+        "lng": -71.89,
+        "accessBeta": "Put in directly where the river flows out of Lago Pirihueico at Puerto Fuy, 2.5 hours south of Puc\u00f3n."
+      },
+      "takeOut": {
+        "name": "Puente Neltume or Huilo-Huilo Takeout",
+        "lat": -39.84,
+        "lng": -71.95,
+        "accessBeta": "Take out on river-right above the town of Neltume, before the river plunges into Salto Huilo-Huilo."
+      },
+      "davidBeta": "The R\u00edo Fuy is one of the most aesthetically stunning whitewater runs on the planet. Its water is an unearthly glacial turquoise, warm compared to alpine torrents because it drains the surface of Lago Pirihueico. The Upper section features a series of clean, picture-perfect waterfalls and bedrock slides ranging from 8 to 25 feet. Every drop drops into a deep, forgiving plunge pool. It is the premier stepping stone for paddlers progressing their waterfall boof technique.",
+      "keyRapids": [
+        {
+          "name": "The Upper Slides",
+          "grade": "Class IV",
+          "description": "Smooth bedrock waterslides with friendly waves."
+        },
+        {
+          "name": "The 12-Foot Boof",
+          "grade": "Class IV+",
+          "description": "Clean vertical drop over a curved rock ledge. Plant an aggressive right-blade stroke right on the lip."
+        },
+        {
+          "name": "The 25-Footer",
+          "grade": "Class V",
+          "description": "Classic vertical drop. Scout river-right. Clean center-left tongue with a deep aerated landing pool. Set safety on the right eddy."
+        }
+      ],
+      "hazards": [
+        "Must take out before Salto Huilo-Huilo (mandatory egress)",
+        "Boiling seams in narrow canyon segments below drops",
+        "Higher water makes recirculating hole hydraulics severe"
+      ],
+      "logistics": "Paved road CH-203 from Panguipulli through Neltume. Excellent cabins and camping available in Neltume.",
+      "pkrProTip": "Always set safety on the 25-footer and remember: keep your paddle horizontal across your chest and tuck your chin to your deck upon landing to protect your face and back."
+    },
+    {
+      "id": "river-fuy-lower",
+      "name": "R\u00edo Fuy",
+      "section": "Lower Fuy (Puente Llallanca to Lago Panguipulli)",
+      "regionId": "los-rios",
+      "regionName": "Los R\u00edos (Panguipulli)",
+      "grade": "III+ / IV",
+      "classNumber": 4,
+      "character": "High-Volume Turquoise Wave Trains & Big Water Boating",
+      "lengthKm": 10,
+      "durationHours": "2 hrs",
+      "gradient": "10 m/km (53 ft/mi)",
+      "optimalFlow": {
+        "minCms": 25,
+        "maxCms": 80,
+        "minCfs": 880,
+        "maxCfs": 2800,
+        "notes": "Always runnable throughout the Chilean summer. Fun big water at 50+ m\u00b3/s."
+      },
+      "gaugeInfo": {
+        "code": "10110002-3",
+        "name": "R\u00edo Fuy en Neltume (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/panguipulli"
+      },
+      "season": "November \u2013 March",
+      "putIn": {
+        "name": "Puente Llallanca (below Salto Puma)",
+        "lat": -39.855,
+        "lng": -71.98,
+        "accessBeta": "Put in below Salto Puma at the road bridge on the Neltume-Choshuenco road."
+      },
+      "takeOut": {
+        "name": "Lago Panguipulli / Choshuenco Beach",
+        "lat": -39.84,
+        "lng": -72.06,
+        "accessBeta": "Take out at the sandy public beach in the lakeside village of Choshuenco."
+      },
+      "davidBeta": "The Lower Fuy is pure unadulterated joy. Gone are the vertical drops of the Upper; here you get rolling, stadium-sized turquoise wave trains and wide, pulsing rapids. It is the perfect run to follow an intense morning on the Upper Fuy or to bring intermediate paddlers to experience big pushy water without consequence.",
+      "keyRapids": [
+        {
+          "name": "The Entry Rapid",
+          "grade": "Class III+",
+          "description": "Continuous rollers and punchy foam piles."
+        },
+        {
+          "name": "The Canyon Wave",
+          "grade": "Class IV",
+          "description": "Dynamic compression wave flanked by tall temperate forest bluffs."
+        }
+      ],
+      "hazards": [
+        "Strong whirlpools and boiling eddy fences at high spring levels",
+        "Lake paddle out can be windy if afternoon thermal winds pick up"
+      ],
+      "logistics": "Easy shuttle on paved highway. Great craft beer spots in Choshuenco.",
+      "pkrProTip": "A great afternoon run. If you take out at the Choshuenco beach, enjoy a fresh empanada and view across the lake toward Mocho-Choshuenco volcano."
+    },
+    {
+      "id": "rio-san-pedro",
+      "name": "R\u00edo San Pedro",
+      "section": "Lago Ri\u00f1ihue Outflow to Los Lagos",
+      "regionId": "los-rios",
+      "regionName": "Los R\u00edos (Panguipulli)",
+      "grade": "III \u2013 IV",
+      "classNumber": 3,
+      "character": "Massive Emerald Big Water & Lush Jungle Canyons",
+      "lengthKm": 22,
+      "durationHours": "3.5 \u2013 4.5 hrs",
+      "gradient": "5 m/km (26 ft/mi)",
+      "optimalFlow": {
+        "minCms": 70,
+        "maxCms": 250,
+        "minCfs": 2500,
+        "maxCfs": 8800,
+        "notes": "Drains the entire Seven Lakes chain. Immense, steady volume that runs clean all year."
+      },
+      "gaugeInfo": {
+        "code": "10120001-0",
+        "name": "R\u00edo San Pedro en Desag\u00fce Ri\u00f1ihue (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/panguipulli"
+      },
+      "season": "Year-Round (Best Oct\u2013April)",
+      "putIn": {
+        "name": "Desag\u00fce Lago Ri\u00f1ihue",
+        "lat": -39.79,
+        "lng": -72.45,
+        "accessBeta": "Put in on river-left where Lago Ri\u00f1ihue empties into the San Pedro."
+      },
+      "takeOut": {
+        "name": "Puente Los Lagos / Malihue",
+        "lat": -39.84,
+        "lng": -72.78,
+        "accessBeta": "Take out at the bridge near the town of Los Lagos or at intermediate river access points."
+      },
+      "davidBeta": "The San Pedro is Chile's grand emerald artery. It takes the combined waters of seven Andean lakes and funnels them through a lush, deep green rainforest canyon. The rapids are wide, grand, and forgiving\u2014huge rolling wave trains, massive friendly eddies, and towering native Ulmo and Nalca plants covering the canyon bluffs. This river was threatened by dams for years and fiercely protected by kayakers and local communities. Running it is a celebration of free-flowing rivers.",
+      "keyRapids": [
+        {
+          "name": "El Malihue",
+          "grade": "Class IV",
+          "description": "The biggest rapid on the run. A wide staircase of surging green waves and foam piles."
+        },
+        {
+          "name": "The Wall",
+          "grade": "Class III+",
+          "description": "Water pillows powerfully off a mossy basalt wall on the left."
+        }
+      ],
+      "hazards": [
+        "High-volume boils can spin a boat if edges aren't engaged",
+        "Long swim if you come out of your boat in the main canyon"
+      ],
+      "logistics": "Shuttle is longer (approx. 45-60 min). Paved and gravel roads.",
+      "pkrProTip": "Pack a drybag with lunch and drinks. There are immaculate white sand beaches along the canyon that make for world-class river picnics."
+    },
+    {
+      "id": "rio-enco",
+      "name": "R\u00edo Enco",
+      "section": "Lago Panguipulli to Lago Ri\u00f1ihue",
+      "regionId": "los-rios",
+      "regionName": "Los R\u00edos (Panguipulli)",
+      "grade": "III+ (IV at high water)",
+      "classNumber": 3,
+      "character": "High-Volume Lake Interconnect & Canyons",
+      "lengthKm": 12,
+      "durationHours": "2 hrs",
+      "gradient": "6 m/km (32 ft/mi)",
+      "optimalFlow": {
+        "minCms": 50,
+        "maxCms": 160,
+        "minCfs": 1750,
+        "maxCfs": 5650,
+        "notes": "Fed directly from Lago Panguipulli; clean crystal-green water."
+      },
+      "gaugeInfo": {
+        "code": "10115001-2",
+        "name": "R\u00edo Enco en Desag\u00fce Panguipulli (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/panguipulli"
+      },
+      "season": "November \u2013 March",
+      "putIn": {
+        "name": "Enco Outflow, Lago Panguipulli",
+        "lat": -39.91,
+        "lng": -72.1,
+        "accessBeta": "Access via the road from Choshuenco to Enco. Put in at the lake exit."
+      },
+      "takeOut": {
+        "name": "Lago Ri\u00f1ihue Inflow (Ri\u00f1ihue East Beach)",
+        "lat": -39.87,
+        "lng": -72.22,
+        "accessBeta": "Take out at the eastern shore of Lago Ri\u00f1ihue."
+      },
+      "davidBeta": "The Enco connects two of Chile's grandest lakes. It is big water, fast, and remarkably scenic. You paddle with views of Volc\u00e1n Mocho-Choshuenco reflecting off crystalline emerald water. The rapids consist of rapid wave trains and wide sweeping bends. An incredible wilderness connector run.",
+      "keyRapids": [
+        {
+          "name": "The Chute",
+          "grade": "Class III+",
+          "description": "Narrowing channel with pulsing lateral waves."
+        }
+      ],
+      "hazards": [
+        "Strong boils on eddy lines"
+      ],
+      "logistics": "Gravel road access; high clearance car recommended.",
+      "pkrProTip": "Great paddle to link together with the Lower Fuy for an epic multi-river day."
+    },
+    {
+      "id": "rio-reyehueico",
+      "name": "R\u00edo Reyehueico",
+      "section": "Liqui\u00f1e Geothermal Valley",
+      "regionId": "los-rios",
+      "regionName": "Los R\u00edos (Panguipulli)",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Steep Thermal Creeking & Granite Chutes",
+      "lengthKm": 7,
+      "durationHours": "2.5 hrs",
+      "gradient": "30 m/km (158 ft/mi)",
+      "optimalFlow": {
+        "minCms": 8,
+        "maxCms": 22,
+        "minCfs": 280,
+        "maxCfs": 780,
+        "notes": "Spring runoff and rain-fed."
+      },
+      "gaugeInfo": {
+        "code": "REYEHUEICO-VIS",
+        "name": "Liqui\u00f1e Bridge Visual",
+        "source": "Visual Gauge",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Termas de Liqui\u00f1e Upper Bridge",
+        "lat": -39.73,
+        "lng": -71.85,
+        "accessBeta": "Drive from Co\u00f1aripe into the hot spring valley of Liqui\u00f1e. Put in above town."
+      },
+      "takeOut": {
+        "name": "Puente Liqui\u00f1e Confluence",
+        "lat": -39.75,
+        "lng": -71.89,
+        "accessBeta": "Take out near the town bridge."
+      },
+      "davidBeta": "Deep in thermal country, the Reyehueico drops out of Andean granite ridges through dense Valdivian jungle. Steam literally rises from hot springs alongside the river. The rapids are technical, steep, and continuous with tight boofs and granite slots.",
+      "keyRapids": [
+        {
+          "name": "The Steamer",
+          "grade": "Class IV+",
+          "description": "Steep boulder cascade next to natural thermal vapor vents."
+        }
+      ],
+      "hazards": [
+        "Tight slots, wood"
+      ],
+      "logistics": "Paved road to Liqui\u00f1e.",
+      "pkrProTip": "Do not skip soaking in the rustic hot spring pools in Liqui\u00f1e right after your run."
+    },
+    {
+      "id": "rio-gol-gol",
+      "name": "R\u00edo Gol-Gol",
+      "section": "Puyehue Pass to Lago Puyehue",
+      "regionId": "los-rios",
+      "regionName": "Los R\u00edos (Panguipulli)",
+      "grade": "IV \u2013 V (V+ at drops)",
+      "classNumber": 5,
+      "character": "Volcanic Drops, Waterfalls & Steep Canyons",
+      "lengthKm": 12,
+      "durationHours": "3 hrs",
+      "gradient": "28 m/km (148 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 38,
+        "minCfs": 530,
+        "maxCfs": 1350,
+        "notes": "Spring runoff along Cardenal Samor\u00e9 Pass."
+      },
+      "gaugeInfo": {
+        "code": "10310001-8",
+        "name": "Gol-Gol en Puyehue (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Puente Gol-Gol / Samor\u00e9 Pass Road",
+        "lat": -40.67,
+        "lng": -72.01,
+        "accessBeta": "Take Route 215 toward the Argentine border. Put in at the road crossing."
+      },
+      "takeOut": {
+        "name": "Puente Anticura or Lake Inflow",
+        "lat": -40.66,
+        "lng": -72.18,
+        "accessBeta": "Take out near the Conaf station at Anticura."
+      },
+      "davidBeta": "The Gol-Gol is a ferocious, breathtaking volcanic river dropping down from Puyehue volcano. It is famous for legendary waterfalls (including Salto de los Novios) and steep bedrock chutes. It requires precise scouting and seasoned creeking credentials.",
+      "keyRapids": [
+        {
+          "name": "Salto de los Novios (Scout/Portage)",
+          "grade": "Class V+",
+          "description": "Massive waterfall drop into a turbulent boiling canyon."
+        },
+        {
+          "name": "The Upper Cascades",
+          "grade": "Class IV-V",
+          "description": "Continuous steep ledges."
+        }
+      ],
+      "hazards": [
+        "Unrunnable vertical drops",
+        "Volcanic undercuts"
+      ],
+      "logistics": "Paved international highway parallel to river.",
+      "pkrProTip": "Scout everything from the highway lookouts before dropping in."
+    },
+    {
+      "id": "rio-futaleufu-bridge-to-bridge",
+      "name": "R\u00edo Futaleuf\u00fa",
+      "section": "Bridge to Bridge (Pasarela Zapata to Puente Futaleuf\u00fa)",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "IV \u2013 IV+",
+      "classNumber": 4,
+      "character": "The World's Premier High-Volume Big Water Classic",
+      "lengthKm": 11,
+      "durationHours": "2.5 \u2013 3 hrs",
+      "gradient": "7 m/km (37 ft/mi)",
+      "optimalFlow": {
+        "minCms": 120,
+        "maxCms": 380,
+        "minCfs": 4200,
+        "maxCfs": 13400,
+        "notes": "At 150\u2013220 m\u00b3/s, it is friendly Class IV big water heaven. Above 300 m\u00b3/s, waves become towering 15-foot walls and boils demand relentless focus."
+      },
+      "gaugeInfo": {
+        "code": "10800001-5",
+        "name": "Futaleuf\u00fa en Pasarela Zapata (DGA / Central)",
+        "source": "DGA / Hidroel\u00e9ctrica Futaleuf\u00fa / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/futaleufu/"
+      },
+      "season": "December \u2013 March (Peak: Jan\u2013Feb)",
+      "putIn": {
+        "name": "Pasarela Zapata Suspension Footbridge",
+        "lat": -43.18,
+        "lng": -72.03,
+        "accessBeta": "Take the dirt road 40 km west from Futaleuf\u00fa town. Park at the suspension footbridge trail. Carry kayaks down to river-left."
+      },
+      "takeOut": {
+        "name": "Puente Futaleuf\u00fa / Macal Access",
+        "lat": -43.2,
+        "lng": -72.12,
+        "accessBeta": "Take out on river-right immediately above or below Puente Futaleuf\u00fa."
+      },
+      "davidBeta": "The Bridge to Bridge section of the Rio Futaleuf\u00fa is universally acknowledged as the greatest stretch of Class IV big water whitewater on planet earth. The water is crystalline turquoise, fed by pristine Patagonian snowpack and tempered by huge upstream Andean lakes. Everything here is magnified: wave troughs you can lose a truck in, surging boils that spin boats 360 degrees, and exploding pillow waves off granite canyon bluffs. Despite the immense volume, the run is remarkably clean with deep forgiving recovery pools after every drop. It will make you fall in love with kayaking all over again.",
+      "keyRapids": [
+        {
+          "name": "Entrada (Entry Waves)",
+          "grade": "Class IV",
+          "description": "Towering 10-foot lateral waves that set the tone immediately below the suspension bridge."
+        },
+        {
+          "name": "Cushion (El Almohad\u00f3n)",
+          "grade": "Class IV+",
+          "description": "Massive volume compresses against a sheer granite wall on river-right, generating a 12-foot exploding pillow wave."
+        },
+        {
+          "name": "Mundaca",
+          "grade": "Class IV+",
+          "description": "The crown jewel of Bridge to Bridge. A giant stadium-sized rapid with exploding lateral waves and a massive hole at center-left. Line: charge the right-center green tongue with high boat speed."
+        },
+        {
+          "name": "Magic Carpet Wave",
+          "grade": "Class IV (Play)",
+          "description": "A world-class glassy surf wave with deep eddy access. Bring your playboat for endless spins and blunt attempts."
+        }
+      ],
+      "hazards": [
+        "Massive boiling eddy lines that can pull sterns down into vertical mystery moves",
+        "Long cold swims if you fail to roll in the turbulence; always stay with your boat"
+      ],
+      "logistics": "Carretera Austral / Ruta 231. 40 km from Futaleuf\u00fa town. Campgrounds and kayak camps along the corridor.",
+      "pkrProTip": "In big water like the Futa, speed is your friend. Don't brake or tentative-paddle into lateral waves\u2014drive your nose forward with confident power strokes and let the hull punch through."
+    },
+    {
+      "id": "rio-futaleufu-terminator",
+      "name": "R\u00edo Futaleuf\u00fa",
+      "section": "Terminator Section (Puente Futaleuf\u00fa to Macal)",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "V (V+ at high water)",
+      "classNumber": 5,
+      "character": "Monstrous Pushy Big Water & Colossal Holes",
+      "lengthKm": 8,
+      "durationHours": "2.5 \u2013 3 hrs",
+      "gradient": "9 m/km (48 ft/mi)",
+      "optimalFlow": {
+        "minCms": 130,
+        "maxCms": 280,
+        "minCfs": 4600,
+        "maxCfs": 9900,
+        "notes": "Terminator becomes an absolute monster above 300 m\u00b3/s with stadium-sized recirculating features."
+      },
+      "gaugeInfo": {
+        "code": "10800001-5",
+        "name": "Futaleuf\u00fa en Pasarela Zapata (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/futaleufu/"
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Puente Futaleuf\u00fa",
+        "lat": -43.2,
+        "lng": -72.12,
+        "accessBeta": "Put in on river-right below Puente Futaleuf\u00fa."
+      },
+      "takeOut": {
+        "name": "Campamento Macal / Puerto Lorenzo",
+        "lat": -43.22,
+        "lng": -72.22,
+        "accessBeta": "Take out at Puerto Lorenzo or continue down to the Macal campground."
+      },
+      "davidBeta": "The Terminator section is serious, heart-in-your-throat Class V big water. The rapid 'Terminator' itself is over 1.5 kilometers of continuous, chaotic, thunderous water filled with bus-sized breaking waves, crashing offset rollers, and catastrophic holes. This is not the place for intermediate paddlers. You need bulletproof mental composure, an unconditional roll, and a team running tight visual contact.",
+      "keyRapids": [
+        {
+          "name": "Terminator",
+          "grade": "Class V",
+          "description": "Massive 1.5 km long rapid. Enter left-center, weave between enormous exploding pyramid waves, and fight through violent boiling eddy lines."
+        },
+        {
+          "name": "Toro (The Bull)",
+          "grade": "Class IV+",
+          "description": "Powerhouse wave train terminating in a heavy crashing lateral."
+        }
+      ],
+      "hazards": [
+        "Severe multi-minute recirculating holes",
+        "Massive boils capable of capsizing even 16-foot rafts"
+      ],
+      "logistics": "Scout river-right along the road high above the river before launching.",
+      "pkrProTip": "Have an escape plan and clear signals with your crew. If someone swims in Terminator, your top priority is pushing them into the slack water on river-right before the downstream gorge."
+    },
+    {
+      "id": "rio-petrohue-upper",
+      "name": "R\u00edo Petrohu\u00e9",
+      "section": "Upper Petrohu\u00e9 (Saltos del Petrohu\u00e9 to Ensenada)",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "IV (IV+)",
+      "classNumber": 4,
+      "character": "Cobalt Glacial Torrent Under Volc\u00e1n Osorno",
+      "lengthKm": 14,
+      "durationHours": "2.5 hrs",
+      "gradient": "8 m/km (42 ft/mi)",
+      "optimalFlow": {
+        "minCms": 70,
+        "maxCms": 200,
+        "minCfs": 2500,
+        "maxCfs": 7000,
+        "notes": "Drains Lago Todos los Santos under the conical peak of Volc\u00e1n Osorno."
+      },
+      "gaugeInfo": {
+        "code": "10410001-2",
+        "name": "Petrohu\u00e9 en Salto (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "Year-Round (Best Nov\u2013April)",
+      "putIn": {
+        "name": "Below Saltos del Petrohu\u00e9",
+        "lat": -41.17,
+        "lng": -72.45,
+        "accessBeta": "Put in below the impassable tourist waterfalls of Saltos del Petrohu\u00e9 in Vicente P\u00e9rez Rosales National Park."
+      },
+      "takeOut": {
+        "name": "Puente Ensenada or Ral\u00fan",
+        "lat": -41.28,
+        "lng": -72.35,
+        "accessBeta": "Take out at the bridge near Ensenada or paddle through to the Reloncav\u00ed Estuary fjord."
+      },
+      "davidBeta": "The Petrohu\u00e9 has some of the most vibrant deep cobalt blue water in South America. Flowing out of Lago Todos los Santos under the snow-covered cone of Volc\u00e1n Osorno, it offers majestic scenery and high-volume Class IV rapids. The riverbed is carved through black basalt volcanic flows.",
+      "keyRapids": [
+        {
+          "name": "The Osorno Wave",
+          "grade": "Class IV",
+          "description": "Big exploding wave right under the view of the volcano."
+        },
+        {
+          "name": "The S-Bend",
+          "grade": "Class IV",
+          "description": "Sweeping rapid through basalt rock bands."
+        }
+      ],
+      "hazards": [
+        "Submerged volcanic bedrock ledges",
+        "Heavy volume during spring rains"
+      ],
+      "logistics": "Paved road from Puerto Varas (approx. 45 min).",
+      "pkrProTip": "Take out at Ral\u00fan where the river enters the saltwater fjord: you can paddle from glacial river straight into the Pacific Ocean!"
+    },
+    {
+      "id": "rio-cochamo",
+      "name": "R\u00edo Cocham\u00f3",
+      "section": "La Junta Valley to Cocham\u00f3 Fjord",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Granite Domes & Yosemite of South America Creeking",
+      "lengthKm": 16,
+      "durationHours": "4 \u2013 5 hrs (plus hike-in)",
+      "gradient": "22 m/km (116 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 40,
+        "minCfs": 530,
+        "maxCfs": 1400,
+        "notes": "Rain and snowmelt reliant. Often paddled as an expedition with packhorses."
+      },
+      "gaugeInfo": {
+        "code": "COCHAMO-VIS",
+        "name": "Cocham\u00f3 Estuary Gauge",
+        "source": "Visual",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "La Junta Camp (Hike-in with horses)",
+        "lat": -41.48,
+        "lng": -72.18,
+        "accessBeta": "Requires 4-hour hike with packhorses carrying kayaks from the trailhead near Cocham\u00f3 village up to La Junta valley."
+      },
+      "takeOut": {
+        "name": "Cocham\u00f3 Trailhead Bridge / Fjord",
+        "lat": -41.49,
+        "lng": -72.3,
+        "accessBeta": "Take out at the trailhead bridge where the valley reaches the sea."
+      },
+      "davidBeta": "Cocham\u00f3 is renowned as the Yosemite of South America for its towering 1,000-meter sheer granite big walls. Paddling out of La Junta is an authentic Andean expedition. The river carves through pure white granite bedrock, polished boulders, and deep clear pools. It's steep, remote, and physically demanding, but the scenery will leave you breathless.",
+      "keyRapids": [
+        {
+          "name": "Granite Waterslide",
+          "grade": "Class IV+",
+          "description": "Smooth granite slide launching into a deep crystal-clear pool."
+        },
+        {
+          "name": "The Cathedral Drop",
+          "grade": "Class V",
+          "description": "Steep drop beneath 3,000-foot vertical granite walls."
+        }
+      ],
+      "hazards": [
+        "Extremely remote; evacuation requires horse or helicopter",
+        "Fallen logs in narrow slots"
+      ],
+      "logistics": "Arrange packhorses in advance with local arrieros in Cocham\u00f3.",
+      "pkrProTip": "Spend at least two nights camping in La Junta to hike the granite domes before kayaking down."
+    },
+    {
+      "id": "rio-puelo",
+      "name": "R\u00edo Puelo",
+      "section": "First & Second Canyons (Lago Tagua Tagua to Reloncav\u00ed)",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "IV \u2013 IV+",
+      "classNumber": 4,
+      "character": "Colossal Glacial Emerald Torrent & Remote Fjords",
+      "lengthKm": 25,
+      "durationHours": "4 \u2013 5 hrs",
+      "gradient": "4 m/km (21 ft/mi)",
+      "optimalFlow": {
+        "minCms": 150,
+        "maxCms": 450,
+        "minCfs": 5300,
+        "maxCfs": 16000,
+        "notes": "Massive glacial river draining Argentine lakes into Chilean fjords."
+      },
+      "gaugeInfo": {
+        "code": "10500001-1",
+        "name": "R\u00edo Puelo en Carrera Basilio (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/puelo"
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Lago Tagua Tagua Outflow",
+        "lat": -41.68,
+        "lng": -72.08,
+        "accessBeta": "Take the ferry across Lago Tagua Tagua and put in at the lake outlet."
+      },
+      "takeOut": {
+        "name": "Puente Puelo / Estuario Reloncav\u00ed",
+        "lat": -41.65,
+        "lng": -72.31,
+        "accessBeta": "Take out at the coastal village of Puelo."
+      },
+      "davidBeta": "The Puelo is raw, colossal Patagonian scale. You are paddling on emerald green glacial water hundreds of feet wide, bordered by hanging glaciers and sheer rainforest cliffs. The rapids in the canyons feature enormous compression waves, boiling vortexes, and wild wave trains. An expedition-grade river day.",
+      "keyRapids": [
+        {
+          "name": "The First Canyon",
+          "grade": "Class IV+",
+          "description": "Massive surge waves compressing between vertical canyon walls."
+        }
+      ],
+      "hazards": [
+        "Enormous whirlpools and boils",
+        "Cold water"
+      ],
+      "logistics": "Ferry coordination across Lago Tagua Tagua required.",
+      "pkrProTip": "Ensure all gear is tightly secured; a swim in the Puelo canyon can mean a 1-kilometer float before reaching an eddy."
+    },
+    {
+      "id": "rio-espolon",
+      "name": "R\u00edo Espol\u00f3n",
+      "section": "Lago Espol\u00f3n to R\u00edo Futaleuf\u00fa Confluence",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "III \u2013 IV",
+      "classNumber": 3,
+      "character": "Crystal Clear Playboating & Friendly Canyons",
+      "lengthKm": 9,
+      "durationHours": "2 hrs",
+      "gradient": "9 m/km (48 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 45,
+        "minCfs": 530,
+        "maxCfs": 1600,
+        "notes": "Lake-fed and crystal clear; great warmup when arriving in Futaleuf\u00fa."
+      },
+      "gaugeInfo": {
+        "code": "ESPOLON-VIS",
+        "name": "Espol\u00f3n Bridge Visual",
+        "source": "Visual Gauge",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Lago Espol\u00f3n Dam / Outflow",
+        "lat": -43.19,
+        "lng": -71.88,
+        "accessBeta": "Put in below the small weir at the outflow of Lago Espol\u00f3n, 6 km from Futaleuf\u00fa town."
+      },
+      "takeOut": {
+        "name": "Futaleuf\u00fa Confluence Bridge",
+        "lat": -43.18,
+        "lng": -71.95,
+        "accessBeta": "Take out at the bridge just before it empties into the main R\u00edo Futaleuf\u00fa."
+      },
+      "davidBeta": "The Espol\u00f3n is the perfect palate-cleanser in the Futaleuf\u00fa valley. While the main Futa is massive and roaring, the Espol\u00f3n is playful, welcoming, and crystal clear. Fun wave trains, friendly eddies, and gorgeous scenery right outside the town of Futaleuf\u00fa. Ideal for warmups, playboating, and intermediate progression.",
+      "keyRapids": [
+        {
+          "name": "The Play Wave",
+          "grade": "Class III",
+          "description": "Glassy wave ideal for front surfs and spins."
+        }
+      ],
+      "hazards": [
+        "Overhanging willows on lower flat reaches"
+      ],
+      "logistics": "Only 10 minutes from town.",
+      "pkrProTip": "Do this on your first day in Futa to shake off the road dust and stretch your paddling muscles."
+    },
+    {
+      "id": "rio-palena",
+      "name": "R\u00edo Palena",
+      "section": "Alto Palena to La Junta",
+      "regionId": "los-lagos",
+      "regionName": "Los Lagos & Northern Patagonia",
+      "grade": "III \u2013 IV",
+      "classNumber": 3,
+      "character": "Grand Andean Wilderness Expedition",
+      "lengthKm": 45,
+      "durationHours": "Multi-Day or Long Day (6+ hrs)",
+      "gradient": "4 m/km (21 ft/mi)",
+      "optimalFlow": {
+        "minCms": 80,
+        "maxCms": 300,
+        "minCfs": 2800,
+        "maxCfs": 10500,
+        "notes": "Large multi-day river crossing from the Argentine border down through Northern Patagonia."
+      },
+      "gaugeInfo": {
+        "code": "10700001-1",
+        "name": "Palena en La Junta (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Alto Palena Village",
+        "lat": -43.62,
+        "lng": -71.8,
+        "accessBeta": "Put in near the border town of Alto Palena."
+      },
+      "takeOut": {
+        "name": "Carretera Austral Bridge at La Junta",
+        "lat": -43.98,
+        "lng": -72.4,
+        "accessBeta": "Take out at the major bridge on the Carretera Austral near La Junta."
+      },
+      "davidBeta": "The Palena is the great untamed wilderness river of the south. It flows through untouched Patagonian forests, past pioneer homesteads and snow-capped peaks. Wide, high-volume, and continuous Class III with occasional Class IV wave trains. Perfect for multi-day self-support kayak expeditions.",
+      "keyRapids": [
+        {
+          "name": "Palena Canyons",
+          "grade": "Class III+",
+          "description": "Continuous rolling waves with sheer wilderness views."
+        }
+      ],
+      "hazards": [
+        "Remote multi-day environment; carry full repair kit and satellite communicator"
+      ],
+      "logistics": "Long shuttle along the Carretera Austral.",
+      "pkrProTip": "Bring camping gear and fish along the way; the brown and rainbow trout fishing on the Palena is legendary."
+    },
+    {
+      "id": "rio-baker-upper",
+      "name": "R\u00edo Baker",
+      "section": "Upper Baker & El Salt\u00f3n (Lago General Carrera to Nef)",
+      "regionId": "aysen",
+      "regionName": "Ays\u00e9n & Southern Patagonia",
+      "grade": "V (V+ at El Salt\u00f3n)",
+      "classNumber": 5,
+      "character": "Chile's Mightiest River by Volume & The King of Blue",
+      "lengthKm": 18,
+      "durationHours": "3 hrs",
+      "gradient": "5 m/km (26 ft/mi)",
+      "optimalFlow": {
+        "minCms": 400,
+        "maxCms": 950,
+        "minCfs": 14000,
+        "maxCfs": 33500,
+        "notes": "Colossal volume. The Baker drains South America's second-largest lake. The visual sensation of pure cobalt blue power is beyond words."
+      },
+      "gaugeInfo": {
+        "code": "11315001-7",
+        "name": "Baker en Bajo Confluencia Nef (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/baker"
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Puerto Bertrand (Lago General Carrera Outflow)",
+        "lat": -46.93,
+        "lng": -72.83,
+        "accessBeta": "Put in right at Puerto Bertrand where the turquoise lake spills out into the Baker."
+      },
+      "takeOut": {
+        "name": "Confluencia R\u00edo Nef / Carretera Austral Access",
+        "lat": -47.12,
+        "lng": -72.78,
+        "accessBeta": "Take out on river-right above the unrunnable Salto del Nef waterfall, or portage/take out at the highway viewpoint."
+      },
+      "davidBeta": "The R\u00edo Baker is an emotional, awe-inspiring river. Flowing with a staggering 500 to 1,000 cubic meters per second of luminous neon blue water, it is Chile's largest river by volume. The power is visceral: wave trains that rise like ocean swells, eddy fences that test every ounce of your core stability, and the thunderous rapid 'El Salt\u00f3n'. Standing on the gravel bar in Puerto Bertrand looking at the Baker will make the hair on your arms stand up. Respect its scale, paddle with power, and savor every stroke.",
+      "keyRapids": [
+        {
+          "name": "The Bertrand Waves",
+          "grade": "Class IV",
+          "description": "Massive 12-foot rolling green swells immediately below the lake outlet."
+        },
+        {
+          "name": "El Salt\u00f3n",
+          "grade": "Class V / V+",
+          "description": "The monster of the Baker. The entire river compresses through a narrow rock canyon, creating a 15-foot diagonal hydraulic and violent boil surges. Scout meticulously from river-right; portage is readily available."
+        },
+        {
+          "name": "Confluencia Nef",
+          "grade": "Class IV+",
+          "description": "Where the milky-grey glacial waters of R\u00edo Nef slam into the electric blue Baker. Surreal color line and heavy compression boils."
+        }
+      ],
+      "hazards": [
+        "Colossal whirlpools and boil lines capable of pulling a kayak underwater for several seconds",
+        "Mandatory takeout / portage above Salto del Nef (deadly waterfall)"
+      ],
+      "logistics": "Carretera Austral (Ruta 7). Puerto Bertrand has great lodges, caba\u00f1as, and local guides.",
+      "pkrProTip": "If you portage El Salt\u00f3n, do it with pride. The Baker is about living to paddle another day. The section from Bertrand down to the Nef confluence without Salt\u00f3n is one of the most majestic Class IV big water paddles on earth."
+    },
+    {
+      "id": "rio-baker-lower",
+      "name": "R\u00edo Baker",
+      "section": "Lower Baker (Nef Confluence to Cochrane Bridge)",
+      "regionId": "aysen",
+      "regionName": "Ays\u00e9n & Southern Patagonia",
+      "grade": "III+ \u2013 IV",
+      "classNumber": 4,
+      "character": "High-Volume Blue Wave Trains & Vast Patagonian Vistas",
+      "lengthKm": 24,
+      "durationHours": "3 \u2013 4 hrs",
+      "gradient": "3 m/km (16 ft/mi)",
+      "optimalFlow": {
+        "minCms": 450,
+        "maxCms": 1000,
+        "minCfs": 16000,
+        "maxCfs": 35000,
+        "notes": "Always high volume and runnable all season long."
+      },
+      "gaugeInfo": {
+        "code": "11315001-7",
+        "name": "Baker en Bajo Confluencia Nef (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/baker"
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Below Salto del Nef",
+        "lat": -47.13,
+        "lng": -72.78,
+        "accessBeta": "Hike down the trail below Salto del Nef on river-right."
+      },
+      "takeOut": {
+        "name": "Puente Chacabuco or Cochrane Highway Crossing",
+        "lat": -47.25,
+        "lng": -72.68,
+        "accessBeta": "Take out at the highway bridge connecting to the town of Cochrane."
+      },
+      "davidBeta": "The Lower Baker offers all the visual grandeur and rolling swell of the upper river without the extreme Class V crux of El Salt\u00f3n. You cruise between towering arid steppe hills and snow-draped Patagonian peaks. Big rolling wave trains, wide open lines, and playful eddy surfs.",
+      "keyRapids": [
+        {
+          "name": "Chacabuco Swells",
+          "grade": "Class III+",
+          "description": "Continuous rollers and big easy waves."
+        }
+      ],
+      "hazards": [
+        "Strong downstream winds can kick up spray in wide canyon sections"
+      ],
+      "logistics": "Parque Patagonia and Cochrane are nearby for lodging and provisioning.",
+      "pkrProTip": "Keep an eye out for Andean condors soaring overhead along the valley cliffs."
+    },
+    {
+      "id": "rio-simpson",
+      "name": "R\u00edo Simpson",
+      "section": "Caj\u00f3n de Farrellones (Coyhaique Gorge)",
+      "regionId": "aysen",
+      "regionName": "Ays\u00e9n & Southern Patagonia",
+      "grade": "IV \u2013 IV+",
+      "classNumber": 4,
+      "character": "Deep Basalt Canyon & High-Cadence Creeking",
+      "lengthKm": 12,
+      "durationHours": "2.5 hrs",
+      "gradient": "12 m/km (63 ft/mi)",
+      "optimalFlow": {
+        "minCms": 30,
+        "maxCms": 90,
+        "minCfs": 1050,
+        "maxCfs": 3180,
+        "notes": "Spring snowmelt and summer rainfall."
+      },
+      "gaugeInfo": {
+        "code": "11100001-2",
+        "name": "Simpson en Coyhaique (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 February",
+      "putIn": {
+        "name": "Puente Farrellones Upper",
+        "lat": -45.54,
+        "lng": -72.15,
+        "accessBeta": "Access from Route 240 connecting Coyhaique to Puerto Chacabuco."
+      },
+      "takeOut": {
+        "name": "Puente Simpson Lower",
+        "lat": -45.48,
+        "lng": -72.3,
+        "accessBeta": "Take out along Route 240 before it joins the Ma\u00f1ihuales."
+      },
+      "davidBeta": "Just outside Coyhaique, the capital of Ays\u00e9n, the R\u00edo Simpson carves through a dramatic canyon known as Caj\u00f3n de Farrellones. The whitewater is pushy, fast, and exciting Class IV with steep wave trains, boofs off rock shelves, and vertical canyon scenery. A staple for paddlers making the trek south along the Carretera Austral.",
+      "keyRapids": [
+        {
+          "name": "The Farrellones Squeeze",
+          "grade": "Class IV+",
+          "description": "River constricts through dark basalt walls with surging compression waves."
+        }
+      ],
+      "hazards": [
+        "Undercut canyon bends",
+        "Fast cold current"
+      ],
+      "logistics": "Paved highway parallel to the canyon provides straightforward shuttles.",
+      "pkrProTip": "Coyhaique has outstanding local breweries and asados; celebrate your run at one of the craft pubs in town."
+    },
+    {
+      "id": "rio-figueroa",
+      "name": "R\u00edo Figueroa",
+      "section": "Lago Rosselot to R\u00edo Palena Confluence",
+      "regionId": "aysen",
+      "regionName": "Ays\u00e9n & Southern Patagonia",
+      "grade": "IV (IV+)",
+      "classNumber": 4,
+      "character": "Turquoise Jewel & Dense Patagonian Forest",
+      "lengthKm": 20,
+      "durationHours": "3.5 hrs",
+      "gradient": "9 m/km (48 ft/mi)",
+      "optimalFlow": {
+        "minCms": 40,
+        "maxCms": 120,
+        "minCfs": 1400,
+        "maxCfs": 4200,
+        "notes": "Lake-buffered from Lago Rosselot; reliable flows throughout mid-summer."
+      },
+      "gaugeInfo": {
+        "code": "FIGUEROA-VIS",
+        "name": "Lago Rosselot Outflow Gauge",
+        "source": "Visual Gauge",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "December \u2013 March",
+      "putIn": {
+        "name": "Lago Rosselot Outflow / Puyuhuapi",
+        "lat": -44.15,
+        "lng": -72.32,
+        "accessBeta": "Access via the gravel road near the village of La Junta toward Lago Rosselot."
+      },
+      "takeOut": {
+        "name": "R\u00edo Palena Confluence Bridge",
+        "lat": -44.02,
+        "lng": -72.4,
+        "accessBeta": "Take out at the confluence bridge near La Junta."
+      },
+      "davidBeta": "The Figueroa is one of the hidden gems of Northern Ays\u00e9n. Flowing out of Lago Rosselot with dazzling turquoise clarity, it cuts through ancient temperate rainforest. Continuous Class IV boulder gardens, clean drops, and exhilarating wave trains without the crowds. It's wilderness paddling at its finest.",
+      "keyRapids": [
+        {
+          "name": "The Gateway",
+          "grade": "Class IV",
+          "description": "First major rapid below the lake with surging waves and deep eddies."
+        },
+        {
+          "name": "The Triple Boof",
+          "grade": "Class IV+",
+          "description": "Three sequential ledge drops requiring clean boof strokes on the right."
+        }
+      ],
+      "hazards": [
+        "Remote canyon; minimal cell service",
+        "Occasional wood on gravel braids"
+      ],
+      "logistics": "Gravel road access; high clearance recommended.",
+      "pkrProTip": "Combine with a visit to the Queulat Hanging Glacier national park just down the road."
+    },
+    {
+      "id": "rio-pascua",
+      "name": "R\u00edo Pascua",
+      "section": "Lago O'Higgins Outflow to Bajo Pisagua",
+      "regionId": "aysen",
+      "regionName": "Ays\u00e9n & Southern Patagonia",
+      "grade": "V (V+)",
+      "classNumber": 5,
+      "character": "Extreme Glacial Monster & End of the World Expedition",
+      "lengthKm": 30,
+      "durationHours": "Full Day / Multi-Day",
+      "gradient": "6 m/km (32 ft/mi)",
+      "optimalFlow": {
+        "minCms": 250,
+        "maxCms": 700,
+        "minCfs": 8800,
+        "maxCfs": 25000,
+        "notes": "Drains the Southern Patagonian Icefield and Lago O'Higgins. Intense glacial power."
+      },
+      "gaugeInfo": {
+        "code": "11500001-3",
+        "name": "Pascua en Desag\u00fce Lago O'Higgins (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "January \u2013 March",
+      "putIn": {
+        "name": "Desag\u00fce Lago O'Higgins",
+        "lat": -48.2,
+        "lng": -73.1,
+        "accessBeta": "At the very end of the Carretera Austral in Villa O'Higgins. Boat charter required to reach lake outflow."
+      },
+      "takeOut": {
+        "name": "Bajo Pisagua / Pacific Ocean Fjord",
+        "lat": -48.15,
+        "lng": -73.45,
+        "accessBeta": "Boat evacuation back through the fjords to Tortel."
+      },
+      "davidBeta": "The Pascua is the ultimate frontier. Located at the terminus of the Carretera Austral, it drains the monster Southern Patagonian Icefield. This is serious, high-consequence Class V wilderness whitewater on a massive scale. Only experienced, self-sufficient expedition teams with extensive safety and emergency evacuation plans should attempt this river.",
+      "keyRapids": [
+        {
+          "name": "The Icefield Surge",
+          "grade": "Class V",
+          "description": "Massive compression waves through sheer granite walls."
+        }
+      ],
+      "hazards": [
+        "Complete isolation",
+        "Catastrophic volume",
+        "Freezing water"
+      ],
+      "logistics": "Requires boat charter logistics at both ends in Villa O'Higgins and Caleta Tortel.",
+      "pkrProTip": "Strictly for elite expedition crews. Treat the Pascua with the reverence of a high-altitude Himalayan peak."
+    },
+    {
+      "id": "rio-biobio-el-nacimiento",
+      "name": "R\u00edo B\u00edo B\u00edo",
+      "section": "El Nacimiento (Lago Galletu\u00e9 to Lonquimay)",
+      "regionId": "biobio",
+      "regionName": "Biob\u00edo & \u00d1uble",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "The Historic Cradle of Chilean Whitewater",
+      "lengthKm": 25,
+      "durationHours": "4 hrs",
+      "gradient": "10 m/km (53 ft/mi)",
+      "optimalFlow": {
+        "minCms": 40,
+        "maxCms": 140,
+        "minCfs": 1400,
+        "maxCfs": 4900,
+        "notes": "Drains the pristine high Andes above the dam reservoirs. Free-flowing and sacred."
+      },
+      "gaugeInfo": {
+        "code": "08300001-9",
+        "name": "B\u00edo B\u00edo en Lonquimay (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 February",
+      "putIn": {
+        "name": "Lago Galletu\u00e9 Outflow",
+        "lat": -38.68,
+        "lng": -71.28,
+        "accessBeta": "Put in where the infant B\u00edo B\u00edo flows out of Lago Galletu\u00e9 in Pehuenche indigenous territory."
+      },
+      "takeOut": {
+        "name": "Puente Lonquimay",
+        "lat": -38.42,
+        "lng": -71.36,
+        "accessBeta": "Take out near the town of Lonquimay."
+      },
+      "davidBeta": "The B\u00edo B\u00edo is sacred ground in whitewater history. Before dam construction on its lower canyons in the 1990s, it was celebrated alongside the Grand Canyon and Zambezi as one of the world's premier big water rivers. Today, the upper section\u2014El Nacimiento\u2014remains free-flowing, pristine, and wild. You paddle through ancestral Pehuenche territory lined with ancient Araucaria trees. The whitewater is crisp, continuous, and deeply inspiring.",
+      "keyRapids": [
+        {
+          "name": "Pehuenche Ledges",
+          "grade": "Class IV",
+          "description": "Staircase of clean volcanic ledges with deep recovery pools."
+        },
+        {
+          "name": "The Upper Gorge",
+          "grade": "Class IV+",
+          "description": "Continuous boulder slalom with surging wave trains."
+        }
+      ],
+      "hazards": [
+        "Cold high-Andean water",
+        "Respect local indigenous Pehuenche protocols"
+      ],
+      "logistics": "Ruta 181 via Lonquimay. High-clearance vehicle useful for lake access.",
+      "pkrProTip": "Show profound respect to local Pehuenche communities along the river; this river is their cultural heart."
+    },
+    {
+      "id": "rio-nuble",
+      "name": "R\u00edo \u00d1uble",
+      "section": "San Fabi\u00e1n de Alico Canyon",
+      "regionId": "biobio",
+      "regionName": "Biob\u00edo & \u00d1uble",
+      "grade": "IV \u2013 IV+",
+      "classNumber": 4,
+      "character": "Granite Boulder Gardens & Community Whitewater Pride",
+      "lengthKm": 16,
+      "durationHours": "3 hrs",
+      "gradient": "12 m/km (63 ft/mi)",
+      "optimalFlow": {
+        "minCms": 35,
+        "maxCms": 110,
+        "minCfs": 1200,
+        "maxCfs": 3900,
+        "notes": "Spring snowmelt (Oct\u2013Dec) brings world-class flows celebrated by the annual \u00d1ubleFest."
+      },
+      "gaugeInfo": {
+        "code": "08110001-1",
+        "name": "\u00d1uble en San Fabi\u00e1n (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 January (Peak: Nov)",
+      "putIn": {
+        "name": "El Caracol / Upper Bridge",
+        "lat": -36.52,
+        "lng": -71.42,
+        "accessBeta": "Take Route N-31 east from San Fabi\u00e1n de Alico up the valley to El Caracol."
+      },
+      "takeOut": {
+        "name": "Puente San Fabi\u00e1n",
+        "lat": -36.56,
+        "lng": -71.55,
+        "accessBeta": "Take out at the main bridge entering San Fabi\u00e1n de Alico."
+      },
+      "davidBeta": "The R\u00edo \u00d1uble is one of Chile's crown jewels of river conservation. Saved from devastating mega-dams through passionate grassroots community activism and the international kayaking community's annual \u00d1ubleFest, the river flows free with spectacular granite boulder rapids. The water is clear, the gradient is steady, and the rapids are athletic, technical, and immensely rewarding.",
+      "keyRapids": [
+        {
+          "name": "El Caracol",
+          "grade": "Class IV",
+          "description": "Continuous steep boulder slalom weaving through granite blocks."
+        },
+        {
+          "name": "The S-Turn",
+          "grade": "Class IV+",
+          "description": "Tight line between granite shelves with explosive lateral waves."
+        }
+      ],
+      "hazards": [
+        "Sieve pockets among large granite boulders at low water",
+        "Fast continuous current at high spring flows"
+      ],
+      "logistics": "Ruta N-31 from San Carlos / Chill\u00e1n. San Fabi\u00e1n is a welcoming paddling haven with great artisan bread and local fruit.",
+      "pkrProTip": "Attend \u00d1ubleFest if your travel dates align in November; it's the warmest, most energetic river festival in Chile."
+    },
+    {
+      "id": "rio-diguillin",
+      "name": "R\u00edo Diguill\u00edn",
+      "section": "Termas de Chill\u00e1n Foothills to Recinto",
+      "regionId": "biobio",
+      "regionName": "Biob\u00edo & \u00d1uble",
+      "grade": "IV (IV+)",
+      "classNumber": 4,
+      "character": "Lush Native Forest & Bedrock Drops",
+      "lengthKm": 12,
+      "durationHours": "2.5 hrs",
+      "gradient": "16 m/km (85 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 45,
+        "minCfs": 530,
+        "maxCfs": 1600,
+        "notes": "Optimal during spring melt from Volc\u00e1n Chill\u00e1n."
+      },
+      "gaugeInfo": {
+        "code": "08120001-6",
+        "name": "Diguill\u00edn en San Manuel (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 December",
+      "putIn": {
+        "name": "Puente Shangri-La / Las Trancas Road",
+        "lat": -36.9,
+        "lng": -71.58,
+        "accessBeta": "Take the road from Chill\u00e1n toward Termas de Chill\u00e1n. Turn south toward the Diguill\u00edn valley."
+      },
+      "takeOut": {
+        "name": "Puente Recinto",
+        "lat": -36.88,
+        "lng": -71.72,
+        "accessBeta": "Take out near the town of Recinto."
+      },
+      "davidBeta": "The Diguill\u00edn offers steep, technical creeking through magnificent native Roble and Coig\u00fce forests. Fed by the volcanic slopes of Nevados de Chill\u00e1n, it features clean bedrock ledges, tight chutes, and technical boofing. A top-tier day trip on your way south to Puc\u00f3n.",
+      "keyRapids": [
+        {
+          "name": "Shangri-La Boof",
+          "grade": "Class IV+",
+          "description": "Clean 6-foot launch off a granite tongue into a foam-filled basin."
+        }
+      ],
+      "hazards": [
+        "Wood after winter storms",
+        "Basalt crevices"
+      ],
+      "logistics": "Paved and gravel roads from Chill\u00e1n.",
+      "pkrProTip": "Combine with skiing or soaking in the hot springs at Termas de Chill\u00e1n during the spring season."
+    },
+    {
+      "id": "rio-queuco",
+      "name": "R\u00edo Queuco",
+      "section": "Trapa Trapa to Ralco Confluence",
+      "regionId": "biobio",
+      "regionName": "Biob\u00edo & \u00d1uble",
+      "grade": "IV \u2013 IV+",
+      "classNumber": 4,
+      "character": "Pehuenche Territory & Granite Canyon",
+      "lengthKm": 18,
+      "durationHours": "3 hrs",
+      "gradient": "14 m/km (74 ft/mi)",
+      "optimalFlow": {
+        "minCms": 20,
+        "maxCms": 65,
+        "minCfs": 700,
+        "maxCfs": 2300,
+        "notes": "Spring and early summer runoff."
+      },
+      "gaugeInfo": {
+        "code": "08310001-3",
+        "name": "Queuco en Ralco (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Puente Trapa Trapa",
+        "lat": -37.85,
+        "lng": -71.3,
+        "accessBeta": "Take the road from Ralco east along the Queuco valley into indigenous Pehuenche communities."
+      },
+      "takeOut": {
+        "name": "Puente Queuco / Ralco",
+        "lat": -37.89,
+        "lng": -71.6,
+        "accessBeta": "Take out at the confluence bridge near the town of Alto B\u00edo B\u00edo (Ralco)."
+      },
+      "davidBeta": "The Queuco is a magnificent tributary of the upper B\u00edo B\u00edo basin, flowing through the heart of the Pehuenche indigenous homeland. The river is clear, steep, and sporty with continuous Class IV boulder drops, wave trains, and granite slots. Pristine alpine scenery and rich cultural heritage.",
+      "keyRapids": [
+        {
+          "name": "Trapa Chute",
+          "grade": "Class IV+",
+          "description": "Narrow bedrock slot requiring crisp boat angle."
+        }
+      ],
+      "hazards": [
+        "Undercut boulders",
+        "Cold water"
+      ],
+      "logistics": "Gravel road along the valley; register with local community checkpoints.",
+      "pkrProTip": "Be respectful and polite with local community elders; buying local pine nuts (pi\u00f1ones) is customary and delicious."
+    },
+    {
+      "id": "rio-laja",
+      "name": "R\u00edo Laja",
+      "section": "Laguna del Laja Outflow to Antuco",
+      "regionId": "biobio",
+      "regionName": "Biob\u00edo & \u00d1uble",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Volcanic Slag Fields & Steep Drops",
+      "lengthKm": 14,
+      "durationHours": "2.5 hrs",
+      "gradient": "18 m/km (95 ft/mi)",
+      "optimalFlow": {
+        "minCms": 25,
+        "maxCms": 75,
+        "minCfs": 880,
+        "maxCfs": 2650,
+        "notes": "Fed by Laguna del Laja beneath Volc\u00e1n Antuco."
+      },
+      "gaugeInfo": {
+        "code": "08340001-7",
+        "name": "Laja en Antuco (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Below Laguna del Laja",
+        "lat": -37.38,
+        "lng": -71.42,
+        "accessBeta": "Take Route Q-45 from Los \u00c1ngeles through Antuco to Laguna del Laja National Park."
+      },
+      "takeOut": {
+        "name": "Puente Antuco",
+        "lat": -37.33,
+        "lng": -71.65,
+        "accessBeta": "Take out at the road bridge near Antuco."
+      },
+      "davidBeta": "Flowing through black lava beds below the active cone of Volc\u00e1n Antuco, the upper Laja is dramatic and raw. It offers steep ledge drops, violent wave trains, and athletic boofs. The volcanic landscape is severe and beautiful.",
+      "keyRapids": [
+        {
+          "name": "Antuco Ledges",
+          "grade": "Class IV+",
+          "description": "Steep drop over black volcanic basalt shelves."
+        }
+      ],
+      "hazards": [
+        "Sharp volcanic rocks",
+        "Hydro dam releases can fluctuate upstream water levels"
+      ],
+      "logistics": "Paved road from Los \u00c1ngeles.",
+      "pkrProTip": "Always verify upstream dam release schedules at the Antuco station before launching."
+    },
+    {
+      "id": "rio-claro-22-teacups",
+      "name": "R\u00edo Claro de Talca",
+      "section": "22 Teacups (Radal Siete Tazas National Park)",
+      "regionId": "maule",
+      "regionName": "O'Higgins & Maule",
+      "grade": "IV+ / V (V+)",
+      "classNumber": 5,
+      "character": "Chile's World-Famous Basalt Teacup Drops & Gorges",
+      "lengthKm": 6,
+      "durationHours": "3 \u2013 4 hrs",
+      "gradient": "35 m/km (185 ft/mi)",
+      "optimalFlow": {
+        "minCms": 7,
+        "maxCms": 18,
+        "minCfs": 250,
+        "maxCfs": 640,
+        "notes": "Extremely flow-sensitive. Too low and you will destroy your boat and ankles on shallow pool bottoms; too high and the teacups develop terminal recirculating drowning machines."
+      },
+      "gaugeInfo": {
+        "code": "CLARO-VISUAL",
+        "name": "Parque Radal Siete Tazas Visual",
+        "source": "Visual Gauge at Park Footbridge",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "December \u2013 February (Mid-summer low flows)",
+      "putIn": {
+        "name": "Radal Siete Tazas Footbridge",
+        "lat": -35.48,
+        "lng": -71.02,
+        "accessBeta": "Drive from Molina into Parque Nacional Radal Siete Tazas. Register with Conaf rangers. Put in below the tourist lookouts."
+      },
+      "takeOut": {
+        "name": "Salto de la Leona / Lower Park Boundary",
+        "lat": -35.46,
+        "lng": -71.06,
+        "accessBeta": "Take out before or after the designated gorge exit trail. Steep scramble up out of the canyon."
+      },
+      "davidBeta": "The 22 Teacups of the R\u00edo Claro is one of the most celebrated and surreal whitewater spectacles on earth. The river has sculpted circular pools\u2014'teacups'\u2014out of polished black basalt. You literally drop 8 to 18 feet from one circular basalt bowl directly into the next. It requires pinpoint precision: miss the boof or pencil in at the wrong angle and you risk fracturing an ankle on shallow bedrock or getting trapped in a churning circular hydraulic. Run it with experienced locals, respect the low flow window, and you will remember it for the rest of your life.",
+      "keyRapids": [
+        {
+          "name": "The First Teacup",
+          "grade": "Class IV+",
+          "description": "A 10-foot vertical drop over a smooth basalt lip into a perfectly circular 20-foot pool."
+        },
+        {
+          "name": "The S-Teacup",
+          "grade": "Class V",
+          "description": "Double drop with a 90-degree turn inside the bowl. Must-make boof right."
+        },
+        {
+          "name": "Salto de la Leona",
+          "grade": "Class V+",
+          "description": "A sheer 35-foot vertical waterfall dropping into a tight volcanic slot canyon. Scout meticulously from the rim."
+        }
+      ],
+      "hazards": [
+        "Shallow bedrock pool bottoms (pencil landings can cause serious ankle and spinal impact)",
+        "Terminal hydraulic back-washes in the teacups if water is even slightly too high",
+        "Vertical canyon walls offer zero escape once committed between drops"
+      ],
+      "logistics": "Paved and gravel road from Molina (1.5 hrs). Conaf park registration mandatory. Bring elbow pads, face guard, and full creeking safety kit.",
+      "pkrProTip": "Do not rush this run. Step out on the basalt rim, check the depth of every landing pool with your breakdown paddle, and ensure safety ropes are rigged at the crux drops."
+    },
+    {
+      "id": "rio-cachapoal-upper",
+      "name": "R\u00edo Cachapoal",
+      "section": "Upper Cachapoal (Sewell / Termas de Cauquenes Gorge)",
+      "regionId": "maule",
+      "regionName": "O'Higgins & Maule",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "High-Andean Torrent & Glacial Big Water",
+      "lengthKm": 16,
+      "durationHours": "3 hrs",
+      "gradient": "16 m/km (85 ft/mi)",
+      "optimalFlow": {
+        "minCms": 35,
+        "maxCms": 90,
+        "minCfs": 1200,
+        "maxCfs": 3200,
+        "notes": "Spring and early summer glacial snowmelt."
+      },
+      "gaugeInfo": {
+        "code": "06010001-2",
+        "name": "Cachapoal en Puente Termas (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 January",
+      "putIn": {
+        "name": "Termas de Cauquenes Access",
+        "lat": -34.25,
+        "lng": -70.58,
+        "accessBeta": "Drive east from Rancagua toward Coya. Put in near the historic hot springs."
+      },
+      "takeOut": {
+        "name": "Puente Coya",
+        "lat": -34.22,
+        "lng": -70.68,
+        "accessBeta": "Take out at the bridge near Coya."
+      },
+      "davidBeta": "Flowing down from the towering mining peaks around Sewell, the Upper Cachapoal is a roaring, fast-paced high-altitude Andean river. Grey glacial melt, continuous boulder fields, and big compression waves through a dramatic mountain gorge.",
+      "keyRapids": [
+        {
+          "name": "Coya Canyon",
+          "grade": "Class IV+",
+          "description": "Continuous pushy waves with heavy hydraulics."
+        }
+      ],
+      "hazards": [
+        "Silt-laden opaque water hides submerged boulders",
+        "Mining infrastructure upstream"
+      ],
+      "logistics": "Only 1.5 hours south of Santiago via the Pan-American Highway and Rancagua.",
+      "pkrProTip": "Wear warm gear; the glacial runoff off the high peaks is icy cold."
+    },
+    {
+      "id": "rio-tinguiririca",
+      "name": "R\u00edo Tinguiririca",
+      "section": "Termas del Flaco to San Fernando",
+      "regionId": "maule",
+      "regionName": "O'Higgins & Maule",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Steep Glacial Torrent & Dinosaur Track Foothills",
+      "lengthKm": 18,
+      "durationHours": "3 hrs",
+      "gradient": "18 m/km (95 ft/mi)",
+      "optimalFlow": {
+        "minCms": 20,
+        "maxCms": 55,
+        "minCfs": 700,
+        "maxCfs": 1950,
+        "notes": "Best in spring runoff."
+      },
+      "gaugeInfo": {
+        "code": "06020001-7",
+        "name": "Tinguiririca en Bajo Briones (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 December",
+      "putIn": {
+        "name": "Termas del Flaco Mountain Road",
+        "lat": -34.95,
+        "lng": -70.45,
+        "accessBeta": "Take the mountain road from San Fernando toward Termas del Flaco. Put in where river parallels road."
+      },
+      "takeOut": {
+        "name": "Puente Puente Negro",
+        "lat": -34.68,
+        "lng": -70.82,
+        "accessBeta": "Take out near Puente Negro outside San Fernando."
+      },
+      "davidBeta": "The Tinguiririca cuts through high Andean badlands famed for fossilized dinosaur footprints. The whitewater is unrelenting, fast, and steep. Big boulder slalom rapids, pushy chutes, and cold mountain volume.",
+      "keyRapids": [
+        {
+          "name": "The Jurassic Chute",
+          "grade": "Class IV+",
+          "description": "Fast sluice between high cliffs."
+        }
+      ],
+      "hazards": [
+        "Fast current with few recovery pools at high water"
+      ],
+      "logistics": "Gravel mountain road; check road schedule (alternating one-way traffic during tourist season).",
+      "pkrProTip": "Check road times before leaving San Fernando as the road to Termas del Flaco often has one-way ascending/descending windows."
+    },
+    {
+      "id": "rio-melado",
+      "name": "R\u00edo Melado",
+      "section": "Melado Wilderness Canyon",
+      "regionId": "maule",
+      "regionName": "O'Higgins & Maule",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "Remote Multi-Day Andean Wilderness Canyon",
+      "lengthKm": 35,
+      "durationHours": "Multi-Day Expedition (2 Days)",
+      "gradient": "14 m/km (74 ft/mi)",
+      "optimalFlow": {
+        "minCms": 30,
+        "maxCms": 80,
+        "minCfs": 1050,
+        "maxCfs": 2800,
+        "notes": "Spring and early summer expedition flows."
+      },
+      "gaugeInfo": {
+        "code": "07310001-4",
+        "name": "Melado en El Salto (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Embalse Melado / Tunnel Outlet",
+        "lat": -35.8,
+        "lng": -71.05,
+        "accessBeta": "Access via the historic Melado canal tunnel road high in the Andes east of Linares."
+      },
+      "takeOut": {
+        "name": "Confluence with R\u00edo Maule",
+        "lat": -35.65,
+        "lng": -71.25,
+        "accessBeta": "Take out at the confluence with the Maule or paddle out to the highway bridge."
+      },
+      "davidBeta": "The Melado is a true Andean epic. Tucked deep in the rugged Cordillera east of Linares, it slices through a vertical wilderness canyon accessible only by kayak. Self-support expedition paddling through continuous Class IV\u2013V boulder rapids, remote riverside bivy camps, and complete Andean isolation.",
+      "keyRapids": [
+        {
+          "name": "The Melado Gate",
+          "grade": "Class V",
+          "description": "Sheer canyon entrance with massive boulders and must-make moves."
+        }
+      ],
+      "hazards": [
+        "Zero road access inside the canyon; self-rescue required"
+      ],
+      "logistics": "Requires full expedition planning and 4WD access to the high tunnel.",
+      "pkrProTip": "Pack lightweight titanium gear and freeze-dried meals; keep your boat light to maintain responsiveness in the drops."
+    },
+    {
+      "id": "rio-achibueno",
+      "name": "R\u00edo Achibueno",
+      "section": "Montecillo to Linares",
+      "regionId": "maule",
+      "regionName": "O'Higgins & Maule",
+      "grade": "III+ / IV",
+      "classNumber": 4,
+      "character": "Crystal Emerald Sanctuary & Granite Pools",
+      "lengthKm": 18,
+      "durationHours": "3 hrs",
+      "gradient": "10 m/km (53 ft/mi)",
+      "optimalFlow": {
+        "minCms": 20,
+        "maxCms": 60,
+        "minCfs": 700,
+        "maxCfs": 2100,
+        "notes": "Prismatic crystal clarity; protected Nature Sanctuary."
+      },
+      "gaugeInfo": {
+        "code": "07320001-9",
+        "name": "Achibueno en Recinto (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 February",
+      "putIn": {
+        "name": "Montecillo Foothills",
+        "lat": -36.05,
+        "lng": -71.35,
+        "accessBeta": "Drive east from Linares along the Achibueno Nature Sanctuary road."
+      },
+      "takeOut": {
+        "name": "Puente Achibueno",
+        "lat": -35.95,
+        "lng": -71.55,
+        "accessBeta": "Take out at the main road bridge outside Linares."
+      },
+      "davidBeta": "The Achibueno was declared a Nature Sanctuary to preserve its breathtaking turquoise water and ancient native forests. The paddling is clean, friendly Class III\u2013IV with crystalline pools, playful boulder gardens, and stunning mountain backdrop. An absolute delight.",
+      "keyRapids": [
+        {
+          "name": "Sanctuary Waves",
+          "grade": "Class III+",
+          "description": "Continuous roller coaster waves over granite gravel."
+        }
+      ],
+      "hazards": [
+        "Fallen branches along lower braided channels"
+      ],
+      "logistics": "Easy gravel road access from Linares.",
+      "pkrProTip": "One of the best camping rivers in central Chile. Pristine campsites on gravel beaches everywhere."
+    },
+    {
+      "id": "rio-maule-upper",
+      "name": "R\u00edo Maule",
+      "section": "Laguna del Maule to Armerillo",
+      "regionId": "maule",
+      "regionName": "O'Higgins & Maule",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "High-Volume Basalt Canyon & Pehuenche Highway",
+      "lengthKm": 22,
+      "durationHours": "3.5 hrs",
+      "gradient": "14 m/km (74 ft/mi)",
+      "optimalFlow": {
+        "minCms": 40,
+        "maxCms": 120,
+        "minCfs": 1400,
+        "maxCfs": 4200,
+        "notes": "Spring snowmelt from the massive volcanic caldera of Laguna del Maule."
+      },
+      "gaugeInfo": {
+        "code": "07300001-7",
+        "name": "Maule en Armerillo (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Below Laguna del Maule Dam / Campanario",
+        "lat": -35.9,
+        "lng": -70.6,
+        "accessBeta": "Take International Route CH-115 (Pehuenche Pass). Put in below the dam outflow."
+      },
+      "takeOut": {
+        "name": "Puente Armerillo",
+        "lat": -35.7,
+        "lng": -71.1,
+        "accessBeta": "Take out at the highway bridge in Armerillo."
+      },
+      "davidBeta": "The Maule drains an immense volcanic caldera right on the Argentine frontier. Big water, steep volcanic drops, and massive waves compressing between high basalt walls. Powerful and scenic along the Pehuenche Pass corridor.",
+      "keyRapids": [
+        {
+          "name": "The Campanario Drop",
+          "grade": "Class IV+",
+          "description": "Steep drop over basalt boulders."
+        }
+      ],
+      "hazards": [
+        "Hydro dam release shifts",
+        "Cold water"
+      ],
+      "logistics": "Paved international highway CH-115.",
+      "pkrProTip": "Check upstream dam operations at Colb\u00fan before scheduling your run."
+    },
+    {
+      "id": "rio-maipo",
+      "name": "R\u00edo Maipo",
+      "section": "Caj\u00f3n del Maipo (San Gabriel to El Melocot\u00f3n)",
+      "regionId": "central",
+      "regionName": "Central Chile",
+      "grade": "III+ \u2013 IV+ (V at high summer melt)",
+      "classNumber": 4,
+      "character": "Glacial Big Water Silt Torrent in High Andean Canyon",
+      "lengthKm": 15,
+      "durationHours": "2 \u2013 2.5 hrs",
+      "gradient": "12 m/km (63 ft/mi)",
+      "optimalFlow": {
+        "minCms": 40,
+        "maxCms": 110,
+        "minCfs": 1400,
+        "maxCfs": 3900,
+        "notes": "At 40\u201370 m\u00b3/s, it is high-energy Class III\u2013IV big water. Above 120 m\u00b3/s during hot December afternoons, it becomes a thunderous Class V brown freight train."
+      },
+      "gaugeInfo": {
+        "code": "05700001-4",
+        "name": "Maipo en El Manzano (DGA)",
+        "source": "DGA Chile / ChileWaterLevels",
+        "hasLiveChileWaterLevelsLink": true,
+        "chileWaterLevelsUrl": "https://chilewaterlevels.com/maipo"
+      },
+      "season": "October \u2013 February (Peak: Nov\u2013Jan)",
+      "putIn": {
+        "name": "Puente San Gabriel",
+        "lat": -33.78,
+        "lng": -70.22,
+        "accessBeta": "Take Route G-25 from Santiago up Caj\u00f3n del Maipo. Put in river-left at Puente San Gabriel."
+      },
+      "takeOut": {
+        "name": "El Melocot\u00f3n / San Alfonso",
+        "lat": -33.72,
+        "lng": -70.35,
+        "accessBeta": "Take out at the commercial raft landing at El Melocot\u00f3n or below San Alfonso bridge."
+      },
+      "davidBeta": "The Maipo is the lifeblood of Santiago kayaking. Located just an hour's drive from the capital's international airport, it plunges out of 6,000-meter peaks down the dramatic Caj\u00f3n del Maipo. The water is thick with grey-brown Andean glacial silt, creating heavy, dense waves that pack immense kinetic punch. The rapids are continuous, punchy wave trains, exploding laterals, and fast boil seams. A great place to shake off jet lag when flying into Chile.",
+      "keyRapids": [
+        {
+          "name": "The San Gabriel Chute",
+          "grade": "Class IV",
+          "description": "Fast opening rapid with towering lateral waves compressing against a gravel bluff."
+        },
+        {
+          "name": "The Roller Coaster",
+          "grade": "Class IV",
+          "description": "Half-mile of continuous, crashing head-high wave trains."
+        },
+        {
+          "name": "The Bridge Drop",
+          "grade": "Class IV+",
+          "description": "River pinches through bridge piers with heavy boisterous hydraulics."
+        }
+      ],
+      "hazards": [
+        "Heavy silt reduces buoyancy slightly and makes water opaque; submerged rocks are invisible",
+        "Hot sunny afternoons trigger explosive glacial runoff that can double flow by 4 PM"
+      ],
+      "logistics": "Fully paved road G-25 from Santiago. Fantastic bakeries, empanada stands, and lodges throughout San Jos\u00e9 de Maipo.",
+      "pkrProTip": "Keep your eyes on the daily temperature forecast in Santiago. A hot 35\u00b0C day in the city means the Maipo will rise aggressively by mid-afternoon. Paddle in the morning for predictable flows."
+    },
+    {
+      "id": "rio-yeso",
+      "name": "R\u00edo Yeso",
+      "section": "Embalse El Yeso to Maipo Confluence",
+      "regionId": "central",
+      "regionName": "Central Chile",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "High-Alpine Boulder Creeking & Glacial Reservoir Outflow",
+      "lengthKm": 12,
+      "durationHours": "2.5 \u2013 3 hrs",
+      "gradient": "28 m/km (148 ft/mi)",
+      "optimalFlow": {
+        "minCms": 12,
+        "maxCms": 32,
+        "minCfs": 420,
+        "maxCfs": 1130,
+        "notes": "Controlled by releases from Embalse El Yeso dam reservoir."
+      },
+      "gaugeInfo": {
+        "code": "05705001-1",
+        "name": "Yeso en Desag\u00fce Embalse (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Below Embalse El Yeso Dam",
+        "lat": -33.68,
+        "lng": -70.1,
+        "accessBeta": "Take the rough dirt mountain road up Caj\u00f3n del Yeso past the turquoise reservoir."
+      },
+      "takeOut": {
+        "name": "Puente San Gabriel (Maipo Confluence)",
+        "lat": -33.78,
+        "lng": -70.22,
+        "accessBeta": "Take out at the confluence bridge with R\u00edo Maipo."
+      },
+      "davidBeta": "The Yeso is steep, cold, and alpine. Cutting through stark high-desert Andean peaks beneath Embalse El Yeso, it tumbles down a steep gradient of sharp granite boulders. Technical lines, continuous read-and-run, and breathtaking high-mountain scenery.",
+      "keyRapids": [
+        {
+          "name": "The Dam Sluice",
+          "grade": "Class IV+",
+          "description": "Fast opening rapid on steep gradient."
+        },
+        {
+          "name": "The Boulder Labyrinth",
+          "grade": "Class V",
+          "description": "Tight slalom weaving through house-sized granite boulders."
+        }
+      ],
+      "hazards": [
+        "Cold water",
+        "Sharp rocks and low air temperatures in early season"
+      ],
+      "logistics": "Gravel mountain road; check municipal road status during rain or snow flurries.",
+      "pkrProTip": "Dress warmly; despite warm Santiago weather, Caj\u00f3n del Yeso sits at over 2,500m elevation."
+    },
+    {
+      "id": "rio-colorado-maipo",
+      "name": "R\u00edo Colorado (Maipo Basin)",
+      "section": "Maitenes to Maipo Confluence",
+      "regionId": "central",
+      "regionName": "Central Chile",
+      "grade": "IV \u2013 V",
+      "classNumber": 5,
+      "character": "High-Velocity Silt Chute & Deep Canyon",
+      "lengthKm": 11,
+      "durationHours": "2 hrs",
+      "gradient": "22 m/km (116 ft/mi)",
+      "optimalFlow": {
+        "minCms": 15,
+        "maxCms": 40,
+        "minCfs": 530,
+        "maxCfs": 1400,
+        "notes": "Heavy silt content; fast and pushy."
+      },
+      "gaugeInfo": {
+        "code": "05703001-0",
+        "name": "Colorado en Maitenes (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "October \u2013 December",
+      "putIn": {
+        "name": "Puente Los Maitenes",
+        "lat": -33.55,
+        "lng": -70.3,
+        "accessBeta": "Turn off G-25 at El Manzano and head north up the Colorado mining road."
+      },
+      "takeOut": {
+        "name": "Puente Colorado / Maipo Confluence",
+        "lat": -33.59,
+        "lng": -70.38,
+        "accessBeta": "Take out near the bridge before it joins the Maipo."
+      },
+      "davidBeta": "A ferocious mountain torrent draining the glaciated cirque of Tupungato volcano. Extremely fast, continuous current with few catching eddies. Heavy silt and high speed make it a thrilling, high-adrenaline run.",
+      "keyRapids": [
+        {
+          "name": "The Silt Cannon",
+          "grade": "Class IV+",
+          "description": "Continuous steep drop with powerful compression waves."
+        }
+      ],
+      "hazards": [
+        "Very few eddies; swim would be long and cold"
+      ],
+      "logistics": "Mining road; watch for heavy truck traffic.",
+      "pkrProTip": "Ensure your roll is 100% dialed before launching into this high-velocity silt flume."
+    },
+    {
+      "id": "rio-aconcagua",
+      "name": "R\u00edo Aconcagua",
+      "section": "Salto del Soldado to San Esteban",
+      "regionId": "central",
+      "regionName": "Central Chile",
+      "grade": "IV \u2013 IV+",
+      "classNumber": 4,
+      "character": "Legendary Gorge Beneath Mt. Aconcagua & Portillo",
+      "lengthKm": 14,
+      "durationHours": "2.5 hrs",
+      "gradient": "16 m/km (85 ft/mi)",
+      "optimalFlow": {
+        "minCms": 25,
+        "maxCms": 70,
+        "minCfs": 880,
+        "maxCfs": 2470,
+        "notes": "Spring snowmelt draining the slopes of Mt. Aconcagua along the international highway to Mendoza."
+      },
+      "gaugeInfo": {
+        "code": "05410001-8",
+        "name": "Aconcagua en Chacabuquito (DGA)",
+        "source": "DGA Chile",
+        "hasLiveChileWaterLevelsLink": false,
+        "chileWaterLevelsUrl": ""
+      },
+      "season": "November \u2013 January",
+      "putIn": {
+        "name": "Below Salto del Soldado",
+        "lat": -32.88,
+        "lng": -70.42,
+        "accessBeta": "Take the international highway Route 60 toward Portillo. Put in below the legendary railroad chasm of Salto del Soldado."
+      },
+      "takeOut": {
+        "name": "Chacabuquito Bridge",
+        "lat": -32.85,
+        "lng": -70.55,
+        "accessBeta": "Take out at the highway bridge near San Esteban / Los Andes."
+      },
+      "davidBeta": "Flowing down from the highest mountain in the Western Hemisphere (Aconcagua, 6,961m), the river cuts through a dramatic arid Andean gorge. Below the impassable railway chasm of Salto del Soldado, the river delivers pushy, fast Class IV big water with great wave trains and boulder rapids.",
+      "keyRapids": [
+        {
+          "name": "Soldier's Chute",
+          "grade": "Class IV+",
+          "description": "Big waves and boiling seams between steep canyon walls."
+        }
+      ],
+      "hazards": [
+        "Railway debris and old concrete chunks along banks",
+        "High-volume surges in warm weather"
+      ],
+      "logistics": "International highway Route 60 to Argentina. Easy vehicle shuttle.",
+      "pkrProTip": "Stop by local vineyard estates in the Aconcagua valley for world-class Carm\u00e9n\u00e8re after your run."
+    }
+  ]
+}

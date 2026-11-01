@@ -1,0 +1,17 @@
+{
+  "name": "Chile Kayak Guide",
+  "short_name": "Chile Kayak",
+  "description": "Whitewater kayaking guide to the rivers of Chile with David Hughes & PKR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#06141f",
+  "theme_color": "#06141f",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
