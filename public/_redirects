@@ -1,3 +1,8 @@
-# Cloudflare Pages Redirects
-# SPA routing fallback for deep URLs
-/*    /index.html   200
+# Do not add `/* /index.html 200`.
+# Cloudflare Pages treats that splat as an infinite loop: the rewrite target
+# `/index.html` is itself matched by `/*`, then extension stripping sends the
+# request back through the same rule. A root 404.html also disables Pages'
+# built-in SPA fallback, so the rule never produced HTTP 200 for deep links.
+# Valid region and river URLs are real HTML files emitted by the Vite build.
+# Anything else is this project's 404.html, served with status 404.
+# /api/* is handled by Pages Functions and is not listed here.
