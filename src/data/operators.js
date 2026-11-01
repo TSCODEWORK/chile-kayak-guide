@@ -47,6 +47,7 @@ export const OPERATORS = [
   {
     id: 'pkr',
     url: 'https://puconkayakretreat.com',
+    logoUrl: 'logos/pkr.png',
     regions: ['araucania', 'maule', 'central', 'los-rios', 'los-lagos'],
     featured: true,
     badge: 'featured',
@@ -157,6 +158,7 @@ export const OPERATORS = [
   {
     id: 'exchile',
     url: 'https://www.exchile.com',
+    logoUrl: 'logos/exchile.png',
     regions: ['los-lagos'],
     featured: false,
     badge: 'vetted',
@@ -254,6 +256,7 @@ export const OPERATORS = [
   {
     id: 'kriminal',
     url: 'https://www.kriminalkayak.com',
+    logoUrl: 'logos/kriminal.png',
     regions: ['los-lagos'],
     featured: false,
     badge: 'specialist',

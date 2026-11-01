@@ -1483,8 +1483,8 @@ class ChileKayakApp {
       <details class="glass outfitter-card ${operator.featured ? 'is-featured' : ''}" data-oid="${esc(operator.id)}" id="${esc(operator.id)}"${isOpen ? ' open' : ''}>
         <summary class="oc-sum">
           <div class="oc-sum-left">
-            <div class="oc-logo-box" aria-hidden="true">
-              ${operator.logoSvg || ''}
+            <div class="oc-logo-box logo-${esc(operator.id)}" aria-hidden="true">
+              <img src="${esc(joinBase(base(), operator.logoUrl || ('logos/' + operator.id + '.png')))}" alt="${esc(name)} logo" class="oc-logo-img" loading="lazy">
             </div>
             <div class="oc-sum-content">
               <div class="oc-sum-top">
