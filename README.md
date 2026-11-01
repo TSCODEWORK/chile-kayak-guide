@@ -1,4 +1,4 @@
-# Chile Whitewater Kayaking Guide
+# Chile Whitewater Kayak Guide
 
 [![Status](https://img.shields.io/badge/Status-Production_Ready-0ea5e9.svg)](https://github.com/TSCODEWORK/chile-kayak-guide)
 [![Partner](https://img.shields.io/badge/Partner-Pucon_Kayak_Retreat_(PKR)-f59e0b.svg)](https://puconkayakretreat.com)

@@ -47,16 +47,6 @@ function rapidTone(grade) {
   return 'grade-3';
 }
 
-function excerpt(text, limit = 168) {
-  const clean = String(text).replace(/\s+/g, ' ').trim();
-  if (clean.length <= limit) return clean;
-  return `${clean.slice(0, limit).replace(/\s+\S*$/, '')}…`;
-}
-
-function shortGradient(value) {
-  return String(value).split('(')[0].trim();
-}
-
 class ChileKayakApp {
   constructor() {
     this.unit = storageGet('ckg.unit') === 'cfs' ? 'cfs' : 'cms';
@@ -71,6 +61,7 @@ class ChileKayakApp {
     this.map = null;
     this.locator = null;
     this.searchActive = -1;
+    this.levels = {};
 
     this.mainEl = document.getElementById('app-view');
     this.panelEl = document.getElementById('panel');
@@ -112,6 +103,7 @@ class ChileKayakApp {
     }
     window.addEventListener('popstate', () => this.handleRoute(true));
     this.handleRoute(true);
+    this.loadLevels();
   }
 
   bindEvents() {
@@ -254,12 +246,12 @@ class ChileKayakApp {
   updateTitle(route) {
     if (route.name === 'region') {
       const region = getRegionById(route.id);
-      document.title = region ? `${region.name} · Chile Kayak Guide` : 'Chile Kayak Guide';
+      document.title = region ? `${region.name} · Chile Whitewater Kayak Guide` : 'Chile Whitewater Kayak Guide';
     } else if (route.name === 'river') {
       const river = getRiverById(route.id);
-      document.title = river ? `${river.name} · Chile Kayak Guide` : 'Chile Kayak Guide';
+      document.title = river ? `${river.name} · Chile Whitewater Kayak Guide` : 'Chile Whitewater Kayak Guide';
     } else {
-      document.title = 'Chile Kayak Guide · Whitewater atlas';
+      document.title = 'Chile Whitewater Kayak Guide';
     }
   }
 
@@ -366,9 +358,9 @@ class ChileKayakApp {
     this.mainEl.innerHTML = `
       <div class="view-enter">
         <header class="home-lead">
-          <p class="eyebrow">Whitewater atlas</p>
+          <p class="eyebrow">Chile Whitewater Kayak Guide</p>
           <h2>The <em>long</em> country.</h2>
-          <p class="lede">Forty-four runs from the Maipo to the Baker, drawn on a real map of Chile. Choose a region and drop in.</p>
+          <p class="lede">${RIVERS.length} runs on the real map of Chile. Where a Chile Water Levels gauge is the run, the live reading is on the card.</p>
         </header>
         <section id="focus-card" class="focus-card"></section>
         <section class="region-index" aria-label="Kayaking regions">
@@ -506,8 +498,70 @@ class ChileKayakApp {
     this.map?.setRiverFilter((river) => this.riverMatches(river));
   }
 
+  async loadLevels() {
+    const root = window.__APP_BASE__ || '/';
+    const url = `${root.endsWith('/') ? root : `${root}/`}api/levels`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const data = await res.json();
+      this.levels = Object.fromEntries((data.readings || []).map((reading) => [reading.runId, reading]));
+      if (this.view === 'region' && this.currentId) this.paintRegionResults(getRegionById(this.currentId));
+      else if (this.view === 'river' && this.currentId) {
+        const scroll = this.panelEl?.scrollTop || 0;
+        this.renderRiver(this.currentId);
+        if (this.panelEl) this.panelEl.scrollTop = scroll;
+      }
+    } catch {
+      /* live feed is optional */
+    }
+  }
+
+  formatReading(reading) {
+    if (reading.kind === 'level') return `${Number(reading.value).toFixed(2)} m`;
+    const cms = Number(reading.value);
+    if (this.unit === 'cfs') return `${Math.round(cms * 35.3146667).toLocaleString()} cfs`;
+    return `${cms >= 100 ? Math.round(cms) : cms} m³/s`;
+  }
+
+  ageLabel(minutes) {
+    if (minutes == null) return '';
+    if (minutes < 1) return 'just now';
+    if (minutes < 60) return `${minutes} min ago`;
+    return `${Math.round(minutes / 60)} h ago`;
+  }
+
+  cwlMark() {
+    return `<svg class="cwl-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#0e5a7a"/><path d="M5 13c3-3 5-3 8 0s5 3 8 0 4-2 6-1" fill="none" stroke="#9be7f5" stroke-width="2.2" stroke-linecap="round"/><path d="M5 19c3-3 5-3 8 0s5 3 8 0 4-2 6-1" fill="none" stroke="#4fd1e8" stroke-width="2.2" stroke-linecap="round" opacity=".75"/><path d="M5 25c3-3 5-3 8 0s5 3 8 0 4-2 6-1" fill="none" stroke="#2dd4bf" stroke-width="2.2" stroke-linecap="round" opacity=".45"/></svg>`;
+  }
+
+  levelBlock(runId, linked) {
+    const reading = this.levels?.[runId];
+    if (!reading) return '';
+    const badges = [];
+    if (reading.basis === 'estimated') badges.push('Estimated');
+    if (reading.basis === 'derived') badges.push('Derived');
+    if (reading.basis === 'experimental') badges.push('Experimental');
+    if (reading.stale) badges.push(`Stale · ${this.ageLabel(reading.ageMinutes)}`);
+    const trend = reading.trend === 'rising' ? 'Rising' : reading.trend === 'falling' ? 'Falling' : reading.trend === 'steady' ? 'Steady' : '';
+    const when = reading.stale ? '' : this.ageLabel(reading.ageMinutes);
+    const stick = reading.gaugeApprox != null ? ` · gauge ≈ ${reading.gaugeApprox}` : '';
+    const tag = linked ? 'a' : 'div';
+    const attrs = linked ? ` href="${esc(reading.href)}" target="_blank" rel="noopener noreferrer"` : '';
+    return `<${tag} class="level-chip"${attrs}>
+      ${this.cwlMark()}
+      <span>
+        <b>${esc(this.formatReading(reading))}</b>
+        <small>${esc(reading.stationName)}${trend ? ` · ${esc(trend)}` : ''}${when ? ` · ${esc(when)}` : ''}${esc(stick)}</small>
+        <small>Chile Water Levels · ${esc(reading.credit)}</small>
+        ${badges.length ? `<span class="level-badges">${badges.map((badge) => `<span class="level-badge${badge.startsWith('Stale') ? ' stale' : ''}">${esc(badge)}</span>`).join('')}</span>` : ''}
+      </span>
+      ${reading.stale ? '' : '<i class="level-live" aria-hidden="true"></i>'}
+    </${tag}>`;
+  }
+
   riverCard(river, index) {
-    const live = river.gaugeInfo?.hasLiveChileWaterLevelsLink;
+    const level = this.levelBlock(river.id, false);
     return `
       <a class="river-card" data-river-card="${esc(river.id)}" href="${esc(joinBase(base(), `/river/${encodeURIComponent(river.id)}`))}" style="--i:${Math.min(index, 8)}">
         <div class="card-top">
@@ -517,15 +571,8 @@ class ChileKayakApp {
           </div>
           ${gradeChip(river.classNumber, river.grade)}
         </div>
-        <p class="character">${esc(river.character)}</p>
-        <dl class="card-metrics">
-          <div><dt>Flow</dt><dd>${esc(this.formatFlow(river.optimalFlow))}</dd></div>
-          <div><dt>Length</dt><dd>${esc(river.lengthKm)} km</dd></div>
-          <div><dt>Gradient</dt><dd>${esc(shortGradient(river.gradient))}</dd></div>
-        </dl>
-        <p class="guide-kicker">Guide beta</p>
-        <p class="excerpt">${esc(excerpt(river.davidBeta))}</p>
-        <p class="card-foot">${live ? '<span class="live-dot">Live gauge</span>' : `<span>${esc(river.season)}</span>`}<span>Open run</span></p>
+        ${level || `<p class="glance">${esc(this.formatFlow(river.optimalFlow))} optimal</p>`}
+        <p class="card-foot"><span>${esc(String(river.season).split('(')[0].trim())}</span><span>Open run</span></p>
       </a>
     `;
   }
@@ -539,9 +586,11 @@ class ChileKayakApp {
     this.view = 'river';
     this.currentId = riverId;
     const region = getRegionById(river.regionId);
-    const live = river.gaugeInfo?.hasLiveChileWaterLevelsLink;
     const home = esc(joinBase(base(), '/'));
     const regionHref = esc(joinBase(base(), `/region/${encodeURIComponent(river.regionId)}`));
+    const levelsLink = river.gaugeInfo?.chileWaterLevelsUrl
+      ? `<p><a href="${esc(river.gaugeInfo.chileWaterLevelsUrl)}" target="_blank" rel="noopener noreferrer">Chile Water Levels</a></p>`
+      : '';
     this.mainEl.innerHTML = `
       <article class="river-page view-enter">
         <p class="crumbs">
@@ -549,8 +598,6 @@ class ChileKayakApp {
           <span aria-hidden="true">/</span>
           <a href="${regionHref}">${esc(region?.name || river.regionName)}</a>
         </p>
-        <div id="run-map" class="run-map" role="img" aria-label="Map showing the put-in and take-out of ${esc(river.name)}"></div>
-        <p class="map-legend"><span><i class="legend-put"></i> Put-in</span><span><i class="legend-take"></i> Take-out</span></p>
         <header class="river-hero">
           <p class="eyebrow">${esc(river.regionName)}</p>
           <div class="hero-line">
@@ -558,76 +605,56 @@ class ChileKayakApp {
             ${gradeChip(river.classNumber, river.grade)}
           </div>
           <p class="section-name">${esc(river.section)}</p>
-          <p class="character">${esc(river.character)}</p>
         </header>
-        <dl class="metric-grid">
-          <div>
-            <dt>Optimal flow</dt>
-            <dd>${esc(this.formatFlow(river.optimalFlow))}</dd>
-            <p>${esc(river.optimalFlow?.notes || '')}</p>
-          </div>
-          <div>
-            <dt>Distance and time</dt>
-            <dd>${esc(river.lengthKm)} km</dd>
-            <p>${esc(river.durationHours)}</p>
-          </div>
-          <div>
-            <dt>Gradient</dt>
-            <dd>${esc(shortGradient(river.gradient))}</dd>
-            <p>${esc(river.gradient)}</p>
-          </div>
-          <div>
-            <dt>Season</dt>
-            <dd>${esc(String(river.season).split('(')[0].trim())}</dd>
-            <p>${esc(river.season)}</p>
-          </div>
-        </dl>
-        ${live ? `
-          <aside class="gauge-band">
-            <div>
-              <p class="eyebrow">Live gauge</p>
-              <h3>${esc(river.gaugeInfo.name)}</h3>
-              <p>Dirección General de Aguas station ${esc(river.gaugeInfo.code)}, read on ChileWaterLevels.</p>
-            </div>
-            <a class="btn btn-primary" href="${esc(river.gaugeInfo.chileWaterLevelsUrl)}" target="_blank" rel="noopener noreferrer">Open live gauge</a>
+        ${this.levelBlock(river.id, true)}
+        <p class="glance">${esc(this.formatFlow(river.optimalFlow))} optimal · ${esc(river.lengthKm)} km · ${esc(String(river.season).split('(')[0].trim())}</p>
+        <div id="run-map" class="run-map" role="img" aria-label="Map showing the put-in and take-out of ${esc(river.name)}"></div>
+        <p class="map-legend"><span><i class="legend-put"></i> Put-in</span><span><i class="legend-take"></i> Take-out</span></p>
+        <details class="dive">
+          <summary>Dive deeper</summary>
+          <section class="prose-block">
+            <h3>Guide beta</h3>
+            <p>${esc(river.davidBeta)}</p>
+          </section>
+          <aside class="pro-tip">
+            <p class="eyebrow">Pro tip</p>
+            <p>${esc(river.pkrProTip)}</p>
           </aside>
-        ` : ''}
-        <section class="prose-block">
-          <h3>Guide beta</h3>
-          <p>${esc(river.davidBeta)}</p>
-        </section>
-        <aside class="pro-tip">
-          <p class="eyebrow">Pro tip</p>
-          <p>${esc(river.pkrProTip)}</p>
-        </aside>
-        <section class="prose-block">
-          <h3>Rapids</h3>
-          <ol class="rapid-list">
-            ${river.keyRapids.map((rapid) => `
-              <li>
-                <div class="rapid-top">
-                  <h4>${esc(rapid.name)}</h4>
-                  <span class="grade-chip ${rapidTone(rapid.grade)}">${esc(rapid.grade)}</span>
-                </div>
-                <p>${esc(rapid.description)}</p>
-              </li>
-            `).join('')}
-          </ol>
-        </section>
-        <section class="prose-block">
-          <h3>Hazards</h3>
-          <ul class="hazard-list">
-            ${river.hazards.map((hazard) => `<li>${esc(hazard)}</li>`).join('')}
-          </ul>
-        </section>
-        <section class="prose-block">
-          <h3>Access</h3>
-          <p>${esc(river.logistics)}</p>
-          <div class="access-grid">
-            ${this.accessCard('Put-in', river.putIn)}
-            ${this.accessCard('Take-out', river.takeOut)}
-          </div>
-        </section>
+          <section class="prose-block">
+            <h3>Flow notes</h3>
+            <p>${esc(river.optimalFlow?.notes || '')}</p>
+            <p>${esc(river.gradient)} · ${esc(river.durationHours)}</p>
+            ${levelsLink}
+          </section>
+          <section class="prose-block">
+            <h3>Rapids</h3>
+            <ol class="rapid-list">
+              ${river.keyRapids.map((rapid) => `
+                <li>
+                  <div class="rapid-top">
+                    <h4>${esc(rapid.name)}</h4>
+                    <span class="grade-chip ${rapidTone(rapid.grade)}">${esc(rapid.grade)}</span>
+                  </div>
+                  <p>${esc(rapid.description)}</p>
+                </li>
+              `).join('')}
+            </ol>
+          </section>
+          <section class="prose-block">
+            <h3>Hazards</h3>
+            <ul class="hazard-list">
+              ${river.hazards.map((hazard) => `<li>${esc(hazard)}</li>`).join('')}
+            </ul>
+          </section>
+          <section class="prose-block">
+            <h3>Access</h3>
+            <p>${esc(river.logistics)}</p>
+            <div class="access-grid">
+              ${this.accessCard('Put-in', river.putIn)}
+              ${this.accessCard('Take-out', river.takeOut)}
+            </div>
+          </section>
+        </details>
       </article>
     `;
     const slot = document.getElementById('run-map');
