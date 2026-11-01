@@ -1,8 +1,9 @@
 # Chile Whitewater Kayaking Guide
 
-[![Live Demo](https://img.shields.io/badge/Status-Live-0ea5e9.svg)](https://github.com/TSCODEWORK/chile-kayak-guide)
+[![Status](https://img.shields.io/badge/Status-Production_Ready-0ea5e9.svg)](https://github.com/TSCODEWORK/chile-kayak-guide)
 [![Partner](https://img.shields.io/badge/Partner-Pucon_Kayak_Retreat_(PKR)-f59e0b.svg)](https://puconkayakretreat.com)
 [![Telemetry](https://img.shields.io/badge/Telemetry-ChileWaterLevels.com-10b981.svg)](https://chilewaterlevels.com)
+[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-Ready-f38020.svg?logo=cloudflare)](https://pages.cloudflare.com)
 
 A high-performance, minimalist whitewater kayaking guide to the rivers of Chile, modeled after the look, speed, and simplicity of **Chilewaterlevels.com**.
 
@@ -10,9 +11,25 @@ Curated in collaboration with **David Hughes** (founder of **Pucón Kayak Retrea
 
 ---
 
+## ⚡ Architecture & Cloudflare Readiness
+
+The codebase is built on an extensible, modular architecture designed for instant local development and enterprise edge deployment on **Cloudflare Pages**:
+
+- **Build Engine**: [Vite](https://vitejs.dev/) with tree-shaking, automated CSS bundling, and sub-50ms incremental builds.
+- **Cloudflare Edge Headers (`public/_headers`)**: Pre-configured with HSTS, CSP, X-Frame-Options, immutable static asset caching (1 year), and `stale-while-revalidate` for lightning-fast edge delivery (matching ChileWaterLevels).
+- **SPA Deep Linking (`public/_redirects`)**: Edge redirects ensuring direct URLs (e.g. `/#/river/trancura-upper`) resolve instantly.
+- **Serverless Edge Functions (`functions/api/`)**:
+  - `GET /api/rivers`: Serverless edge endpoint supporting filtering by `?region=`, `?class=`, and `?search=`.
+  - `GET /api/health`: Uptime monitoring endpoint.
+- **Automated CI/CD**:
+  - GitHub Actions runs full schema validation (740+ assertions) on every commit.
+  - Ready for automatic push-to-deploy to Cloudflare Pages via `wrangler.toml`.
+
+---
+
 ## 🌊 Key Features
 
-- **Interactive Map of Chile (ChileWaterLevels Aesthetic)**:
+- **Interactive Map of Chile**:
   - Responsive SVG vector map of Chile divided into 7 distinct whitewater kayaking regions.
   - Hover over any region to illuminate it with glowing neon strokes and view real-time metrics (river counts, class breakdown, top classics, season).
   - Click any region or hotspot pin to dive directly into regional rivers and detailed guides.
@@ -43,40 +60,91 @@ Curated in collaboration with **David Hughes** (founder of **Pucón Kayak Retrea
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Developer Guide
 
-This is a zero-dependency static web application that runs directly in any modern browser.
+### Prerequisites
+- Node.js >= 18
+- npm >= 9
 
-### Run Locally
+### Quick Start
 
 ```bash
 # Clone the repository
 git clone https://github.com/TSCODEWORK/chile-kayak-guide.git
 cd chile-kayak-guide
 
-# Start any static local server (e.g. Python)
-python3 -m http.server 8000
-```
+# Install dependencies
+npm install
 
-Open [http://localhost:8000](http://localhost:8000) in your web browser.
+# Start local development server with hot-module reload (HMR)
+npm run dev
+
+# Run data integrity & schema validation tests
+npm test
+
+# Build production bundle for Cloudflare Pages
+npm run build
+
+# Preview production build locally
+npm run preview
+```
 
 ---
 
-## 📁 Project Structure
+## ☁️ Deploying to Cloudflare Pages
+
+### Option 1: Automatic via Cloudflare Dashboard (Recommended)
+1. In Cloudflare Dashboard, navigate to **Compute (Workers) > Workers & Pages > Create application > Pages**.
+2. Connect your GitHub account and select repository `TSCODEWORK/chile-kayak-guide`.
+3. Set the build settings:
+   - **Framework preset**: None / Vite
+   - **Build command**: `npm run build`
+   - **Build output directory**: `dist`
+4. Click **Save and Deploy**. Cloudflare will build and deploy the site across its global edge network.
+
+### Option 2: Deploying via Wrangler CLI
+```bash
+# Build the production bundle
+npm run build
+
+# Deploy directly using Wrangler
+npx wrangler pages deploy dist --project-name=chile-kayak-guide
+```
+
+---
+
+## 📁 Project Directory Structure
 
 ```
-├── index.html              # Main application shell
-├── favicon.svg             # SVG vector logo
-├── manifest.webmanifest    # PWA web manifest
-├── css/
-│   └── style.css           # Glassmorphic dark styling & animations
-├── js/
-│   ├── app.js              # Hash router, state controller, search
-│   └── map.js              # Interactive Chile SVG map component
-├── data/
-│   ├── rivers-data.js      # Core ES module database (44 rivers, 7 regions)
-│   └── rivers.json         # Portable JSON database
-└── README.md
+chile-kayak-guide/
+├── index.html                  # Main SPA entry point
+├── package.json                # Project dependencies, scripts & metadata
+├── vite.config.js              # Vite bundler configuration
+├── wrangler.toml               # Cloudflare Pages / Workers configuration
+├── .github/
+│   └── workflows/
+│       ├── ci.yml              # CI test & Cloudflare deploy action
+│       └── pages.yml           # GitHub Pages deployment action
+├── functions/                  # Cloudflare Serverless Edge Functions
+│   └── api/
+│       ├── health.js           # GET /api/health edge endpoint
+│       └── rivers.js           # GET /api/rivers edge API endpoint
+├── public/                     # Static files copied to build output
+│   ├── _headers                # Cloudflare caching & security headers
+│   ├── _redirects              # Cloudflare SPA fallback redirects
+│   ├── favicon.svg             # Vector brand icon
+│   ├── manifest.webmanifest    # PWA configuration
+│   └── rivers.json             # Portable JSON database
+├── src/                        # Modular source code
+│   ├── main.js                 # Router, state controller, search
+│   ├── components/
+│   │   └── Map.js              # Interactive Chile SVG map component
+│   ├── data/
+│   │   └── rivers-data.js      # Typed river catalog (44 runs, 7 regions)
+│   └── styles/
+│       └── style.css           # Glassmorphic dark theme & animations
+└── tests/
+    └── data-integrity.test.js  # Automated schema & data validation
 ```
 
 ---

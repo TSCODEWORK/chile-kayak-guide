@@ -1,11 +1,13 @@
-// Chile Kayak Guide - Core Application Controller & Router
-// Curated in partnership with David Hughes (Pucon Kayak Retreat / PKR)
-// Inspired by the speed and aesthetic of Chilewaterlevels.com
+// Chile Kayak Guide - Core Application Entry Point
+// Built for fast edge deployment to Cloudflare Pages
+// Modeled in look and simplicity after Chilewaterlevels.com
+// Curated with David Hughes (Pucon Kayak Retreat / PKR)
 
-import { REGIONS, RIVERS, getRegionById, getRiverById, getRiversByRegion } from '../data/rivers-data.js';
-import { initChileMap } from './map.js';
+import './styles/style.css';
+import { REGIONS, RIVERS, getRegionById, getRiverById, getRiversByRegion } from './data/rivers-data.js';
+import { initChileMap } from './components/Map.js';
 
-class ChileKayakApp {
+export class ChileKayakApp {
   constructor() {
     this.unit = localStorage.getItem('ckg.unit') || 'cms'; // 'cms' (m³/s) or 'cfs'
     this.currentView = null;
@@ -36,7 +38,7 @@ class ChileKayakApp {
   }
 
   bindEvents() {
-    // Unit Toggles
+    // Unit Toggles (CMS vs CFS)
     this.unitCmsBtn?.addEventListener('click', () => this.setUnit('cms'));
     this.unitCfsBtn?.addEventListener('click', () => this.setUnit('cfs'));
 
@@ -118,7 +120,6 @@ class ChileKayakApp {
   }
 
   refreshCurrentView() {
-    // Re-render without scrolling to top if inside a view
     const hash = window.location.hash || '#/';
     if (hash.startsWith('#/region/')) {
       const regionId = hash.replace('#/region/', '').trim();
@@ -656,7 +657,7 @@ class ChileKayakApp {
   }
 }
 
-// Bootstrap Application on DOM Ready
+// Bootstrap on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new ChileKayakApp();
 });
