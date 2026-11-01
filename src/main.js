@@ -1,6 +1,6 @@
 import './styles/style.css';
 import { REGIONS, RIVERS, getRegionById, getRiverById, getRiversByRegion } from './data/rivers-data.js';
-import { OPERATORS, operatorsIn } from './data/operators.js';
+import { OPERATORS, TRIP_STYLES, PRICE_TIERS, operatorsIn, getOperatorById } from './data/operators.js';
 import { createChileMap } from './components/Map.js';
 import { joinBase, parseLocation, stripBase, toPath } from './router.js';
 import { flowStatus } from './levels.js';
@@ -69,6 +69,10 @@ class ChileKayakApp {
     this.lang = document.documentElement.lang === 'es' ? 'es' : 'en';
     this.installEvent = null;
     this.withRegion = 'all';
+    this.withStyle = 'all';
+    this.withTier = 'all';
+    this.withSearch = '';
+    this.openOperators = new Set(['pkr']);
 
     this.mainEl = document.getElementById('app-view');
     this.panelEl = document.getElementById('panel');
@@ -153,7 +157,9 @@ class ChileKayakApp {
       }
       if (event.key === 'Escape') {
         const sheet = document.getElementById('installSheet');
-        if (this.searchModal?.classList.contains('open')) this.closeSearchModal();
+        const inqModal = document.getElementById('inquiryModalContainer');
+        if (inqModal?.classList.contains('open')) this.closeWithModal();
+        else if (this.searchModal?.classList.contains('open')) this.closeSearchModal();
         else if (this.aboutModal?.classList.contains('open')) this.closeAboutModal();
         else if (sheet && !sheet.hidden) this.closeInstallSheet();
       }
@@ -958,12 +964,57 @@ class ChileKayakApp {
     return `<p class="region-ops"><span>${esc(this.t('withHere'))}</span> ${links}</p>`;
   }
 
+  getFilteredOperators() {
+    const q = this.withSearch.trim().toLowerCase();
+    return OPERATORS.filter((op) => {
+      const matchRegion = this.withRegion === 'all' || op.regions.includes(this.withRegion);
+      const matchStyle = this.withStyle === 'all' || (op.styles && op.styles.includes(this.withStyle));
+      const matchTier = this.withTier === 'all' || op.priceTier === this.withTier;
+      const name = (this.t(`ops.${op.id}.name`) || '').toLowerCase();
+      const where = (this.t(`ops.${op.id}.where`) || '').toLowerCase();
+      const offers = (this.t(`ops.${op.id}.offers`) || '').toLowerCase();
+      const detail = (this.t(`ops.${op.id}.detail`) || '').toLowerCase();
+      const baseText = ((op.base?.[this.lang] || op.base?.en) || '').toLowerCase();
+      const tagline = ((op.tagline?.[this.lang] || op.tagline?.en) || '').toLowerCase();
+      const desc = ((op.desc?.[this.lang] || op.desc?.en) || '').toLowerCase();
+      const rivers = (op.rivers || []).map((rId) => {
+        const r = getRiverById(rId);
+        return (r?.name || rId).toLowerCase();
+      });
+      const matchQuery = !q || (
+        name.includes(q) ||
+        where.includes(q) ||
+        offers.includes(q) ||
+        detail.includes(q) ||
+        baseText.includes(q) ||
+        tagline.includes(q) ||
+        desc.includes(q) ||
+        rivers.some((r) => r.includes(q))
+      );
+      return matchRegion && matchStyle && matchTier && matchQuery;
+    });
+  }
+
   renderWith() {
     this.view = 'with';
     this.currentId = null;
-    const regions = REGIONS.filter((region) => operatorsIn(region.id).length);
-    const shown = OPERATORS.filter((operator) => this.withRegion === 'all' || operator.regions.includes(this.withRegion));
+
+    const availableRegions = REGIONS.filter((region) => operatorsIn(region.id).length);
+    const regionCounts = { all: OPERATORS.length };
+    availableRegions.forEach((r) => {
+      regionCounts[r.id] = operatorsIn(r.id).length;
+    });
+
+    const tierCounts = { all: OPERATORS.length };
+    PRICE_TIERS.forEach((pt) => {
+      tierCounts[pt.tier] = OPERATORS.filter((o) => o.priceTier === pt.tier).length;
+    });
+
+    const filtered = this.getFilteredOperators();
+    const isFiltered = this.withRegion !== 'all' || this.withStyle !== 'all' || this.withTier !== 'all' || this.withSearch.trim().length > 0;
+    const allOpen = filtered.length > 0 && filtered.every((o) => this.openOperators.has(o.id));
     const hash = location.hash.replace('#', '');
+
     this.mainEl.innerHTML = `
       <div class="view-enter with-page">
         <p class="crumbs">
@@ -971,42 +1022,567 @@ class ChileKayakApp {
           <span aria-hidden="true">/</span>
           <span>${esc(this.t('withTitle'))}</span>
         </p>
-        <header class="region-head">
-          <p class="eyebrow">${esc(this.t('withEyebrow'))}</p>
-          <h2>${esc(this.t('withTitle'))}</h2>
-          <p class="lede">${esc(this.t('withLede'))}</p>
-        </header>
-        <div class="chips" role="group" aria-label="${esc(this.t('withFilter'))}">
-          <button type="button" class="filter-btn ${this.withRegion === 'all' ? 'is-on' : ''}" data-with="all">${esc(this.t('withAll'))}</button>
-          ${regions.map((region) => `<button type="button" class="filter-btn ${this.withRegion === region.id ? 'is-on' : ''}" data-with="${esc(region.id)}">${esc(region.name)}</button>`).join('')}
+
+        <div class="outfitters-header">
+          <div class="oh-title-row">
+            <div>
+              <p class="eyebrow" style="margin-bottom:0.3rem;">${esc(this.t('withEyebrow'))}</p>
+              <h1 class="oh-title" style="margin:0 0 0.4rem 0;">${esc(this.t('withTitle'))}</h1>
+              <p class="oh-sub" style="margin:0;color:var(--muted);">${esc(this.t('withLede'))}</p>
+            </div>
+            <div class="oh-top-actions">
+              <button type="button" class="btn-price-guide-trigger" id="btnOpenPriceGuide">
+                💲 ${esc(this.t('outfPriceGuideBtn'))}
+              </button>
+              <span class="trust-pill">✓ ${esc(this.t('outfTrustPill'))}</span>
+            </div>
+          </div>
+
+          <!-- Search bar -->
+          <div class="outfitter-search-row">
+            <div class="outfitter-search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="search" id="outfitterSearchInput" class="outfitter-search-input" placeholder="${esc(this.t('outfSearchPlaceholder'))}" value="${esc(this.withSearch)}" aria-label="${esc(this.t('outfSearchPlaceholder'))}">
+              <button type="button" class="search-clear-btn" id="btnSearchClear" title="Clear" style="${this.withSearch ? 'display:block;' : 'display:none;'}">✕</button>
+            </div>
+          </div>
+
+          <!-- Region filter chips -->
+          <div class="ofilter-bar" role="group" aria-label="${esc(this.t('outfFilterRegion'))}">
+            <span class="oflabel">${esc(this.t('outfFilterRegion'))}:</span>
+            <button type="button" class="ochip${this.withRegion === 'all' ? ' on' : ''}" data-oarea="all">
+              ${esc(this.t('outfAllRegions'))} <span class="chip-count">(${regionCounts.all})</span>
+            </button>
+            ${availableRegions.map((region) => `
+              <button type="button" class="ochip${this.withRegion === region.id ? ' on' : ''}" data-oarea="${esc(region.id)}">
+                ${esc(region.name)} <span class="chip-count">(${regionCounts[region.id]})</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Price Tier filter -->
+          <div class="ofilter-bar ofilter-tiers" role="group" aria-label="${esc(this.t('outfFilterPrice'))}">
+            <span class="oflabel">💲 ${esc(this.t('outfFilterPrice'))}:</span>
+            <button type="button" class="ochip${this.withTier === 'all' ? ' on' : ''}" data-otier="all">
+              ${esc(this.t('outfAllPrices'))} <span class="chip-count">(${tierCounts.all})</span>
+            </button>
+            ${PRICE_TIERS.map((pt) => `
+              <button type="button" class="ochip ochip-tier${this.withTier === pt.tier ? ' on' : ''}" data-otier="${esc(pt.tier)}">
+                ${esc(pt.range)} <span class="chip-count">(${tierCounts[pt.tier]})</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Program / Trip style filter -->
+          <div class="ofilter-bar ofilter-styles" role="group" aria-label="${esc(this.t('outfFilterStyle'))}">
+            <span class="oflabel">${esc(this.t('outfFilterStyle'))}:</span>
+            ${TRIP_STYLES.map((st) => `
+              <button type="button" class="ochip${this.withStyle === st.id ? ' on' : ''}" data-ostyle="${esc(st.id)}">
+                ${esc(st.label[this.lang] || st.label.en)}
+              </button>
+            `).join('')}
+          </div>
         </div>
-        <div class="op-list">
-          ${shown.length ? shown.map((operator) => this.operatorCard(operator, hash === operator.id)).join('') : `<p class="empty-state">${esc(this.t('withEmpty'))}</p>`}
+
+        <!-- Concierge Matchmaker Card -->
+        <div class="concierge-card glass">
+          <div class="cc-content">
+            <div class="cc-tag">★ ${esc(this.t('outfConciergeTag'))}</div>
+            <h3>${esc(this.t('outfConciergeTitle'))}</h3>
+            <p>${esc(this.t('outfConciergeDesc'))}</p>
+          </div>
+          <button type="button" class="btn-concierge" id="btnConcierge">${esc(this.t('outfConciergeBtn'))} →</button>
+        </div>
+
+        <!-- Results count & actions bar -->
+        <div class="results-bar" id="resultsBar">
+          <span class="results-count">${esc(this.t('outfShowingCount', { count: filtered.length, total: OPERATORS.length }))}</span>
+          <div class="results-actions">
+            ${filtered.length > 0 ? `<button type="button" class="btn-toggle-all" id="btnToggleAll">${allOpen ? esc(this.t('outfCollapseAll')) : esc(this.t('outfExpandAll'))}</button>` : ''}
+            ${isFiltered ? `<button type="button" class="btn-clear-filters" id="btnClearFilters">${esc(this.t('outfClearFilters'))} ✕</button>` : ''}
+          </div>
+        </div>
+
+        <!-- Outfitter Cards Grid -->
+        <div class="outfitters-grid" id="outfittersGrid">
+          ${filtered.length ? filtered.map((op) => this.operatorCard(op, hash === op.id)).join('') : `
+            <div class="outfitters-empty glass" style="padding:2rem;text-align:center;">
+              <p style="margin-bottom:0.8rem;color:var(--muted);">🛶 ${esc(this.t('withEmpty'))}</p>
+              <button type="button" class="btn-clear-filters" id="btnEmptyClear">${esc(this.t('outfClearFilters'))} ✕</button>
+            </div>
+          `}
+        </div>
+
+        <!-- Partner CTA at bottom -->
+        <div class="partner-cta glass">
+          <div class="pcta-text">
+            <h4>${esc(this.t('outfPartnerTitle'))}</h4>
+            <p>${esc(this.t('outfPartnerDesc'))}</p>
+          </div>
+          <a href="mailto:partners@chilekayakguide.com?subject=Whitewater%20School%20Listing%20Inquiry%20-%20Chile%20Kayak%20Guide" class="btn-partner" target="_blank" rel="noopener noreferrer">${esc(this.t('outfPartnerBtn'))}</a>
+        </div>
+
+        <!-- Inquiry & Price Guide Modal Container -->
+        <div id="inquiryModalContainer" class="modal-overlay"></div>
+      </div>
+    `;
+
+    document.getElementById('btnEmptyClear')?.addEventListener('click', () => this.clearWithFilters());
+    const modalContainer = document.getElementById('inquiryModalContainer');
+    modalContainer?.addEventListener('click', (e) => {
+      if (e.target === modalContainer) this.closeWithModal();
+    });
+
+    this.bindWithEvents();
+  }
+
+  updateWithResultsBar(filtered) {
+    const resultsBar = document.getElementById('resultsBar');
+    if (!resultsBar) return;
+    const isFiltered = this.withRegion !== 'all' || this.withStyle !== 'all' || this.withTier !== 'all' || this.withSearch.trim().length > 0;
+    const allOpen = filtered.length > 0 && filtered.every((o) => this.openOperators.has(o.id));
+
+    resultsBar.innerHTML = `
+      <span class="results-count">${esc(this.t('outfShowingCount', { count: filtered.length, total: OPERATORS.length }))}</span>
+      <div class="results-actions">
+        ${filtered.length > 0 ? `<button type="button" class="btn-toggle-all" id="btnToggleAll">${allOpen ? esc(this.t('outfCollapseAll')) : esc(this.t('outfExpandAll'))}</button>` : ''}
+        ${isFiltered ? `<button type="button" class="btn-clear-filters" id="btnClearFilters">${esc(this.t('outfClearFilters'))} ✕</button>` : ''}
+      </div>
+    `;
+
+    document.getElementById('btnClearFilters')?.addEventListener('click', () => this.clearWithFilters());
+    this.bindWithToggleAll();
+  }
+
+  updateWithGrid() {
+    const filtered = this.getFilteredOperators();
+    this.updateWithResultsBar(filtered);
+    const grid = document.getElementById('outfittersGrid');
+    if (!grid) return;
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div class="outfitters-empty glass" style="padding:2rem;text-align:center;">
+          <p style="margin-bottom:0.8rem;color:var(--muted);">🛶 ${esc(this.t('withEmpty'))}</p>
+          <button type="button" class="btn-clear-filters" id="btnEmptyClear">${esc(this.t('outfClearFilters'))} ✕</button>
+        </div>
+      `;
+      document.getElementById('btnEmptyClear')?.addEventListener('click', () => this.clearWithFilters());
+    } else {
+      const hash = location.hash.replace('#', '');
+      grid.innerHTML = filtered.map((op) => this.operatorCard(op, hash === op.id)).join('');
+    }
+    this.bindWithCardEvents();
+  }
+
+  bindWithEvents() {
+    const searchInput = document.getElementById('outfitterSearchInput');
+    const btnSearchClear = document.getElementById('btnSearchClear');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        this.withSearch = e.target.value;
+        if (btnSearchClear) btnSearchClear.style.display = this.withSearch ? 'block' : 'none';
+        this.updateWithGrid();
+      });
+    }
+    if (btnSearchClear) {
+      btnSearchClear.addEventListener('click', () => {
+        this.withSearch = '';
+        if (searchInput) searchInput.value = '';
+        btnSearchClear.style.display = 'none';
+        this.updateWithGrid();
+      });
+    }
+
+    // Region chips
+    this.mainEl.querySelectorAll('[data-oarea]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.withRegion = btn.dataset.oarea;
+        this.mainEl.querySelectorAll('[data-oarea]').forEach((b) => {
+          b.classList.toggle('on', b.dataset.oarea === this.withRegion);
+        });
+        this.updateWithGrid();
+      });
+    });
+
+    // Price tier chips
+    this.mainEl.querySelectorAll('[data-otier]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.withTier = btn.dataset.otier;
+        this.mainEl.querySelectorAll('[data-otier]').forEach((b) => {
+          b.classList.toggle('on', b.dataset.otier === this.withTier);
+        });
+        this.updateWithGrid();
+      });
+    });
+
+    // Style chips
+    this.mainEl.querySelectorAll('[data-ostyle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.withStyle = btn.dataset.ostyle;
+        this.mainEl.querySelectorAll('[data-ostyle]').forEach((b) => {
+          b.classList.toggle('on', b.dataset.ostyle === this.withStyle);
+        });
+        this.updateWithGrid();
+      });
+    });
+
+    // Concierge matchmaker
+    document.getElementById('btnConcierge')?.addEventListener('click', () => {
+      this.openInquiryModal(null);
+    });
+
+    // Price guide top trigger
+    document.getElementById('btnOpenPriceGuide')?.addEventListener('click', () => {
+      this.openPriceGuideModal();
+    });
+
+    this.bindWithToggleAll();
+    this.bindWithCardEvents();
+  }
+
+  bindWithCardEvents() {
+    // Details toggle state tracker
+    this.mainEl.querySelectorAll('details.outfitter-card').forEach((d) => {
+      d.addEventListener('toggle', () => {
+        const id = d.dataset.oid;
+        if (d.open) {
+          this.openOperators.add(id);
+        } else {
+          this.openOperators.delete(id);
+        }
+        const filtered = this.getFilteredOperators();
+        const allOpen = filtered.length > 0 && filtered.every((o) => this.openOperators.has(o.id));
+        const btnToggle = document.getElementById('btnToggleAll');
+        if (btnToggle) {
+          btnToggle.textContent = allOpen ? this.t('outfCollapseAll') : this.t('outfExpandAll');
+        }
+      });
+    });
+
+    // Click on price pill opens price guide modal (without toggling details)
+    this.mainEl.querySelectorAll('[data-open-price-tier]').forEach((b) => {
+      b.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.openPriceGuideModal(b.dataset.openPriceTier);
+      });
+    });
+
+    // Inquire buttons
+    this.mainEl.querySelectorAll('[data-inquire-id]').forEach((b) => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const op = getOperatorById(b.dataset.inquireId);
+        this.openInquiryModal(op);
+      });
+    });
+  }
+
+  bindWithToggleAll() {
+    const btnToggle = document.getElementById('btnToggleAll');
+    if (!btnToggle) return;
+    btnToggle.addEventListener('click', () => {
+      const filtered = this.getFilteredOperators();
+      const allOpen = filtered.length > 0 && filtered.every((o) => this.openOperators.has(o.id));
+      if (allOpen) {
+        filtered.forEach((o) => this.openOperators.delete(o.id));
+      } else {
+        filtered.forEach((o) => this.openOperators.add(o.id));
+      }
+      this.updateWithGrid();
+    });
+  }
+
+  clearWithFilters() {
+    this.withRegion = 'all';
+    this.withStyle = 'all';
+    this.withTier = 'all';
+    this.withSearch = '';
+    this.renderWith();
+  }
+
+  openPriceGuideModal(highlightTier = null) {
+    const c = document.getElementById('inquiryModalContainer');
+    if (!c) return;
+    c.classList.add('open');
+    c.innerHTML = `
+      <div class="price-guide-card" role="dialog" aria-modal="true" aria-labelledby="pgTitle">
+        <div class="modal-badge-row">
+          <span class="trust-pill">✓ ${esc(this.t('outfTrustPill'))}</span>
+          <button type="button" class="modal-close" id="pgClose" aria-label="${esc(this.t('outfClose'))}">✕</button>
+        </div>
+        <h2 id="pgTitle">${esc(this.t('outfPriceGuideTitle'))}</h2>
+        <p class="modal-sub" style="margin:0.2rem 0 0.8rem 0;color:var(--dim);">${esc(this.t('outfPriceGuideSub'))}</p>
+
+        <div class="price-guide-tip">
+          ${esc(this.t('outfPriceTip'))}
+        </div>
+
+        <div class="price-tiers-grid">
+          ${PRICE_TIERS.map((pt) => {
+            const isHighlight = highlightTier === pt.tier;
+            const count = OPERATORS.filter((o) => o.priceTier === pt.tier).length;
+            return `
+              <div class="price-tier-card ${isHighlight ? 'is-highlighted-tier' : ''}">
+                <div class="ptc-header" style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="ptc-range">${esc(pt.range)}</span>
+                  <span class="ptc-basis">${esc(pt.basis[this.lang] || pt.basis.en)}</span>
+                </div>
+                <h4 class="ptc-title">${esc(pt.title[this.lang] || pt.title.en)}</h4>
+                <p class="ptc-summary">${esc(pt.summary[this.lang] || pt.summary.en)}</p>
+                <button type="button" class="btn-tier-select" data-select-tier="${esc(pt.tier)}">
+                  ${this.withTier === pt.tier ? '✓ Active Filter' : `Filter: ${esc(pt.range)} (${count})`}
+                </button>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <div class="price-guide-footer">
+          <p class="price-guide-guarantee">
+            <strong>Chile Whitewater Kayak Guide Direct Rate Guarantee:</strong> We charge zero booking commissions. All prices listed are direct local quotes provided by vetted kayak schools, guides, and retreat lodges across Chile.
+          </p>
+          <button type="button" class="btn-partner" id="btnPgCloseFooter">${esc(this.t('outfClose'))}</button>
         </div>
       </div>
     `;
-    this.mainEl.querySelectorAll('[data-with]').forEach((button) => {
-      button.addEventListener('click', () => {
-        this.withRegion = button.dataset.with;
+
+    document.getElementById('pgClose')?.addEventListener('click', () => this.closeWithModal());
+    document.getElementById('btnPgCloseFooter')?.addEventListener('click', () => this.closeWithModal());
+    c.querySelectorAll('[data-select-tier]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.withTier = btn.dataset.selectTier;
+        this.closeWithModal();
         this.renderWith();
       });
     });
   }
 
+  openInquiryModal(operator) {
+    const c = document.getElementById('inquiryModalContainer');
+    if (!c) return;
+    c.classList.add('open');
+    const isConcierge = !operator;
+    const title = isConcierge
+      ? this.t('outfConciergeModalTitle')
+      : this.t('outfInquiryModalTitle', { name: this.t(`ops.${operator.id}.name`) });
+    const sub = isConcierge
+      ? this.t('outfConciergeModalSub')
+      : this.t('outfInquiryModalSub', { base: operator.base?.[this.lang] || operator.base?.en || this.t(`ops.${operator.id}.where`) });
+
+    c.innerHTML = `
+      <div class="inquiry-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="inquiry-modal-header">
+          <div>
+            <span class="trust-pill" style="margin-bottom:0.4rem;display:inline-block;">✓ ${esc(this.t('outfTrustPill'))}</span>
+            <h2 id="modalTitle" style="font-size:1.35rem;margin:0.2rem 0;">${esc(title)}</h2>
+            <p class="modal-sub" style="font-size:0.85rem;color:var(--dim);margin:0;">${esc(sub)}</p>
+          </div>
+          <button type="button" class="modal-close" id="inqClose" aria-label="${esc(this.t('outfClose'))}">✕</button>
+        </div>
+
+        <form id="inquiryForm" class="inquiry-form">
+          <div class="form-group">
+            <label for="inqName">${esc(this.t('outfFormName'))} *</label>
+            <input type="text" id="inqName" class="form-input" required placeholder="e.g. Sarah Jenkins">
+          </div>
+          <div class="form-group">
+            <label for="inqEmail">${esc(this.t('outfFormEmail'))} *</label>
+            <input type="email" id="inqEmail" class="form-input" required placeholder="sarah@example.com">
+          </div>
+          <div class="form-group">
+            <label for="inqDates">${esc(this.t('outfFormDates'))} *</label>
+            <input type="text" id="inqDates" class="form-input" required placeholder="e.g. Dec 10–18, 2026 or Jan 2027">
+          </div>
+          <div class="form-group">
+            <label for="inqSkill">${esc(this.t('outfFormSkill'))}</label>
+            <input type="text" id="inqSkill" class="form-input" placeholder="e.g. Class III Roll, Class IV Creeking, Class V Expert">
+          </div>
+          <div class="form-group">
+            <label for="inqNotes">${esc(this.t('outfFormNotes'))}</label>
+            <textarea id="inqNotes" class="form-textarea" placeholder="e.g. Chasing waterfalls, boof technique coaching, or big water trains on the Futaleufú"></textarea>
+          </div>
+          <button type="submit" class="btn-submit-inquiry">${esc(this.t('outfFormSubmit'))} →</button>
+        </form>
+      </div>
+    `;
+
+    document.getElementById('inqClose')?.addEventListener('click', () => this.closeWithModal());
+    const form = document.getElementById('inquiryForm');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('inqName')?.value || '';
+      const email = document.getElementById('inqEmail')?.value || '';
+      const dates = document.getElementById('inqDates')?.value || '';
+      const skill = document.getElementById('inqSkill')?.value || '';
+      const notes = document.getElementById('inqNotes')?.value || '';
+
+      const targetEmail = operator?.contact?.email || 'david@puconkayakretreat.com';
+      const opName = operator ? this.t(`ops.${operator.id}.name`) : 'Chile Whitewater Matchmaker';
+      const subject = encodeURIComponent(`Kayak Trip Inquiry: ${opName} [${name}]`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nEstimated Dates: ${dates}\nSkill Level: ${skill}\nGoals & Notes: ${notes}\nReferral: Chile Whitewater Kayak Guide (chilekayakguide.com)`
+      );
+      window.open(`mailto:${targetEmail}?subject=${subject}&body=${body}`, '_blank');
+
+      c.innerHTML = `
+        <div class="inquiry-modal-card" role="dialog" aria-modal="true">
+          <div class="modal-badge-row">
+            <span class="trust-pill">✓ Sent</span>
+            <button type="button" class="modal-close" id="inqCloseDone">✕</button>
+          </div>
+          <div class="inquiry-success">
+            <p style="margin:0 0 0.8rem 0;font-size:1.1rem;font-weight:750;">✓ ${esc(this.t('outfFormSuccess'))}</p>
+            <p style="margin:0;font-size:0.85rem;color:var(--ink);">Our team / ${esc(opName)} will reply to <strong>${esc(email)}</strong> shortly.</p>
+          </div>
+          <div style="margin-top:1.2rem;text-align:center;">
+            <button type="button" class="btn btn-primary" id="btnInqOk">${esc(this.t('outfClose'))}</button>
+          </div>
+        </div>
+      `;
+      document.getElementById('inqCloseDone')?.addEventListener('click', () => this.closeWithModal());
+      document.getElementById('btnInqOk')?.addEventListener('click', () => this.closeWithModal());
+    });
+  }
+
+  closeWithModal() {
+    const c = document.getElementById('inquiryModalContainer');
+    if (c) {
+      c.classList.remove('open');
+      c.innerHTML = '';
+    }
+  }
+
   operatorCard(operator, forceOpen) {
     const name = this.t(`ops.${operator.id}.name`);
-    const open = operator.featured || forceOpen ? ' open' : '';
+    const isOpen = this.openOperators.has(operator.id) || forceOpen;
+    const badgeCls = operator.featured ? 'badge-feat' : operator.badge === 'vetted' ? 'badge-ver' : 'badge-adv';
+    const badgeText = operator.badgeText?.[this.lang] || operator.badgeText?.en || (operator.featured ? this.t('withFeatured') : this.t('withEyebrow'));
+    const baseText = operator.base?.[this.lang] || operator.base?.en || this.t(`ops.${operator.id}.where`);
+    const taglineText = operator.tagline?.[this.lang] || operator.tagline?.en || this.t(`ops.${operator.id}.offers`);
+    const descText = operator.desc?.[this.lang] || operator.desc?.en || this.t(`ops.${operator.id}.detail`);
+    const rateText = operator.priceRate?.[this.lang] || operator.priceRate?.en || operator.priceTier;
+    const basisText = operator.priceBasis?.[this.lang] || operator.priceBasis?.en || '';
+    const categoryText = operator.priceCategory?.[this.lang] || operator.priceCategory?.en || '';
+    const includesText = operator.priceIncludes?.[this.lang] || operator.priceIncludes?.en || this.t(`ops.${operator.id}.offers`);
+    const boatsText = operator.boats?.[this.lang] || operator.boats?.en || 'Modern creekers and half-slices';
+    const skillsText = operator.skillLevels?.[this.lang] || operator.skillLevels?.en || 'Class III to Class V';
+    const languagesText = (operator.languages || ['en', 'es']).map((l) => l.toUpperCase()).join(' · ');
+    const lodgingText = operator.lodging?.[this.lang] || operator.lodging?.en || 'Riverside lodge & cabins';
+    const highlights = operator.highlights?.[this.lang] || operator.highlights?.en || [];
+
+    const waPhone = (operator.contact?.whatsapp || '').replace(/[^0-9]/g, '');
+    const waRef = encodeURIComponent(
+      this.lang === 'es'
+        ? `¡Hola! Vi a ${name} en la Guía de Whitewater de Chile (chilekayakguide.com) y quisiera consultar disponibilidad y fechas para remar. [Ref: CKG-${operator.id}]`
+        : `Hi! I found ${name} on the Chile Whitewater Kayak Guide (chilekayakguide.com) and would like to inquire about trip dates and coaching availability. [Ref: CKG-${operator.id}]`
+    );
+    const waUrl = waPhone ? `https://wa.me/${waPhone}?text=${waRef}` : `https://wa.me/?text=${waRef}`;
+
     return `
-      <details class="op-card ${operator.featured ? 'is-featured' : ''}" id="${esc(operator.id)}"${open}>
-        <summary>
-          <p class="op-kicker">${operator.featured ? esc(this.t('withFeatured')) : esc(this.t('withEyebrow'))}</p>
-          <h3>${esc(name)}</h3>
-          <p class="op-where">${esc(this.t(`ops.${operator.id}.where`))}</p>
+      <details class="glass outfitter-card ${operator.featured ? 'is-featured' : ''}" data-oid="${esc(operator.id)}" id="${esc(operator.id)}"${isOpen ? ' open' : ''}>
+        <summary class="oc-sum">
+          <div class="oc-sum-left">
+            <div class="oc-logo-box" aria-hidden="true">
+              ${operator.logoSvg || ''}
+            </div>
+            <div class="oc-sum-content">
+              <div class="oc-sum-top">
+                <span class="oc-badge ${badgeCls}">${esc(badgeText)}</span>
+                <span class="oc-sum-base">📍 ${esc(baseText)}</span>
+              </div>
+              <h3 class="oc-name">${esc(name)}</h3>
+              <div class="oc-sum-sub">${esc(taglineText)}</div>
+            </div>
+          </div>
+          <div class="oc-sum-right">
+            <button type="button" class="oc-price-pill" data-open-price-tier="${esc(operator.priceTier)}" title="${esc(this.t('outfPriceGuideBtn'))}">
+              <span class="tier-rate">${esc(rateText)}</span>
+            </button>
+            <span class="chev" aria-hidden="true"></span>
+          </div>
         </summary>
-        <div class="op-body">
-          <p><strong>${esc(this.t('withOffers'))}.</strong> ${esc(this.t(`ops.${operator.id}.offers`))}</p>
-          <p><strong>${esc(this.t('withWhere'))}.</strong> ${esc(this.t(`ops.${operator.id}.detail`))}</p>
-          <p><a href="${esc(operator.url)}" target="_blank" rel="noopener noreferrer">${esc(this.t('withSite'))}</a></p>
+
+        <div class="oc-body">
+          <p class="oc-tagline-quote">“${esc(taglineText)}”</p>
+          <p class="oc-desc">${esc(descText)}</p>
+
+          <!-- Transparent Cost & Rate Breakdown Box -->
+          <div class="oc-pricing-box">
+            <div class="oc-pricing-row">
+              <div class="oc-pricing-main">
+                <span class="oc-pricing-cat">${esc(categoryText)}</span>
+                <span class="oc-pricing-rate">${esc(rateText)}</span>
+              </div>
+              <span class="oc-pricing-basis">${esc(basisText)}</span>
+            </div>
+            <div class="oc-pricing-inc">
+              <span class="oc-inc-label">✓ ${esc(this.t('outfPriceIncludes'))}:</span>
+              <span class="oc-inc-val">${esc(includesText)}</span>
+            </div>
+          </div>
+
+          <!-- Rivers Covered -->
+          ${(operator.rivers && operator.rivers.length) ? `
+            <div class="oc-section">
+              <span class="oc-label">${esc(this.t('outfRiversCovered'))}:</span>
+              <div class="oc-tags">
+                ${operator.rivers.map((rId) => {
+                  const r = getRiverById(rId);
+                  const riverName = r ? r.name : rId;
+                  return `<a class="oc-water-chip" href="${esc(this.path('river', rId))}" title="${esc(riverName)}">🌊 ${esc(riverName)}</a>`;
+                }).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- Specs Table -->
+          <div class="oc-specs">
+            <div class="oc-spec-item">
+              <span class="oc-spec-label">🛶 ${esc(this.t('outfFleet'))}:</span>
+              <span class="oc-spec-val">${esc(boatsText)}</span>
+            </div>
+            <div class="oc-spec-item">
+              <span class="oc-spec-label">⚡ ${esc(this.t('outfSkillLevels'))}:</span>
+              <span class="oc-spec-val">${esc(skillsText)}</span>
+            </div>
+            <div class="oc-spec-item">
+              <span class="oc-spec-label">🗣 ${esc(this.t('outfLanguages'))}:</span>
+              <span class="oc-spec-val">${esc(languagesText)}</span>
+            </div>
+            <div class="oc-spec-item">
+              <span class="oc-spec-label">🏡 ${esc(this.t('outfLodging'))}:</span>
+              <span class="oc-spec-val">${esc(lodgingText)}</span>
+            </div>
+          </div>
+
+          <!-- Highlights Checklist -->
+          ${highlights.length ? `
+            <ul class="oc-highlights">
+              ${highlights.map((h) => `<li><span class="chk">✓</span> ${esc(h)}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          <!-- Action Buttons -->
+          <div class="oc-actions">
+            <button type="button" class="btn-book" data-inquire-id="${esc(operator.id)}">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              ${esc(this.t('outfBtnInquire'))}
+            </button>
+
+            ${waPhone ? `
+              <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-wa" title="${esc(this.t('outfWhatsAppDirect'))}">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            ` : ''}
+
+            ${(operator.url || operator.contact?.website) ? `
+              <a href="${esc(operator.url || operator.contact?.website)}" target="_blank" rel="noopener noreferrer" class="btn-web" title="${esc(this.t('outfVisitWeb'))}">
+                🌐 ${esc(this.t('outfVisitWeb'))}
+              </a>
+            ` : ''}
+          </div>
         </div>
       </details>
     `;
