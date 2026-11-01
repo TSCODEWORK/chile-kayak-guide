@@ -176,3 +176,12 @@ function numberOrNull(value) {
 function roundFlow(value) {
   return Math.round(value * 10) / 10;
 }
+
+// Compare a live flow, already in m³/s, with the run's stored optimal window.
+export function flowStatus(valueCms, optimalFlow) {
+  if (typeof valueCms !== 'number' || !Number.isFinite(valueCms)) return null;
+  if (!optimalFlow || typeof optimalFlow.minCms !== 'number' || typeof optimalFlow.maxCms !== 'number') return null;
+  if (valueCms < optimalFlow.minCms) return 'low';
+  if (valueCms > optimalFlow.maxCms) return 'high';
+  return 'in';
+}

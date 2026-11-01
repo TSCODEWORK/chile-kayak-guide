@@ -2,6 +2,7 @@ import './styles/style.css';
 import { REGIONS, RIVERS, getRegionById, getRiverById, getRiversByRegion } from './data/rivers-data.js';
 import { createChileMap } from './components/Map.js';
 import { joinBase, parseLocation, toPath } from './router.js';
+import { flowStatus } from './levels.js';
 
 const base = () => window.__APP_BASE__ || '/';
 
@@ -535,7 +536,8 @@ class ChileKayakApp {
     return `<svg class="cwl-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#0e5a7a"/><path d="M5 13c3-3 5-3 8 0s5 3 8 0 4-2 6-1" fill="none" stroke="#9be7f5" stroke-width="2.2" stroke-linecap="round"/><path d="M5 19c3-3 5-3 8 0s5 3 8 0 4-2 6-1" fill="none" stroke="#4fd1e8" stroke-width="2.2" stroke-linecap="round" opacity=".75"/><path d="M5 25c3-3 5-3 8 0s5 3 8 0 4-2 6-1" fill="none" stroke="#2dd4bf" stroke-width="2.2" stroke-linecap="round" opacity=".45"/></svg>`;
   }
 
-  levelBlock(runId, linked) {
+  levelBlock(river, linked) {
+    const runId = river?.id;
     const reading = this.levels?.[runId];
     if (!reading) return '';
     const badges = [];
@@ -546,11 +548,14 @@ class ChileKayakApp {
     const trend = reading.trend === 'rising' ? 'Rising' : reading.trend === 'falling' ? 'Falling' : reading.trend === 'steady' ? 'Steady' : '';
     const when = reading.stale ? '' : this.ageLabel(reading.ageMinutes);
     const stick = reading.gaugeApprox != null ? ` · gauge ≈ ${reading.gaugeApprox}` : '';
+    const status = reading.kind === 'flow' ? flowStatus(Number(reading.value), river?.optimalFlow) : null;
+    const statusLabel = status === 'low' ? 'Too low' : status === 'high' ? 'High' : status === 'in' ? 'In range' : '';
     const tag = linked ? 'a' : 'div';
     const attrs = linked ? ` href="${esc(reading.href)}" target="_blank" rel="noopener noreferrer"` : '';
     return `<${tag} class="level-chip"${attrs}>
       ${this.cwlMark()}
       <span>
+        ${statusLabel ? `<span class="flow-status is-${status}">${statusLabel}</span>` : ''}
         <b>${esc(this.formatReading(reading))}</b>
         <small>${esc(reading.stationName)}${trend ? ` · ${esc(trend)}` : ''}${when ? ` · ${esc(when)}` : ''}${esc(stick)}</small>
         <small>Chile Water Levels · ${esc(reading.credit)}</small>
@@ -561,7 +566,7 @@ class ChileKayakApp {
   }
 
   riverCard(river, index) {
-    const level = this.levelBlock(river.id, false);
+    const level = this.levelBlock(river, false);
     return `
       <a class="river-card" data-river-card="${esc(river.id)}" href="${esc(joinBase(base(), `/river/${encodeURIComponent(river.id)}`))}" style="--i:${Math.min(index, 8)}">
         <div class="card-top">
@@ -606,12 +611,15 @@ class ChileKayakApp {
           </div>
           <p class="section-name">${esc(river.section)}</p>
         </header>
-        ${this.levelBlock(river.id, true)}
+        ${this.levelBlock(river, true)}
         <p class="glance">${esc(this.formatFlow(river.optimalFlow))} optimal · ${esc(river.lengthKm)} km · ${esc(String(river.season).split('(')[0].trim())}</p>
         <div id="run-map" class="run-map" role="img" aria-label="Map showing the put-in and take-out of ${esc(river.name)}"></div>
         <p class="map-legend"><span><i class="legend-put"></i> Put-in</span><span><i class="legend-take"></i> Take-out</span></p>
         <details class="dive">
-          <summary>Dive deeper</summary>
+          <summary>
+            <span>Dive deeper</span>
+            <span class="dive-meta">Guide beta · ${river.keyRapids.length} rapids · hazards · access</span>
+          </summary>
           <section class="prose-block">
             <h3>Guide beta</h3>
             <p>${esc(river.davidBeta)}</p>

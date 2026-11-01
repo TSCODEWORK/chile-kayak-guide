@@ -1,4 +1,4 @@
-import { GAUGE_MAP, fromBridgeToBridge, fromEspolon, fromStation, readingsFromPayloads } from '../src/levels.js';
+import { GAUGE_MAP, flowStatus, fromBridgeToBridge, fromEspolon, fromStation, readingsFromPayloads } from '../src/levels.js';
 
 let failed = 0;
 let passed = 0;
@@ -110,6 +110,15 @@ const bundle = readingsFromPayloads({
 const ids = bundle.map((reading) => reading.runId).sort();
 assert(ids.includes('trancura-upper') && ids.includes('rio-espolon') && ids.includes('rio-futaleufu-bridge-to-bridge'), 'bundle keeps independent readings');
 assert(!ids.includes('palguin-upper'), 'bundle does not invent Palguín');
+
+const windowed = { minCms: 30, maxCms: 85 };
+assert(flowStatus(33.9, windowed) === 'in', 'inside the optimal window');
+assert(flowStatus(29.9, windowed) === 'low', 'below the optimal window');
+assert(flowStatus(85.1, windowed) === 'high', 'above the optimal window');
+assert(flowStatus(30, windowed) === 'in' && flowStatus(85, windowed) === 'in', 'endpoints count as in range');
+assert(flowStatus(40, null) === null, 'no range means no status');
+assert(flowStatus(null, windowed) === null, 'no reading means no status');
+assert(flowStatus(Number.NaN, windowed) === null, 'a bad reading means no status');
 
 console.log(`Level checks passed: ${passed}`);
 if (failed) {
