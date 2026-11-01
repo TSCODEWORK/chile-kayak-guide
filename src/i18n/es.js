@@ -131,12 +131,6 @@ export const ui = {
       "offers": "Viajes de kayak desde quienes recién empiezan hasta semanas expertas, un retiro intermedio de aguas blancas para mujeres, viajes multideporte y arriendo de kayaks.",
       "detail": "Su sitio describe un retiro a la orilla del río en el Distrito de los Lagos, con acceso al agua, tinas calientes, comida a fuego abierto, hamacas y un domo de yoga. Las páginas de viajes nombran los ríos alrededor de Pucón, el río Fuy, las Siete Tazas del río Claro, el Maipo y el Futaleufú."
     },
-    "ppi": {
-      "name": "Patagonia Paddle Institute",
-      "where": "Los Calabozos, a la salida de Pucón, Araucanía",
-      "offers": "Escuela de kayak de aguas blancas: viajes de seis días desde principiantes hasta clase 4+, con instructores certificados ACA, y clases de medio día o día completo.",
-      "detail": "Su sitio dice que la semana incluye alojamiento, comidas y un hot tub a leña. Los ríos que nombran son Trancura, Liucura, Machín, Puesco, Palguín, Nevados, Fuy y San Pedro."
-    },
     "exchile": {
       "name": "Expediciones Chile",
       "where": "Oficina en Gabriela Mistral 296, Futaleufú",
@@ -148,12 +142,6 @@ export const ui = {
       "where": "En el sector Lonconao, Futaleufú",
       "offers": "Escuela de kayak de aguas blancas, viajes de varios días en el Futaleufú y arriendo de kayaks.",
       "detail": "La escuela, los viajes de varios días y los arriendos están basados en Futaleufú."
-    },
-    "bochinche": {
-      "name": "Bochinche Expeditions",
-      "where": "Futaleufú",
-      "offers": "Clases de kayak, además de rafting en aguas blancas y otros viajes outdoor.",
-      "detail": "Su sitio dice que están basados en Futaleufú y que llevan más de 20 años recorriendo los ríos de la Patagonia chilena."
     }
   }
 };
