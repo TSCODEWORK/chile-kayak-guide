@@ -14,6 +14,8 @@ export const ui = {
   "closeAbout": "Cerrar",
   "with": "Con quién ir",
   "withShort": "Con quién",
+  "menuOpen": "Abrir menú",
+  "menuClose": "Cerrar menú",
   "themeToLight": "Cambiar a modo claro",
   "themeToDark": "Cambiar a modo oscuro",
   "langAria": "Idioma, español. Cambiar a inglés.",

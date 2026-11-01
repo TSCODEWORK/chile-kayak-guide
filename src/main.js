@@ -91,6 +91,9 @@ class ChileKayakApp {
     this.mapBack = document.getElementById('map-back');
     this.hud = document.getElementById('map-hud');
     this.kbd = document.querySelector('.kbd');
+    this.navToggle = document.getElementById('nav-toggle');
+    this.navActions = document.getElementById('nav-actions');
+    this.navScrim = document.getElementById('nav-scrim');
 
     this.init();
   }
@@ -132,16 +135,28 @@ class ChileKayakApp {
       if (storageGet('ckg.theme')) return;
       this.applyTheme(event.matches ? 'light' : 'dark', false);
     });
-    this.searchTriggerBtn?.addEventListener('click', () => this.openSearchModal());
+    this.searchTriggerBtn?.addEventListener('click', () => {
+      this.closeMobileNav();
+      this.openSearchModal();
+    });
     this.searchCloseBtn?.addEventListener('click', () => this.closeSearchModal());
     this.searchModal?.addEventListener('click', (event) => {
       if (event.target === this.searchModal) this.closeSearchModal();
     });
-    this.aboutTriggerBtn?.addEventListener('click', () => this.openAboutModal());
+    this.aboutTriggerBtn?.addEventListener('click', () => {
+      this.closeMobileNav();
+      this.openAboutModal();
+    });
     this.aboutCloseBtn?.addEventListener('click', () => this.closeAboutModal());
     this.aboutModal?.addEventListener('click', (event) => {
       if (event.target === this.aboutModal) this.closeAboutModal();
     });
+
+    this.navToggle?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      this.toggleMobileNav();
+    });
+    this.navScrim?.addEventListener('click', () => this.closeMobileNav());
 
     document.addEventListener('pointerdown', (event) => {
       this.lastPointer = event.pointerType || 'mouse';
@@ -158,7 +173,8 @@ class ChileKayakApp {
       if (event.key === 'Escape') {
         const sheet = document.getElementById('installSheet');
         const inqModal = document.getElementById('inquiryModalContainer');
-        if (inqModal?.classList.contains('open')) this.closeWithModal();
+        if (this.navActions?.classList.contains('is-open')) this.closeMobileNav();
+        else if (inqModal?.classList.contains('open')) this.closeWithModal();
         else if (this.searchModal?.classList.contains('open')) this.closeSearchModal();
         else if (this.aboutModal?.classList.contains('open')) this.closeAboutModal();
         else if (sheet && !sheet.hidden) this.closeInstallSheet();
@@ -172,12 +188,26 @@ class ChileKayakApp {
     this.searchInput?.addEventListener('keydown', (event) => this.onSearchKeydown(event));
 
     window.addEventListener('scroll', () => {
+      if (this.navActions?.classList.contains('is-open')) this.closeMobileNav();
       if (this.scrollFrame) return;
       this.scrollFrame = requestAnimationFrame(() => {
         this.scrollFrame = 0;
         this.onScrollSpy();
       });
     }, { passive: true });
+  }
+
+  toggleMobileNav(force) {
+    const open = typeof force === 'boolean' ? force : !this.navActions?.classList.contains('is-open');
+    this.navActions?.classList.toggle('is-open', open);
+    this.navToggle?.classList.toggle('is-active', open);
+    this.navToggle?.setAttribute('aria-expanded', String(open));
+    this.navToggle?.setAttribute('aria-label', this.t(open ? 'menuClose' : 'menuOpen'));
+    if (this.navScrim) this.navScrim.hidden = !open;
+  }
+
+  closeMobileNav() {
+    this.toggleMobileNav(false);
   }
 
   onDocumentClick(event) {
@@ -198,6 +228,7 @@ class ChileKayakApp {
       return;
     }
     event.preventDefault();
+    this.closeMobileNav();
     this.closeSearchModal();
     this.closeAboutModal();
     this.go(route);
@@ -391,6 +422,10 @@ class ChileKayakApp {
     document.getElementById('search-modal-close')?.setAttribute('aria-label', this.t('closeSearch'));
     document.getElementById('about-modal-close')?.setAttribute('aria-label', this.t('closeAbout'));
     document.getElementById('search-trigger')?.setAttribute('aria-label', this.t('search'));
+    if (this.navToggle) {
+      const open = this.navActions?.classList.contains('is-open');
+      this.navToggle.setAttribute('aria-label', this.t(open ? 'menuClose' : 'menuOpen'));
+    }
     const installBtn = document.getElementById('installBtn');
     if (installBtn) {
       installBtn.setAttribute('aria-label', this.t('installAria'));

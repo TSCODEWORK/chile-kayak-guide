@@ -15,6 +15,8 @@ export const ui = {
   closeAbout: 'Close about',
   with: 'Who to go with',
   withShort: 'Who',
+  menuOpen: 'Open menu',
+  menuClose: 'Close menu',
   themeToLight: 'Switch to light mode',
   themeToDark: 'Switch to dark mode',
   langAria: 'Language, English. Switch to Spanish.',
