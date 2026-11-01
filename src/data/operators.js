@@ -8,12 +8,6 @@ export const OPERATORS = [
     featured: true
   },
   {
-    id: 'ppi',
-    url: 'https://patagoniapaddleinstitute.com',
-    regions: ['araucania', 'los-rios'],
-    featured: false
-  },
-  {
     id: 'exchile',
     url: 'https://www.exchile.com',
     regions: ['los-lagos'],
@@ -22,12 +16,6 @@ export const OPERATORS = [
   {
     id: 'kriminal',
     url: 'https://www.kriminalkayak.com',
-    regions: ['los-lagos'],
-    featured: false
-  },
-  {
-    id: 'bochinche',
-    url: 'https://bochinchex.com',
     regions: ['los-lagos'],
     featured: false
   }

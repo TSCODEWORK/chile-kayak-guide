@@ -132,12 +132,6 @@ export const ui = {
       offers: 'Kayak trips from first-time paddlers through expert weeks, a women’s intermediate whitewater retreat, multisport trips, and kayak rentals.',
       detail: 'Their site describes a riverside retreat in the Lakes District, with river access, hot tubs, open-fire dining, hammocks, and a yoga dome. Trip pages name the rivers around Pucón, Río Fuy, the Siete Tazas on the Río Claro, the Maipo, and the Futaleufú.'
     },
-    ppi: {
-      name: 'Patagonia Paddle Institute',
-      where: 'Los Calabozos, just outside Pucón, Araucanía',
-      offers: 'A whitewater kayak school: six-day trips from first-timers through class 4+, with ACA-certified instructors, plus half-day and full-day classes.',
-      detail: 'Their site says the week includes lodging, meals, and a wood-fired hot tub. Rivers they name include the Trancura, Liucura, Machín, Puesco, Palguín, Nevados, Fuy, and San Pedro.'
-    },
     exchile: {
       name: 'Expediciones Chile',
       where: 'Gabriela Mistral 296, Futaleufú',
@@ -149,12 +143,6 @@ export const ui = {
       where: 'Sector Lonconao, Futaleufú',
       offers: 'A whitewater kayak school, multi-day trips on the Futaleufú, and kayak rental.',
       detail: 'The school, the multi-day trips, and the rentals are based in Futaleufú.'
-    },
-    bochinche: {
-      name: 'Bochinche Expeditions',
-      where: 'Futaleufú',
-      offers: 'Kayaking lessons, plus whitewater rafting and other outdoor trips.',
-      detail: 'Their site says they are based in Futaleufú and have been exploring the rivers of Chilean Patagonia for over 20 years.'
     }
   }
 };
