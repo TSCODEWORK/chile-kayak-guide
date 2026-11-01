@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e334a"/>
+      <stop offset="50%" stop-color="#082232"/>
+      <stop offset="100%" stop-color="#03121c"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="aquaRim" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="wave1" x1="6" y1="36" x2="58" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="wave2" x1="6" y1="46" x2="58" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="wave3" x1="6" y1="54" x2="58" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#7dd3fc"/>
+    </linearGradient>
+    <linearGradient id="bladeL" x1="8" y1="48" x2="22" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="bladeR" x1="42" y1="28" x2="56" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Obsidian Badge with Crisp Double Rim -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="url(#aquaRim)" stroke-width="2" stroke-opacity="0.85"/>
+  <rect x="3" y="3" width="58" height="58" rx="13" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- Andean Mountain Peaks -->
+  <polygon points="8,42 24,18 36,32 42,24 56,42 8,42" fill="#09273b" opacity="0.95"/>
+  <polygon points="24,18 20,24 24,23 27,27 30,25 36,32 29,22" fill="#e0f2fe" opacity="0.9"/>
+  <polygon points="42,24 39,29 42,28 45,31 48,29 51,33 46,27" fill="#bae6fd" opacity="0.8"/>
+
+  <!-- Whitewater Kayak Paddle (Carbon Shaft & Dihedral Spoons) -->
+  <line x1="12" y1="52" x2="52" y2="12" stroke="#f1f5f9" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- Top-Right Blade -->
+  <path d="M41 23 C43 13 54 9 56 11 C58 13 55 24 45 27 Z" fill="url(#bladeR)"/>
+  <path d="M41 23 L56 11" stroke="#fef08a" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Bottom-Left Blade -->
+  <path d="M23 41 C21 51 10 55 8 53 C6 51 9 40 19 37 Z" fill="url(#bladeL)"/>
+  <path d="M23 41 L8 53" stroke="#fef08a" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Surging Whitewater Rapids -->
+  <!-- Layer 1 Deep Surge -->
+  <path d="M6 42 C14 36 22 47 32 41 C42 35 50 44 58 39" stroke="url(#wave1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Layer 2 Cyan Crest -->
+  <path d="M6 48 C15 42 23 52 33 46 C43 40 51 49 58 44" stroke="url(#wave2)" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+  <!-- Layer 3 Frothing Wave Lip -->
+  <path d="M7 54 C16 48 24 58 34 52 C44 46 51 54 57 50" stroke="url(#wave3)" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+  <path d="M10 53.5 C13 51 17 51 21 53.5 M28 51.5 C32 49 36 49 40 51.5 M47 50 C50 48 53 48.5 56 50" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+</svg>
