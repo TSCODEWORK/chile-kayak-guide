@@ -793,44 +793,44 @@ export const RIVERS = [
   },
   {
     "id": "river-fuy-upper",
-    "name": "R\u00edo Fuy",
-    "section": "Upper Fuy (Lago Pirihueico to Neltume / The Waterfall Section)",
+    "name": "Río Fuy",
+    "section": "Upper Fuy (Lago Pirihueico to Neltume Flats)",
     "regionId": "los-rios",
-    "regionName": "Los R\u00edos (Panguipulli)",
+    "regionName": "Los Ríos (Panguipulli)",
     "grade": "IV+ / V",
     "classNumber": 5,
-    "character": "Luminous Teal Waterfalls & Tight Volcanic Canyons",
+    "character": "Luminous Teal Waterfalls, Slides & Pools (Above Huilo-Huilo)",
     "lengthKm": 8,
-    "durationHours": "2.5 \u2013 3.5 hrs",
+    "durationHours": "2.5 – 3.5 hrs",
     "gradient": "24 m/km (125 ft/mi)",
     "optimalFlow": {
       "minCms": 15,
       "maxCms": 42,
       "minCfs": 530,
       "maxCfs": 1500,
-      "notes": "Optimum flows are 20\u201332 m\u00b3/s. At higher flows, the drops become intensely pushy with heavy boiling back-washes."
+      "notes": "Optimum flows are 20–32 m³/s. At higher flows, the drops become intensely pushy with heavy boiling back-washes."
     },
     "gaugeInfo": {
       "code": "10110002-3",
-      "name": "R\u00edo Fuy en Neltume (DGA)",
+      "name": "Río Fuy en Neltume (DGA)",
       "source": "DGA Chile / ChileWaterLevels",
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/panguipulli"
     },
-    "season": "December \u2013 March (Peak: Dec\u2013Jan)",
+    "season": "December – March (Peak: Dec–Jan)",
     "putIn": {
       "name": "Lago Pirihueico Outflow / Puerto Fuy",
       "lat": -39.866,
       "lng": -71.89,
-      "accessBeta": "Put in directly where the river flows out of Lago Pirihueico at Puerto Fuy, 2.5 hours south of Puc\u00f3n."
+      "accessBeta": "Put in directly where the river flows out of Lago Pirihueico at Puerto Fuy, 2.5 hours south of Pucón."
     },
     "takeOut": {
-      "name": "Puente Neltume or Huilo-Huilo Takeout",
+      "name": "Neltume Flats (Kilometers Upstream of Huilo-Huilo Falls)",
       "lat": -39.84,
       "lng": -71.95,
-      "accessBeta": "Take out on river-right above the town of Neltume, before the river plunges into Salto Huilo-Huilo."
+      "accessBeta": "MANDATORY TAKEOUT: Take out on river-right at the wide gravel flats upstream of the town of Neltume. You must take out kilometers upstream of Salto Huilo-Huilo. Do not paddle past the flats."
     },
-    "davidBeta": "The R\u00edo Fuy is one of the most aesthetically stunning whitewater runs on the planet. Its water is an unearthly glacial turquoise, warm compared to alpine torrents because it drains the surface of Lago Pirihueico. The Upper section features a series of clean, picture-perfect waterfalls and bedrock slides ranging from 8 to 25 feet. Every drop drops into a deep, forgiving plunge pool. It is the premier stepping stone for paddlers progressing their waterfall boof technique.",
+    "davidBeta": "The Upper Fuy is one of the most aesthetically stunning whitewater runs on earth. Draining the surface of Lago Pirihueico at Puerto Fuy, its warm, crystalline turquoise water tumbles through temperate Valdivian rainforest over clean bedrock ledges, natural waterslides, and runnable waterfalls into deep plunge pools. The classic run finishes on the wide gravel flats upstream of Neltume. PADDLERS MUST STRICTLY TAKE OUT HERE: Under no circumstances should anyone continue past the Neltume flats toward the unrunnable 35-meter cataract of Salto Huilo-Huilo. The boxed-in volcanic canyon below Huilo-Huilo is a deadly trap.",
     "keyRapids": [
       {
         "name": "The Upper Slides",
@@ -849,12 +849,12 @@ export const RIVERS = [
       }
     ],
     "hazards": [
-      "Must take out before Salto Huilo-Huilo (mandatory egress)",
-      "Boiling seams in narrow canyon segments below drops",
-      "Higher water makes recirculating hole hydraulics severe"
+      "MANDATORY TAKEOUT: Must exit on the gravel flats kilometers upstream of Neltume; floating downstream toward Salto Huilo-Huilo (35 m) leads into a lethal, impassable volcanic box canyon",
+      "Boiling seams and whirlpool eddy lines in narrow rock slots below drops",
+      "High water pushes intense hydraulic backwash into drop landing pools"
     ],
     "logistics": "Paved road CH-203 from Panguipulli through Neltume. Excellent cabins and camping available in Neltume.",
-    "pkrProTip": "Always set safety on the 25-footer and remember: keep your paddle horizontal across your chest and tuck your chin to your deck upon landing to protect your face and back."
+    "pkrProTip": "Identify the Neltume flats takeout before putting on at Puerto Fuy. Never paddle past the flats toward town—Huilo-Huilo falls is a 35-meter unrunnable cataract and the canyon below is impossible to escape."
   },
   {
     "id": "river-fuy-lower",
@@ -1140,45 +1140,104 @@ export const RIVERS = [
     "pkrProTip": "Scout everything from the highway lookouts before dropping in."
   },
   {
-    "id": "rio-futaleufu-bridge-to-bridge",
-    "name": "R\u00edo Futaleuf\u00fa",
-    "section": "Bridge to Bridge (Pasarela Zapata to Puente Futaleuf\u00fa)",
+    "id": "rio-futaleufu-terminator",
+    "name": "Río Futaleufú",
+    "section": "Terminator Section (Las Escalas to Pasarela Zapata)",
     "regionId": "los-lagos",
     "regionName": "Los Lagos & Northern Patagonia",
-    "grade": "IV \u2013 IV+",
+    "grade": "V (V+ at high water)",
+    "classNumber": 5,
+    "character": "Monstrous Class V Big Water Directly Upstream of Bridge to Bridge",
+    "lengthKm": 8,
+    "durationHours": "2.5 – 3 hrs",
+    "gradient": "9 m/km (48 ft/mi)",
+    "optimalFlow": {
+      "minCms": 130,
+      "maxCms": 280,
+      "minCfs": 4600,
+      "maxCfs": 9900,
+      "notes": "Terminator becomes an absolute monster above 300 m³/s with stadium-sized recirculating features."
+    },
+    "gaugeInfo": {
+      "code": "10800001-5",
+      "name": "Futaleufú en Pasarela Zapata (DGA)",
+      "source": "DGA Chile / ChileWaterLevels",
+      "hasLiveChileWaterLevelsLink": true,
+      "chileWaterLevelsUrl": "https://chilewaterlevels.com/futaleufu/"
+    },
+    "season": "December – March",
+    "putIn": {
+      "name": "Río Azul / Las Escalas Put-In",
+      "lat": -43.165,
+      "lng": -71.93,
+      "accessBeta": "Put in on river-right below Infierno Canyon near the Río Azul confluence along the Las Escalas road, upstream of Terminator."
+    },
+    "takeOut": {
+      "name": "Pasarela Zapata Suspension Footbridge",
+      "lat": -43.18,
+      "lng": -72.03,
+      "accessBeta": "Take out on river-left at the Pasarela Zapata suspension footbridge, or continue directly downstream into Bridge-to-Bridge."
+    },
+    "davidBeta": "The Terminator section sits directly UPSTREAM of the Bridge-to-Bridge run. Starting below the Infierno gorge near Las Escalas, it is heart-in-your-throat Class V big water. The rapid 'Terminator' itself is over 1.5 kilometers of continuous, chaotic, thunderous whitewater with bus-sized breaking pyramid waves, offset diagonal rollers, and truck-eating holes. Downstream, it flows through the Himalayas waves before ending at Pasarela Zapata, the starting bridge of Bridge-to-Bridge.",
+    "keyRapids": [
+      {
+        "name": "Terminator",
+        "grade": "Class V",
+        "description": "Massive 1.5 km long rapid. Enter left-center, weave between enormous exploding pyramid waves, and fight through violent boiling eddy lines."
+      },
+      {
+        "name": "Himalayas",
+        "grade": "Class IV+",
+        "description": "Stadium-sized rolling wave train with gigantic standing waves towering 15 feet overhead."
+      }
+    ],
+    "hazards": [
+      "Severe multi-minute recirculating holes",
+      "Massive boils capable of capsizing even 16-foot rafts"
+    ],
+    "logistics": "Scout river-right along the road high above the river before launching.",
+    "pkrProTip": "Terminator is upstream of Bridge-to-Bridge. If you run both together, conserve energy—Terminator will test your endurance with 1.5 km of non-stop Class V big water before you even reach the Zapata bridge."
+  },
+  {
+    "id": "rio-futaleufu-bridge-to-bridge",
+    "name": "Río Futaleufú",
+    "section": "Bridge to Bridge (Pasarela Zapata to Puente Futaleufú)",
+    "regionId": "los-lagos",
+    "regionName": "Los Lagos & Northern Patagonia",
+    "grade": "IV – IV+",
     "classNumber": 4,
     "character": "The World's Premier High-Volume Big Water Classic",
     "lengthKm": 11,
-    "durationHours": "2.5 \u2013 3 hrs",
+    "durationHours": "2.5 – 3 hrs",
     "gradient": "7 m/km (37 ft/mi)",
     "optimalFlow": {
       "minCms": 120,
       "maxCms": 380,
       "minCfs": 4200,
       "maxCfs": 13400,
-      "notes": "At 150\u2013220 m\u00b3/s, it is friendly Class IV big water heaven. Above 300 m\u00b3/s, waves become towering 15-foot walls and boils demand relentless focus."
+      "notes": "At 150–220 m³/s, it is friendly Class IV big water heaven. Above 300 m³/s, waves become towering 15-foot walls and boils demand relentless focus."
     },
     "gaugeInfo": {
       "code": "10800001-5",
-      "name": "Futaleuf\u00fa en Pasarela Zapata (DGA / Central)",
-      "source": "DGA / Hidroel\u00e9ctrica Futaleuf\u00fa / ChileWaterLevels",
+      "name": "Futaleufú en Pasarela Zapata (DGA / Central)",
+      "source": "DGA / Hidroeléctrica Futaleufú / ChileWaterLevels",
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/futaleufu/"
     },
-    "season": "December \u2013 March (Peak: Jan\u2013Feb)",
+    "season": "December – March (Peak: Jan–Feb)",
     "putIn": {
       "name": "Pasarela Zapata Suspension Footbridge",
       "lat": -43.18,
       "lng": -72.03,
-      "accessBeta": "Take the dirt road 40 km west from Futaleuf\u00fa town. Park at the suspension footbridge trail. Carry kayaks down to river-left."
+      "accessBeta": "Take the dirt road 40 km west from Futaleufú town. Put in on river-left at the Pasarela Zapata suspension bridge, directly where the upstream Terminator section ends."
     },
     "takeOut": {
-      "name": "Puente Futaleuf\u00fa / Macal Access",
+      "name": "Puente Futaleufú (Macal Highway Bridge)",
       "lat": -43.2,
       "lng": -72.12,
-      "accessBeta": "Take out on river-right immediately above or below Puente Futaleuf\u00fa."
+      "accessBeta": "Take out on river-right immediately above or below Puente Futaleufú (Macal access)."
     },
-    "davidBeta": "The Bridge to Bridge section of the Rio Futaleuf\u00fa is universally acknowledged as the greatest stretch of Class IV big water whitewater on planet earth. The water is crystalline turquoise, fed by pristine Patagonian snowpack and tempered by huge upstream Andean lakes. Everything here is magnified: wave troughs you can lose a truck in, surging boils that spin boats 360 degrees, and exploding pillow waves off granite canyon bluffs. Despite the immense volume, the run is remarkably clean with deep forgiving recovery pools after every drop. It will make you fall in love with kayaking all over again.",
+    "davidBeta": "The Bridge to Bridge section of the Rio Futaleufú is universally acknowledged as the greatest stretch of Class IV big water on planet earth. Beginning at Pasarela Zapata (immediately downstream of the Class V Terminator section) and concluding at Puente Futaleufú, its turquoise water is amplified Patagonian power: wave troughs you can lose a truck in, surging boils, and exploding pillow waves off granite canyon bluffs. Despite the immense volume, the run is remarkably clean with deep forgiving recovery pools after every drop.",
     "keyRapids": [
       {
         "name": "Entrada (Entry Waves)",
@@ -1186,7 +1245,7 @@ export const RIVERS = [
         "description": "Towering 10-foot lateral waves that set the tone immediately below the suspension bridge."
       },
       {
-        "name": "Cushion (El Almohad\u00f3n)",
+        "name": "Cushion (El Almohadón)",
         "grade": "Class IV+",
         "description": "Massive volume compresses against a sheer granite wall on river-right, generating a 12-foot exploding pillow wave."
       },
@@ -1205,67 +1264,8 @@ export const RIVERS = [
       "Massive boiling eddy lines that can pull sterns down into vertical mystery moves",
       "Long cold swims if you fail to roll in the turbulence; always stay with your boat"
     ],
-    "logistics": "Carretera Austral / Ruta 231. 40 km from Futaleuf\u00fa town. Campgrounds and kayak camps along the corridor.",
-    "pkrProTip": "In big water like the Futa, speed is your friend. Don't brake or tentative-paddle into lateral waves\u2014drive your nose forward with confident power strokes and let the hull punch through."
-  },
-  {
-    "id": "rio-futaleufu-terminator",
-    "name": "R\u00edo Futaleuf\u00fa",
-    "section": "Terminator Section (Puente Futaleuf\u00fa to Macal)",
-    "regionId": "los-lagos",
-    "regionName": "Los Lagos & Northern Patagonia",
-    "grade": "V (V+ at high water)",
-    "classNumber": 5,
-    "character": "Monstrous Pushy Big Water & Colossal Holes",
-    "lengthKm": 8,
-    "durationHours": "2.5 \u2013 3 hrs",
-    "gradient": "9 m/km (48 ft/mi)",
-    "optimalFlow": {
-      "minCms": 130,
-      "maxCms": 280,
-      "minCfs": 4600,
-      "maxCfs": 9900,
-      "notes": "Terminator becomes an absolute monster above 300 m\u00b3/s with stadium-sized recirculating features."
-    },
-    "gaugeInfo": {
-      "code": "10800001-5",
-      "name": "Futaleuf\u00fa en Pasarela Zapata (DGA)",
-      "source": "DGA Chile / ChileWaterLevels",
-      "hasLiveChileWaterLevelsLink": true,
-      "chileWaterLevelsUrl": "https://chilewaterlevels.com/futaleufu/"
-    },
-    "season": "December \u2013 March",
-    "putIn": {
-      "name": "Puente Futaleuf\u00fa",
-      "lat": -43.2,
-      "lng": -72.12,
-      "accessBeta": "Put in on river-right below Puente Futaleuf\u00fa."
-    },
-    "takeOut": {
-      "name": "Campamento Macal / Puerto Lorenzo",
-      "lat": -43.22,
-      "lng": -72.22,
-      "accessBeta": "Take out at Puerto Lorenzo or continue down to the Macal campground."
-    },
-    "davidBeta": "The Terminator section is serious, heart-in-your-throat Class V big water. The rapid 'Terminator' itself is over 1.5 kilometers of continuous, chaotic, thunderous water filled with bus-sized breaking waves, crashing offset rollers, and catastrophic holes. This is not the place for intermediate paddlers. You need bulletproof mental composure, an unconditional roll, and a team running tight visual contact.",
-    "keyRapids": [
-      {
-        "name": "Terminator",
-        "grade": "Class V",
-        "description": "Massive 1.5 km long rapid. Enter left-center, weave between enormous exploding pyramid waves, and fight through violent boiling eddy lines."
-      },
-      {
-        "name": "Toro (The Bull)",
-        "grade": "Class IV+",
-        "description": "Powerhouse wave train terminating in a heavy crashing lateral."
-      }
-    ],
-    "hazards": [
-      "Severe multi-minute recirculating holes",
-      "Massive boils capable of capsizing even 16-foot rafts"
-    ],
-    "logistics": "Scout river-right along the road high above the river before launching.",
-    "pkrProTip": "Have an escape plan and clear signals with your crew. If someone swims in Terminator, your top priority is pushing them into the slack water on river-right before the downstream gorge."
+    "logistics": "Carretera Austral / Ruta 231. 40 km from Futaleufú town. Campgrounds and kayak camps along the corridor.",
+    "pkrProTip": "In big water like the Futa, speed is your friend. Don't brake or tentative-paddle into lateral waves—drive your nose forward with confident power strokes and let the hull punch through."
   },
   {
     "id": "rio-petrohue-upper",
@@ -2123,11 +2123,11 @@ export const RIVERS = [
     "durationHours": "3 \u2013 4 hrs",
     "gradient": "35 m/km (185 ft/mi)",
     "optimalFlow": {
-      "minCms": 7,
-      "maxCms": 18,
-      "minCfs": 250,
-      "maxCfs": 640,
-      "notes": "Extremely flow-sensitive. Too low and you will destroy your boat and ankles on shallow pool bottoms; too high and the teacups develop terminal recirculating drowning machines."
+      "minCms": 2.5,
+      "maxCms": 6.5,
+      "minCfs": 90,
+      "maxCfs": 230,
+      "notes": "Above 7 m³/s (250 cfs) is considered high water on the Río Claro, where the circular teacups develop terminal recirculating drowning machines and subterranean siphons. Ideal low-water levels are 2.5–6 m³/s (90–210 cfs). Below 2 m³/s it scrapes and risks severe bedrock impact."
     },
     "gaugeInfo": {
       "code": "CLARO-VISUAL",
@@ -2136,7 +2136,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "December \u2013 February (Mid-summer low flows)",
+    "season": "December – February (Mid-summer low flows)",
     "putIn": {
       "name": "Radal Siete Tazas Footbridge",
       "lat": -35.48,
@@ -2149,7 +2149,7 @@ export const RIVERS = [
       "lng": -71.06,
       "accessBeta": "Take out before or after the designated gorge exit trail. Steep scramble up out of the canyon."
     },
-    "davidBeta": "The 22 Teacups of the R\u00edo Claro is one of the most celebrated and surreal whitewater spectacles on earth. The river has sculpted circular pools\u2014'teacups'\u2014out of polished black basalt. You literally drop 8 to 18 feet from one circular basalt bowl directly into the next. It requires pinpoint precision: miss the boof or pencil in at the wrong angle and you risk fracturing an ankle on shallow bedrock or getting trapped in a churning circular hydraulic. Run it with experienced locals, respect the low flow window, and you will remember it for the rest of your life.",
+    "davidBeta": "The 22 Teacups of the Río Claro is one of the most celebrated and surreal whitewater spectacles on earth. The river has sculpted circular pools—'teacups'—out of polished black basalt. You literally drop 8 to 18 feet from one circular basalt bowl directly into the next. It requires pinpoint precision: miss the boof or pencil in at the wrong angle and you risk fracturing an ankle on shallow bedrock or getting trapped in a churning circular hydraulic. Run it with experienced locals, respect the low flow window, and remember: above 7 m³/s is dangerous high water.",
     "keyRapids": [
       {
         "name": "The First Teacup",
@@ -2168,12 +2168,12 @@ export const RIVERS = [
       }
     ],
     "hazards": [
-      "Shallow bedrock pool bottoms (pencil landings can cause serious ankle and spinal impact)",
-      "Terminal hydraulic back-washes in the teacups if water is even slightly too high",
+      "Above 7 m³/s is dangerous high water: terminal hydraulic back-washes and lethal siphons form in the circular teacup lips (especially cups 7 and 11)",
+      "Shallow bedrock pool bottoms (pencil landings can cause serious ankle and spinal impact at low flows)",
       "Vertical canyon walls offer zero escape once committed between drops"
     ],
     "logistics": "Paved and gravel road from Molina (1.5 hrs). Conaf park registration mandatory. Bring elbow pads, face guard, and full creeking safety kit.",
-    "pkrProTip": "Do not rush this run. Step out on the basalt rim, check the depth of every landing pool with your breakdown paddle, and ensure safety ropes are rigged at the crux drops."
+    "pkrProTip": "Never put on the 22 Teacups if the flow is above 7 m³/s. Check the visual gauge at the park footbridge—if water is boiling over the lip of cup 1, walk away. There is zero room for error in these siphoning basalt bowls."
   },
   {
     "id": "rio-cachapoal-upper",

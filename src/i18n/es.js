@@ -470,25 +470,25 @@ export const content = {
       ]
     },
     "river-fuy-upper": {
-      "section": "Fuy alto (Lago Pirihueico a Neltume / el tramo de las cascadas)",
-      "character": "Cascadas de un verde turquesa luminoso y cañones volcánicos estrechos",
+      "section": "Fuy alto (Lago Pirihueico a los llanos de Neltume)",
+      "character": "Cascadas de un verde turquesa luminoso, toboganes y pozas (arriba de Huilo-Huilo)",
       "season": "diciembre – marzo (pico: diciembre–enero)",
       "grade": "IV+ / V",
-      "beta": "El Río Fuy es uno de los descensos de aguas blancas de mayor belleza del planeta. Su agua es de un turquesa glacial de otro mundo, y es tibia comparada con los torrentes alpinos porque drena la superficie del Lago Pirihueico. El tramo alto tiene una serie de cascadas y toboganes de roca limpios, de postal, de 8 a 25 pies. Cada salto cae en una poza profunda y permisiva. Es el gran peldaño para quien va progresando en la técnica de boof en cascadas.",
-      "tip": "Deja siempre seguridad en el salto de 25 pies, y acuérdate: mantén la pala horizontal sobre el pecho y pega la barbilla a la cubierta al aterrizar, para cuidar la cara y la espalda.",
+      "beta": "El Fuy alto es uno de los descensos de aguas blancas más hermosos del planeta. Desaguando la superficie del Lago Pirihueico en Puerto Fuy, sus aguas cálidas de un turquesa cristalino fluyen por la selva valdiviana sobre repisas de roca limpias, toboganes naturales y cascadas navegables con pozas de recepción profundas. La bajada clásica termina en los llanos de grava aguas arriba de Neltume. SALIDA OBLIGATORIA: Por ningún motivo continúes río abajo más allá de los llanos hacia la catarata infranqueable de 35 metros de Salto Huilo-Huilo. El cañón encajonado de roca volcánica bajo Huilo-Huilo es una trampa mortal.",
+      "tip": "Desembarca siempre en los llanos de grava kilómetros antes de Huilo-Huilo. En el salto de 25 pies, mantén la pala horizontal sobre el pecho y pega la barbilla a la cubierta al aterrizar para proteger cara y columna.",
       "logistics": "Camino pavimentado CH-203 desde Panguipulli, pasando por Neltume. En Neltume hay muy buenas cabañas y camping.",
       "flow": "Los caudales óptimos son 20–32 m³/s. Con más caudal, los saltos se ponen intensamente empujadores, con retornos pesados que hierven.",
       "putIn": "Entra justo donde el río sale del Lago Pirihueico, en Puerto Fuy, a 2.5 horas al sur de Pucón.",
-      "takeOut": "Sal por la margen derecha, aguas arriba del pueblo de Neltume, antes de que el río se lance en Salto Huilo-Huilo.",
+      "takeOut": "SALIDA OBLIGATORIA: Sal por la margen derecha en los llanos anchos de grava aguas arriba de Neltume. Debes salir kilómetros antes de Salto Huilo-Huilo. No navegues más allá de los llanos.",
       "rapids": [
         "Toboganes de roca lisos, con olas amables.",
         "Salto vertical limpio sobre una repisa de roca curva. Planta una palada agresiva de pala derecha justo en el labio.",
         "Salto vertical clásico. Reconoce por la margen derecha. Lengua limpia por el centro-izquierda, con una poza de aterrizaje profunda y aireada. Deja seguridad en el remanso de la derecha."
       ],
       "hazards": [
-        "Hay que salir antes de Salto Huilo-Huilo (salida obligatoria)",
-        "Costuras que hierven en los tramos angostos del cañón, debajo de los saltos",
-        "Con el agua más alta, los hidráulicos de los hoyos recirculantes se ponen severos"
+        "SALIDA OBLIGATORIA: Salir en los llanos de grava kilómetros aguas arriba de Neltume; flotar hacia Salto Huilo-Huilo (35 m) lleva a un cañón encajonado infranqueable y mortal",
+        "Costuras que hierven y remolinos en las líneas de remanso en tramos estrechos",
+        "Con caudal alto, los hidráulicos generan fuertes retornos en las pozas de caída"
       ]
     },
     "river-fuy-lower": {
@@ -592,12 +592,12 @@ export const content = {
       "character": "El gran clásico mundial de aguas de alto caudal",
       "season": "diciembre – marzo (pico: enero–febrero)",
       "grade": "IV – IV+",
-      "beta": "El tramo Bridge to Bridge del Río Futaleufú está reconocido en todas partes como el mejor trecho de aguas blancas de gran caudal clase IV del planeta. El agua es turquesa cristalina, alimentada por nieve patagónica prístina y atemperada por los enormes lagos andinos de más arriba. Acá todo está amplificado: senos de ola donde se pierde un camión, hervores que hacen girar los kayaks 360 grados y olas almohada que explotan contra los farellones de granito del cañón. Pese al volumen inmenso, el tramo es notablemente limpio, con pozas de recuperación profundas y permisivas después de cada salto. Te va a enamorar del kayak otra vez.",
+      "beta": "El tramo Bridge to Bridge del Río Futaleufú está reconocido en todas partes como el mejor trecho de aguas blancas de gran caudal clase IV del planeta. Comenzando en Pasarela Zapata (inmediatamente aguas abajo del tramo clase V Terminator) y concluyendo en Puente Futaleufú, el agua turquesa despliega una potencia patagónica incomparable: senos de ola donde cabe un camión, hervores arremolinados y olas almohada gigantes que explotan contra farellones de granito. Pese al volumen inmenso, el descenso es limpio y ofrece pozas profundas y permisivas después de cada rápido.",
       "tip": "En un gran caudal como el del Futa, la velocidad es tu amiga. No frenes ni entres con paladas dudosas a las olas laterales: manda la proa adelante con paladas potentes y seguras, y deja que el casco las atraviese.",
       "logistics": "Carretera Austral / Ruta 231. Queda a 40 km del pueblo de Futaleufú. Hay campings y campamentos de kayak en el corredor.",
       "flow": "Entre 150–220 m³/s es un paraíso amable de gran caudal clase IV. Sobre 300 m³/s, las olas pasan a ser muros de 15 pies y los hervores piden concentración sin descanso.",
-      "putIn": "Toma el camino de tierra, 40 km al oeste del pueblo de Futaleufú. Estaciona en el sendero de la pasarela colgante. Baja los kayaks hasta la margen izquierda.",
-      "takeOut": "Sal por la margen derecha, justo arriba o justo abajo de Puente Futaleufú.",
+      "putIn": "Entra por la margen izquierda en la pasarela colgante Zapata (a 40 km al oeste del pueblo de Futaleufú), justo donde termina el tramo aguas arriba Terminator.",
+      "takeOut": "Sal por la margen derecha, justo arriba o justo abajo de Puente Futaleufú (acceso Macal).",
       "rapids": [
         "Olas laterales imponentes, de 10 pies, que marcan el tono justo bajo la pasarela colgante.",
         "El volumen enorme se comprime contra una pared de granito a plomo, en la margen derecha, y arma una ola almohada de 12 pies que explota.",
@@ -610,23 +610,23 @@ export const content = {
       ]
     },
     "rio-futaleufu-terminator": {
-      "section": "Tramo Terminator (Puente Futaleufú a Macal)",
-      "character": "Gran caudal monstruoso que empuja y hoyos colosales",
+      "section": "Tramo Terminator (Las Escalas a Pasarela Zapata)",
+      "character": "Monstruoso gran caudal clase V ubicado directamente aguas arriba de Bridge to Bridge",
       "season": "diciembre – marzo",
       "grade": "V (V+ con agua alta)",
-      "beta": "El tramo Terminator es clase V de gran caudal en serio, de esas que te dejan el corazón en la garganta. El rápido Terminator mide más de 1.5 kilómetros de agua continua, caótica y atronadora, llena de olas que rompen del tamaño de un bus, olas rodantes desfasadas que se estrellan y hoyos catastróficos. Este no es lugar para kayakistas intermedios. Necesitas compostura mental a toda prueba, un esquimotaje incondicional y un equipo que baje con contacto visual bien cerrado.",
-      "tip": "Ten un plan de escape y señales claras con tu grupo. Si alguien nada en Terminator, lo primero es empujarlo al agua quieta de la margen derecha, antes de la garganta de más abajo.",
-      "logistics": "Antes de lanzarte, reconoce por la margen derecha, por el camino que va alto sobre el río.",
+      "beta": "El tramo Terminator se ubica directamente AGUAS ARRIBA de la sección Bridge to Bridge. Comenzando debajo del cañón Infierno cerca de Las Escalas, es aguas grandes clase V que te dejan el corazón en la garganta. El rápido Terminator mide más de 1.5 kilómetros continuos de agua caótica y atronadora con olas piramidales del tamaño de un autobús, trenes desfasados y hoyos capaces de comerse camiones. Más abajo pasa por las inmensas olas de Himalayas antes de concluir en Pasarela Zapata, el puente de inicio de Bridge to Bridge.",
+      "tip": "Ten un plan de escape y señales claras con tu grupo. Si alguien nada en Terminator, la máxima prioridad es empujarlo al agua mansa de la margen derecha antes del cañón aguas abajo.",
+      "logistics": "Carretera Austral / Ruta 231. Queda a 40 km del pueblo de Futaleufú. Campings y bases de kayak a lo largo del valle.",
       "flow": "Sobre 300 m³/s, Terminator se vuelve un monstruo absoluto, con formaciones recirculantes del tamaño de un estadio.",
-      "putIn": "Entra por la margen derecha, debajo de Puente Futaleufú.",
-      "takeOut": "Sal en Puerto Lorenzo, o sigue hasta el camping de Macal.",
+      "putIn": "Entra por la margen derecha debajo del cañón Infierno cerca de la confluencia con el Río Azul por el camino de Las Escalas, aguas arriba de Terminator.",
+      "takeOut": "Sal por la margen izquierda en la pasarela colgante Zapata, o continúa remando directo hacia Bridge to Bridge.",
       "rapids": [
-        "Rápido enorme, de 1.5 km de largo. Entra por el centro-izquierda, pásate entre olas piramidales enormes que explotan y pelea las líneas de remanso violentas que hierven.",
-        "Tren de olas de gran potencia, que termina en una lateral pesada que rompe."
+        "Rápido colosal de 1.5 km de largo. Entra por el centro-izquierda, zigzaguea entre olas piramidales gigantes que explotan y combate remolinos y líneas de hervor violentas.",
+        "Tren de olas rodantes colosales del tamaño de un estadio con olas estacionarias de más de 4 metros de altura."
       ],
       "hazards": [
-        "Hoyos recirculantes severos, de varios minutos",
-        "Hervores enormes, capaces de volcar incluso balsas de 16 pies"
+        "Hoyos recirculantes severos con retenciones de varios minutos",
+        "Hervores masivos capaces de voltear incluso balsas de 16 pies"
       ]
     },
     "rio-petrohue-upper": {
@@ -921,24 +921,24 @@ export const content = {
     },
     "rio-claro-22-teacups": {
       "section": "22 Teacups (Parque Nacional Radal Siete Tazas)",
-      "character": "Saltos de tazas de basalto y gargantas de Chile, famosos en el mundo",
-      "season": "diciembre – febrero (caudales bajos de pleno verano)",
+      "character": "Saltos en tazas de basalto y gargantas de clase mundial",
+      "season": "diciembre – febrero (estiaje de pleno verano)",
       "grade": "IV+ / V (V+)",
-      "beta": "Las 22 Teacups del Río Claro son uno de los espectáculos de aguas blancas más celebrados y surrealistas del planeta. El río esculpió pozas circulares —«tazas»— en basalto negro pulido. Caes literalmente de 8 a 18 pies desde un cuenco circular de basalto directo al siguiente. Exige precisión milimétrica: si fallas el boof o entras en lápiz con el ángulo equivocado, arriesgas fracturarte un tobillo en la roca madre poco profunda o quedar atrapado en un hidráulico circular que revuelve. Córrelo con locales experimentados, respeta la ventana de caudal bajo y lo vas a recordar el resto de tu vida.",
-      "tip": "No te apures en esta bajada. Párate en el filo de basalto, revisa la profundidad de cada poza de aterrizaje con la pala desmontable y confirma que las cuerdas de seguridad estén instaladas en los saltos clave.",
-      "logistics": "Camino pavimentado y de ripio desde Molina (1.5 horas). El registro en el parque con Conaf es obligatorio. Lleva coderas, protector facial y un equipo completo de seguridad para descenso técnico.",
-      "flow": "Extremadamente sensible al caudal. Demasiado bajo y vas a destruir el bote y los tobillos en los fondos poco profundos de las pozas; demasiado alto y las tazas arman máquinas de ahogo de recirculación terminal.",
+      "beta": "Las 22 Teacups del Río Claro son uno de los espectáculos de aguas blancas más célebres y surrealistas del planeta. El río labró pozas circulares —las «tazas»— en basalto negro pulido. Caes literalmente de 8 a 18 pies de un cuenco circular de basalto directo al siguiente. Exige precisión milimétrica: fallar el boof o caer en lápiz con el ángulo equivocado arriesga fractura de tobillo en la roca madre poco profunda o quedar atrapado en un hidráulico circular. Córrelo con locales expertos, respeta la ventana de caudal bajo y recuerda: sobre 7 m³/s es agua alta muy peligrosa.",
+      "tip": "Nunca entres a las 22 Teacups si el caudal supera los 7 m³/s. Revisa la escala visual en la pasarela del parque: si el agua hierve sobre el labio de la taza 1, date la vuelta. No hay margen de error en estos cuencos con sifones.",
+      "logistics": "Camino pavimentado y de ripio desde Molina (1.5 horas). Registro obligatorio en Conaf. Lleva coderas, máscara facial y kit completo de rescate.",
+      "flow": "Sobre 7 m³/s (250 cfs) es agua alta peligrosa en el Río Claro, donde las tazas circulares forman máquinas de ahogo de recirculación terminal y sifones subterráneos. El nivel óptimo es 2.5–6.5 m³/s (90–230 cfs).",
       "putIn": "Maneja desde Molina hasta el Parque Nacional Radal Siete Tazas. Regístrate con los guardaparques de Conaf. Entra bajo los miradores turísticos.",
       "takeOut": "Sal antes o después del sendero indicado de salida de la garganta. Trepada empinada para salir del cañón.",
       "rapids": [
-        "Un salto vertical de 10 pies sobre un labio liso de basalto, hacia una poza perfectamente circular de 20 pies.",
+        "Un salto vertical de 10 pies sobre un labio liso de basalto hacia una poza perfectamente circular de 20 pies.",
         "Salto doble con un giro de 90 grados dentro del cuenco. Boof obligatorio por la derecha.",
         "Una cascada vertical a plomo de 35 pies que cae a un cañón en ranura volcánica estrecho. Reconoce al detalle desde el borde."
       ],
       "hazards": [
-        "Fondos de poza de roca madre poco profundos (los aterrizajes en lápiz pueden causar un impacto grave en tobillos y columna)",
-        "Contracorrientes hidráulicas terminales en las tazas si el agua está aunque sea un poco demasiado alta",
-        "Las paredes verticales del cañón no dejan ninguna salida una vez que quedas comprometido entre los saltos"
+        "Sobre 7 m³/s es agua alta peligrosa: se forman retornos hidráulicos terminales y sifones letales en los labios de las tazas (especialmente tazas 7 y 11)",
+        "Fondos de poza de roca madre poco profundos (aterrizar en lápiz arriesga lesiones severas de tobillo y columna en caudales bajos)",
+        "Las paredes verticales del cañón no dejan ninguna vía de escape una vez comprometido entre los saltos"
       ]
     },
     "rio-cachapoal-upper": {
