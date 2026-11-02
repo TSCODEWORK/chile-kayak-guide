@@ -2566,6 +2566,71 @@ export const RIVERS = [
     "pkrProTip": "Dress warmly; despite warm Santiago weather, Caj\u00f3n del Yeso sits at over 2,500m elevation."
   },
   {
+    "id": "rio-volcan",
+    "name": "R\u00edo Volc\u00e1n",
+    "section": "Caj\u00f3n del Maipo (Ba\u00f1os Morales to Puente El Volc\u00e1n)",
+    "regionId": "central",
+    "regionName": "Central Chile",
+    "grade": "IV+ \u2013 V (V+ at high melt)",
+    "classNumber": 5,
+    "character": "High-Gradient Glacial Boulder Torrent & Volcanic Canyon",
+    "lengthKm": 12,
+    "durationHours": "2 \u2013 3 hrs",
+    "gradient": "31 m/km (164 ft/mi)",
+    "optimalFlow": {
+      "minCms": 14,
+      "maxCms": 28,
+      "minCfs": 500,
+      "maxCfs": 1000,
+      "notes": "Fed by melting glaciers on Volc\u00e1n San Jos\u00e9 (5,856 m). Peak daily melt surges late afternoon (3\u20136 PM). Best paddled between 15 and 25 m\u00b3/s; above 30 m\u00b3/s it becomes a terrifying continuous Class V+ torrent."
+    },
+    "gaugeInfo": {
+      "code": "05702001-6",
+      "name": "R\u00edo Volc\u00e1n en Queltehues (DGA)",
+      "source": "DGA Chile",
+      "hasLiveChileWaterLevelsLink": false,
+      "chileWaterLevelsUrl": ""
+    },
+    "season": "November \u2013 February (Peak melt: Dec\u2013Jan)",
+    "putIn": {
+      "name": "Puente Ba\u00f1os Morales (Upper) / El Volc\u00e1n (Lower)",
+      "lat": -33.82,
+      "lng": -70.008,
+      "accessBeta": "Take Route G-25 from Santiago up the Maipo canyon, continuing past San Gabriel east to Puente Ba\u00f1os Morales at 1,775 m. For the lower Class IV section, put in at El Volc\u00e1n village at 1,380 m."
+    },
+    "takeOut": {
+      "name": "Puente El Volc\u00e1n / San Gabriel Confluence",
+      "lat": -33.784,
+      "lng": -70.244,
+      "accessBeta": "Take out on river-right immediately before the confluence with R\u00edo Maipo near Puente El Volc\u00e1n / San Gabriel."
+    },
+    "davidBeta": "The Volc\u00e1n is the steep, high-octane alpine jewel of the Maipo watershed. Tumbling off the glaciated 5,856-meter massif of Volc\u00e1n San Jos\u00e9, it charges through a stark volcanic gorge choked with freshly fractured basalt boulders and loose scree. The water is ice-cold and opaque with volcanic silt. From Ba\u00f1os Morales, the upper 8 km is a relentless Class IV+ to V boulder slalom with fast chutes, blind slots, and a mandatory portage around a small diversion weir on river-right. Below El Volc\u00e1n village, the river eases slightly into a blistering Class IV sprint down to the Maipo confluence. One of the fastest-paced steep creeks in Central Chile.",
+    "keyRapids": [
+      {
+        "name": "Morales Chute",
+        "grade": "Class V",
+        "description": "Explosive opening drop under Ba\u00f1os Morales bridge through a maze of sharp volcanic boulders with pushy surging hydraulics."
+      },
+      {
+        "name": "The Siphon Labyrinth",
+        "grade": "Class V",
+        "description": "Steep technical boulder garden requiring surgical boofs around undercut basalt blocks and siphon sieves."
+      },
+      {
+        "name": "El Volc\u00e1n Sprint",
+        "grade": "Class IV+",
+        "description": "Continuous 4.5-kilometer rapid with steep gradient, booming lateral waves, and virtually zero dead water down to the confluence."
+      }
+    ],
+    "hazards": [
+      "Sharp fractured volcanic rock throughout the riverbed; swimming carries severe blunt trauma hazard",
+      "Glacial diurnal pulse: afternoon melting rapidly spikes volume and turbidity between 15:00 and 18:00",
+      "Water diversion weir located midway between Ba\u00f1os Morales and El Volc\u00e1n requires mandatory scout and portage on river-right"
+    ],
+    "logistics": "Follow Route G-25 from Santiago past San Jos\u00e9 de Maipo to San Gabriel, then continue on the paved/gravel road up the Volc\u00e1n valley to Ba\u00f1os Morales. Hot springs and rustic cabins available at Ba\u00f1os Morales.",
+    "pkrProTip": "Never put on the Volc\u00e1n in late afternoon on a hot summer day without checking morning levels. Glacial melt can double the flow in two hours. Scout the diversion weir from the road during your shuttle drive up."
+  },
+  {
     "id": "rio-colorado-maipo",
     "name": "R\u00edo Colorado (Maipo Basin)",
     "section": "Maitenes to Maipo Confluence",

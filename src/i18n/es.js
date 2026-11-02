@@ -1074,6 +1074,28 @@ export const content = {
         "Rocas filosas y temperaturas bajas del aire a comienzos de temporada"
       ]
     },
+    "rio-volcan": {
+      "section": "Cajón del Maipo (Baños Morales a Puente El Volcán)",
+      "character": "Torrente glaciar de fuerte pendiente y cañón volcánico",
+      "season": "noviembre – febrero",
+      "grade": "IV+ – V (V+ con caudal alto)",
+      "beta": "El Volcán es la joya alpina de alta energía de la cuenca del Maipo. Naciendo en las laderas glaciares del macizo del Volcán San José (5.856 m), se precipita por un cañón lunar de roca volcánica fracturada y acarreo andino. El agua es gélida y densa por el sedimento volcánico. Desde Baños Morales, los primeros 8 km son un continuo eslalon clase IV+ a V entre bloques inestables, con canales angostos y un porteo obligatorio en una pequeña bocatoma en la orilla derecha. Bajo el pueblo de El Volcán, el río se transforma en un vertiginoso sprint clase IV continuo hasta la confluencia con el Maipo. Uno de los descensos con mayor pendiente sostenida del centro de Chile.",
+      "tip": "Nunca entres al Volcán a última hora de la tarde en un día caluroso sin comprobar el nivel matutino. El deshielo glaciar puede duplicar el caudal en dos horas. Inspecciona la bocatoma desde el camino durante el remonte.",
+      "logistics": "Ruta G-25 pavimentada desde Santiago pasando por San José de Maipo hasta San Gabriel, continuando por camino de montaña hacia Baños Morales. Termas y cabañas disponibles en Baños Morales.",
+      "flow": "Alimentado por los glaciares del volcán San José (5.856 m). El deshielo glaciar alcanza su pico entre las 15:00 y las 18:00 hrs en días soleados. Nivel óptimo entre 15 y 25 m³/s; por encima de 30 m³/s se convierte en un caudaloso y peligroso torrente clase V+.",
+      "putIn": "Sigue la Ruta G-25 desde Santiago subiendo por el Cajón del Maipo, pasando San Gabriel hacia el oriente hasta el Puente Baños Morales (1.775 m). Para la sección inferior clase IV, embarca en el pueblo de El Volcán a 1.380 m.",
+      "takeOut": "Desembarca en la orilla derecha junto al Puente El Volcán, justo antes de la confluencia con el río Maipo sobre San Gabriel.",
+      "rapids": [
+        "Paso inicial explosivo bajo el puente de Baños Morales entre un laberinto de rocas volcánicas afiladas con fuertes reflujos.",
+        "Campo de bloques técnico y empinado que exige boofs de precisión para sortear sifones y rocas socavadas.",
+        "Rápido continuo de 4,5 kilómetros con fuerte desnivel, olas laterales potentes y sin remansos hasta la confluencia."
+      ],
+      "hazards": [
+        "Roca volcánica afilada y fracturada en el lecho del río; nadar implica alto riesgo de traumatismo",
+        "Pulso glaciar diurno: el calor de la tarde incrementa velozmente el caudal y la turbidez entre las 15:00 y las 18:00",
+        "Bocatoma hidroeléctrica ubicada entre Baños Morales y El Volcán que requiere reconocimiento y porteo obligatorio por orilla derecha"
+      ]
+    },
     "rio-colorado-maipo": {
       "section": "Maitenes hasta la confluencia con el Maipo",
       "character": "Canaleta de limo de alta velocidad y cañón profundo",
