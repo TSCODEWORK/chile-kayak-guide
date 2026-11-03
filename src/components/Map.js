@@ -171,6 +171,9 @@ export function createChileMap(container, { interactive = true } = {}) {
       const link = event.target.closest?.('a[data-region]');
       if (link) hotHandler?.(link.dataset.region);
     });
+    svg.addEventListener('pointerleave', () => {
+      hotHandler?.(null);
+    });
     svg.addEventListener('focusin', (event) => {
       const link = event.target.closest?.('a[data-region]');
       if (link) hotHandler?.(link.dataset.region);

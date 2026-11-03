@@ -109,7 +109,7 @@ class ChileKayakApp {
     const mapRoot = document.getElementById('chile-map');
     this.map = createChileMap(mapRoot, { interactive: true });
     this.map.onHot((id) => {
-      if (this.view === 'home') this.setHotRegion(id);
+      if (this.view === 'home') this.setHotRegion(id, { scrollIntoView: !!id });
     });
 
     const initial = this.readRoute();
@@ -574,7 +574,7 @@ class ChileKayakApp {
     return hay.includes(query);
   }
 
-  setHotRegion(id) {
+  setHotRegion(id, { scrollIntoView = false } = {}) {
     if (id === this.hotRegion) return;
     this.hotRegion = id;
     this.map?.setHot(id);
@@ -584,7 +584,11 @@ class ChileKayakApp {
       this.hud.innerHTML = this.hudHTML(id);
     }
     document.querySelectorAll('[data-region-row]').forEach((row) => {
-      row.classList.toggle('is-hot', !!id && row.dataset.regionRow === id);
+      const match = !!id && row.dataset.regionRow === id;
+      row.classList.toggle('is-hot', match);
+      if (match && scrollIntoView) {
+        row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   }
 
@@ -654,6 +658,10 @@ class ChileKayakApp {
     `;
     this.hotRegion = undefined;
     this.setHotRegion(null);
+    const regionIndexEl = this.mainEl.querySelector('.region-index');
+    if (regionIndexEl) {
+      regionIndexEl.addEventListener('pointerleave', () => this.setHotRegion(null));
+    }
     this.mainEl.querySelectorAll('[data-region-row]').forEach((row) => {
       row.addEventListener('pointerover', (event) => {
         if (event.pointerType === 'touch') return;
