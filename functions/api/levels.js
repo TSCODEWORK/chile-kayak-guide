@@ -22,18 +22,22 @@ export async function onRequest(context) {
     ? await readV1(env.LEVELS_API_BASE, env.LEVELS_API_KEY)
     : await readHubs();
 
+  const hasError = Boolean(body.error);
   const response = new Response(JSON.stringify(body), {
+    status: hasError ? 502 : 200,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, max-age=120',
+      'Cache-Control': hasError ? 'no-store' : 'public, max-age=120',
       'Access-Control-Allow-Origin': '*'
     }
   });
 
-  try {
-    context.waitUntil?.(caches.default.put(cacheKey, response.clone()));
-  } catch {
-    /* ignore cache write failures */
+  if (!hasError) {
+    try {
+      context.waitUntil?.(caches.default.put(cacheKey, response.clone()));
+    } catch {
+      /* ignore cache write failures */
+    }
   }
   return response;
 }
@@ -43,6 +47,7 @@ async function readHubs() {
   await Promise.all(Object.entries(HUBS).map(async ([name, endpoint]) => {
     try {
       const res = await fetch(endpoint, {
+        signal: AbortSignal.timeout(8000),
         headers: {
           Accept: 'application/json',
           'User-Agent': 'ChileWhitewaterKayakGuide'
@@ -64,14 +69,23 @@ async function readV1(base, key) {
   const endpoint = `${base.replace(/\/$/, '')}${V1_PATH}`;
   const headers = { Accept: 'application/json' };
   if (key) headers.Authorization = `Bearer ${key}`;
-  const res = await fetch(endpoint, { headers });
-  if (!res.ok) {
-    return { source: 'v1', fetchedAt: new Date().toISOString(), readings: [], error: `upstream ${res.status}` };
+  try {
+    const res = await fetch(endpoint, { headers, signal: AbortSignal.timeout(8000) });
+    if (!res.ok) {
+      return { source: 'v1', fetchedAt: new Date().toISOString(), readings: [], error: `upstream ${res.status}` };
+    }
+    const data = await res.json();
+    return {
+      source: 'v1',
+      fetchedAt: data.fetchedAt || new Date().toISOString(),
+      readings: Array.isArray(data.readings) ? data.readings : []
+    };
+  } catch (err) {
+    return {
+      source: 'v1',
+      fetchedAt: new Date().toISOString(),
+      readings: [],
+      error: err?.name === 'TimeoutError' ? 'upstream timeout' : 'upstream unavailable'
+    };
   }
-  const data = await res.json();
-  return {
-    source: 'v1',
-    fetchedAt: data.fetchedAt || new Date().toISOString(),
-    readings: Array.isArray(data.readings) ? data.readings : []
-  };
 }

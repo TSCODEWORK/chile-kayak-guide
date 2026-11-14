@@ -1,7 +1,9 @@
 // Test Suite: Data Integrity & River Schema Verification
 // Ensures the codebase can safely be built upon without breaking schemas.
 
+import fs from 'node:fs';
 import { REGIONS, RIVERS, getRegionById, getRiverById, getRiversByRegion } from '../src/data/rivers-data.js';
+import { OPERATORS } from '../src/data/operators.js';
 
 console.log('🧪 Starting Chile Whitewater Guide Data Integrity Tests...\n');
 
@@ -73,6 +75,23 @@ assert(trancura && trancura.name === 'Río Trancura', 'getRiverById failed for t
 
 const puconRivers = getRiversByRegion('araucania');
 assert(puconRivers.length === 11, `Expected 11 Araucania rivers, got ${puconRivers.length}`);
+
+// 4. Verify region counts, operator river references, and public/rivers.json sync
+REGIONS.forEach(reg => {
+  const actual = getRiversByRegion(reg.id).length;
+  assert(reg.riversCount === actual, `Region ${reg.id} riversCount=${reg.riversCount} does not match actual=${actual}`);
+});
+
+OPERATORS.forEach(op => {
+  (op.rivers || []).forEach(rId => {
+    assert(riverIds.has(rId), `Operator ${op.id} references unknown river: ${rId}`);
+  });
+  const wa = op.contact?.whatsapp || '';
+  assert(!/0000000|2345678|76543210/.test(wa), `Operator ${op.id} has placeholder whatsapp: ${wa}`);
+});
+
+const publicRivers = JSON.parse(fs.readFileSync(new URL('../public/rivers.json', import.meta.url), 'utf8'));
+assert(publicRivers.rivers?.length === RIVERS.length, `public/rivers.json count (${publicRivers.rivers?.length}) != RIVERS.length (${RIVERS.length})`);
 
 console.log(`\n========================================`);
 console.log(`✅ Passed: ${passed} assertions`);

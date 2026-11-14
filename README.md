@@ -1,13 +1,12 @@
 # Chile Whitewater Kayak Guide
 
 [![Status](https://img.shields.io/badge/Status-Production_Ready-0ea5e9.svg)](https://github.com/TSCODEWORK/chile-kayak-guide)
-[![Partner](https://img.shields.io/badge/Partner-Pucon_Kayak_Retreat_(PKR)-f59e0b.svg)](https://puconkayakretreat.com)
 [![Telemetry](https://img.shields.io/badge/Telemetry-ChileWaterLevels.com-10b981.svg)](https://chilewaterlevels.com)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-Ready-f38020.svg?logo=cloudflare)](https://pages.cloudflare.com)
 
-A field atlas of whitewater kayaking in Chile: 44 runs across 7 regions, drawn on real administrative boundaries of the country.
+A field atlas of whitewater kayaking in Chile: 45 runs across 7 regions, drawn on real administrative boundaries of the country.
 
-Pucón Kayak Retreat (PKR) is a credited partner. The notes in this guide are neutral field beta for trip planning. They are not quotations.
+The notes in this guide are neutral field beta for trip planning. They are not quotations.
 
 ---
 
@@ -37,18 +36,17 @@ The codebase is built on an extensible, modular architecture designed for instan
 
 - **Guide beta**:
   - Each run keeps its existing flow range, grade, rapids, hazards, and access notes.
-  - Tips are labeled **Guide beta** and **Pro tip**.
-  - Pucón Kayak Retreat remains a credited partner, with live gauges linked from ChileWaterLevels.
+  - Tips are labeled **Guide beta** and **Pro tip**, with live gauges linked from ChileWaterLevels.
 
 - **Live Flow Telemetry & Unit Switcher**:
   - Full support for both Metric (`m³/s`) and Imperial (`cfs`) flow units with instantaneous global toggle.
   - Direct integration badges and links to **ChileWaterLevels.com** for rivers with real-time DGA telemetry (Trancura, Fuy, Futaleufú, Baker, Maipo, Puelo).
 
-- **Comprehensive Regional Coverage (44 Rivers)**:
-  1. **Central Chile** (Santiago & Valparaíso · Región V & RM): *Maipo, Yeso, Colorado, Aconcagua*
+- **Comprehensive Regional Coverage (45 Rivers)**:
+  1. **Central Chile** (Santiago & Valparaíso · Región V & RM): *Maipo, Yeso, Volcán, Colorado, Aconcagua*
   2. **O'Higgins & Maule** (Región VI & VII): *Río Claro 22 Teacups, Cachapoal, Tinguiririca, Melado, Achibueno, Maule*
   3. **Biobío & Ñuble** (Región VIII & XVI): *Alto Bío Bío (El Nacimiento), Ñuble, Diguillín, Queuco, Laja*
-  4. **Araucanía / Pucón** (Región IX · PKR Home Base): *Upper Trancura, Lower Trancura, Upper Palguín, Lower Palguín, Puesco, Liucura, Maichín, Nevados, Turbio, Cautín, Malleco, Truful-Truful*
+  4. **Araucanía / Pucón** (Región IX): *Upper Trancura, Lower Trancura, Upper Palguín, Puesco, Liucura, Maichín, Nevados, Turbio, Cautín, Malleco, Truful-Truful*
   5. **Los Ríos / Seven Lakes** (Región XIV): *Upper Fuy, Lower Fuy, San Pedro, Enco, Reyehueico, Gol-Gol*
   6. **Los Lagos & Northern Patagonia** (Región X): *Futaleufú Bridge to Bridge, Terminator, Petrohué, Cochamó, Puelo, Espolón, Palena*
   7. **Aysén & Southern Patagonia** (Región XI): *Upper Baker & El Saltón, Lower Baker, Simpson, Figueroa, Pascua*

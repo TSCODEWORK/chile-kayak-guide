@@ -9,7 +9,7 @@ export const REGIONS = [
     "sub": "Santiago & Valpara\u00edso \u00b7 Regi\u00f3n V & Metropolitana",
     "tagline": "Steep High-Andean silt torrents & glacial drainages near the capital",
     "season": "October \u2013 January",
-    "riversCount": 4,
+    "riversCount": 5,
     "color": "#3b6ea8",
     "glow": "rgba(59, 110, 168, 0.45)",
     "lat": -33.6,
@@ -49,7 +49,7 @@ export const REGIONS = [
     "id": "araucania",
     "name": "Araucan\u00eda (Puc\u00f3n)",
     "sub": "Regi\u00f3n IX \u00b7 Puc\u00f3n, Curarrehue & Villarrica",
-    "tagline": "The undisputed whitewater capital of South America & PKR home base",
+    "tagline": "The undisputed whitewater capital of South America",
     "season": "October \u2013 March (Year-Round)",
     "riversCount": 11,
     "color": "#4fd1e8",
@@ -57,7 +57,7 @@ export const REGIONS = [
     "lat": -39.3,
     "lon": -71.7,
     "mapPath": "araucania",
-    "overview": "Home waters of Puc\u00f3n Kayak Retreat. With Volc\u00e1n Villarrica looming above, the Araucan\u00eda features the highest concentration of world-class drops, basalt chutes, and clean waterfalls on earth. From the Trancura wave trains to the Palgu\u00edn drops and Puesco boulder gardens, Puc\u00f3n is the ultimate kayaker's playground."
+    "overview": "Centered around Puc\u00f3n with Volc\u00e1n Villarrica looming above, the Araucan\u00eda features the highest concentration of world-class drops, basalt chutes, and clean waterfalls on earth. From the Trancura wave trains to the Palgu\u00edn drops and Puesco boulder gardens, Puc\u00f3n is the ultimate kayaker's playground."
   },
   {
     "id": "los-rios",
@@ -324,7 +324,7 @@ export const RIVERS = [
     },
     "gaugeInfo": {
       "code": "09412007-1",
-      "name": "R\u00edo Puesco en Campamento (DGA)",
+      "name": "R\u00edo Momolluco (Puesco Basin Reference DGA)",
       "source": "DGA Chile / ChileWaterLevels",
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09412007-1"
@@ -371,10 +371,10 @@ export const RIVERS = [
   {
     "id": "rio-liucura",
     "name": "R\u00edo Liucura",
-    "section": "Magic Canyon (Upper Liucura to San Pedro)",
+    "section": "Upper Liucura to San Pedro Confluence",
     "regionId": "araucania",
     "regionName": "Araucan\u00eda (Puc\u00f3n)",
-    "grade": "III \u2013 IV",
+    "grade": "II \u2013 III (III+ at high water)",
     "classNumber": 3,
     "character": "Crystal Clear Springwater & Volcanic Chutes",
     "lengthKm": 11,
@@ -735,11 +735,11 @@ export const RIVERS = [
   {
     "id": "rio-truful-truful",
     "name": "R\u00edo Truful-Truful",
-    "section": "Conguill\u00edo National Park to Melipeuco",
+    "section": "Conguill\u00edo Park to Melipeuco (Above Salto Truful-Truful)",
     "regionId": "araucania",
     "regionName": "Araucan\u00eda (Puc\u00f3n)",
-    "grade": "IV+ / V",
-    "classNumber": 5,
+    "grade": "III \u2013 IV (Mandatory portage/takeout above V+/VI El Trufuliser)",
+    "classNumber": 3,
     "character": "Volcanic Slopes & Bedrock Waterfalls",
     "lengthKm": 10,
     "durationHours": "2.5 hrs",
@@ -826,8 +826,8 @@ export const RIVERS = [
     },
     "takeOut": {
       "name": "Neltume Flats (Kilometers Upstream of Huilo-Huilo Falls)",
-      "lat": -39.84,
-      "lng": -71.95,
+      "lat": -39.85,
+      "lng": -71.93,
       "accessBeta": "MANDATORY TAKEOUT: Take out on river-right at the wide gravel flats upstream of the town of Neltume. You must take out kilometers upstream of Salto Huilo-Huilo. Do not paddle past the flats."
     },
     "davidBeta": "The Upper Fuy is one of the most aesthetically stunning whitewater runs on earth. Draining the surface of Lago Pirihueico at Puerto Fuy, its warm, crystalline turquoise water tumbles through temperate Valdivian rainforest over clean bedrock ledges, natural waterslides, and runnable waterfalls into deep plunge pools. The classic run finishes on the wide gravel flats upstream of Neltume. PADDLERS MUST STRICTLY TAKE OUT HERE: Under no circumstances should anyone continue past the Neltume flats toward the unrunnable 35-meter cataract of Salto Huilo-Huilo. The boxed-in volcanic canyon below Huilo-Huilo is a deadly trap.",
@@ -1445,9 +1445,9 @@ export const RIVERS = [
     "section": "Lago Espol\u00f3n to R\u00edo Futaleuf\u00fa Confluence",
     "regionId": "los-lagos",
     "regionName": "Los Lagos & Northern Patagonia",
-    "grade": "III \u2013 IV",
+    "grade": "II \u2013 III",
     "classNumber": 3,
-    "character": "Crystal Clear Playboating & Friendly Canyons",
+    "character": "Crystal Clear Playboating & Warmup Valley Run",
     "lengthKm": 9,
     "durationHours": "2 hrs",
     "gradient": "9 m/km (48 ft/mi)",
@@ -1467,10 +1467,10 @@ export const RIVERS = [
     },
     "season": "December \u2013 March",
     "putIn": {
-      "name": "Lago Espol\u00f3n Dam / Outflow",
+      "name": "Lago Espol\u00f3n Outflow",
       "lat": -43.19,
       "lng": -71.88,
-      "accessBeta": "Put in below the small weir at the outflow of Lago Espol\u00f3n, 6 km from Futaleuf\u00fa town."
+      "accessBeta": "Put in at the natural outflow of Lago Espol\u00f3n (no dam), 6 km from Futaleuf\u00fa town."
     },
     "takeOut": {
       "name": "Futaleuf\u00fa Confluence Bridge",
@@ -1548,10 +1548,10 @@ export const RIVERS = [
   {
     "id": "rio-baker-upper",
     "name": "R\u00edo Baker",
-    "section": "Upper Baker & El Salt\u00f3n (Lago General Carrera to Nef)",
+    "section": "Upper Baker & El Salt\u00f3n (Puerto Bertrand to Nef)",
     "regionId": "aysen",
     "regionName": "Ays\u00e9n & Southern Patagonia",
-    "grade": "V (V+ at El Salt\u00f3n)",
+    "grade": "III \u2013 IV (V+ / portage at El Salt\u00f3n)",
     "classNumber": 5,
     "character": "Chile's Mightiest River by Volume & The King of Blue",
     "lengthKm": 18,
@@ -1562,18 +1562,18 @@ export const RIVERS = [
       "maxCms": 950,
       "minCfs": 14000,
       "maxCfs": 33500,
-      "notes": "Colossal volume. The Baker drains South America's second-largest lake. The visual sensation of pure cobalt blue power is beyond words."
+      "notes": "Colossal volume. The Baker drains Lago Bertrand (fed by Lago General Carrera, South America's second-largest lake). The visual sensation of pure cobalt blue power is beyond words."
     },
     "gaugeInfo": {
-      "code": "11315001-7",
-      "name": "Baker en Bajo Confluencia Nef (DGA)",
+      "code": "11536004-3",
+      "name": "R\u00edo Baker en Angostura Chacabuco (DGA)",
       "source": "DGA Chile / ChileWaterLevels",
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/baker"
     },
     "season": "December \u2013 March",
     "putIn": {
-      "name": "Puerto Bertrand (Lago General Carrera Outflow)",
+      "name": "Puerto Bertrand (Lago Bertrand Outflow)",
       "lat": -46.93,
       "lng": -72.83,
       "accessBeta": "Put in right at Puerto Bertrand where the turquoise lake spills out into the Baker."
@@ -1629,8 +1629,8 @@ export const RIVERS = [
       "notes": "Always high volume and runnable all season long."
     },
     "gaugeInfo": {
-      "code": "11315001-7",
-      "name": "Baker en Bajo Confluencia Nef (DGA)",
+      "code": "11536004-3",
+      "name": "R\u00edo Baker en Angostura Chacabuco (DGA)",
       "source": "DGA Chile / ChileWaterLevels",
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/baker"
@@ -1668,8 +1668,8 @@ export const RIVERS = [
     "section": "Caj\u00f3n de Farrellones (Coyhaique Gorge)",
     "regionId": "aysen",
     "regionName": "Ays\u00e9n & Southern Patagonia",
-    "grade": "IV \u2013 IV+",
-    "classNumber": 4,
+    "grade": "III \u2013 III+ (Class I\u2013II in National Reserve)",
+    "classNumber": 3,
     "character": "Deep Basalt Canyon & High-Cadence Creeking",
     "lengthKm": 12,
     "durationHours": "2.5 hrs",
@@ -1719,11 +1719,11 @@ export const RIVERS = [
   {
     "id": "rio-figueroa",
     "name": "R\u00edo Figueroa",
-    "section": "Lago Rosselot to R\u00edo Palena Confluence",
+    "section": "Lago Verde to Lago Rosselot (Temple Float Canyon)",
     "regionId": "aysen",
     "regionName": "Ays\u00e9n & Southern Patagonia",
-    "grade": "IV (IV+)",
-    "classNumber": 4,
+    "grade": "II \u2013 III",
+    "classNumber": 3,
     "character": "Turquoise Jewel & Dense Patagonian Forest",
     "lengthKm": 20,
     "durationHours": "3.5 hrs",
@@ -1733,29 +1733,29 @@ export const RIVERS = [
       "maxCms": 120,
       "minCfs": 1400,
       "maxCfs": 4200,
-      "notes": "Lake-buffered from Lago Rosselot; reliable flows throughout mid-summer."
+      "notes": "Lake-buffered from Lago Verde; reliable flows throughout mid-summer. (Note: the full Figueroa runs ~61 km from Lago Verde into Lago Rosselot, which then drains via R\u00edo Rosselot to R\u00edo Palena)."
     },
     "gaugeInfo": {
       "code": "FIGUEROA-VIS",
-      "name": "Lago Rosselot Outflow Gauge",
+      "name": "Lago Verde / Lago Rosselot Visual",
       "source": "Visual Gauge",
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
     "season": "December \u2013 March",
     "putIn": {
-      "name": "Lago Rosselot Outflow / Puyuhuapi",
-      "lat": -44.15,
-      "lng": -72.32,
-      "accessBeta": "Access via the gravel road near the village of La Junta toward Lago Rosselot."
+      "name": "Lago Verde Outflow / Temple Float Access",
+      "lat": -44.24,
+      "lng": -71.93,
+      "accessBeta": "Access from the gravel road connecting La Junta toward Lago Verde."
     },
     "takeOut": {
-      "name": "R\u00edo Palena Confluence Bridge",
-      "lat": -44.02,
-      "lng": -72.4,
-      "accessBeta": "Take out at the confluence bridge near La Junta."
+      "name": "Lago Rosselot Beach",
+      "lat": -44.15,
+      "lng": -72.32,
+      "accessBeta": "Take out at Lago Rosselot (boat tow across the lake or continue down R\u00edo Rosselot toward La Junta / R\u00edo Palena)."
     },
-    "davidBeta": "The Figueroa is one of the hidden gems of Northern Ays\u00e9n. Flowing out of Lago Rosselot with dazzling turquoise clarity, it cuts through ancient temperate rainforest. Continuous Class IV boulder gardens, clean drops, and exhilarating wave trains without the crowds. It's wilderness paddling at its finest.",
+    "davidBeta": "The Figueroa is one of the hidden gems of Northern Ays\u00e9n. Flowing out of Lago Verde with dazzling turquoise clarity through steep-walled canyons into Lago Rosselot, it offers continuous Class II\u2013III boulder gardens and wave trains without the crowds. Wilderness paddling at its finest.",
     "keyRapids": [
       {
         "name": "The Gateway",
@@ -1784,7 +1784,7 @@ export const RIVERS = [
     "grade": "V (V+)",
     "classNumber": 5,
     "character": "Extreme Glacial Monster & End of the World Expedition",
-    "lengthKm": 30,
+    "lengthKm": 62,
     "durationHours": "Full Day / Multi-Day",
     "gradient": "6 m/km (32 ft/mi)",
     "optimalFlow": {
@@ -1951,14 +1951,14 @@ export const RIVERS = [
   {
     "id": "rio-diguillin",
     "name": "R\u00edo Diguill\u00edn",
-    "section": "Termas de Chill\u00e1n Foothills to Recinto",
+    "section": "Los Lleuques / Reserva Nacional \u00d1uble to Los Lleuques",
     "regionId": "biobio",
     "regionName": "Biob\u00edo & \u00d1uble",
-    "grade": "IV (IV+)",
+    "grade": "III \u2013 IV (Upper Canyon V)",
     "classNumber": 4,
     "character": "Lush Native Forest & Bedrock Drops",
-    "lengthKm": 12,
-    "durationHours": "2.5 hrs",
+    "lengthKm": 6,
+    "durationHours": "2 hrs",
     "gradient": "16 m/km (85 ft/mi)",
     "optimalFlow": {
       "minCms": 15,
@@ -1976,16 +1976,16 @@ export const RIVERS = [
     },
     "season": "October \u2013 December",
     "putIn": {
-      "name": "Puente Shangri-La / Las Trancas Road",
+      "name": "Los Lleuques / Reserva Nacional \u00d1uble Gravel Road",
       "lat": -36.9,
       "lng": -71.58,
-      "accessBeta": "Take the road from Chill\u00e1n toward Termas de Chill\u00e1n. Turn south toward the Diguill\u00edn valley."
+      "accessBeta": "Take N-55 from Chill\u00e1n toward Termas de Chill\u00e1n, turn onto the gravel access road near Los Lleuques past the Reserva Nacional \u00d1uble gate."
     },
     "takeOut": {
-      "name": "Puente Recinto",
+      "name": "Puente Los Lleuques / N-55",
       "lat": -36.88,
       "lng": -71.72,
-      "accessBeta": "Take out near the town of Recinto."
+      "accessBeta": "Take out near Los Lleuques / N-55 road access."
     },
     "davidBeta": "The Diguill\u00edn offers steep, technical creeking through magnificent native Roble and Coig\u00fce forests. Fed by the volcanic slopes of Nevados de Chill\u00e1n, it features clean bedrock ledges, tight chutes, and technical boofing. A top-tier day trip on your way south to Puc\u00f3n.",
     "keyRapids": [
@@ -2059,14 +2059,14 @@ export const RIVERS = [
   {
     "id": "rio-laja",
     "name": "R\u00edo Laja",
-    "section": "Laguna del Laja Outflow to Antuco",
+    "section": "Salto Las Chilcas to ENDESA Reservoir",
     "regionId": "biobio",
     "regionName": "Biob\u00edo & \u00d1uble",
-    "grade": "IV \u2013 V",
+    "grade": "IV+ \u2013 V-",
     "classNumber": 5,
     "character": "Volcanic Slag Fields & Steep Drops",
-    "lengthKm": 14,
-    "durationHours": "2.5 hrs",
+    "lengthKm": 4,
+    "durationHours": "1.5 \u2013 2 hrs",
     "gradient": "18 m/km (95 ft/mi)",
     "optimalFlow": {
       "minCms": 25,
@@ -2084,16 +2084,16 @@ export const RIVERS = [
     },
     "season": "November \u2013 January",
     "putIn": {
-      "name": "Below Laguna del Laja",
+      "name": "Salto Las Chilcas (20-min hike)",
       "lat": -37.38,
       "lng": -71.42,
-      "accessBeta": "Take Route Q-45 from Los \u00c1ngeles through Antuco to Laguna del Laja National Park."
+      "accessBeta": "Take Route Q-45 toward Parque Nacional Laguna del Laja (~4 km up from park entrance) and hike ~20 minutes down to Salto Las Chilcas."
     },
     "takeOut": {
-      "name": "Puente Antuco",
+      "name": "ENDESA Reservoir Meadow",
       "lat": -37.33,
       "lng": -71.65,
-      "accessBeta": "Take out at the road bridge near Antuco."
+      "accessBeta": "Take out in the meadow next to the ENDESA reservoir."
     },
     "davidBeta": "Flowing through black lava beds below the active cone of Volc\u00e1n Antuco, the upper Laja is dramatic and raw. It offers steep ledge drops, violent wave trains, and athletic boofs. The volcanic landscape is severe and beautiful.",
     "keyRapids": [
@@ -2136,18 +2136,18 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "December – February (Mid-summer low flows)",
+    "season": "September – December (Spring snowmelt; drops too low mid-summer)",
     "putIn": {
-      "name": "Radal Siete Tazas Footbridge",
+      "name": "~2 km Upstream of Parque Inglés (Seal Launch)",
       "lat": -35.48,
       "lng": -71.02,
-      "accessBeta": "Drive from Molina into Parque Nacional Radal Siete Tazas. Register with Conaf rangers. Put in below the tourist lookouts."
+      "accessBeta": "Drive from Molina into Parque Nacional Radal Siete Tazas. Register with Conaf rangers. Hike ~2 km upstream on river-right from Parque Inglés / Entre Saltos (past the 4th tributary) to a rock-ledge seal launch."
     },
     "takeOut": {
-      "name": "Salto de la Leona / Lower Park Boundary",
+      "name": "Parque Inglés Bridge (Mandatory Take-Out)",
       "lat": -35.46,
       "lng": -71.06,
-      "accessBeta": "Take out before or after the designated gorge exit trail. Steep scramble up out of the canyon."
+      "accessBeta": "Take out at the first beach/rock ledge on river-right at the Parque Inglés bridge. Do NOT miss this take-out: downstream leads into dangerous strainers, siphons, and Salto de la Leona."
     },
     "davidBeta": "The 22 Teacups of the Río Claro is one of the most celebrated and surreal whitewater spectacles on earth. The river has sculpted circular pools—'teacups'—out of polished black basalt. You literally drop 8 to 18 feet from one circular basalt bowl directly into the next. It requires pinpoint precision: miss the boof or pencil in at the wrong angle and you risk fracturing an ankle on shallow bedrock or getting trapped in a churning circular hydraulic. Run it with experienced locals, respect the low flow window, and remember: above 7 m³/s is dangerous high water.",
     "keyRapids": [
@@ -2341,7 +2341,7 @@ export const RIVERS = [
     "section": "Montecillo to Linares",
     "regionId": "maule",
     "regionName": "O'Higgins & Maule",
-    "grade": "III+ / IV",
+    "grade": "III+ \u2013 IV (Lower) / V (Upper Canyon)",
     "classNumber": 4,
     "character": "Crystal Emerald Sanctuary & Granite Pools",
     "lengthKm": 18,
@@ -2462,8 +2462,8 @@ export const RIVERS = [
       "notes": "At 40\u201370 m\u00b3/s, it is high-energy Class III\u2013IV big water. Above 120 m\u00b3/s during hot December afternoons, it becomes a thunderous Class V brown freight train."
     },
     "gaugeInfo": {
-      "code": "05700001-4",
-      "name": "Maipo en El Manzano (DGA)",
+      "code": "05704016-5",
+      "name": "Maipo en El Ingenio (DGA)",
       "source": "DGA Chile / ChileWaterLevels",
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/maipo"

@@ -20,12 +20,13 @@ export function parseRoutePath(path) {
     normalized = normalized === '/es' ? '/' : (normalized.slice(3) || '/');
     if (normalized.length > 1 && normalized.endsWith('/')) normalized = normalized.slice(0, -1);
   }
+  if (normalized === '/') return { name: 'home', lang };
   if (normalized === '/with') return { name: 'with', lang };
   const region = normalized.match(/^\/region\/([^/]+)$/);
   if (region) return { name: 'region', id: safeDecode(region[1]), lang };
   const river = normalized.match(/^\/river\/([^/]+)$/);
   if (river) return { name: 'river', id: safeDecode(river[1]), lang };
-  return { name: 'home', lang };
+  return { name: 'missing', lang };
 }
 
 export function parseLocation({ pathname = '/', hash = '', base = '/' } = {}) {

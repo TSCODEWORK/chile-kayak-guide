@@ -276,6 +276,7 @@ class ChileKayakApp {
     if (route.name === 'region') this.renderRegion(route.id, changed);
     else if (route.name === 'river') this.renderRiver(route.id);
     else if (route.name === 'with') this.renderWith();
+    else if (route.name === 'missing') this.renderMissing();
     else this.renderHome();
 
     this.syncMap(route, animateMap && changed);
@@ -391,7 +392,6 @@ class ChileKayakApp {
     text('brand-line-1', 'brand1');
     text('brand-line-2', 'brand2');
     text('map-caption', 'mapCaption');
-    text('foot-partner', 'footPartner');
     text('foot-cwl', 'footCwl');
     text('foot-note', 'footNote');
     text('about-title', 'aboutTitle');
@@ -644,7 +644,7 @@ class ChileKayakApp {
       <div class="view-enter">
         <header class="home-lead">
           <p class="eyebrow">${esc(this.t('homeEyebrow'))}</p>
-          <h2>${esc(this.t('homeTitleBefore'))}<em>${esc(this.t('homeTitleEm'))}</em>${esc(this.t('homeTitleAfter'))}</h2>
+          <h1>${esc(this.t('homeTitleBefore'))}<em>${esc(this.t('homeTitleEm'))}</em>${esc(this.t('homeTitleAfter'))}</h1>
           <p class="lede">${esc(this.t('homeLede', { n: RIVERS.length }))}</p>
         </header>
         <section class="region-index" aria-label="${esc(this.t('regions'))}">
@@ -709,7 +709,7 @@ class ChileKayakApp {
           </p>
           <header class="region-head">
             <p class="eyebrow">${esc(this.copy('regions', region.id, 'sub'))}</p>
-            <h2>${esc(region.name)}</h2>
+            <h1>${esc(region.name)}</h1>
             <p class="lede">${esc(this.copy('regions', region.id, 'overview'))}</p>
             <dl class="stat-band">
               <div><dt>${esc(this.t('runs'))}</dt><dd>${rivers.length}</dd></div>
@@ -789,17 +789,23 @@ class ChileKayakApp {
   async loadLevels() {
     const root = window.__APP_BASE__ || '/';
     const url = `${root.endsWith('/') ? root : `${root}/`}api/levels`;
+    this.levelsLoading = true;
+    this.levelsError = false;
     try {
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error('levels');
       const data = await res.json();
       const readings = data.readings || [];
+      this.levelsLoading = false;
       this.levelsOffline = false;
       this.levels = Object.fromEntries(readings.map((reading) => [reading.runId, reading]));
       storageSet('ckg.levels', JSON.stringify({ savedAt: Date.now(), readings }));
       this.repaintLevels();
     } catch {
+      this.levelsLoading = false;
+      this.levelsError = true;
       this.useSavedLevels();
+      this.repaintLevels();
     }
   }
 
@@ -847,7 +853,17 @@ class ChileKayakApp {
   levelBlock(river, linked) {
     const runId = river?.id;
     const reading = this.levels?.[runId];
-    if (!reading) return '';
+    if (!reading) {
+      if (linked && river?.gaugeInfo?.hasLiveChileWaterLevelsLink) {
+        if (this.levelsLoading) {
+          return `<p class="level-status">${esc(this.t('levelsLoading'))}</p>`;
+        }
+        if (this.levelsError) {
+          return `<p class="level-status is-offline"><a href="${esc(river.gaugeInfo.chileWaterLevelsUrl)}" target="_blank" rel="noopener noreferrer">${esc(this.t('levelsOfflineNoCache'))}</a></p>`;
+        }
+      }
+      return '';
+    }
     const badges = [];
     if (reading.basis === 'estimated') badges.push(this.t('estimated'));
     if (reading.basis === 'derived') badges.push(this.t('derived'));
@@ -916,7 +932,7 @@ class ChileKayakApp {
         <header class="river-hero">
           <p class="eyebrow">${esc(river.regionName)}</p>
           <div class="hero-line">
-            <h2>${esc(river.name)}</h2>
+            <h1>${esc(river.name)}</h1>
             ${gradeChip(river.classNumber, this.copy('rivers', river.id, 'grade'))}
           </div>
           <p class="section-name">${esc(this.copy('rivers', river.id, 'section'))}</p>
@@ -1084,18 +1100,18 @@ class ChileKayakApp {
             <div class="outfitter-search-box">
               <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               <input type="search" id="outfitterSearchInput" class="outfitter-search-input" placeholder="${esc(this.t('outfSearchPlaceholder'))}" value="${esc(this.withSearch)}" aria-label="${esc(this.t('outfSearchPlaceholder'))}">
-              <button type="button" class="search-clear-btn" id="btnSearchClear" title="Clear" style="${this.withSearch ? 'display:block;' : 'display:none;'}">✕</button>
+              <button type="button" class="search-clear-btn" id="btnSearchClear" title="${esc(this.t('clearLabel'))}" aria-label="${esc(this.t('clearLabel'))}" style="${this.withSearch ? 'display:block;' : 'display:none;'}">✕</button>
             </div>
           </div>
 
           <!-- Region filter chips -->
           <div class="ofilter-bar" role="group" aria-label="${esc(this.t('outfFilterRegion'))}">
             <span class="oflabel">${esc(this.t('outfFilterRegion'))}:</span>
-            <button type="button" class="ochip${this.withRegion === 'all' ? ' on' : ''}" data-oarea="all">
+            <button type="button" class="ochip${this.withRegion === 'all' ? ' on' : ''}" data-oarea="all" aria-pressed="${this.withRegion === 'all' ? 'true' : 'false'}">
               ${esc(this.t('outfAllRegions'))} <span class="chip-count">(${regionCounts.all})</span>
             </button>
             ${availableRegions.map((region) => `
-              <button type="button" class="ochip${this.withRegion === region.id ? ' on' : ''}" data-oarea="${esc(region.id)}">
+              <button type="button" class="ochip${this.withRegion === region.id ? ' on' : ''}" data-oarea="${esc(region.id)}" aria-pressed="${this.withRegion === region.id ? 'true' : 'false'}">
                 ${esc(region.name)} <span class="chip-count">(${regionCounts[region.id]})</span>
               </button>
             `).join('')}
@@ -1104,11 +1120,11 @@ class ChileKayakApp {
           <!-- Price Tier filter -->
           <div class="ofilter-bar ofilter-tiers" role="group" aria-label="${esc(this.t('outfFilterPrice'))}">
             <span class="oflabel">💲 ${esc(this.t('outfFilterPrice'))}:</span>
-            <button type="button" class="ochip${this.withTier === 'all' ? ' on' : ''}" data-otier="all">
+            <button type="button" class="ochip${this.withTier === 'all' ? ' on' : ''}" data-otier="all" aria-pressed="${this.withTier === 'all' ? 'true' : 'false'}">
               ${esc(this.t('outfAllPrices'))} <span class="chip-count">(${tierCounts.all})</span>
             </button>
-            ${PRICE_TIERS.map((pt) => `
-              <button type="button" class="ochip ochip-tier${this.withTier === pt.tier ? ' on' : ''}" data-otier="${esc(pt.tier)}">
+            ${PRICE_TIERS.filter((pt) => tierCounts[pt.tier] > 0 || this.withTier === pt.tier).map((pt) => `
+              <button type="button" class="ochip ochip-tier${this.withTier === pt.tier ? ' on' : ''}" data-otier="${esc(pt.tier)}" aria-pressed="${this.withTier === pt.tier ? 'true' : 'false'}">
                 ${esc(pt.range)} <span class="chip-count">(${tierCounts[pt.tier]})</span>
               </button>
             `).join('')}
@@ -1118,7 +1134,7 @@ class ChileKayakApp {
           <div class="ofilter-bar ofilter-styles" role="group" aria-label="${esc(this.t('outfFilterStyle'))}">
             <span class="oflabel">${esc(this.t('outfFilterStyle'))}:</span>
             ${TRIP_STYLES.map((st) => `
-              <button type="button" class="ochip${this.withStyle === st.id ? ' on' : ''}" data-ostyle="${esc(st.id)}">
+              <button type="button" class="ochip${this.withStyle === st.id ? ' on' : ''}" data-ostyle="${esc(st.id)}" aria-pressed="${this.withStyle === st.id ? 'true' : 'false'}">
                 ${esc(st.label[this.lang] || st.label.en)}
               </button>
             `).join('')}
@@ -1345,7 +1361,10 @@ class ChileKayakApp {
   openPriceGuideModal(highlightTier = null) {
     const c = document.getElementById('inquiryModalContainer');
     if (!c) return;
+    this.withModalTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     c.classList.add('open');
+    document.body.classList.add('modal-open');
+    this.setInert(true);
     c.innerHTML = `
       <div class="price-guide-card" role="dialog" aria-modal="true" aria-labelledby="pgTitle">
         <div class="modal-badge-row">
@@ -1372,7 +1391,7 @@ class ChileKayakApp {
                 <h4 class="ptc-title">${esc(pt.title[this.lang] || pt.title.en)}</h4>
                 <p class="ptc-summary">${esc(pt.summary[this.lang] || pt.summary.en)}</p>
                 <button type="button" class="btn-tier-select" data-select-tier="${esc(pt.tier)}">
-                  ${this.withTier === pt.tier ? '✓ Active Filter' : `Filter: ${esc(pt.range)} (${count})`}
+                  ${this.withTier === pt.tier ? `✓ ${esc(this.t('outfActiveFilter'))}` : `${esc(this.t('outfFilterLabel'))}: ${esc(pt.range)} (${count})`}
                 </button>
               </div>
             `;
@@ -1381,13 +1400,14 @@ class ChileKayakApp {
 
         <div class="price-guide-footer">
           <p class="price-guide-guarantee">
-            <strong>Chile Whitewater Kayak Guide Direct Rate Guarantee:</strong> We charge zero booking commissions. All prices listed are direct local quotes provided by vetted kayak schools, guides, and retreat lodges across Chile.
+            <strong>${esc(this.t('outfGuaranteeTitle'))}</strong> ${esc(this.t('outfGuaranteeBody'))}
           </p>
           <button type="button" class="btn-partner" id="btnPgCloseFooter">${esc(this.t('outfClose'))}</button>
         </div>
       </div>
     `;
 
+    document.getElementById('pgClose')?.focus();
     document.getElementById('pgClose')?.addEventListener('click', () => this.closeWithModal());
     document.getElementById('btnPgCloseFooter')?.addEventListener('click', () => this.closeWithModal());
     c.querySelectorAll('[data-select-tier]').forEach((btn) => {
@@ -1402,7 +1422,10 @@ class ChileKayakApp {
   openInquiryModal(operator) {
     const c = document.getElementById('inquiryModalContainer');
     if (!c) return;
+    this.withModalTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     c.classList.add('open');
+    document.body.classList.add('modal-open');
+    this.setInert(true);
     const isConcierge = !operator;
     const title = isConcierge
       ? this.t('outfConciergeModalTitle')
@@ -1425,29 +1448,30 @@ class ChileKayakApp {
         <form id="inquiryForm" class="inquiry-form">
           <div class="form-group">
             <label for="inqName">${esc(this.t('outfFormName'))} *</label>
-            <input type="text" id="inqName" class="form-input" required placeholder="e.g. Sarah Jenkins">
+            <input type="text" id="inqName" class="form-input" required placeholder="${esc(this.t('outfPlaceholderName'))}">
           </div>
           <div class="form-group">
             <label for="inqEmail">${esc(this.t('outfFormEmail'))} *</label>
-            <input type="email" id="inqEmail" class="form-input" required placeholder="sarah@example.com">
+            <input type="email" id="inqEmail" class="form-input" required placeholder="name@example.com">
           </div>
           <div class="form-group">
             <label for="inqDates">${esc(this.t('outfFormDates'))} *</label>
-            <input type="text" id="inqDates" class="form-input" required placeholder="e.g. Dec 10–18, 2026 or Jan 2027">
+            <input type="text" id="inqDates" class="form-input" required placeholder="${esc(this.t('outfPlaceholderDates'))}">
           </div>
           <div class="form-group">
             <label for="inqSkill">${esc(this.t('outfFormSkill'))}</label>
-            <input type="text" id="inqSkill" class="form-input" placeholder="e.g. Class III Roll, Class IV Creeking, Class V Expert">
+            <input type="text" id="inqSkill" class="form-input" placeholder="${esc(this.t('outfPlaceholderSkill'))}">
           </div>
           <div class="form-group">
             <label for="inqNotes">${esc(this.t('outfFormNotes'))}</label>
-            <textarea id="inqNotes" class="form-textarea" placeholder="e.g. Chasing waterfalls, boof technique coaching, or big water trains on the Futaleufú"></textarea>
+            <textarea id="inqNotes" class="form-textarea" placeholder="${esc(this.t('outfPlaceholderNotes'))}"></textarea>
           </div>
           <button type="submit" class="btn-submit-inquiry">${esc(this.t('outfFormSubmit'))} →</button>
         </form>
       </div>
     `;
 
+    document.getElementById('inqName')?.focus();
     document.getElementById('inqClose')?.addEventListener('click', () => this.closeWithModal());
     const form = document.getElementById('inquiryForm');
     form?.addEventListener('submit', (e) => {
@@ -1458,31 +1482,42 @@ class ChileKayakApp {
       const skill = document.getElementById('inqSkill')?.value || '';
       const notes = document.getElementById('inqNotes')?.value || '';
 
-      const targetEmail = operator?.contact?.email || 'david@puconkayakretreat.com';
+      const targetEmail = operator?.contact?.email || 'info@chilekayakguide.com';
       const opName = operator ? this.t(`ops.${operator.id}.name`) : 'Chile Whitewater Matchmaker';
+      const plainBody = `Name: ${name}\nEmail: ${email}\nEstimated Dates: ${dates}\nSkill Level: ${skill}\nGoals & Notes: ${notes}\nReferral: Chile Whitewater Kayak Guide (chilekayakguide.com)`;
       const subject = encodeURIComponent(`Kayak Trip Inquiry: ${opName} [${name}]`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nEstimated Dates: ${dates}\nSkill Level: ${skill}\nGoals & Notes: ${notes}\nReferral: Chile Whitewater Kayak Guide (chilekayakguide.com)`
-      );
-      window.open(`mailto:${targetEmail}?subject=${subject}&body=${body}`, '_blank');
+      const body = encodeURIComponent(plainBody);
+      window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
 
       c.innerHTML = `
-        <div class="inquiry-modal-card" role="dialog" aria-modal="true">
+        <div class="inquiry-modal-card" role="dialog" aria-modal="true" aria-labelledby="inqDoneTitle">
           <div class="modal-badge-row">
-            <span class="trust-pill">✓ Sent</span>
-            <button type="button" class="modal-close" id="inqCloseDone">✕</button>
+            <span class="trust-pill">✉ ${esc(this.t('outfFormOpened'))}</span>
+            <button type="button" class="modal-close" id="inqCloseDone" aria-label="${esc(this.t('outfClose'))}">✕</button>
           </div>
           <div class="inquiry-success">
-            <p style="margin:0 0 0.8rem 0;font-size:1.1rem;font-weight:750;">✓ ${esc(this.t('outfFormSuccess'))}</p>
-            <p style="margin:0;font-size:0.85rem;color:var(--ink);">Our team / ${esc(opName)} will reply to <strong>${esc(email)}</strong> shortly.</p>
+            <p id="inqDoneTitle" style="margin:0 0 0.6rem 0;font-size:1.1rem;font-weight:750;">${esc(this.t('outfFormOpened'))}</p>
+            <p style="margin:0 0 0.7rem 0;font-size:0.85rem;color:var(--ink);">${esc(this.t('outfFormOpening', { name: opName }))}</p>
+            <p style="margin:0;font-size:0.8rem;color:var(--dim);"><strong>${esc(targetEmail)}</strong></p>
           </div>
-          <div style="margin-top:1.2rem;text-align:center;">
-            <button type="button" class="btn btn-primary" id="btnInqOk">${esc(this.t('outfClose'))}</button>
+          <div style="margin-top:1.1rem;display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="btnCopyInquiry">${esc(this.t('outfFormCopy'))}</button>
+            <button type="button" class="btn-partner" id="btnInqOk">${esc(this.t('outfClose'))}</button>
           </div>
         </div>
       `;
+      document.getElementById('btnCopyInquiry')?.addEventListener('click', async () => {
+        const btn = document.getElementById('btnCopyInquiry');
+        try {
+          await navigator.clipboard.writeText(`To: ${targetEmail}\nSubject: Kayak Trip Inquiry: ${opName} [${name}]\n\n${plainBody}`);
+          if (btn) btn.textContent = this.t('outfFormCopied');
+        } catch {
+          /* clipboard unavailable */
+        }
+      });
       document.getElementById('inqCloseDone')?.addEventListener('click', () => this.closeWithModal());
       document.getElementById('btnInqOk')?.addEventListener('click', () => this.closeWithModal());
+      document.getElementById('btnInqOk')?.focus();
     });
   }
 
@@ -1492,6 +1527,12 @@ class ChileKayakApp {
       c.classList.remove('open');
       c.innerHTML = '';
     }
+    if (!this.searchModal?.classList.contains('open') && !this.aboutModal?.classList.contains('open')) {
+      document.body.classList.remove('modal-open');
+      this.setInert(false);
+    }
+    this.withModalTrigger?.focus();
+    this.withModalTrigger = null;
   }
 
   operatorCard(operator, forceOpen) {
@@ -1537,9 +1578,9 @@ class ChileKayakApp {
             </div>
           </div>
           <div class="oc-sum-right">
-            <button type="button" class="oc-price-pill" data-open-price-tier="${esc(operator.priceTier)}" title="${esc(this.t('outfPriceGuideBtn'))}">
+            <span class="oc-price-pill">
               <span class="tier-rate">${esc(rateText)}</span>
-            </button>
+            </span>
             <span class="chev" aria-hidden="true"></span>
           </div>
         </summary>
@@ -1635,7 +1676,7 @@ class ChileKayakApp {
     this.mainEl.innerHTML = `
       <div class="missing view-enter">
         <p class="eyebrow">${esc(this.t('offMap'))}</p>
-        <h2>${esc(this.t('missingTitle'))}</h2>
+        <h1>${esc(this.t('missingTitle'))}</h1>
         <p>${esc(this.t('missingBody'))}</p>
         <a class="btn btn-primary" href="${esc(this.path('home'))}">${esc(this.t('backChile'))}</a>
       </div>

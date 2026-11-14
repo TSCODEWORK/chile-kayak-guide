@@ -130,7 +130,7 @@ export const OPERATORS = [
     },
     contact: {
       website: 'https://puconkayakretreat.com',
-      whatsapp: '+56995000000',
+      whatsapp: '+56933886197',
       email: 'info@puconkayakretreat.com'
     },
     // Authentic SVG Brand Logo
@@ -199,8 +199,7 @@ export const OPERATORS = [
     rivers: [
       'rio-futaleufu-bridge-to-bridge',
       'rio-futaleufu-terminator',
-      'rio-espolon',
-      'rio-azul'
+      'rio-espolon'
     ],
     boats: {
       en: 'Jackson Kayaks (Zen, Nirvana, Karma), Dagger (Mamba, Nomad), catarafts and safety rafts.',
@@ -233,7 +232,7 @@ export const OPERATORS = [
     },
     contact: {
       website: 'https://www.exchile.com',
-      whatsapp: '+56982345678',
+      whatsapp: '',
       email: 'info@exchile.com'
     },
     // Authentic SVG Brand Logo
@@ -332,8 +331,8 @@ export const OPERATORS = [
     },
     contact: {
       website: 'https://www.kriminalkayak.com',
-      whatsapp: '+56976543210',
-      email: 'info@kriminalkayak.com'
+      whatsapp: '+56997187710',
+      email: 'kriminalkayak@gmail.com'
     },
     // Authentic SVG Brand Logo
     logoSvg: `<svg viewBox="0 0 48 48" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Kriminal Kayak Logo">
