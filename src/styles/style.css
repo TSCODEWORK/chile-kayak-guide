@@ -559,7 +559,14 @@ body:not(.view-home) .map-caption { display: none; }
 .focus-stats dd, .stat-band dd, .metric-grid dd, .card-metrics dd {
   margin: 0.15rem 0 0;
   font-family: var(--serif);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+.metric-grid > div {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  background: var(--card);
 }
 .btn {
   display: inline-flex;
@@ -832,6 +839,11 @@ body:not(.view-home) .map-caption { display: none; }
   white-space: nowrap;
   flex-shrink: 0;
 }
+.grade-chip.is-long {
+  white-space: normal;
+  text-align: left;
+  flex-shrink: 1;
+}
 .grade-3 { background: #c8f5df; color: #073326; }
 .grade-4 { background: #f6ddb0; color: #3a2504; }
 .grade-5 { background: #f8c7c1; color: #4a1210; }
@@ -944,16 +956,18 @@ body:not(.view-home) .map-caption { display: none; }
   body.view-home .chile-svg {
     position: static;
     width: auto;
-    height: 82svh;
+    height: 46svh;
+    max-height: 360px;
     max-width: 100%;
     aspect-ratio: 280 / 1412;
   }
-  body.view-region .map-stage { display: grid; height: 54svh; grid-template-rows: minmax(0, 1fr); }
+  .region-row { margin: 0.15rem 0; }
+  body.view-region .map-stage { display: grid; height: 48svh; grid-template-rows: minmax(0, 1fr); }
   body.view-region .chile-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
   .focus-stats, .stat-band { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .metric-grid, .access-grid { grid-template-columns: 1fr; }
   .home-lead h1, .home-lead h2 { font-size: 2.7rem; }
-  #app-view, .foot { padding-left: 1rem; padding-right: 1rem; }
+  #app-view, .foot { padding-left: 1rem; padding-right: 1rem; overflow-x: clip; }
 
   /* Compact Mobile Toolbar */
   .top-nav {

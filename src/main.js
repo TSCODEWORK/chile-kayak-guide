@@ -41,7 +41,8 @@ function mixText(rivers) {
 
 function gradeChip(classNumber, label) {
   const tone = classNumber === 3 ? 'grade-3' : classNumber === 4 ? 'grade-4' : 'grade-5';
-  return `<span class="grade-chip ${tone}">${esc(label)}</span>`;
+  const longCls = String(label || '').length > 18 ? ' is-long' : '';
+  return `<span class="grade-chip ${tone}${longCls}">${esc(label)}</span>`;
 }
 
 function rapidTone(grade) {
@@ -939,10 +940,15 @@ class ChileKayakApp {
           <p class="section-name">${esc(this.copy('rivers', river.id, 'section'))}</p>
         </header>
         ${this.levelBlock(river, true)}
-        <p class="glance">${esc(this.formatFlow(river.optimalFlow))} ${esc(this.t('optimal'))} · ${esc(river.lengthKm)} km · ${esc(this.copy('rivers', river.id, 'season'))}</p>
+        <dl class="metric-grid" aria-label="${esc(this.t('flowNotes'))}">
+          <div><dt>${esc(this.t('optimal'))}</dt><dd>${esc(this.formatFlow(river.optimalFlow))}</dd></div>
+          <div><dt>${esc(this.t('runs'))}</dt><dd>${esc(river.lengthKm)} km · ${esc(river.durationHours)}</dd></div>
+          <div><dt>Gradient</dt><dd>${esc(river.gradient)}</dd></div>
+          <div><dt>${esc(this.t('season'))}</dt><dd>${esc(this.copy('rivers', river.id, 'season'))}</dd></div>
+        </dl>
         <div id="run-map" class="run-map" role="img" aria-label="${esc(this.t('runMapAria', { name: river.name }))}"></div>
-        <p class="map-legend"><span><i class="legend-put"></i> ${esc(this.t('putLegend'))}</span><span><i class="legend-take"></i> ${esc(this.t('takeLegend'))}</span></p>
-        <details class="dive">
+        <p class="map-legend"><span><i class="legend-put"></i> ${esc(this.t('putLegend'))}: ${esc(river.putIn.name)}</span><span><i class="legend-take"></i> ${esc(this.t('takeLegend'))}: ${esc(river.takeOut.name)}</span></p>
+        <details class="dive" open>
           <summary>
             <span>${esc(this.t('dive'))}</span>
             <span class="dive-meta">${esc(this.t('diveMeta', { n: river.keyRapids.length }))}</span>
@@ -1090,7 +1096,7 @@ class ChileKayakApp {
             </div>
             <div class="oh-top-actions">
               <button type="button" class="btn-price-guide-trigger" id="btnOpenPriceGuide">
-                💲 ${esc(this.t('outfPriceGuideBtn'))}
+                ${esc(this.t('outfPriceGuideBtn'))}
               </button>
               <span class="trust-pill">✓ ${esc(this.t('outfTrustPill'))}</span>
             </div>
@@ -1120,7 +1126,7 @@ class ChileKayakApp {
 
           <!-- Price Tier filter -->
           <div class="ofilter-bar ofilter-tiers" role="group" aria-label="${esc(this.t('outfFilterPrice'))}">
-            <span class="oflabel">💲 ${esc(this.t('outfFilterPrice'))}:</span>
+            <span class="oflabel">${esc(this.t('outfFilterPrice'))}:</span>
             <button type="button" class="ochip${this.withTier === 'all' ? ' on' : ''}" data-otier="all" aria-pressed="${this.withTier === 'all' ? 'true' : 'false'}">
               ${esc(this.t('outfAllPrices'))} <span class="chip-count">(${tierCounts.all})</span>
             </button>
@@ -1142,16 +1148,6 @@ class ChileKayakApp {
           </div>
         </div>
 
-        <!-- Concierge Matchmaker Card -->
-        <div class="concierge-card glass">
-          <div class="cc-content">
-            <div class="cc-tag">★ ${esc(this.t('outfConciergeTag'))}</div>
-            <h3>${esc(this.t('outfConciergeTitle'))}</h3>
-            <p>${esc(this.t('outfConciergeDesc'))}</p>
-          </div>
-          <button type="button" class="btn-concierge" id="btnConcierge">${esc(this.t('outfConciergeBtn'))} →</button>
-        </div>
-
         <!-- Results count & actions bar -->
         <div class="results-bar" id="resultsBar">
           <span class="results-count">${esc(this.t('outfShowingCount', { count: filtered.length, total: OPERATORS.length }))}</span>
@@ -1165,10 +1161,20 @@ class ChileKayakApp {
         <div class="outfitters-grid" id="outfittersGrid">
           ${filtered.length ? filtered.map((op) => this.operatorCard(op, hash === op.id)).join('') : `
             <div class="outfitters-empty glass" style="padding:2rem;text-align:center;">
-              <p style="margin-bottom:0.8rem;color:var(--muted);">🛶 ${esc(this.t('withEmpty'))}</p>
+              <p style="margin-bottom:0.8rem;color:var(--muted);">${esc(this.t('withEmpty'))}</p>
               <button type="button" class="btn-clear-filters" id="btnEmptyClear">${esc(this.t('outfClearFilters'))} ✕</button>
             </div>
           `}
+        </div>
+
+        <!-- Concierge Matchmaker Card -->
+        <div class="concierge-card glass">
+          <div class="cc-content">
+            <div class="cc-tag">${esc(this.t('outfConciergeTag'))}</div>
+            <h3>${esc(this.t('outfConciergeTitle'))}</h3>
+            <p>${esc(this.t('outfConciergeDesc'))}</p>
+          </div>
+          <button type="button" class="btn-concierge" id="btnConcierge">${esc(this.t('outfConciergeBtn'))} →</button>
         </div>
 
         <!-- Partner CTA at bottom -->
