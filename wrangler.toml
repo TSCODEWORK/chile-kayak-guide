@@ -6,5 +6,4 @@ pages_build_output_dir = "dist"
 [vars]
 ENVIRONMENT = "production"
 APP_NAME = "Chile Whitewater Kayaking Guide"
-PARTNER = "Pucon Kayak Retreat (PKR)"
 TELEMETRY_SOURCE = "ChileWaterLevels.com"

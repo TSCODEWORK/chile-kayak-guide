@@ -230,9 +230,9 @@ export const content = {
     },
     "araucania": {
       "sub": "Región IX · Pucón, Curarrehue y Villarrica",
-      "tagline": "La capital indiscutida de las aguas blancas de Sudamérica y la base del PKR",
+      "tagline": "La capital indiscutida de las aguas blancas de Sudamérica",
       "season": "octubre – marzo (todo el año)",
-      "overview": "Las aguas de casa del Pucón Kayak Retreat. Con el Volcán Villarrica alzándose encima, la Araucanía tiene la mayor concentración del planeta de saltos de clase mundial, canaletas de basalto y cascadas limpias. De los trenes de olas del Trancura a los saltos del Palguín y los jardines de bloques del Puesco, Pucón es el patio de juegos definitivo del kayakista."
+      "overview": "Con centro en Pucón y el Volcán Villarrica alzándose encima, la Araucanía tiene la mayor concentración del planeta de saltos de clase mundial, canaletas de basalto y cascadas limpias. De los trenes de olas del Trancura a los saltos del Palguín y los jardines de bloques del Puesco, Pucón es el patio de juegos definitivo del kayakista."
     },
     "los-rios": {
       "sub": "Región XIV · Fuy, San Pedro, Enco y Siete Lagos",
@@ -343,10 +343,10 @@ export const content = {
       ]
     },
     "rio-liucura": {
-      "section": "Magic Canyon (Liucura alto a San Pedro)",
+      "section": "Liucura alto a confluencia San Pedro",
       "character": "Agua de vertiente cristalina y canaletas volcánicas",
       "season": "octubre – abril",
-      "grade": "III – IV",
+      "grade": "II – III (III+ con agua alta)",
       "beta": "El Liucura es pura terapia de kayak. Flotas sobre una claridad de agua potable: miras a través de 15 pies de agua azul zafiro y ves el lecho de ripio volcánico y las truchas salvajes. Entra a Magic Canyon, un desfiladero volcánico angosto, de paredes empinadas y con musgo, donde los trenes de olas rebotan juguetones contra la roca. Es el paseo intermedio por excelencia, el tramo de las clínicas de guías y la vuelta de calentamiento para cualquier kayakista que se está adaptando a las corrientes chilenas.",
       "tip": "Muy buen tramo para afinar el esquimotaje y para ejercicios de bow stall. Con agua alta, la ola de Magic Canyon forma un hombro dinámico bien vidrioso, de esos que encantan a quien surfea.",
       "logistics": "A solo 15 minutos del centro de Pucón. El estacionamiento de la salida en Puente San Pedro es excelente.",
@@ -364,10 +364,10 @@ export const content = {
       ]
     },
     "rio-maichin": {
-      "section": "Cañón alto y bajo",
+      "section": "Cañón inferior (Puente Quiñenahuin a confluencia)",
       "character": "Garganta continua de basalto y saltos a poza técnicos",
       "season": "octubre – enero",
-      "grade": "IV – IV+ (V con caudales altos)",
+      "grade": "III – IV (IV+ con caudales altos)",
       "beta": "El Maichín no recibe la prensa internacional del Palguín o del Trancura, pero los kayakistas locales de Pucón lo conocen como uno de los mejores tramos de clase IV del valle. El cañón es apartado y salvaje. Caes en jardines de bloques continuos, atraviesas hoyos de repisa y te enhebras por puertas estrechas de basalto. Pide mucha agilidad con el kayak y una lectura al tiro de las líneas de horizonte aguas abajo.",
       "tip": "Reconoce siempre la entrada del cañón desde el puente antes de meterte, para confirmar el nivel del agua y asegurarte de que no haya árboles caídos tapando los estrechos de basalto.",
       "logistics": "Camino de ripio, fácil en auto de tracción simple durante el verano. Unos 45 minutos al este de Pucón.",
@@ -465,10 +465,10 @@ export const content = {
       ]
     },
     "rio-truful-truful": {
-      "section": "Parque Nacional Conguillío a Melipeuco",
+      "section": "Parque Nacional Conguillío a Melipeuco (sobre Salto Truful-Truful)",
       "character": "Laderas volcánicas y cascadas de lecho de roca",
       "season": "noviembre – enero",
-      "grade": "IV+ / V",
+      "grade": "III – IV (salida/porteo obligatorio sobre V+/VI El Trufuliser)",
       "beta": "Remar el Truful-Truful es como meterse en un paisaje prehistórico. Drena los diques de lava de Conguillío, bajo el Volcán Llaima, y el tramo trae agua cristalina brillante que se estrella contra la piedra volcánica negra. Boofs limpios y empinados, hoyos cortos y potentes, y un paisaje natural inigualable.",
       "tip": "Date el tiempo de subir a pie a ver la cascada principal, Salto Truful-Truful, en el parque, antes de lanzarte.",
       "logistics": "Como a 1.5 horas al norte de Pucón, por Cunco y Melipeuco.",
@@ -548,9 +548,9 @@ export const content = {
     },
     "rio-enco": {
       "section": "Lago Panguipulli a Lago Riñihue",
-      "character": "Conexión de lagos de gran caudal y cañones",
+      "character": "Conexión de lagos de gran caudal y flotada escénica",
       "season": "noviembre – marzo",
-      "grade": "III+ (IV con agua alta)",
+      "grade": "II (II+ con agua alta)",
       "beta": "El Enco conecta dos de los lagos más grandiosos de Chile. Es gran caudal, rápido y de una belleza notable. Remas con el Volcán Mocho-Choshuenco reflejándose en el agua esmeralda cristalina. Los rápidos son trenes de olas veloces y curvas amplias. Un tramo conector salvaje increíble.",
       "tip": "Muy buena palada para unirla con el Fuy bajo y armar un día épico de varios ríos.",
       "logistics": "Acceso por ripio; se recomienda un auto alto.",
@@ -645,16 +645,16 @@ export const content = {
       ]
     },
     "rio-petrohue-upper": {
-      "section": "Petrohué alto (Saltos del Petrohué a Ensenada)",
+      "section": "Bajo Saltos del Petrohué a Hueñu-Hueñu / Ralún",
       "character": "Torrente glacial cobalto bajo el Volcán Osorno",
       "season": "todo el año (mejor: noviembre–abril)",
-      "grade": "IV (IV+)",
-      "beta": "El Petrohué tiene una de las aguas de azul cobalto profundo más vibrantes de Sudamérica. Sale del Lago Todos los Santos, bajo el cono nevado del Volcán Osorno, y ofrece un paisaje majestuoso y rápidos de gran caudal clase IV. El lecho está labrado en coladas de basalto volcánico negro.",
+      "grade": "III – IV",
+      "beta": "El Petrohué tiene una de las aguas de azul cobalto profundo más vibrantes de Sudamérica. Sale del Lago Todos los Santos, bajo el cono nevado del Volcán Osorno, y ofrece un paisaje majestuoso y rápidos de gran caudal clase III–IV. El lecho está labrado en coladas de basalto volcánico negro.",
       "tip": "Sal en Ralún, donde el río entra al fiordo de agua salada: ¡puedes remar desde un río glacial directo al océano Pacífico!",
       "logistics": "Camino pavimentado desde Puerto Varas (aprox. 45 min).",
       "flow": "Drena el Lago Todos los Santos, bajo la cumbre cónica del Volcán Osorno.",
       "putIn": "Entra debajo de las cascadas turísticas que no se pasan, Saltos del Petrohué, en el Parque Nacional Vicente Pérez Rosales.",
-      "takeOut": "Sal en el puente cerca de Ensenada, o sigue hasta el fiordo del estuario de Reloncaví.",
+      "takeOut": "Sal en Hueñu-Hueñu o sigue hasta Puente Ralún en el fiordo del estuario de Reloncaví.",
       "rapids": [
         "Ola grande que explota, justo con el volcán a la vista.",
         "Rápido que barre entre bandas de roca basáltica."
@@ -685,16 +685,16 @@ export const content = {
       ]
     },
     "rio-puelo": {
-      "section": "Primer y segundo cañón (Lago Tagua Tagua a Reloncaví)",
+      "section": "Primer y segundo cañón (El Portón, sobre Lago Tagua Tagua)",
       "character": "Torrente esmeralda glacial colosal y fiordos remotos",
       "season": "diciembre – marzo",
-      "grade": "IV – IV+",
+      "grade": "IV – V (Segundo cañón El Portón III–IV)",
       "beta": "El Puelo tiene una escala patagónica cruda y colosal. Remas en agua glacial verde esmeralda, de cientos de pies de ancho, bordeada por glaciares colgantes y acantilados de selva a plomo. Los rápidos de los cañones traen olas de compresión enormes, vórtices que hierven y trenes de olas salvajes. Un día de río de nivel expedición.",
       "tip": "Deja todo el equipo bien trincado; un nado en el cañón del Puelo puede ser 1 kilómetro flotando antes de alcanzar un remanso.",
       "logistics": "Hay que coordinar el transbordador para cruzar el Lago Tagua Tagua.",
       "flow": "Río glacial enorme, que drena lagos argentinos hacia los fiordos chilenos.",
-      "putIn": "Toma el transbordador a través del Lago Tagua Tagua y entra en la salida del lago.",
-      "takeOut": "Sal en el pueblo costero de Puelo.",
+      "putIn": "Accede en transbordador por el Lago Tagua Tagua y camino de ripio hacia Llanada Grande / Primer Corral.",
+      "takeOut": "Sal en la entrada al Lago Tagua Tagua y toma el transbordador hacia Puelo / Estuario Reloncaví.",
       "rapids": [
         "Olas de surgencia enormes, que se comprimen entre las paredes verticales del cañón."
       ],
@@ -705,14 +705,14 @@ export const content = {
     },
     "rio-espolon": {
       "section": "Lago Espolón hasta la confluencia con el Río Futaleufú",
-      "character": "Juego en olas de agua cristalina y cañones amables",
+      "character": "Juego en olas de agua cristalina y tramo de calentamiento",
       "season": "diciembre – marzo",
-      "grade": "III – IV",
+      "grade": "II – III",
       "beta": "El Espolón es el limpia-paladar perfecto en el valle del Futaleufú. Mientras el Futa principal es enorme y ruge, el Espolón es juguetón, acogedor y cristalino. Trenes de olas entretenidos, remansos amables y un paisaje precioso justo a las afueras del pueblo de Futaleufú. Ideal para calentar, jugar en las olas y progresar en el nivel intermedio.",
       "tip": "Hazlo tu primer día en el Futa para sacudirte el polvo del camino y estirar los músculos de remar.",
       "logistics": "A solo 10 minutos del pueblo.",
       "flow": "Alimentado por el lago y cristalino; un gran calentamiento al llegar a Futaleufú.",
-      "putIn": "Entra bajo el pequeño muro en la salida del Lago Espolón, a 6 km del pueblo de Futaleufú.",
+      "putIn": "Entra en el desagüe natural del Lago Espolón (sin represa), a 6 km del pueblo de Futaleufú.",
       "takeOut": "Sal en el puente justo antes de que desemboque en el Río Futaleufú principal.",
       "rapids": [
         "Ola vítrea, ideal para surfear de frente y hacer giros."
@@ -722,10 +722,10 @@ export const content = {
       ]
     },
     "rio-palena": {
-      "section": "Alto Palena hasta La Junta",
+      "section": "Alto Palena hasta La Junta (varios días)",
       "character": "Gran expedición andina en territorio virgen",
       "season": "diciembre – marzo",
-      "grade": "III – IV",
+      "grade": "II – III (Clase I–II bajo La Junta)",
       "beta": "El Palena es el gran río indómito del sur. Corre por bosques patagónicos intactos, junto a casas de colonos y cumbres nevadas. Ancho, de gran caudal y clase III continua, con trenes de olas de clase IV de vez en cuando. Perfecto para expediciones de kayak de varios días en autosuficiencia.",
       "tip": "Lleva equipo para acampar, y pesca en el camino; la pesca de trucha café y arcoíris en el Palena es legendaria.",
       "logistics": "Traslado largo por la Carretera Austral.",
@@ -740,14 +740,14 @@ export const content = {
       ]
     },
     "rio-baker-upper": {
-      "section": "Baker alto y El Saltón (Lago General Carrera hasta el Nef)",
+      "section": "Baker alto y El Saltón (Puerto Bertrand hasta el Nef)",
       "character": "El río de mayor caudal de Chile y el rey del azul",
       "season": "diciembre – marzo",
-      "grade": "V (V+ en El Saltón)",
+      "grade": "III – IV (V+ / porteo en El Saltón)",
       "beta": "El Río Baker es un río emotivo y sobrecogedor. Corre con un caudal impresionante de 500 a 1,000 metros cúbicos por segundo de agua azul neón luminosa, y es el río de mayor caudal de Chile. La potencia es visceral: trenes de olas que se levantan como marejadas, líneas de remanso que ponen a prueba cada gramo de la estabilidad de tu tronco, y el rápido atronador «El Saltón». Pararte en la barra de ripio de Puerto Bertrand mirando el Baker te va a poner los pelos de los brazos de punta. Respeta su escala, rema con potencia y saborea cada palada.",
       "tip": "Si haces el porteo de El Saltón, hazlo con orgullo. El Baker se trata de vivir para remar otro día. El tramo desde Bertrand hasta la confluencia del Nef, sin el Saltón, es una de las bajadas de aguas grandes de clase IV más majestuosas del planeta.",
       "logistics": "Carretera Austral (Ruta 7). Puerto Bertrand tiene muy buenas hosterías, cabañas y guías locales.",
-      "flow": "Caudal colosal. El Baker drena el segundo lago más grande de Sudamérica. La sensación visual de pura potencia azul cobalto no tiene palabras.",
+      "flow": "Caudal colosal. El Baker drena el Lago Bertrand (alimentado por el Lago General Carrera, el segundo lago más grande de Sudamérica). La sensación visual de pura potencia azul cobalto no tiene palabras.",
       "putIn": "Entra justo en Puerto Bertrand, donde el lago turquesa se vierte en el Baker.",
       "takeOut": "Sal por la derecha antes de la cascada del Salto del Nef, que no se corre, o portea y sal en el mirador de la carretera.",
       "rapids": [
@@ -782,7 +782,7 @@ export const content = {
       "section": "Cajón de Farrellones (garganta de Coyhaique)",
       "character": "Cañón profundo de basalto y descenso técnico de cadencia alta",
       "season": "noviembre – febrero",
-      "grade": "IV – IV+",
+      "grade": "III – III+ (Clase I–II en Reserva Nacional)",
       "beta": "A las afueras de Coyhaique, la capital de Aysén, el Río Simpson labra un cañón dramático conocido como Cajón de Farrellones. Las aguas blancas empujan, van rápido y son una clase IV entretenida, con trenes de olas empinados, boofs desde repisas de roca y un paisaje de cañón vertical. Un infaltable para quienes bajan al sur por la Carretera Austral.",
       "tip": "Coyhaique tiene cervecerías locales y asados excelentes; celebra tu bajada en uno de los bares de cerveza artesanal del pueblo.",
       "logistics": "La carretera pavimentada corre paralela al cañón y el traslado es sencillo.",
@@ -798,16 +798,16 @@ export const content = {
       ]
     },
     "rio-figueroa": {
-      "section": "Lago Rosselot hasta la confluencia con el Río Palena",
+      "section": "Lago Verde a Lago Rosselot (Cañón Temple Float)",
       "character": "Joya turquesa y bosque patagónico denso",
       "season": "diciembre – marzo",
-      "grade": "IV (IV+)",
-      "beta": "El Figueroa es una de las joyas escondidas del norte de Aysén. Sale del Lago Rosselot con una claridad turquesa deslumbrante y corta un bosque templado lluvioso antiguo. Jardines de bloques de clase IV continuos, saltos limpios y trenes de olas que emocionan, sin aglomeraciones. Es el remo en naturaleza virgen en su máxima expresión.",
+      "grade": "II – III",
+      "beta": "El Figueroa es una de las joyas escondidas del norte de Aysén. Sale del Lago Verde con una claridad turquesa deslumbrante por cañones de paredes empinadas hacia el Lago Rosselot, con jardines de bloques continuos de clase II–III y trenes de olas sin aglomeraciones. Es el remo en naturaleza virgen en su máxima expresión.",
       "tip": "Combínalo con una visita al parque nacional del ventisquero colgante de Queulat, un poco más adelante por el camino.",
       "logistics": "Acceso por camino de ripio; se recomienda vehículo alto.",
-      "flow": "Amortiguado por el Lago Rosselot; caudales confiables a lo largo de mediados del verano.",
-      "putIn": "El acceso es por el camino de ripio cerca del pueblo de La Junta, hacia el Lago Rosselot.",
-      "takeOut": "Sal en el puente de la confluencia, cerca de La Junta.",
+      "flow": "Amortiguado por el Lago Verde; caudales confiables a lo largo de mediados del verano (~61 km en total hasta el Lago Rosselot, que luego desagua por el Río Rosselot hacia el Palena).",
+      "putIn": "Acceso por el camino de ripio que une La Junta hacia Lago Verde.",
+      "takeOut": "Sal en Lago Rosselot (remolque en bote por el lago o continúa por el Río Rosselot hacia La Junta / Río Palena).",
       "rapids": [
         "Primer rápido importante bajo el lago, con olas que surgen y remansos profundos.",
         "Tres saltos de repisa seguidos que piden paladas de boof limpias por la derecha."
@@ -841,7 +841,7 @@ export const content = {
       "section": "El Nacimiento (Lago Galletué hasta Lonquimay)",
       "character": "La cuna histórica de las aguas blancas chilenas",
       "season": "noviembre – febrero",
-      "grade": "IV – V",
+      "grade": "II – III+ (Tramo bajo Queuco–Quilaco Clase IV)",
       "beta": "El Bío Bío es suelo sagrado en la historia de las aguas blancas. Antes de la construcción de represas en sus cañones bajos, en los años 90, se lo celebraba junto al Grand Canyon y el Zambezi como uno de los principales ríos de aguas grandes del mundo. Hoy el tramo alto, El Nacimiento, sigue de caudal libre, prístino y salvaje. Remas por territorio ancestral pehuenche, bordeado de araucarias antiguas. Las aguas blancas son nítidas, continuas y profundamente inspiradoras.",
       "tip": "Muestra un respeto profundo a las comunidades pehuenche locales a lo largo del río; este río es su corazón cultural.",
       "logistics": "Ruta 181 por Lonquimay. Un vehículo alto sirve para el acceso al lago.",
@@ -860,7 +860,7 @@ export const content = {
     "rio-nuble": {
       "section": "Cañón de San Fabián de Alico",
       "character": "Jardines de bloques de granito y orgullo comunitario de las aguas blancas",
-      "season": "octubre – enero (pico: noviembre)",
+      "season": "noviembre – marzo (pico: nov–dic)",
       "grade": "IV – IV+",
       "beta": "El Río Ñuble es una de las joyas de la corona de la conservación de ríos en Chile. Salvado de megarepresas devastadoras por el activismo apasionado de las comunidades de base y por el ÑubleFest anual de la comunidad internacional del kayak, el río corre libre con rápidos espectaculares de bloques de granito. El agua es clara, la pendiente es pareja y los rápidos son atléticos, técnicos y enormemente gratificantes.",
       "tip": "Ve al ÑubleFest si tus fechas de viaje calzan en noviembre; es el festival de río más cálido y enérgico de Chile.",
@@ -878,16 +878,16 @@ export const content = {
       ]
     },
     "rio-diguillin": {
-      "section": "Precordillera de Termas de Chillán hasta Recinto",
+      "section": "Los Lleuques / Reserva Nacional Ñuble hasta Los Lleuques",
       "character": "Bosque nativo frondoso y saltos sobre roca madre",
       "season": "octubre – diciembre",
-      "grade": "IV (IV+)",
+      "grade": "III – IV (Cañón superior V)",
       "beta": "El Diguillín ofrece un descenso técnico y empinado por magníficos bosques nativos de roble y coigüe. Lo alimentan las laderas volcánicas de los Nevados de Chillán, y tiene repisas limpias de roca madre, canaletas estrechas y boofs técnicos. Una salida de un día de primer nivel camino al sur, hacia Pucón.",
       "tip": "Combínalo con esquiar o con un baño en Termas de Chillán durante la primavera.",
       "logistics": "Caminos pavimentados y de ripio desde Chillán.",
       "flow": "Óptimo durante el deshielo de primavera del Volcán Chillán.",
-      "putIn": "Toma el camino desde Chillán hacia Termas de Chillán. Dobla al sur hacia el valle del Diguillín.",
-      "takeOut": "Sal cerca del pueblo de Recinto.",
+      "putIn": "Toma la ruta N-55 desde Chillán hacia Termas de Chillán y dobla por el camino de ripio cerca de Los Lleuques pasado el portón de la Reserva Nacional Ñuble.",
+      "takeOut": "Sal cerca de Los Lleuques / acceso por Ruta N-55.",
       "rapids": [
         "Lanzamiento limpio de 6 pies desde una lengua de granito hacia una poza llena de espuma."
       ],
@@ -899,8 +899,8 @@ export const content = {
     "rio-queuco": {
       "section": "Trapa Trapa hasta la confluencia de Ralco",
       "character": "Territorio pehuenche y cañón de granito",
-      "season": "noviembre – enero",
-      "grade": "IV – IV+",
+      "season": "septiembre – noviembre (muy bajo en enero)",
+      "grade": "III+ – IV",
       "beta": "El Queuco es un afluente magnífico de la cuenca del alto Bío Bío y corre por el corazón de la tierra indígena pehuenche. El río es claro, empinado y deportivo, con saltos de bloques de clase IV continuos, trenes de olas y ranuras de granito. Paisaje de alta montaña prístino y un rico patrimonio cultural.",
       "tip": "Sé respetuoso y amable con los mayores de la comunidad local; comprar piñones locales es la costumbre, y son deliciosos.",
       "logistics": "Camino de ripio a lo largo del valle; regístrate en los controles de la comunidad local.",
@@ -916,16 +916,16 @@ export const content = {
       ]
     },
     "rio-laja": {
-      "section": "Desagüe de la Laguna del Laja hasta Antuco",
+      "section": "Salto Las Chilcas hasta Embalse ENDESA",
       "character": "Campos de escoria volcánica y saltos empinados",
       "season": "noviembre – enero",
-      "grade": "IV – V",
+      "grade": "IV+ – V-",
       "beta": "El Laja alto corre por lechos de lava negra bajo el cono activo del Volcán Antuco. Es dramático y crudo. Ofrece saltos de repisa empinados, trenes de olas violentos y boofs atléticos. El paisaje volcánico es severo y hermoso.",
       "tip": "Verifica siempre los horarios de descarga de la represa aguas arriba, en la estación de Antuco, antes de entrar al río.",
       "logistics": "Camino pavimentado desde Los Ángeles.",
       "flow": "Alimentado por la Laguna del Laja, bajo el Volcán Antuco.",
-      "putIn": "Toma la Ruta Q-45 desde Los Ángeles, por Antuco, hasta el Parque Nacional Laguna del Laja.",
-      "takeOut": "Sal en el puente del camino cerca de Antuco.",
+      "putIn": "Toma la Ruta Q-45 hacia el Parque Nacional Laguna del Laja (~4 km arriba de la entrada) y camina ~20 minutos hasta Salto Las Chilcas.",
+      "takeOut": "Sal en la pradera junto al embalse ENDESA.",
       "rapids": [
         "Salto empinado sobre repisas de basalto volcánico negro."
       ],
@@ -937,14 +937,14 @@ export const content = {
     "rio-claro-22-teacups": {
       "section": "22 Teacups (Parque Nacional Radal Siete Tazas)",
       "character": "Saltos en tazas de basalto y gargantas de clase mundial",
-      "season": "diciembre – febrero (estiaje de pleno verano)",
+      "season": "septiembre – diciembre (deshielo de primavera; se seca en verano)",
       "grade": "IV+ / V (V+)",
       "beta": "Las 22 Teacups del Río Claro son uno de los espectáculos de aguas blancas más célebres y surrealistas del planeta. El río labró pozas circulares —las «tazas»— en basalto negro pulido. Caes literalmente de 8 a 18 pies de un cuenco circular de basalto directo al siguiente. Exige precisión milimétrica: fallar el boof o caer en lápiz con el ángulo equivocado arriesga fractura de tobillo en la roca madre poco profunda o quedar atrapado en un hidráulico circular. Córrelo con locales expertos, respeta la ventana de caudal bajo y recuerda: sobre 7 m³/s es agua alta muy peligrosa.",
       "tip": "Nunca entres a las 22 Teacups si el caudal supera los 7 m³/s. Revisa la escala visual en la pasarela del parque: si el agua hierve sobre el labio de la taza 1, date la vuelta. No hay margen de error en estos cuencos con sifones.",
       "logistics": "Camino pavimentado y de ripio desde Molina (1.5 horas). Registro obligatorio en Conaf. Lleva coderas, máscara facial y kit completo de rescate.",
       "flow": "Sobre 7 m³/s (250 cfs) es agua alta peligrosa en el Río Claro, donde las tazas circulares forman máquinas de ahogo de recirculación terminal y sifones subterráneos. El nivel óptimo es 2.5–6.5 m³/s (90–230 cfs).",
-      "putIn": "Maneja desde Molina hasta el Parque Nacional Radal Siete Tazas. Regístrate con los guardaparques de Conaf. Entra bajo los miradores turísticos.",
-      "takeOut": "Sal antes o después del sendero indicado de salida de la garganta. Trepada empinada para salir del cañón.",
+      "putIn": "Maneja desde Molina hasta el Parque Nacional Radal Siete Tazas. Regístrate con los guardaparques de Conaf. Camina ~2 km río arriba por la ribera derecha desde Parque Inglés / Entre Saltos (pasando el cuarto afluente) hasta una repisa de roca.",
+      "takeOut": "Sal en la primera playa o repisa de roca por la ribera derecha en el puente de Parque Inglés. NO pases de largo esta salida: aguas abajo hay coladores, sifones y Salto de la Leona.",
       "rapids": [
         "Un salto vertical de 10 pies sobre un labio liso de basalto hacia una poza perfectamente circular de 20 pies.",
         "Salto doble con un giro de 90 grados dentro del cuenco. Boof obligatorio por la derecha.",
@@ -976,10 +976,10 @@ export const content = {
       ]
     },
     "rio-tinguiririca": {
-      "section": "Termas del Flaco hasta San Fernando",
+      "section": "Termas del Flaco hasta Puente Negro",
       "character": "Torrente glaciar empinado y precordillera de huellas de dinosaurio",
       "season": "octubre – diciembre",
-      "grade": "IV – V",
+      "grade": "III – IV",
       "beta": "El Tinguiririca corta tierras áridas de la alta cordillera, famosas por las huellas fósiles de dinosaurio. Las aguas blancas no dan tregua: van rápido y empinadas. Rápidos grandes de eslalon de bloques, canaletas que empujan y caudal frío de montaña.",
       "tip": "Revisa los horarios del camino antes de salir de San Fernando: el camino a Termas del Flaco suele tener ventanas de subida y de bajada en un solo sentido.",
       "logistics": "Camino de montaña de ripio; revisa el horario del camino (tránsito alternado en un solo sentido durante la temporada turística).",
@@ -1015,7 +1015,7 @@ export const content = {
       "section": "Montecillo hasta Linares",
       "character": "Santuario esmeralda cristalino y pozas de granito",
       "season": "noviembre – febrero",
-      "grade": "III+ / IV",
+      "grade": "III+ – IV (Bajo) / V (Cañón superior)",
       "beta": "El Achibueno fue declarado Santuario de la Naturaleza para preservar su agua turquesa impresionante y sus bosques nativos antiguos. El remo es limpio y amable, de clase III–IV, con pozas cristalinas, jardines de bloques juguetones y un telón de montaña sobrecogedor. Una delicia absoluta.",
       "tip": "Uno de los mejores ríos para acampar en Chile central. Campamentos prístinos en playas de ripio por todas partes.",
       "logistics": "Acceso fácil por camino de ripio desde Linares.",
