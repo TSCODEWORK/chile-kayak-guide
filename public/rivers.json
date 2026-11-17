@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T03:32:25.745Z",
+  "generatedAt": "2026-11-17T00:44:55.066Z",
   "regionsCount": 7,
   "riversCount": 45,
   "regions": [
@@ -22,7 +22,7 @@
       "name": "O'Higgins & Maule",
       "sub": "Región VI & VII · Cachapoal, Teno & Radal Siete Tazas",
       "tagline": "Basalt volcanic gorges, pristine teacups and deep multi-day wilderness canyons",
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "riversCount": 6,
       "color": "#3b82f6",
       "glow": "rgba(59, 130, 246, 0.4)",
@@ -241,8 +241,8 @@
       "grade": "IV+ / V",
       "classNumber": 5,
       "character": "Steep Volcanic Bedrock Drops & Iconic Waterfalls",
-      "lengthKm": 6,
-      "durationHours": "2 – 3 hrs",
+      "lengthKm": 2,
+      "durationHours": "1.5 – 2.5 hrs",
       "gradient": "38 m/km (200 ft/mi)",
       "optimalFlow": {
         "minCms": 7,
@@ -328,7 +328,7 @@
         "hasLiveChileWaterLevelsLink": true,
         "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09412007-1"
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Puesco Campamento / National Park Guard Station",
         "lat": -39.533,
@@ -434,13 +434,13 @@
     {
       "id": "rio-maichin",
       "name": "Río Maichín",
-      "section": "Upper & Lower Canyon",
+      "section": "Lower Canyon (Puente Quiñenahuin to Confluence)",
       "regionId": "araucania",
       "regionName": "Araucanía (Pucón)",
-      "grade": "IV – IV+ (V at high flows)",
+      "grade": "III – IV (IV+ at high flows)",
       "classNumber": 4,
       "character": "Continuous Basalt Gorge & Technical Pool-Drop",
-      "lengthKm": 12,
+      "lengthKm": 8,
       "durationHours": "2.5 – 3 hrs",
       "gradient": "16 m/km (85 ft/mi)",
       "optimalFlow": {
@@ -619,12 +619,12 @@
       "section": "Malalcahuello to Curacautín",
       "regionId": "araucania",
       "regionName": "Araucanía (Pucón)",
-      "grade": "IV (IV+)",
+      "grade": "III – V",
       "classNumber": 4,
       "character": "High-Andean Araucaria Forest Creeking",
-      "lengthKm": 18,
-      "durationHours": "3 hrs",
-      "gradient": "14 m/km (74 ft/mi)",
+      "lengthKm": 9,
+      "durationHours": "2 – 3 hrs",
+      "gradient": "16 m/km (84 ft/mi)",
       "optimalFlow": {
         "minCms": 20,
         "maxCms": 55,
@@ -675,11 +675,11 @@
     {
       "id": "rio-malleco",
       "name": "Río Malleco",
-      "section": "Tolhuaca Foothills to Collipulli",
+      "section": "Tolhuaca Foothills Gorge",
       "regionId": "araucania",
       "regionName": "Araucanía (Pucón)",
-      "grade": "IV – V",
-      "classNumber": 5,
+      "grade": "IV",
+      "classNumber": 4,
       "character": "Steep Basalt Drops & Wilderness Canyon",
       "lengthKm": 14,
       "durationHours": "3 hrs",
@@ -757,7 +757,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Conguillío Park Road Bridge",
         "lat": -38.75,
@@ -979,12 +979,12 @@
       "section": "Lago Panguipulli to Lago Riñihue",
       "regionId": "los-rios",
       "regionName": "Los Ríos (Panguipulli)",
-      "grade": "III+ (IV at high water)",
+      "grade": "II (II+ at high water)",
       "classNumber": 3,
-      "character": "High-Volume Lake Interconnect & Canyons",
-      "lengthKm": 12,
+      "character": "High-Volume Lake Interconnect & Scenic Float",
+      "lengthKm": 10,
       "durationHours": "2 hrs",
-      "gradient": "6 m/km (32 ft/mi)",
+      "gradient": "3 m/km (16 ft/mi)",
       "optimalFlow": {
         "minCms": 50,
         "maxCms": 160,
@@ -1052,7 +1052,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Termas de Liquiñe Upper Bridge",
         "lat": -39.73,
@@ -1105,7 +1105,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Puente Gol-Gol / Samoré Pass Road",
         "lat": -40.67,
@@ -1269,13 +1269,13 @@
     {
       "id": "rio-petrohue-upper",
       "name": "Río Petrohué",
-      "section": "Upper Petrohué (Saltos del Petrohué to Ensenada)",
+      "section": "Below Saltos del Petrohué to Hueñu-Hueñu / Ralún",
       "regionId": "los-lagos",
       "regionName": "Los Lagos & Northern Patagonia",
-      "grade": "IV (IV+)",
+      "grade": "III – IV",
       "classNumber": 4,
       "character": "Cobalt Glacial Torrent Under Volcán Osorno",
-      "lengthKm": 14,
+      "lengthKm": 12,
       "durationHours": "2.5 hrs",
       "gradient": "8 m/km (42 ft/mi)",
       "optimalFlow": {
@@ -1300,10 +1300,10 @@
         "accessBeta": "Put in below the impassable tourist waterfalls of Saltos del Petrohué in Vicente Pérez Rosales National Park."
       },
       "takeOut": {
-        "name": "Puente Ensenada or Ralún",
+        "name": "Hueñu-Hueñu / Puente Ralún",
         "lat": -41.28,
         "lng": -72.35,
-        "accessBeta": "Take out at the bridge near Ensenada or paddle through to the Reloncaví Estuary fjord."
+        "accessBeta": "Take out at Hueñu-Hueñu or continue down to Ralún at the Reloncaví Estuary fjord."
       },
       "davidBeta": "The Petrohué has some of the most vibrant deep cobalt blue water in South America. Flowing out of Lago Todos los Santos under the snow-covered cone of Volcán Osorno, it offers majestic scenery and high-volume Class IV rapids. The riverbed is carved through black basalt volcanic flows.",
       "keyRapids": [
@@ -1387,10 +1387,10 @@
     {
       "id": "rio-puelo",
       "name": "Río Puelo",
-      "section": "First & Second Canyons (Lago Tagua Tagua to Reloncaví)",
+      "section": "First & Second Canyons (El Portón, Above Lago Tagua Tagua)",
       "regionId": "los-lagos",
       "regionName": "Los Lagos & Northern Patagonia",
-      "grade": "IV – IV+",
+      "grade": "IV – V (Second Canyon El Portón III–IV)",
       "classNumber": 4,
       "character": "Colossal Glacial Emerald Torrent & Remote Fjords",
       "lengthKm": 25,
@@ -1412,16 +1412,16 @@
       },
       "season": "December – March",
       "putIn": {
-        "name": "Lago Tagua Tagua Outflow",
-        "lat": -41.68,
-        "lng": -72.08,
-        "accessBeta": "Take the ferry across Lago Tagua Tagua and put in at the lake outlet."
+        "name": "Llanada Grande / Paso El Bolsón Access",
+        "lat": -41.88,
+        "lng": -71.88,
+        "accessBeta": "Access via ferry across Lago Tagua Tagua and gravel road south toward Llanada Grande / Primer Corral."
       },
       "takeOut": {
-        "name": "Puente Puelo / Estuario Reloncaví",
-        "lat": -41.65,
-        "lng": -72.31,
-        "accessBeta": "Take out at the coastal village of Puelo."
+        "name": "Lago Tagua Tagua Inflow / Ferry",
+        "lat": -41.68,
+        "lng": -72.08,
+        "accessBeta": "Take out at the inflow of Lago Tagua Tagua and catch the ferry toward Puelo / Estuario Reloncaví."
       },
       "davidBeta": "The Puelo is raw, colossal Patagonian scale. You are paddling on emerald green glacial water hundreds of feet wide, bordered by hanging glaciers and sheer rainforest cliffs. The rapids in the canyons feature enormous compression waves, boiling vortexes, and wild wave trains. An expedition-grade river day.",
       "keyRapids": [
@@ -1494,13 +1494,13 @@
     {
       "id": "rio-palena",
       "name": "Río Palena",
-      "section": "Alto Palena to La Junta",
+      "section": "Alto Palena to La Junta (Multi-Day)",
       "regionId": "los-lagos",
       "regionName": "Los Lagos & Northern Patagonia",
-      "grade": "III – IV",
+      "grade": "II – III (Class I–II below La Junta)",
       "classNumber": 3,
       "character": "Grand Andean Wilderness Expedition",
-      "lengthKm": 45,
+      "lengthKm": 85,
       "durationHours": "Multi-Day or Long Day (6+ hrs)",
       "gradient": "4 m/km (21 ft/mi)",
       "optimalFlow": {
@@ -1835,10 +1835,10 @@
       "section": "El Nacimiento (Lago Galletué to Lonquimay)",
       "regionId": "biobio",
       "regionName": "Biobío & Ñuble",
-      "grade": "IV – V",
-      "classNumber": 5,
+      "grade": "II – III+ (Lower Queuco–Quilaco Class IV)",
+      "classNumber": 3,
       "character": "The Historic Cradle of Chilean Whitewater",
-      "lengthKm": 25,
+      "lengthKm": 30,
       "durationHours": "4 hrs",
       "gradient": "10 m/km (53 ft/mi)",
       "optimalFlow": {
@@ -1914,7 +1914,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "October – January (Peak: Nov)",
+      "season": "November – March (Peak: Nov–Dec)",
       "putIn": {
         "name": "El Caracol / Upper Bridge",
         "lat": -36.52,
@@ -2007,10 +2007,10 @@
       "section": "Trapa Trapa to Ralco Confluence",
       "regionId": "biobio",
       "regionName": "Biobío & Ñuble",
-      "grade": "IV – IV+",
+      "grade": "III+ – IV",
       "classNumber": 4,
       "character": "Pehuenche Territory & Granite Canyon",
-      "lengthKm": 18,
+      "lengthKm": 25,
       "durationHours": "3 hrs",
       "gradient": "14 m/km (74 ft/mi)",
       "optimalFlow": {
@@ -2027,7 +2027,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Puente Trapa Trapa",
         "lat": -37.85,
@@ -2081,7 +2081,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Salto Las Chilcas (20-min hike)",
         "lat": -37.38,
@@ -2231,11 +2231,11 @@
     {
       "id": "rio-tinguiririca",
       "name": "Río Tinguiririca",
-      "section": "Termas del Flaco to San Fernando",
+      "section": "Termas del Flaco to Puente Negro",
       "regionId": "maule",
       "regionName": "O'Higgins & Maule",
-      "grade": "IV – V",
-      "classNumber": 5,
+      "grade": "III – IV",
+      "classNumber": 4,
       "character": "Steep Glacial Torrent & Dinosaur Track Foothills",
       "lengthKm": 18,
       "durationHours": "3 hrs",
@@ -2262,7 +2262,7 @@
         "accessBeta": "Take the mountain road from San Fernando toward Termas del Flaco. Put in where river parallels road."
       },
       "takeOut": {
-        "name": "Puente Puente Negro",
+        "name": "Puente Negro",
         "lat": -34.68,
         "lng": -70.82,
         "accessBeta": "Take out near Puente Negro outside San Fernando."
@@ -2307,7 +2307,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Embalse Melado / Tunnel Outlet",
         "lat": -35.8,
@@ -2413,7 +2413,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Below Laguna del Maule Dam / Campanario",
         "lat": -35.9,
@@ -2531,7 +2531,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Below Embalse El Yeso Dam",
         "lat": -33.68,
@@ -2708,7 +2708,7 @@
         "hasLiveChileWaterLevelsLink": false,
         "chileWaterLevelsUrl": ""
       },
-      "season": "November – January",
+      "season": "September – November (Too low by January)",
       "putIn": {
         "name": "Below Salto del Soldado",
         "lat": -32.88,
