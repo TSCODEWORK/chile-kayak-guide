@@ -14,21 +14,40 @@ function mixCounts(rivers) {
   return counts;
 }
 
-function regionLabel(region) {
+function regionLabel(region, lang = 'en') {
   const rivers = getRiversByRegion(region.id);
   const mix = mixCounts(rivers);
+  if (lang === 'es') {
+    return `${region.name}. ${rivers.length} tramos. Mezcla de grado clase III ${mix[3]}, clase IV ${mix[4]}, clase V ${mix[5]}. Temporada ${region.season}.`;
+  }
   return `${region.name}. ${rivers.length} runs. Grade mix class III ${mix[3]}, class IV ${mix[4]}, class V ${mix[5]}. Season ${region.season}.`;
 }
 
-export function createChileMap(container, { interactive = true } = {}) {
+function riverLabel(river, lang = 'en') {
+  return lang === 'es'
+    ? `${river.name}, ${river.section}, clase ${river.grade}`
+    : `${river.name}, ${river.section}, class ${river.grade}`;
+}
+
+function svgAriaLabel(interactive, lang = 'en') {
+  if (lang === 'es') {
+    return interactive
+      ? 'Mapa de Chile. Las regiones de kayak son enlaces. Las flechas del teclado se mueven entre ellas.'
+      : 'Mapa de ubicación de Chile';
+  }
+  return interactive
+    ? 'Map of Chile. Kayaking regions are links. Arrow keys move between them.'
+    : 'Locator map of Chile';
+}
+
+export function createChileMap(container, { interactive = true, lang = 'en' } = {}) {
   container.replaceChildren();
+  let currentLang = lang === 'es' ? 'es' : 'en';
 
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('class', 'chile-svg');
   svg.setAttribute('role', 'group');
-  svg.setAttribute('aria-label', interactive
-    ? 'Map of Chile. Kayaking regions are links. Arrow keys move between them.'
-    : 'Locator map of Chile');
+  svg.setAttribute('aria-label', svgAriaLabel(interactive, currentLang));
   svg.setAttribute('viewBox', `0 0 ${CHILE_MAP.width} ${CHILE_MAP.height}`);
   svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
   container.append(svg);
@@ -59,7 +78,7 @@ export function createChileMap(container, { interactive = true } = {}) {
     group.style.setProperty('--reg', region.color);
     if (interactive) {
       group.setAttribute('href', hrefFor(`/region/${encodeURIComponent(region.id)}`));
-      group.setAttribute('aria-label', regionLabel(region));
+      group.setAttribute('aria-label', regionLabel(region, currentLang));
       regionLinks.push(group);
     }
     for (const admin of admins) {
@@ -152,7 +171,7 @@ export function createChileMap(container, { interactive = true } = {}) {
       group.dataset.river = river.id;
       if (interactive) {
         group.setAttribute('href', hrefFor(`/river/${encodeURIComponent(river.id)}`));
-        group.setAttribute('aria-label', `${river.name}, ${river.section}, class ${river.grade}`);
+        group.setAttribute('aria-label', riverLabel(river, currentLang));
       }
       group.append(
         segment(put, take, 'run-hit'),
@@ -281,6 +300,19 @@ export function createChileMap(container, { interactive = true } = {}) {
     return null;
   }
 
+  function setLang(nextLang) {
+    currentLang = nextLang === 'es' ? 'es' : 'en';
+    svg.setAttribute('aria-label', svgAriaLabel(interactive, currentLang));
+    for (const link of regionLinks) {
+      const region = getRegionById(link.dataset.region);
+      if (region) link.setAttribute('aria-label', regionLabel(region, currentLang));
+    }
+    riversLayer.querySelectorAll('.run').forEach((node) => {
+      const river = rivers.find((item) => item.id === node.dataset.river);
+      if (river && interactive) node.setAttribute('aria-label', riverLabel(river, currentLang));
+    });
+  }
+
   showCountry({ animate: false });
 
   return {
@@ -289,6 +321,7 @@ export function createChileMap(container, { interactive = true } = {}) {
     showRun,
     setHot,
     setActive,
+    setLang,
     setRiverFilter,
     emphasizeRiver,
     regionAtScreenY,

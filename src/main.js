@@ -392,6 +392,7 @@ class ChileKayakApp {
     text('brand-line-1', 'brand1');
     text('brand-line-2', 'brand2');
     text('map-caption', 'mapCaption');
+    this.map?.setLang?.(this.lang);
     text('foot-cwl', 'footCwl');
     text('foot-note', 'footNote');
     text('about-title', 'aboutTitle');
@@ -993,7 +994,7 @@ class ChileKayakApp {
     `;
     const slot = document.getElementById('run-map');
     if (slot) {
-      this.locator = createChileMap(slot, { interactive: false });
+      this.locator = createChileMap(slot, { interactive: false, lang: this.lang });
       this.locator.showRun(river, { animate: !reduceMotion() });
     }
   }
@@ -1566,7 +1567,7 @@ class ChileKayakApp {
         <summary class="oc-sum">
           <div class="oc-sum-left">
             <div class="oc-logo-box logo-${esc(operator.id)}" aria-hidden="true">
-              <img src="${esc(joinBase(base(), operator.logoUrl || ('logos/' + operator.id + '.png')))}" alt="${esc(name)} logo" class="oc-logo-img" loading="lazy">
+              <img src="${esc(joinBase(base(), operator.logoUrl || ('logos/' + operator.id + '.png')))}" alt="${esc(name)} logo" class="oc-logo-img">
             </div>
             <div class="oc-sum-content">
               <div class="oc-sum-top">

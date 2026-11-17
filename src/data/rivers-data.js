@@ -22,7 +22,7 @@ export const REGIONS = [
     "name": "O'Higgins & Maule",
     "sub": "Regi\u00f3n VI & VII \u00b7 Cachapoal, Teno & Radal Siete Tazas",
     "tagline": "Basalt volcanic gorges, pristine teacups and deep multi-day wilderness canyons",
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "riversCount": 6,
     "color": "#3b82f6",
     "glow": "rgba(59, 130, 246, 0.4)",
@@ -262,14 +262,14 @@ export const RIVERS = [
     "season": "October \u2013 January (Spring runoff is prime)",
     "putIn": {
       "name": "Termas Palgu\u00edn Road Bridge",
-      "lat": -39.42,
-      "lng": -71.81,
+      "lat": -39.4196,
+      "lng": -71.7834,
       "accessBeta": "Drive 7 km east from Puc\u00f3n, turn onto the road toward Termas Palgu\u00edn. Follow gravel road 12 km up the canyon to the put-in bridge."
     },
     "takeOut": {
       "name": "Lower Palgu\u00edn Fish Hatchery or Confluence",
-      "lat": -39.38,
-      "lng": -71.77,
+      "lat": -39.403,
+      "lng": -71.78,
       "accessBeta": "Take out at the road bridge above the confluence with R\u00edo Trancura, or at the commercial trout farm bridge."
     },
     "davidBeta": "If Chile is the Mecca of steep creeking, Upper Palgu\u00edn is its temple. First descended in the early 90s, this run became world-famous through whitewater films for clean vertical drops set in lush temperate rainforest. It's steep, technical, and requires precise boat placement. You're boofing over basalt shelves, auto-boofing 15-footers, and negotiating tight slots. You cannot afford sloppy lines here: basalt rock doesn't give, and vertical landings demand disciplined tucks and flat landing technique.",
@@ -329,7 +329,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": true,
       "chileWaterLevelsUrl": "https://chilewaterlevels.com/pucon/#gauge-09412007-1"
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Puesco Campamento / National Park Guard Station",
       "lat": -39.533,
@@ -643,15 +643,15 @@ export const RIVERS = [
     "season": "October \u2013 December",
     "putIn": {
       "name": "Puente Malalcahuello",
-      "lat": -38.45,
-      "lng": -71.58,
+      "lat": -38.472,
+      "lng": -71.606,
       "accessBeta": "Take Route 181 toward the Lonquimay tunnel. Put in at the bridge near the village of Malalcahuello."
     },
     "takeOut": {
-      "name": "Puente Curacaut\u00edn",
-      "lat": -38.44,
-      "lng": -71.86,
-      "accessBeta": "Take out at the highway bridge entering the town of Curacaut\u00edn."
+      "name": "Manzanar / Lower Malalcahuello Bridge",
+      "lat": -38.462,
+      "lng": -71.69,
+      "accessBeta": "Take out near Manzanar along Route 181 (classic 9 km section; can extend further toward Curacaut\u00edn)."
     },
     "davidBeta": "Located north of Puc\u00f3n in the shadow of Lonquimay volcano, the Caut\u00edn is one of the most scenic alpine rivers in Chile. Snow-capped peaks and ancient Araucaria trees line the valley. The whitewater is crisp Class IV boulder slaloms, ledge drops, and fast continuous current. A premier road trip destination when exploring northern Araucan\u00eda.",
     "keyRapids": [
@@ -758,7 +758,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Conguill\u00edo Park Road Bridge",
       "lat": -38.75,
@@ -1053,7 +1053,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Termas de Liqui\u00f1e Upper Bridge",
       "lat": -39.73,
@@ -1106,7 +1106,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Puente Gol-Gol / Samor\u00e9 Pass Road",
       "lat": -40.67,
@@ -1977,14 +1977,14 @@ export const RIVERS = [
     "season": "October \u2013 December",
     "putIn": {
       "name": "Los Lleuques / Reserva Nacional \u00d1uble Gravel Road",
-      "lat": -36.9,
-      "lng": -71.58,
+      "lat": -36.875,
+      "lng": -71.595,
       "accessBeta": "Take N-55 from Chill\u00e1n toward Termas de Chill\u00e1n, turn onto the gravel access road near Los Lleuques past the Reserva Nacional \u00d1uble gate."
     },
     "takeOut": {
       "name": "Puente Los Lleuques / N-55",
-      "lat": -36.88,
-      "lng": -71.72,
+      "lat": -36.8547,
+      "lng": -71.6442,
       "accessBeta": "Take out near Los Lleuques / N-55 road access."
     },
     "davidBeta": "The Diguill\u00edn offers steep, technical creeking through magnificent native Roble and Coig\u00fce forests. Fed by the volcanic slopes of Nevados de Chill\u00e1n, it features clean bedrock ledges, tight chutes, and technical boofing. A top-tier day trip on your way south to Puc\u00f3n.",
@@ -2082,7 +2082,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Salto Las Chilcas (20-min hike)",
       "lat": -37.38,
@@ -2091,8 +2091,8 @@ export const RIVERS = [
     },
     "takeOut": {
       "name": "ENDESA Reservoir Meadow",
-      "lat": -37.33,
-      "lng": -71.65,
+      "lat": -37.372,
+      "lng": -71.458,
       "accessBeta": "Take out in the meadow next to the ENDESA reservoir."
     },
     "davidBeta": "Flowing through black lava beds below the active cone of Volc\u00e1n Antuco, the upper Laja is dramatic and raw. It offers steep ledge drops, violent wave trains, and athletic boofs. The volcanic landscape is severe and beautiful.",
@@ -2258,15 +2258,15 @@ export const RIVERS = [
     "season": "October \u2013 December",
     "putIn": {
       "name": "Termas del Flaco Mountain Road",
-      "lat": -34.95,
-      "lng": -70.45,
+      "lat": -34.9576,
+      "lng": -70.4368,
       "accessBeta": "Take the mountain road from San Fernando toward Termas del Flaco. Put in where river parallels road."
     },
     "takeOut": {
-      "name": "Puente Negro",
-      "lat": -34.68,
-      "lng": -70.82,
-      "accessBeta": "Take out near Puente Negro outside San Fernando."
+      "name": "Bajo Briones / Upper Canyon Bridge",
+      "lat": -34.865,
+      "lng": -70.585,
+      "accessBeta": "Take out near Bajo Briones / upper canyon bridge along the Termas del Flaco road."
     },
     "davidBeta": "The Tinguiririca cuts through high Andean badlands famed for fossilized dinosaur footprints. The whitewater is unrelenting, fast, and steep. Big boulder slalom rapids, pushy chutes, and cold mountain volume.",
     "keyRapids": [
@@ -2308,7 +2308,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Embalse Melado / Tunnel Outlet",
       "lat": -35.8,
@@ -2414,17 +2414,17 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
-      "name": "Below Laguna del Maule Dam / Campanario",
-      "lat": -35.9,
-      "lng": -70.6,
-      "accessBeta": "Take International Route CH-115 (Pehuenche Pass). Put in below the dam outflow."
+      "name": "Campanario / Upper Maule Access",
+      "lat": -35.805,
+      "lng": -70.915,
+      "accessBeta": "Take International Route CH-115 (Pehuenche Pass) above Armerillo toward Campanario."
     },
     "takeOut": {
       "name": "Puente Armerillo",
-      "lat": -35.7,
-      "lng": -71.1,
+      "lat": -35.701,
+      "lng": -71.0992,
       "accessBeta": "Take out at the highway bridge in Armerillo."
     },
     "davidBeta": "The Maule drains an immense volcanic caldera right on the Argentine frontier. Big water, steep volcanic drops, and massive waves compressing between high basalt walls. Powerful and scenic along the Pehuenche Pass corridor.",
@@ -2532,7 +2532,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Below Embalse El Yeso Dam",
       "lat": -33.68,
@@ -2595,14 +2595,14 @@ export const RIVERS = [
     "putIn": {
       "name": "Puente Ba\u00f1os Morales (Upper) / El Volc\u00e1n (Lower)",
       "lat": -33.82,
-      "lng": -70.008,
+      "lng": -70.0078,
       "accessBeta": "Take Route G-25 from Santiago up the Maipo canyon, continuing past San Gabriel east to Puente Ba\u00f1os Morales at 1,775 m. For the lower Class IV section, put in at El Volc\u00e1n village at 1,380 m."
     },
     "takeOut": {
-      "name": "Puente El Volc\u00e1n / San Gabriel Confluence",
-      "lat": -33.784,
-      "lng": -70.244,
-      "accessBeta": "Take out on river-right immediately before the confluence with R\u00edo Maipo near Puente El Volc\u00e1n / San Gabriel."
+      "name": "El Volc\u00e1n Village / Puente El Volc\u00e1n",
+      "lat": -33.812,
+      "lng": -70.125,
+      "accessBeta": "Take out at El Volc\u00e1n village (1,380 m) or continue 4.5 km down the Class IV lower sprint to Puente El Volc\u00e1n."
     },
     "davidBeta": "The Volc\u00e1n is the steep, high-octane alpine jewel of the Maipo watershed. Tumbling off the glaciated 5,856-meter massif of Volc\u00e1n San Jos\u00e9, it charges through a stark volcanic gorge choked with freshly fractured basalt boulders and loose scree. The water is ice-cold and opaque with volcanic silt. From Ba\u00f1os Morales, the upper 8 km is a relentless Class IV+ to V boulder slalom with fast chutes, blind slots, and a mandatory portage around a small diversion weir on river-right. Below El Volc\u00e1n village, the river eases slightly into a blistering Class IV sprint down to the Maipo confluence. One of the fastest-paced steep creeks in Central Chile.",
     "keyRapids": [
@@ -2709,7 +2709,7 @@ export const RIVERS = [
       "hasLiveChileWaterLevelsLink": false,
       "chileWaterLevelsUrl": ""
     },
-    "season": "September \u2013 November (Too low by January)",
+    "season": "November \u2013 January",
     "putIn": {
       "name": "Below Salto del Soldado",
       "lat": -32.88,
